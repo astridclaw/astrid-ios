@@ -1,0 +1,356 @@
+import SwiftUI
+
+/// Inline repeat pattern picker (matching mobile web)
+struct InlineRepeatPicker: View {
+    @Environment(\.colorScheme) var colorScheme
+
+    let label: String
+    @Binding var repeatPattern: Task.Repeating?
+    @Binding var repeatFrom: Task.RepeatFromMode?
+    @Binding var repeatingData: CustomRepeatingPattern?
+    let onSave: (() async -> Void)?
+    // Direct callback that passes values - avoids binding updates that cause view recreation crashes
+    var onSaveCustom: ((Task.Repeating, Task.RepeatFromMode, CustomRepeatingPattern?) async -> Void)?
+    var showLabel: Bool = true
+
+    @State private var isEditing = false
+    @State private var showingCustomEditor = false
+    @State private var selectedPattern: Task.Repeating = .never
+    @State private var selectedRepeatFrom: Task.RepeatFromMode = .COMPLETION_DATE
+    @State private var tempRepeatingData: CustomRepeatingPattern?
+    @State private var isSaving = false
+    @State private var wasCancelled = false
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: Theme.spacing8) {
+            if showLabel {
+                Text(label)
+                    .font(Theme.Typography.caption1())
+                    .foregroundColor(colorScheme == .dark ? Theme.Dark.textSecondary : Theme.textSecondary)
+            }
+
+            if showingCustomEditor {
+                // Custom repeating pattern editor (inline)
+                CustomRepeatingPatternEditor(
+                    pattern: Binding(
+                        get: { tempRepeatingData ?? createDefaultPattern() },
+                        set: { tempRepeatingData = $0 }
+                    ),
+                    repeatFrom: $selectedRepeatFrom,
+                    onSave: {
+                        saveCustomPattern()
+                    },
+                    onCancel: {
+                        wasCancelled = true
+                        showingCustomEditor = false
+                        isEditing = true
+                    }
+                )
+            } else if isEditing {
+                VStack(spacing: Theme.spacing12) {
+                    // Preset options
+                    VStack(spacing: Theme.spacing4) {
+                        ForEach(Task.Repeating.allCases, id: \.self) { pattern in
+                            Button {
+                                if pattern == .custom {
+                                    // Show custom editor
+                                    tempRepeatingData = repeatingData ?? createDefaultPattern()
+                                    showingCustomEditor = true
+                                    isEditing = false
+                                } else {
+                                    // Save immediately for basic patterns (no confirmation needed)
+                                    selectedPattern = pattern
+                                    savePattern()
+                                }
+                            } label: {
+                                HStack {
+                                    Text(pattern.displayName)
+                                        .font(Theme.Typography.body())
+                                        .foregroundColor(colorScheme == .dark ? Theme.Dark.textPrimary : Theme.textPrimary)
+                                    Spacer()
+                                    if selectedPattern == pattern {
+                                        Image(systemName: "checkmark")
+                                            .foregroundColor(Theme.accent)
+                                    }
+                                }
+                                .padding(.horizontal, Theme.spacing12)
+                                .padding(.vertical, Theme.spacing8)
+                                .background(colorScheme == .dark ? Theme.Dark.bgSecondary : Theme.bgSecondary)
+                                .clipShape(RoundedRectangle(cornerRadius: Theme.radiusSmall))
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+
+                    // Cancel button to dismiss without changes
+                    Button("Cancel") {
+                        wasCancelled = true
+                        isEditing = false
+                    }
+                    .foregroundColor(colorScheme == .dark ? Theme.Dark.textSecondary : Theme.textSecondary)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, Theme.spacing8)
+                    .background(colorScheme == .dark ? Theme.Dark.bgSecondary : Theme.bgSecondary)
+                    .clipShape(RoundedRectangle(cornerRadius: Theme.radiusMedium))
+                }
+                .padding(Theme.spacing12)
+                .background(colorScheme == .dark ? Theme.Dark.bgTertiary : Theme.bgTertiary)
+                .clipShape(RoundedRectangle(cornerRadius: Theme.radiusMedium))
+            } else {
+                Button {
+                    selectedPattern = repeatPattern ?? .never
+                    selectedRepeatFrom = repeatFrom ?? .COMPLETION_DATE
+                    tempRepeatingData = repeatingData
+                    isEditing = true
+                } label: {
+                    HStack {
+                        if let pattern = repeatPattern, pattern != .never {
+                            HStack(spacing: Theme.spacing8) {
+                                Image(systemName: "repeat")
+                                    .font(.system(size: 14))
+                                    .foregroundColor(Theme.accent)
+                                Text(getRepeatingSummary())
+                                    .font(Theme.Typography.body())
+                                    .foregroundColor(colorScheme == .dark ? Theme.Dark.textPrimary : Theme.textPrimary)
+                                    .lineLimit(2)
+                            }
+                        } else {
+                            Text(NSLocalizedString("repeating.no_repeat", comment: "No repeat"))
+                                .font(Theme.Typography.body())
+                                .foregroundColor(colorScheme == .dark ? Theme.Dark.textMuted : Theme.textMuted)
+                        }
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 14))
+                            .foregroundColor(colorScheme == .dark ? Theme.Dark.textMuted : Theme.textMuted)
+                    }
+                    .padding(Theme.spacing12)
+                    .background(colorScheme == .dark ? Theme.Dark.bgSecondary : Theme.bgSecondary)
+                    .clipShape(RoundedRectangle(cornerRadius: Theme.radiusMedium))
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .onChange(of: isEditing) { wasEditing, nowEditing in
+            // Reset cancelled flag when opening
+            if nowEditing {
+                wasCancelled = false
+            }
+        }
+        .onChange(of: showingCustomEditor) { wasShowing, nowShowing in
+            // Auto-save custom pattern when editor closes (unless cancelled)
+            if wasShowing && !nowShowing && !wasCancelled && !isSaving {
+                // User closed custom editor without pressing Cancel - auto-save
+                if tempRepeatingData != nil {
+                    saveCustomPattern()
+                }
+            }
+            // Reset cancelled flag when opening
+            if nowShowing {
+                wasCancelled = false
+            }
+        }
+        .onDisappear {
+            // Auto-save if view disappears while still editing (e.g., parent dismissed)
+            if showingCustomEditor && !wasCancelled && !isSaving {
+                if tempRepeatingData != nil {
+                    saveCustomPattern()
+                }
+            }
+        }
+    }
+
+    // MARK: - Helper Functions
+
+    private func createDefaultPattern() -> CustomRepeatingPattern {
+        return CustomRepeatingPattern(
+            type: "custom",
+            unit: "days",
+            interval: 1,
+            endCondition: "never",
+            endAfterOccurrences: nil,
+            endUntilDate: nil,
+            weekdays: nil,
+            monthRepeatType: nil,
+            monthDay: nil,
+            monthWeekday: nil,
+            month: nil,
+            day: nil
+        )
+    }
+
+    private func getRepeatingSummary() -> String {
+        guard let pattern = repeatPattern else { return "No repeat" }
+
+        if pattern == .custom, let data = repeatingData {
+            return getCustomPatternSummary(data)
+        }
+
+        // Simple patterns
+        var summary = pattern.displayName
+
+        // Add repeat mode for simple patterns if DUE_DATE
+        if pattern != .never && repeatFrom == .DUE_DATE {
+            summary += " (from due date)"
+        }
+
+        return summary
+    }
+
+    private func getCustomPatternSummary(_ pattern: CustomRepeatingPattern) -> String {
+        let interval = pattern.interval ?? 1
+        let unit = pattern.unit ?? "days"
+
+        var summary = "Every \(interval) \(unit)"
+
+        switch unit {
+        case "weeks":
+            if let weekdays = pattern.weekdays, !weekdays.isEmpty {
+                let dayNames = weekdays.map { $0.capitalized }.joined(separator: ", ")
+                summary += " on \(dayNames)"
+            }
+
+        case "months":
+            if pattern.monthRepeatType == "same_date", let day = pattern.monthDay {
+                summary += " on the \(ordinal(day))"
+            } else if pattern.monthRepeatType == "same_weekday", let monthWeekday = pattern.monthWeekday {
+                summary += " on the \(ordinal(monthWeekday.weekOfMonth)) \(monthWeekday.weekday.capitalized)"
+            }
+
+        case "years":
+            if let month = pattern.month, let day = pattern.day {
+                let months = [
+                    "January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"
+                ]
+                let monthName = months[safe: month - 1] ?? "January"
+                summary += " on \(monthName) \(ordinal(day))"
+            }
+
+        default:
+            break
+        }
+
+        if pattern.endCondition == "after_occurrences", let count = pattern.endAfterOccurrences {
+            summary += " (\(count)x)"
+        } else if pattern.endCondition == "until_date", let endDate = pattern.endUntilDate {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            summary += " until \(formatter.string(from: endDate))"
+        }
+
+        // Add repeat mode
+        if repeatFrom == .DUE_DATE {
+            summary += ", from due date"
+        }
+
+        return summary
+    }
+
+    private func ordinal(_ num: Int) -> String {
+        if num >= 11 && num <= 13 { return "\(num)th" }
+        switch num % 10 {
+        case 1: return "\(num)st"
+        case 2: return "\(num)nd"
+        case 3: return "\(num)rd"
+        default: return "\(num)th"
+        }
+    }
+
+    private func savePattern() {
+        isSaving = true
+        _Concurrency.Task {
+            repeatPattern = selectedPattern == .never ? nil : selectedPattern
+
+            // Simple patterns don't use repeatFrom or repeatingData
+            if selectedPattern != .custom {
+                repeatFrom = nil  // Clear repeat mode for simple patterns
+                repeatingData = nil  // Clear custom data
+            }
+
+            if let onSave = onSave {
+                await onSave()
+            }
+            isSaving = false
+            isEditing = false
+        }
+    }
+
+    private func saveCustomPattern() {
+        // Capture values BEFORE dismissing the editor
+        let patternToSave = tempRepeatingData
+        let repeatFromToSave = selectedRepeatFrom
+
+        // Dismiss the editor FIRST
+        showingCustomEditor = false
+
+        // Use direct callback if available - this avoids binding updates that can crash
+        _Concurrency.Task { @MainActor in
+            // Wait for UI to settle after dismissing editor
+            try? await _Concurrency.Task.sleep(nanoseconds: 100_000_000)
+
+            if let onSaveCustom = onSaveCustom {
+                // Direct callback - no binding updates needed
+                await onSaveCustom(.custom, repeatFromToSave, patternToSave)
+            } else {
+                // Fallback to binding updates + onSave
+                repeatPattern = .custom
+                repeatFrom = repeatFromToSave
+                repeatingData = patternToSave
+
+                try? await _Concurrency.Task.sleep(nanoseconds: 100_000_000)
+
+                if let onSave = onSave {
+                    await onSave()
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Preview
+
+#Preview {
+    VStack(spacing: 24) {
+        InlineRepeatPicker(
+            label: "Repeat",
+            repeatPattern: .constant(nil),
+            repeatFrom: .constant(nil),
+            repeatingData: .constant(nil),
+            onSave: nil
+        )
+        .padding()
+
+        InlineRepeatPicker(
+            label: "Repeat",
+            repeatPattern: .constant(.daily),
+            repeatFrom: .constant(.COMPLETION_DATE),
+            repeatingData: .constant(nil),
+            onSave: nil
+        )
+        .padding()
+
+        InlineRepeatPicker(
+            label: "Repeat",
+            repeatPattern: .constant(.custom),
+            repeatFrom: .constant(.DUE_DATE),
+            repeatingData: .constant(CustomRepeatingPattern(
+                type: "custom",
+                unit: "days",
+                interval: 3,
+                endCondition: "never",
+                endAfterOccurrences: nil,
+                endUntilDate: nil,
+                weekdays: nil,
+                monthRepeatType: nil,
+                monthDay: nil,
+                monthWeekday: nil,
+                month: nil,
+                day: nil
+            )),
+            onSave: nil
+        )
+        .padding()
+    }
+    .background(Theme.bgPrimary)
+}

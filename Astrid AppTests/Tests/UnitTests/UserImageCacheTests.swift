@@ -1,0 +1,359 @@
+import XCTest
+@testable import Astrid_App
+
+/// Unit tests for UserImageCache and User.cachedImageURL extension
+/// These tests ensure profile photos display correctly in list members and other views
+final class UserImageCacheTests: XCTestCase {
+
+    // MARK: - Setup/Teardown
+
+    override func setUp() async throws {
+        // Clear cache before each test
+        await MainActor.run {
+            UserImageCache.shared.clearCache()
+        }
+    }
+
+    override func tearDown() async throws {
+        // Clear cache after each test
+        await MainActor.run {
+            UserImageCache.shared.clearCache()
+        }
+    }
+
+    // MARK: - Cache Operations Tests
+
+    @MainActor
+    func testSetAndGetImageURL() {
+        // Given
+        let userId = "user-123"
+        let imageURL = "https://example.com/avatar.jpg"
+
+        // When
+        UserImageCache.shared.setImageURL(imageURL, for: userId)
+        let retrieved = UserImageCache.shared.getImageURL(userId: userId)
+
+        // Then
+        XCTAssertEqual(retrieved, imageURL)
+    }
+
+    @MainActor
+    func testGetImageURLReturnsNilForUncachedUser() {
+        // When
+        let retrieved = UserImageCache.shared.getImageURL(userId: "nonexistent-user")
+
+        // Then
+        XCTAssertNil(retrieved)
+    }
+
+    @MainActor
+    func testSetImageURLIgnoresNil() {
+        // Given
+        let userId = "user-123"
+
+        // When
+        UserImageCache.shared.setImageURL(nil, for: userId)
+        let retrieved = UserImageCache.shared.getImageURL(userId: userId)
+
+        // Then
+        XCTAssertNil(retrieved, "Should not cache nil URLs")
+    }
+
+    @MainActor
+    func testSetImageURLIgnoresEmptyString() {
+        // Given
+        let userId = "user-123"
+
+        // When
+        UserImageCache.shared.setImageURL("", for: userId)
+        let retrieved = UserImageCache.shared.getImageURL(userId: userId)
+
+        // Then
+        XCTAssertNil(retrieved, "Should not cache empty URLs")
+    }
+
+    @MainActor
+    func testCacheUser() {
+        // Given
+        let user = TestHelpers.createTestUser(
+            id: "user-456",
+            image: "https://example.com/user456.jpg"
+        )
+
+        // When
+        UserImageCache.shared.cacheUser(user)
+        let retrieved = UserImageCache.shared.getImageURL(userId: user.id)
+
+        // Then
+        XCTAssertEqual(retrieved, "https://example.com/user456.jpg")
+    }
+
+    @MainActor
+    func testCacheUserIgnoresNilImage() {
+        // Given
+        let user = TestHelpers.createTestUser(
+            id: "user-no-image",
+            image: nil
+        )
+
+        // When
+        UserImageCache.shared.cacheUser(user)
+        let retrieved = UserImageCache.shared.getImageURL(userId: user.id)
+
+        // Then
+        XCTAssertNil(retrieved)
+    }
+
+    @MainActor
+    func testClearCache() {
+        // Given
+        UserImageCache.shared.setImageURL("https://example.com/a.jpg", for: "user-a")
+        UserImageCache.shared.setImageURL("https://example.com/b.jpg", for: "user-b")
+
+        // When
+        UserImageCache.shared.clearCache()
+
+        // Then
+        XCTAssertNil(UserImageCache.shared.getImageURL(userId: "user-a"))
+        XCTAssertNil(UserImageCache.shared.getImageURL(userId: "user-b"))
+        XCTAssertEqual(UserImageCache.shared.count, 0)
+    }
+
+    @MainActor
+    func testCacheCount() {
+        // Given
+        XCTAssertEqual(UserImageCache.shared.count, 0)
+
+        // When
+        UserImageCache.shared.setImageURL("https://example.com/1.jpg", for: "user-1")
+        UserImageCache.shared.setImageURL("https://example.com/2.jpg", for: "user-2")
+        UserImageCache.shared.setImageURL("https://example.com/3.jpg", for: "user-3")
+
+        // Then
+        XCTAssertEqual(UserImageCache.shared.count, 3)
+    }
+
+    // MARK: - User.cachedImageURL Extension Tests (Regression Tests)
+
+    @MainActor
+    func testCachedImageURLReturnsUserImageWhenPresent() {
+        // Given - User has direct image URL
+        let user = TestHelpers.createTestUser(
+            id: "user-with-image",
+            image: "https://example.com/direct.jpg"
+        )
+
+        // When
+        let cachedURL = user.cachedImageURL
+
+        // Then - Should return user's direct image
+        XCTAssertEqual(cachedURL, "https://example.com/direct.jpg")
+    }
+
+    @MainActor
+    func testCachedImageURLFallsBackToCache() {
+        // Given - User without direct image, but cached
+        let userId = "user-cached-only"
+        UserImageCache.shared.setImageURL("https://example.com/cached.jpg", for: userId)
+
+        let user = TestHelpers.createTestUser(
+            id: userId,
+            image: nil  // No direct image
+        )
+
+        // When
+        let cachedURL = user.cachedImageURL
+
+        // Then - Should return cached image
+        XCTAssertEqual(cachedURL, "https://example.com/cached.jpg")
+    }
+
+    @MainActor
+    func testCachedImageURLReturnsNilWhenNoImageAnywhere() {
+        // Given - User without image, nothing cached
+        let user = TestHelpers.createTestUser(
+            id: "user-no-image-anywhere",
+            image: nil
+        )
+
+        // When
+        let cachedURL = user.cachedImageURL
+
+        // Then
+        XCTAssertNil(cachedURL)
+    }
+
+    @MainActor
+    func testCachedImageURLPrefersUserImageOverCache() {
+        // Given - User has image AND there's a cached version
+        let userId = "user-both"
+        UserImageCache.shared.setImageURL("https://example.com/old-cached.jpg", for: userId)
+
+        let user = TestHelpers.createTestUser(
+            id: userId,
+            image: "https://example.com/new-direct.jpg"  // Direct image takes priority
+        )
+
+        // When
+        let cachedURL = user.cachedImageURL
+
+        // Then - Should prefer user's direct image over cache
+        XCTAssertEqual(cachedURL, "https://example.com/new-direct.jpg")
+    }
+
+    @MainActor
+    func testCachedImageURLIgnoresEmptyUserImage() {
+        // Given - User has empty string image, but cached
+        let userId = "user-empty-image"
+        UserImageCache.shared.setImageURL("https://example.com/cached.jpg", for: userId)
+
+        let user = User(
+            id: userId,
+            email: "test@example.com",
+            name: "Test",
+            image: "",  // Empty string, not nil
+            createdAt: nil,
+            defaultDueTime: nil,
+            isPending: nil,
+            isAIAgent: nil,
+            aiAgentType: nil
+        )
+
+        // When
+        let cachedURL = user.cachedImageURL
+
+        // Then - Should fall back to cached since empty string is ignored
+        XCTAssertEqual(cachedURL, "https://example.com/cached.jpg")
+    }
+
+    // MARK: - List Members Caching Tests (Regression Tests for ListMembershipTab)
+
+    @MainActor
+    func testCacheFromListsCachesOwnerImage() {
+        // Given - List with owner who has an image
+        let owner = TestHelpers.createTestUser(
+            id: "owner-1",
+            name: "List Owner",
+            image: "https://example.com/owner.jpg"
+        )
+        let list = TestHelpers.createTestList(
+            id: "list-1",
+            owner: owner
+        )
+
+        // When
+        UserImageCache.shared.cacheFromLists([list])
+
+        // Then - Owner's image should be cached
+        XCTAssertEqual(UserImageCache.shared.getImageURL(userId: "owner-1"), "https://example.com/owner.jpg")
+    }
+
+    @MainActor
+    func testCacheFromListsCachesMultipleMembers() {
+        // Given - List with owner (members/admins require different model setup)
+        let owner = TestHelpers.createTestUser(
+            id: "owner-multi",
+            name: "Owner",
+            image: "https://example.com/owner-multi.jpg"
+        )
+        let list = TestHelpers.createTestList(
+            id: "list-multi",
+            owner: owner
+        )
+
+        // When
+        UserImageCache.shared.cacheFromLists([list])
+
+        // Then - All should be cached
+        XCTAssertEqual(UserImageCache.shared.getImageURL(userId: "owner-multi"), "https://example.com/owner-multi.jpg")
+    }
+
+    @MainActor
+    func testCacheFromMultipleLists() {
+        // Given - Multiple lists with different owners
+        let owner1 = TestHelpers.createTestUser(id: "owner-a", image: "https://example.com/a.jpg")
+        let owner2 = TestHelpers.createTestUser(id: "owner-b", image: "https://example.com/b.jpg")
+        let owner3 = TestHelpers.createTestUser(id: "owner-c", image: "https://example.com/c.jpg")
+
+        let lists = [
+            TestHelpers.createTestList(id: "list-a", owner: owner1),
+            TestHelpers.createTestList(id: "list-b", owner: owner2),
+            TestHelpers.createTestList(id: "list-c", owner: owner3)
+        ]
+
+        // When
+        UserImageCache.shared.cacheFromLists(lists)
+
+        // Then - All owners should be cached
+        XCTAssertEqual(UserImageCache.shared.getImageURL(userId: "owner-a"), "https://example.com/a.jpg")
+        XCTAssertEqual(UserImageCache.shared.getImageURL(userId: "owner-b"), "https://example.com/b.jpg")
+        XCTAssertEqual(UserImageCache.shared.getImageURL(userId: "owner-c"), "https://example.com/c.jpg")
+    }
+
+    // MARK: - Task Caching Tests
+
+    @MainActor
+    func testCacheFromTasksCachesAssignee() {
+        // Given - Task with assignee who has image
+        let assignee = TestHelpers.createTestUser(
+            id: "assignee-1",
+            name: "Task Assignee",
+            image: "https://example.com/assignee.jpg"
+        )
+        let task = TestHelpers.createTestTask(
+            id: "task-1",
+            assignee: assignee
+        )
+
+        // When
+        UserImageCache.shared.cacheFromTasks([task])
+
+        // Then
+        XCTAssertEqual(UserImageCache.shared.getImageURL(userId: "assignee-1"), "https://example.com/assignee.jpg")
+    }
+
+    @MainActor
+    func testCacheFromTasksCachesCreator() {
+        // Given - Task with creator who has image
+        let creator = TestHelpers.createTestUser(
+            id: "creator-1",
+            name: "Task Creator",
+            image: "https://example.com/creator.jpg"
+        )
+        let task = TestHelpers.createTestTask(
+            id: "task-2",
+            creator: creator
+        )
+
+        // When
+        UserImageCache.shared.cacheFromTasks([task])
+
+        // Then
+        XCTAssertEqual(UserImageCache.shared.getImageURL(userId: "creator-1"), "https://example.com/creator.jpg")
+    }
+
+    @MainActor
+    func testCacheFromTasksCachesCommentAuthors() {
+        // Given - Task with comment by user who has image
+        let author = TestHelpers.createTestUser(
+            id: "author-1",
+            name: "Comment Author",
+            image: "https://example.com/author.jpg"
+        )
+        let comment = TestHelpers.createTestComment(
+            id: "comment-1",
+            author: author,
+            taskId: "task-3"
+        )
+        let task = TestHelpers.createTestTask(
+            id: "task-3",
+            comments: [comment]
+        )
+
+        // When
+        UserImageCache.shared.cacheFromTasks([task])
+
+        // Then
+        XCTAssertEqual(UserImageCache.shared.getImageURL(userId: "author-1"), "https://example.com/author.jpg")
+    }
+}

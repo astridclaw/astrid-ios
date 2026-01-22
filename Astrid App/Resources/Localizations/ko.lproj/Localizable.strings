@@ -1,0 +1,832 @@
+/* Navigation */
+"navigation.my_tasks" = "내 작업";
+"navigation.today" = "오늘";
+"navigation.lists" = "목록";
+"navigation.add_list" = "목록 추가";
+"navigation.all_tasks" = "모든 작업";
+
+/* Settings */
+"settings" = "설정";
+"sync" = "동기화";
+"last_sync" = "최근 동기화";
+"never" = "없음";
+"sync_now" = "지금 동기화";
+"features" = "기능";
+"ai_assistant" = "AI 어시스턴트";
+"alpha" = "알파";
+"reminders" = "알림";
+"preferences" = "기본 설정";
+"appearance" = "테마";
+"contacts" = "연락처";
+"account" = "계정";
+"account_access" = "계정 및 액세스";
+"about" = "정보";
+"version" = "버전";
+"build" = "빌드";
+"sign_out" = "로그아웃";
+"are_you_sure_sign_out" = "로그아웃하시겠습니까?";
+
+/* Language */
+"language" = "언어";
+"select_language" = "언어 선택";
+"language_settings" = "언어";
+"automatic" = "자동";
+"device_language" = "기기 언어";
+"english" = "English";
+"spanish" = "Español";
+"french" = "Français";
+"german" = "Deutsch";
+"italian" = "Italiano";
+"portuguese" = "Português";
+"dutch" = "Nederlands";
+"russian" = "Русский";
+"japanese" = "日本語";
+"korean" = "한국어";
+"chinese_simplified" = "简体中文";
+"chinese_traditional" = "繁體中文";
+"language_restart_note" = "언어 변경 사항을 완전히 적용하려면 앱을 다시 시작해야 할 수도 있습니다.";
+
+/* Actions */
+"actions.save" = "저장";
+"actions.cancel" = "취소";
+"actions.delete" = "삭제";
+"actions.edit" = "편집";
+"actions.add" = "추가";
+"actions.close" = "닫기";
+"actions.create" = "생성";
+"actions.update" = "업데이트";
+"actions.confirm" = "확인";
+"actions.done" = "완료";
+"actions.back" = "뒤로";
+"actions.next" = "다음";
+"actions.copy" = "복사";
+"actions.share" = "공유";
+"actions.move" = "이동";
+"actions.archive" = "보관";
+"actions.restore" = "복원";
+"actions.retry" = "재시도";
+"actions.submit" = "제출";
+"actions.search" = "검색";
+"actions.remove" = "제거";
+
+/* Tasks */
+"tasks.task" = "작업";
+"tasks.tasks" = "작업";
+"tasks.new_task" = "새 작업";
+"tasks.add_task" = "작업 추가";
+"tasks.task_details" = "작업 상세 정보";
+"tasks.edit_task" = "작업 편집";
+"tasks.delete_task" = "작업 삭제";
+"tasks.complete_task" = "작업 완료";
+"tasks.task_name" = "작업 이름";
+"tasks.description" = "설명";
+"tasks.no_description" = "설명 없음";
+"tasks.due_date" = "마감일";
+"tasks.created_by" = "생성자";
+"tasks.reminder" = "알림";
+"tasks.reminders" = "알림";
+"tasks.priority" = "우선순위";
+"tasks.assignee" = "담당자";
+"tasks.completed" = "완료됨";
+"tasks.incomplete" = "미완료";
+"tasks.overdue" = "기한 지남";
+"tasks.no_due_date" = "기한 없음";
+"tasks.no_reminder" = "알림 없음";
+"tasks.placeholder.task_name" = "무엇을 해야 하나요?";
+"tasks.placeholder.description" = "설명 추가...";
+"tasks.copy_task" = "작업 복사";
+"tasks.share_task" = "작업 공유";
+"tasks.delete_confirm" = "이 작업을 삭제하시겠습니까?";
+"tasks.loading" = "작업을 불러오는 중...";
+"tasks.priority_only" = "%@만";
+
+/* Lists */
+"lists.list" = "목록";
+"lists.new_list" = "새 목록";
+"lists.add_list" = "목록 추가";
+"lists.edit_list" = "목록 편집";
+"lists.delete_list" = "목록 삭제";
+"lists.list_name" = "목록 이름";
+"lists.list_description" = "설명";
+"lists.list_settings" = "목록 설정";
+"lists.enter_name" = "목록 이름 입력";
+"lists.description_placeholder" = "설명 추가(선택 사항)...";
+"lists.members" = "멤버";
+"lists.no_members" = "아직 멤버가 없습니다";
+"lists.loading" = "목록을 불러오는 중...";
+"lists.all_lists" = "모든 목록";
+"lists.empty_state_message" = "목록을 만들어 작업을 정리해 보세요!";
+"lists.copy_to_list" = "목록으로 복사";
+"lists.target_list" = "대상 목록";
+"lists.my_tasks_only" = "내 작업만";
+"lists.include_comments" = "댓글 포함";
+
+/* Priority */
+"priority.none" = "없음";
+"priority.low" = "낮음";
+"priority.medium" = "중간";
+"priority.high" = "높음";
+"priority.urgent" = "긴급";
+
+/* Time */
+"time.today" = "오늘";
+"time.tomorrow" = "내일";
+"time.yesterday" = "어제";
+"time.this_week" = "이번 주";
+"time.next_week" = "다음 주";
+"time.this_month" = "이번 달";
+"time.next_month" = "다음 달";
+"time.atDueTime" = "마감 시간";
+"time.minutesBefore" = "%d분 전";
+"time.hourBefore" = "1시간 전";
+"time.hoursBefore" = "%d시간 전";
+"time.dayBefore" = "1일 전";
+"time.weekBefore" = "1주일 전";
+
+/* Messages */
+"messages.success" = "성공!";
+"messages.error" = "오류";
+"messages.loading" = "불러오는 중...";
+"messages.saving" = "저장 중...";
+"messages.saved" = "저장됨";
+"messages.deleting" = "삭제 중...";
+"messages.deleted" = "삭제됨";
+"messages.updating" = "업데이트 중...";
+"messages.updated" = "업데이트됨";
+"messages.copying" = "복사 중...";
+"messages.copied" = "복사됨";
+"messages.no_results" = "결과를 찾을 수 없습니다";
+"messages.something_went_wrong" = "문제가 발생했습니다";
+
+/* Empty States */
+"empty_state.my_tasks" = "Astrid에 오신 것을 환영합니다! 첫 번째 작업을 추가하여 시작해 보세요.";
+"empty_state.my_tasks_caught_up" = "모든 작업을 완료했습니다! 현재 할당된 작업이 없습니다.";
+"empty_state.today" = "오늘 예정된 일정이 없습니다! 자유 시간을 즐기거나 새 작업을 추가해 보세요.";
+"empty_state.public_list" = "아이디어를 세상과 공유하세요! 작업을 추가하면 누구나 이 목록을 볼 수 있습니다.";
+"empty_state.shared_list" = "협업을 시작해 보세요! 작업을 추가하여 공유 목록을 만들어 보세요.";
+"empty_state.list_with_name" = "\"%@\" 목록을 채워보세요! 첫 번째 작업을 추가하여 시작해 보세요.";
+"empty_state.default" = "생각을 기록할 준비가 되셨나요? 첫 번째 작업을 만들어 시작해 보세요!";
+"empty_state.no_lists" = "아직 목록이 없습니다. 첫 번째 목록을 만들어 시작해 보세요!";
+
+/* Contacts */
+"contacts.synced_contacts" = "동기화된 연락처";
+"contacts.sync_contacts_now" = "지금 연락처 동기화";
+"contacts.grant_full_access" = "전체 액세스 허용";
+"contacts.access_required" = "연락처 액세스 필요";
+"contacts.open_settings_prompt" = "설정을 열어 액세스를 허용해 주세요";
+"contacts.add_collaborators" = "협업자 추가";
+"contacts.upload_for_collaboration" = "더 나은 협업을 위해 연락처를 업로드하세요";
+"contacts.footer_text" = "연락처는 협업자 추천에 사용됩니다. 암호화되어 저장되며 제3자에게 공유되지 않습니다.";
+
+/* Debug Settings */
+"debug.settings" = "디버그 설정";
+"debug.server_config" = "서버 구성";
+"debug.current_server" = "현재: %@";
+"debug.toast_debug_mode" = "토스트 디버그 모드";
+"debug.toast_debug_desc" = "디버깅을 위한 상세 토스트 알림 표시";
+"debug.reminder_debug_mode" = "알림 디버그 모드";
+"debug.reminder_debug_desc" = "상세 알림 디버그 로그 활성화";
+"debug.test_prompts" = "테스트 프롬프트";
+"debug.test_love_prompt" = "'Astrid가 마음에 드시나요?' 프롬프트 테스트";
+"debug.test_love_prompt_desc" = "활성 사용자에게 표시되는 피드백 프롬프트를 트리거합니다";
+"debug.reset_prompt_tracking" = "프롬프트 추적 초기화";
+"debug.reset_prompt_tracking_desc" = "프롬프트 기록을 삭제합니다";
+
+/* Search */
+"search.placeholder" = "작업 및 사용자 검색";
+"search.query_prefix" = "검색: %@";
+
+/* Profile */
+"profile.account_access_desc" = "프로필, 이메일 인증 및 비밀번호 설정";
+"profile.account_access_full_desc" = "프로필, 이메일, 패스키, 데이터 내보내기";
+"profile.title" = "프로필";
+"profile.loading" = "프로필 불러오는 중...";
+"profile.go_back" = "뒤로 가기";
+"profile.ai_agent" = "AI 에이전트";
+"profile.joined" = "%@ 가입";
+"profile.no_email" = "이메일 없음";
+"profile.your_tasks" = "내 작업";
+"profile.shared_tasks_with" = "%@와(과) 공유한 작업";
+"profile.you" = "나";
+"profile.not_signed_in" = "로그인하지 않음";
+"profile.sign_in_to_sync" = "동기화하려면 로그인하세요";
+"profile.error_not_found" = "사용자를 찾을 수 없습니다";
+"profile.error_not_signed_in" = "프로필을 보려면 로그인하세요";
+"profile.error_load_failed" = "프로필을 불러오지 못했습니다";
+
+/* Stats */
+"stats.completed" = "완료";
+"stats.inspired" = "영감";
+"stats.supported" = "지원";
+"stats.completed_tagline" = "해냈어요!";
+"stats.inspired_tagline" = "다른 사람들에게 동기 부여!";
+"stats.supported_tagline" = "팀의 승리를 돕기!";
+
+/* Sidebar */
+"navigation.public_shared_lists" = "공개 공유 목록";
+"navigation.public_lists" = "공개 목록";
+"navigation.see_all_collaborative" = "모든 협업 목록 보기 →";
+"navigation.see_all_suggested" = "모든 추천 목록 보기 →";
+"navigation.favorites" = "즐겨찾기";
+
+/* Task Input */
+"tasks.add_task_placeholder" = "작업 추가";
+"tasks.search_tasks_placeholder" = "작업 검색...";
+
+/* Assignee */
+"assignee.unassigned" = "미할당";
+"assignee.you" = "나";
+
+/* Reminders */
+"reminders.counting_on_you" = "사람들이 당신을 믿고 있어요!";
+"reminders.complete" = "완료";
+"reminders.snooze_15_minutes" = "15분 후 다시 알림";
+"reminders.snooze_1_day" = "1일 후";
+"reminders.snooze_1_week" = "1주일 후";
+
+/* Notifications */
+"notifications.enable_push" = "푸시 알림 활성화";
+"notifications.not_now" = "나중에";
+"notifications.enable" = "활성화";
+"notifications.enable_message" = "작업을 잊지 않도록 푸시 알림을 활성화해 주세요!";
+"notifications.disabled" = "알림 비활성화됨";
+"notifications.open_settings" = "설정 열기";
+"notifications.disabled_message" = "푸시 알림이 비활성화되어 있습니다. 설정에서 활성화해 주세요.";
+
+/* Auth */
+"auth.tagline" = "해내세요!";
+"auth.sign_in_header" = "시작하려면 로그인하세요!";
+"auth.continue_with_google" = "Google로 계속하기";
+"auth.continue_with_passkey" = "패스키로 계속하기";
+"auth.continue_with_apple" = "Apple로 계속하기";
+"auth.email" = "이메일";
+
+/* Settings - Reminders */
+"settings.reminders.push_notifications" = "푸시 알림";
+"settings.reminders.enable_push" = "푸시 알림 활성화";
+"settings.reminders.open_settings" = "설정을 열어 알림 활성화";
+"settings.reminders.email_notifications" = "이메일 알림";
+"settings.reminders.send_email" = "이메일 알림 보내기";
+"settings.reminders.default_time" = "기본 알림 시간";
+"settings.reminders.when_to_remind" = "알림 시점";
+"settings.reminders.daily_digest" = "일일 요약";
+"settings.reminders.send_daily_digest" = "일일 요약 보내기";
+"settings.reminders.digest_time" = "요약 시간";
+"settings.reminders.timezone" = "시간대";
+"settings.reminders.quiet_hours" = "방해 금지 시간(선택 사항)";
+"settings.reminders.enable_quiet_hours" = "방해 금지 시간 활성화";
+
+/* Settings - AI */
+"setting.ai.api_keys" = "AI API 키";
+"settings.ai.api_keys_description" = "AI 어시스턴트를 사용하려면 고유한 API 키를 추가하세요. 키는 암호화되어 서버에 안전하게 저장됩니다.";
+"settings.ai.loading_keys" = "API 키를 불러오는 중...";
+"settings.ai.about_keys" = "API 키 정보";
+"settings.ai.about_description" = "API 키는 Astrid의 AI 어시스턴트 기능을 지원하는 데 사용됩니다. 각 제공업체는 서로 다른 기능과 가격을 제공합니다.";
+"settings.ai.encryption_info" = "키는 저장되기 전에 AES-256을 사용하여 암호화됩니다. Astrid는 귀하의 키를 제3자와 공유하지 않습니다.";
+"settings.ai.not_configured" = "설정되지 않음";
+"settings.ai.api_new.badge" = "신규";
+"settings.ai.manage_keys" = "API 키 관리";
+"settings.ai.manage_keys_subtitle" = "Claude, OpenAI 또는 Gemini 키 추가";
+"settings.ai.api_keys_footer" = "Claude, OpenAI 또는 Gemini API 키를 추가하여 AI 어시스턴트를 강화하세요.";
+
+/* Exploratory Features */
+"exploratory_features" = "실험적 기능";
+"ai_assistants" = "AI 어시스턴트";
+"apple_reminders" = "Apple 미리 알림";
+"settings.reminders.configure_sync" = "동기화 설정";
+"settings.reminders.sync_subtitle" = "Siri 및 Apple Watch와 동기화";
+"settings.exploratory.warning" = "이 기능들은 실험적이며 활발히 개발 중입니다.";
+
+/* Smart Task Creation */
+"smart_task_creations" = "스마트 작업 생성";
+"smart_task_creation_description" = "제목에서 날짜, 우선순위, 해시태그를 분석합니다";
+
+/* Settings - Appearance */
+"settings.appearance.theme" = "Theme";
+"settings.appearance.email_to_task" = "Email-to-Task";
+"settings.appearance.email_to_task_footer" = "Create tasks by sending emails to remindme@astrid.cc";
+"settings.appearance.email_to_task_self" = "Self-task: Send TO remindme@astrid.cc";
+"settings.appearance.email_to_task_assigned" = "Assigned task: CC remindme@astrid.cc with one recipient";
+"settings.appearance.email_to_task_group" = "Group task: CC remindme@astrid.cc with multiple recipients";
+"settings.appearance.email_to_task_subject" = "Subject becomes task title";
+"settings.appearance.email_to_task_body" = "Body becomes task description";
+
+/* Theme Modes */
+"theme.ocean" = "Ocean";
+"theme.light" = "Light";
+"theme.dark" = "Dark";
+"theme.auto" = "Auto";
+
+/* Settings - Account */
+"settings.account.loading" = "Loading account...";
+"settings.account.display_name" = "Display Name";
+"settings.account.name_placeholder" = "Name";
+"settings.account.email_placeholder" = "Email";
+"settings.account.save_changes" = "Save Changes";
+"settings.account.oauth_footer" = "Signed in with Google. Some fields may be managed by your Google account.";
+"settings.account.pending_email" = "Pending Email Change";
+"settings.account.resend_verification" = "Resend Verification";
+"settings.account.cancel_change" = "Cancel Change";
+"settings.account.email_not_verified" = "Email Not Verified";
+"settings.account.send_verification" = "Send Verification Email";
+"settings.account.email_verification" = "Email Verification";
+"settings.account.pending_email_footer" = "Check your email inbox to verify the new address.";
+"settings.account.verify_email_footer" = "Verify your email to access all features and receive notifications.";
+"settings.account.info" = "Account Information";
+"settings.account.id" = "Account ID";
+"settings.account.created" = "Created";
+"settings.account.auth_method" = "Auth Method";
+"settings.account.google" = "Google";
+"settings.account.passkey" = "Passkey";
+"settings.account.adding_passkey" = "Adding passkey...";
+"settings.account.add_passkey_button" = "Add a Passkey";
+"settings.account.passkeys_footer" = "Passkeys use biometrics or device PIN for secure, passwordless authentication.";
+"settings.account.passkey_name_placeholder" = "Passkey name";
+"settings.account.synced" = "Synced";
+"settings.account.added_on" = "Added %@";
+"settings.account.added_recently" = "Added recently";
+"settings.account.rename_failed" = "Failed to rename passkey";
+"settings.account.delete_failed" = "Failed to delete passkey";
+"settings.account.export_json" = "Export Data (JSON)";
+"settings.account.export_csv" = "Export Data (CSV)";
+"settings.account.your_data" = "Your Data";
+"settings.account.your_data_footer" = "Download all your tasks, lists, and account data.";
+"settings.account.delete_account_footer" = "Permanently delete your account and all associated data.";
+"settings.account.no_passkeys_registered" = "No passkeys registered";
+"settings.account.add_passkey_description" = "Add a passkey for faster, passwordless sign-in";
+"settings.account.passkeys" = "Passkeys";
+"settings.account.loading_passkeys" = "Loading passkeys...";
+"settings.account.add_passkey" = "Add Passkey";
+"settings.account.no_passkeys" = "No passkeys added yet.";
+"settings.account.danger_zone" = "Danger Zone";
+"settings.account.delete_account" = "Delete Account";
+"settings.account.delete_warning" = "This action cannot be undone";
+"settings.account.delete_remove_list_header" = "Deleting your account will permanently remove:";
+"settings.account.delete_remove_tasks" = "All your tasks and their history";
+"settings.account.delete_remove_lists" = "All lists you own";
+"settings.account.delete_remove_comments" = "All your comments";
+"settings.account.delete_remove_profile" = "Your profile and settings";
+"settings.account.delete_remove_files" = "All uploaded files";
+"settings.account.delete_confirm_prompt" = "To confirm, type \"DELETE MY ACCOUNT\" below:";
+"settings.account.delete_confirm_placeholder" = "Type confirmation";
+"settings.account.delete_confirmation" = "Confirmation";
+"settings.account.delete_confirm_instruction" = "You must type \"DELETE MY ACCOUNT\" exactly to proceed.";
+"settings.account.delete_confirm_mismatch" = "Confirmation text does not match";
+"settings.account.delete_confirm_match" = "Confirmation text matches";
+"settings.account.delete_my_account_button" = "Delete My Account";
+"settings.account.delete_final_confirmation" = "Final Confirmation";
+"settings.account.delete_forever" = "Delete Forever";
+"settings.account.delete_final_warning" = "Are you absolutely sure? This will permanently delete your account and ALL your data.";
+"settings.account.delete_confirm_phrase" = "DELETE MY ACCOUNT";
+
+/* Additional translations */
+"userMenu.refreshData" = "데이터 새로고침";
+"actions.ok" = "확인";
+"actions.filter" = "필터";
+"actions.sort" = "정렬";
+"actions.clear" = "지우기";
+"actions.apply" = "적용";
+"actions.change" = "변경";
+"tasks.who" = "담당자";
+"tasks.due_time" = "마감 시간";
+"tasks.timer" = "타이머";
+"lists.sort_and_filters" = "정렬 및 필터";
+"lists.admin" = "관리자";
+"lists.filters" = "필터";
+"lists.clear_all_filters" = "모든 필터 지우기";
+"lists.sort_by" = "정렬 기준";
+"lists.sort_order" = "정렬 순서";
+"lists.auto" = "자동";
+"lists.manual" = "수동";
+"lists.due_date" = "마감일";
+"lists.created_date" = "생성일";
+"lists.task_completion" = "작업 완료";
+"lists.incomplete_completed_recently" = "미완료 + 최근 완료";
+"lists.all" = "모두";
+"lists.me" = "나";
+"lists.not_me" = "나 외 (다른 사람)";
+"lists.overdue" = "기한 초과";
+"lists.this_week" = "이번 주";
+"lists.this_month" = "이번 달";
+"lists.no_date" = "날짜 없음";
+"lists.all_priorities" = "모든 우선순위";
+"lists.highest_priority" = "!!! 최고";
+"lists.high_priority" = "!! 높음";
+"lists.medium_priority" = "! 보통";
+"lists.low_priority" = "○ 낮음";
+"lists.assigned_by" = "할당자";
+"lists.repeating" = "반복";
+"lists.not_repeating" = "반복 안 함";
+"lists.daily" = "매일";
+"lists.weekly" = "매주";
+"lists.monthly" = "매월";
+"lists.yearly" = "매년";
+"lists.custom" = "사용자 지정";
+"lists.list_membership" = "목록 멤버십";
+"lists.all_tasks" = "모든 작업";
+"lists.in_any_list" = "목록에 포함";
+"lists.not_in_any_list" = "목록에 없음";
+"lists.favorite" = "즐겨찾기";
+"lists.favorite_description" = "이 목록은 목록 맨 위에 표시됩니다";
+"lists.saved_filter" = "저장된 필터";
+"lists.saved_filter_description" = "이 목록은 멤버십이 아닌 필터를 기반으로 작업을 표시합니다";
+"lists.list_information" = "목록 정보";
+"lists.list_appearance" = "목록 모양";
+"lists.list_image" = "목록 이미지";
+"lists.list_image_description" = "사용자 지정 이미지 또는 아이콘 선택";
+"lists.default_task_settings" = "기본 작업 설정";
+"lists.task_creator" = "작업 생성자";
+"lists.all_day" = "종일 (시간 없음)";
+"lists.never" = "없음";
+"lists.github_integration" = "GitHub 연동";
+"lists.link_repo_description" = "AI 코딩 에이전트용 저장소 연결";
+"lists.loading_repositories" = "저장소 로딩 중...";
+"lists.github_repository" = "GitHub 저장소";
+"lists.no_repositories_found" = "저장소를 찾을 수 없습니다. GitHub 계정이 연결되어 있는지 확인하세요.";
+"lists.pending_invitations" = "대기 중인 초대";
+"lists.invited" = "초대됨";
+"lists.cancel_invite" = "초대 취소";
+"lists.ai_agents" = "AI 에이전트";
+"lists.add_ai_agent" = "AI 에이전트 추가";
+"lists.no_ai_providers" = "AI 제공자가 구성되지 않음";
+"lists.make_member" = "멤버로 설정";
+"lists.make_admin" = "관리자로 설정";
+"lists.remove" = "제거";
+"lists.share_list" = "목록 공유";
+"lists.share_list_description" = "이 목록의 공유 링크 생성";
+"lists.available_agents" = "사용 가능한 에이전트";
+"lists.loading_ai_agents" = "AI 에이전트 로딩 중...";
+"lists.claude_coding_description" = "코딩 및 작업 지원을 위한 Claude AI";
+"lists.openai_coding_description" = "코딩 및 작업 지원을 위한 OpenAI GPT-4";
+"lists.gemini_coding_description" = "코딩 및 작업 지원을 위한 Google Gemini";
+"lists.claude_task_description" = "작업 지원을 위한 Claude AI";
+"lists.openai_task_description" = "작업 지원을 위한 OpenAI GPT-4";
+"lists.gemini_task_description" = "작업 지원을 위한 Google Gemini";
+"lists.default_agent_description" = "작업 지원을 위한 AI 에이전트";
+"lists.ai_coding_agents" = "AI 코딩 에이전트";
+"lists.connect_github_description" = "코딩 워크플로를 활성화하려면 GitHub 저장소를 연결하세요";
+"lists.list_privacy" = "목록 개인정보";
+"lists.make_public" = "공개로 설정";
+"lists.make_private" = "비공개로 설정";
+"lists.public_description" = "링크가 있는 모든 사람이 이 목록을 볼 수 있습니다";
+"lists.private_description" = "멤버만 이 목록을 볼 수 있습니다";
+"lists.owner" = "소유자";
+"lists.admin_role" = "관리자";
+"lists.member_role" = "멤버";
+"lists.add_member" = "멤버 추가";
+"lists.tomorrow" = "내일";
+"lists.next_week" = "다음 주";
+"lists.next_month" = "다음 달";
+"lists.none" = "없음";
+"lists.delete_confirm" = "이 목록을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.";
+"messages.danger_zone" = "위험 구역";
+"settings.account.no_name" = "이름 미설정";
+"settings.account.unknown" = "알 수 없음";
+"settings.account.failed_load" = "계정 로드 실패: %@";
+"settings.account.invalid_email" = "유효한 이메일 주소를 입력하세요";
+"settings.account.profile_updated_verify" = "프로필이 업데이트되었습니다. 새 주소를 확인하려면 이메일을 확인하세요.";
+"settings.account.profile_updated_success" = "프로필이 성공적으로 업데이트되었습니다";
+"settings.account.failed_save" = "저장 실패: %@";
+"settings.account.failed_process_image" = "이미지 처리 실패";
+"settings.account.failed_upload_image" = "이미지 업로드 실패: %@";
+"settings.account.failed_send_verification" = "인증 이메일 전송 실패: %@";
+"settings.account.email_change_cancelled" = "이메일 변경이 취소되었습니다";
+"settings.account.failed_cancel_email_change" = "이메일 변경 취소 실패: %@";
+"settings.account.failed_export" = "데이터 내보내기 실패: %@";
+"settings.account.failed_delete" = "계정 삭제 실패: %@";
+"settings.account.passkeys_description" = "패스키를 사용하면 비밀번호 없이 안전하게 로그인할 수 있습니다.";
+"settings.account.data" = "데이터";
+"settings.account.export_data" = "내 데이터 내보내기";
+"settings.account.export_description" = "모든 작업, 목록 및 프로필 데이터를 JSON 형식으로 다운로드하세요.";
+"settings.account.delete_description" = "계정과 모든 데이터를 영구적으로 삭제합니다.";
+"settings.reminders.start" = "시작";
+"settings.reminders.end" = "종료";
+"settings.reminders.test" = "테스트";
+"settings.reminders.send_test" = "테스트 알림 보내기";
+"settings.reminders.test_reminder" = "테스트 알림";
+"settings.reminders.test_message" = "5초 후에 테스트 알림이 나타납니다";
+
+/* Apple Reminders Sync */
+"reminders.access_granted" = "접근 허용됨";
+"reminders.access_denied" = "접근 거부됨";
+"reminders.tap_to_open_settings" = "설정을 열려면 탭하세요";
+"reminders.enable_sync" = "미리 알림 동기화 활성화";
+"reminders.sync_description" = "Siri 및 Watch용 Apple 미리 알림과 작업 동기화";
+"reminders.access_header" = "미리 알림 접근";
+"reminders.access_footer" = "Astrid 작업을 Apple 미리 알림과 동기화하세요. Siri로 작업을 추가하고 Apple Watch에서 확인할 수 있습니다.";
+"reminders.sync_status" = "동기화 상태";
+"reminders.last_sync" = "마지막 동기화";
+"reminders.linked_lists" = "연결된 목록";
+"reminders.syncing" = "동기화 중...";
+"reminders.sync_all_lists" = "모든 목록 동기화";
+"reminders.your_lists" = "내 목록";
+"reminders.your_lists_footer" = "목록을 탭하여 Apple 미리 알림에 연결하세요. 작업을 내보내거나 기존 미리 알림 목록에서 가져올 수 있습니다.";
+"reminders.import_from_reminders" = "미리 알림에서 가져오기";
+"reminders.import_footer" = "기존 미리 알림 목록을 Astrid로 가져옵니다.";
+"reminders.unlink" = "연결 해제";
+"reminders.astrid_list" = "Astrid 목록";
+"reminders.sync_direction" = "동기화 방향";
+"reminders.create_new_list" = "새 목록 만들기";
+"reminders.link_to_reminders_list" = "미리 알림 목록에 연결";
+"reminders.link_footer" = "기존 미리 알림 목록을 선택하거나 '%@' 이름으로 새 목록을 만드세요";
+"reminders.include_completed" = "완료된 작업 포함";
+"reminders.include_completed_desc" = "이미 완료된 작업 동기화";
+"reminders.options" = "옵션";
+"reminders.link_list" = "목록 연결";
+"reminders.link" = "연결";
+"reminders.reminders_list" = "미리 알림 목록";
+"reminders.create_new_astrid_list" = "새 Astrid 목록 만들기";
+"reminders.import_into" = "가져올 위치";
+"reminders.import_into_footer" = "'%@' 이름으로 새 Astrid 목록을 만들거나 기존 목록으로 가져옵니다.";
+"reminders.import_completed_desc" = "이미 완료된 미리 알림 가져오기";
+"reminders.import_reminders" = "미리 알림 가져오기";
+"reminders.import" = "가져오기";
+
+/* Repeating Pattern Editor */
+"repeating.custom_pattern" = "사용자 지정 반복 패턴";
+"repeating.repeat_every" = "반복 주기";
+"repeating.repeat_on_days" = "반복 요일";
+"repeating.repeat_type" = "반복 유형";
+"repeating.same_date_monthly" = "매월 같은 날짜";
+"repeating.same_weekday_monthly" = "매월 같은 요일과 주차";
+"repeating.day_of_month" = "날짜";
+"repeating.weekday" = "요일";
+"repeating.week_of_month" = "주차";
+"repeating.month" = "월";
+"repeating.day" = "일";
+"repeating.repeat_mode" = "반복 모드";
+"repeating.from_completion" = "완료일 기준으로 다음 발생";
+"repeating.from_due_date" = "원래 마감일 기준으로 다음 발생";
+"repeating.end_condition" = "종료 조건";
+"repeating.never" = "없음";
+"repeating.after_occurrences" = "X회 반복 후";
+"repeating.until_date" = "특정 날짜까지";
+"repeating.num_occurrences" = "반복 횟수";
+"repeating.end_date" = "종료 날짜";
+"repeating.preview" = "미리보기";
+"repeating.no_repeat" = "반복 없음";
+"repeating.days" = "일";
+"repeating.weeks" = "주";
+"repeating.months" = "개월";
+"repeating.years" = "년";
+"repeating.1st" = "첫째 주";
+"repeating.2nd" = "둘째 주";
+"repeating.3rd" = "셋째 주";
+"repeating.4th" = "넷째 주";
+"repeating.5th" = "다섯째 주";
+
+/* Repeating Pattern Editor */
+"repeating.custom_pattern" = "사용자 지정 반복 패턴";
+"repeating.repeat_every" = "반복 간격";
+"repeating.repeat_on_days" = "다음 요일에 반복";
+"repeating.repeat_type" = "반복 유형";
+"repeating.same_date_monthly" = "매월 같은 날짜";
+"repeating.same_weekday_monthly" = "매월 같은 요일과 주";
+"repeating.day_of_month" = "월의 날짜";
+"repeating.weekday" = "요일";
+"repeating.week_of_month" = "월의 주";
+"repeating.month" = "월";
+"repeating.day" = "일";
+"repeating.repeat_mode" = "반복 모드";
+"repeating.from_completion" = "완료일부터 다음 발생";
+"repeating.from_due_date" = "원래 마감일부터 다음 발생";
+"repeating.end_condition" = "종료 조건";
+"repeating.never" = "없음";
+"repeating.after_occurrences" = "X회 후";
+"repeating.until_date" = "특정 날짜까지";
+"repeating.num_occurrences" = "반복 횟수";
+"repeating.end_date" = "종료일";
+"repeating.preview" = "미리보기";
+"repeating.no_repeat" = "반복 없음";
+"repeating.days" = "일";
+"repeating.weeks" = "주";
+"repeating.months" = "월";
+"repeating.years" = "년";
+"repeating.1st" = "첫째";
+"repeating.2nd" = "둘째";
+"repeating.3rd" = "셋째";
+"repeating.4th" = "넷째";
+"repeating.5th" = "다섯째";
+
+/* Filter Labels */
+"filters.sort_by" = "정렬 기준";
+"filters.sort" = "정렬";
+"filters.auto" = "자동";
+"filters.manual" = "수동";
+"filters.completion_status" = "완료 상태";
+"filters.show" = "표시";
+"filters.default" = "기본값";
+"filters.all_tasks" = "모든 작업";
+"filters.all_priorities" = "모든 우선순위";
+"filters.highest_priority" = "!!! 가장 높음";
+"filters.high_priority" = "!! 높음";
+"filters.medium_priority" = "! 중간";
+"filters.low_priority" = "○ 낮음";
+"filters.all_dates" = "모든 날짜";
+"filters.this_week" = "이번 주";
+"filters.this_month" = "이번 달";
+"filters.no_due_date" = "마감일 없음";
+"filters.who" = "담당자";
+"filters.all" = "전체";
+"filters.me" = "나";
+"filters.not_me" = "나 외 (다른 사람)";
+"filters.unassigned" = "미배정";
+"filters.not_repeating" = "반복 안 함";
+"filters.save_as_smart_list" = "스마트 목록으로 저장";
+"filters.save_footer" = "이 필터 설정을 사이드바의 스마트 목록으로 저장";
+"filters.clear_all" = "모든 필터 지우기";
+"filters.saving" = "저장 중...";
+"filters.sort_and_filters" = "정렬 및 필터";
+"filters.filter_by_list" = "목록으로 필터";
+"filters.featured_lists" = "추천 목록";
+"filters.view_add" = "보기 및 추가";
+"filters.tasks_count" = "%d개의 작업";
+
+/* List Details */
+"list.type" = "목록 유형";
+"list.task_defaults" = "기본값";
+"list.favorite_description" = "이 목록은 즐겨찾기 섹션에 표시됩니다";
+"list.smart_list_description" = "이 목록은 멤버십이 아닌 필터를 기반으로 작업을 표시합니다";
+"list.defaults_description" = "이 목록의 새 작업에 대한 기본값 설정";
+"list.task_creator" = "작업 생성자";
+"list.select_lists" = "목록 선택";
+"list.details" = "목록 세부정보";
+"list.oauth_hint" = "이 ID를 OAuth API 통합 및 코딩 에이전트에 사용하세요";
+"list.delete_list" = "목록 삭제";
+"list.danger_zone" = "위험 구역";
+"list.list_settings" = "목록 설정";
+
+/* Sharing */
+"share.share_list" = "목록 공유";
+"share.share_task" = "작업 공유";
+"share.private_list_message" = "이것은 비공개 목록입니다. 접근 권한이 있는 멤버만 볼 수 있습니다.";
+"share.public_list_message" = "이것은 공개 목록입니다. 링크가 있는 누구나 볼 수 있습니다.";
+"share.private_task_message" = "이것은 비공개 작업입니다. 이 목록에 접근 권한이 있는 사용자만 볼 수 있습니다.";
+"share.generating_link" = "링크 생성 중...";
+"share.share_link_hint" = "이 작업을 볼 수 있는 권한이 있는 사람과 이 링크를 공유하세요";
+"share.copy_link" = "클립보드에 복사";
+"share.link_copied" = "링크가 복사되었습니다!";
+"share.share_list_link_hint" = "이 목록에 액세스할 수 있는 사람과 이 링크를 공유하세요";
+"share.link_redirect_list" = "링크는 앱 내 목록으로 리디렉션됩니다";
+"share.link_redirect_task" = "링크는 앱 내 작업으로 리디렉션됩니다";
+
+/* Save Filter Dialog */
+"save_filter.title" = "스마트 목록으로 저장";
+"save_filter.description" = "현재 필터 설정을 스마트 목록으로 저장합니다";
+"save_filter.due_date" = "마감일";
+
+/* Authentication */
+"auth.continue_passkey" = "패스키로 계속";
+"auth.new_user" = "처음이신가요?";
+"auth.returning_user" = "돌아오셨나요?";
+"auth.sign_in_short" = "로그인";
+"auth.create_account" = "계정 만들기";
+"auth.create_account_footer" = "로그인하여 모든 기기에서 작업을 동기화하고 다른 사람들과 협업하세요.";
+"auth.sign_in_prompt_title" = "로그인";
+"auth.sign_in_cta" = "로그인하여 더 많은 기능을 사용하세요";
+"auth.benefit_sync_title" = "기기 간 동기화";
+"auth.benefit_sync_desc" = "어디서든 모든 기기에서 작업에 액세스";
+"auth.benefit_collaborate_title" = "다른 사람과 협업";
+"auth.benefit_collaborate_desc" = "목록을 공유하고 함께 작업하세요";
+"auth.benefit_backup_title" = "데이터를 안전하게 보관";
+"auth.benefit_backup_desc" = "작업이 클라우드에 안전하게 백업됩니다";
+"auth.sign_in_data_note" = "기존 작업이 계정에 동기화됩니다";
+
+/* Attachments */
+"attachments.saving" = "저장 중...";
+"attachments.save_to_task" = "작업에 저장";
+"attachments.quick_look" = "훑어보기";
+"attachments.quick_look_tip" = "팁: 훑어보기에서 마크업을 사용하여 편집하고 Astrid에 저장";
+"attachments.choose_photo" = "사진 선택";
+"attachments.choose_video" = "비디오 선택";
+"attachments.choose_document" = "문서 선택";
+"attachments.count" = "첨부 파일 (%d)";
+
+/* Image Picker */
+"image_picker.upload_library" = "사진 보관함에서 업로드";
+"image_picker.choose_description" = "사진 보관함에서 이미지 선택";
+"image_picker.pinch_zoom" = "핀치로 확대, 드래그로 위치 조정";
+"image_picker.uploading" = "업로드 중...";
+"image_picker.cancel_upload" = "업로드 취소";
+"image_picker.use_this_image" = "이 이미지 사용";
+"image_picker.choose_different_photo" = "다른 사진 선택";
+
+/* Inline Pickers */
+"picker.no_due_date" = "마감일 없음";
+"picker.custom_date" = "사용자 지정 날짜";
+"picker.custom_time" = "사용자 지정 시간";
+"picker.add_time" = "시간 추가";
+"picker.no_lists" = "목록을 찾을 수 없습니다";
+"picker.add_to_lists" = "목록에 추가";
+"picker.loading_agents" = "AI 에이전트 로딩 중...";
+"picker.ai_agent" = "AI 에이전트";
+
+/* Sync Status */
+"sync.status" = "동기화 상태";
+"sync.unstable_connection" = "불안정한 연결 감지됨";
+"sync.retry_failed" = "실패한 작업 다시 시도";
+"sync.working_offline" = "오프라인으로 작업 중";
+
+/* Profile */
+"profile.updated_success" = "프로필이 성공적으로 업데이트되었습니다!";
+"profile.tap_change_photo" = "탭하여 사진 변경";
+"profile.uploading_photo" = "사진 업로드 중...";
+"profile.display_name" = "표시 이름";
+"profile.email_address" = "이메일 주소";
+"profile.edit_profile" = "프로필 편집";
+"profile.saving" = "저장 중...";
+"profile.save_changes" = "변경 사항 저장";
+
+/* Members */
+"members.searching" = "연락처 검색 중...";
+"members.astrid_users" = "Astrid를 사용하는 연락처";
+"members.loading_suggestions" = "제안 로딩 중...";
+"members.add_collaborators" = "협업자 추가";
+"members.upload_contacts" = "더 나은 협업을 위해 연락처 업로드";
+"members.invite_email" = "이메일로 초대";
+"members.add_member" = "멤버 추가";
+
+/* Membership (Local User) */
+"membership.requires_account" = "목록 공유에는 계정이 필요합니다";
+"membership.requires_account_description" = "협업자를 초대하고 목록을 공유하려면 로그인하세요.";
+"membership.sign_in_to_share" = "목록을 공유하려면 로그인";
+
+/* Comments */
+"comments.count" = "댓글 (%d)";
+"comments.empty" = "아직 댓글이 없습니다. 첫 번째로 댓글을 달아보세요!";
+"comments.add_placeholder" = "댓글 추가...";
+"comments.delete_comment" = "댓글 삭제";
+"comments.upload_error" = "업로드 오류";
+
+/* Task Edit */
+"task_edit.add_to_list" = "목록에 추가";
+"task_edit.add_another_list" = "다른 목록 추가";
+"task_edit.only_you" = "이 작업은 본인만 볼 수 있습니다";
+"task_edit.add_description" = "설명 추가...";
+"task_edit.last_timer" = "마지막: %@";
+"task_edit.copy_to_lists" = "내 목록에 복사";
+
+/* Timer */
+"timer.complete_task" = "작업 완료";
+"timer.dismiss_alarm" = "알람 해제";
+"timer.tap_to_change" = "시간을 탭하여 기간 변경";
+"timer.snooze_1hour" = "1시간 다시 알림";
+
+/* Notifications */
+"notification.complete_task" = "작업 완료";
+"notification.test_reminder" = "📱 테스트 알림";
+
+/* Debug Settings */
+"debug.contacts_settings" = "연락처 설정";
+"debug.debug_settings" = "디버그 설정";
+"debug.app_version" = "Astrid v%@";
+"debug.current_server" = "현재 서버";
+"debug.active_config" = "활성 구성";
+"debug.restart_required" = "변경 사항을 적용하려면 앱을 다시 시작해야 합니다";
+"debug.available_servers" = "사용 가능한 서버";
+"debug.reset_default" = "기본값으로 재설정";
+"debug.server_changed" = "서버가 변경되었습니다";
+"debug.get_key" = "키 가져오기";
+"server.restart_required" = "재시작 필요";
+"server.restart_message" = "서버가 변경되었습니다:\n%@\n\n변경 사항을 적용하려면 앱을 다시 시작하세요.";
+
+/* Splash */
+"splash.loading" = "작업을 로딩하는 중...";
+
+/* Misc */
+"misc.cancel" = "취소";
+"misc.save" = "저장";
+"misc.close" = "닫기";
+
+/* Local Mode - Added for offline-first */
+"auth.or" = "또는";
+"auth.use_without_account" = "계정 없이 사용";
+"auth.local_mode_description" = "작업이 이 기기에 저장됩니다. 나중에 로그인하여 기기 간 동기화할 수 있습니다.";
+"local_user" = "로컬 사용자";
+"offline.local_mode_active" = "로컬 모드 활성화됨";
+"offline.data_on_device" = "데이터가 이 기기에만 저장됩니다";
+"offline.sync_to_cloud" = "클라우드에 동기화";
+"offline.sign_in_to_sync" = "로그인하여 기기 간 동기화";
+"offline.local_tasks" = "로컬 작업";
+"offline.local_lists" = "로컬 목록";
+"offline.warning" = "경고: 로그인하지 않고 앱을 삭제하면 데이터가 손실됩니다.";
+"settings.local_only_mode" = "로컬 전용 모드";
+"settings.local_only_description" = "로그인하여 기기 간 동기화";
+"status.local_only" = "로컬 전용 모드";
+"status.offline" = "오프라인 작업 중";
+"status.offline_with_pending" = "오프라인 • %d개 대기 중";
+"status.syncing" = "동기화 중...";
+"status.syncing_count" = "%d개 항목 동기화 중...";
+"status.sync_failed" = "%d개 동기화 실패";
+"status.synced" = "모두 동기화됨";
+"status.local_only_description" = "데이터가 이 기기에만 저장됩니다. 로그인하여 동기화하세요.";
+"status.pending_sync_description" = "%d개의 변경사항이 온라인 시 동기화됩니다";
+"status.failed_sync_description" = "%d개 항목이 동기화되지 않았습니다";
+"status.retry_now" = "재시도";
+"status.sync_in_progress" = "변경사항이 자동으로 동기화됩니다";
+"sync" = "동기화";
+"welcome.title" = "Astrid에 오신 것을 환영합니다!";
+"welcome.subtitle" = "스마트 작업 관리자";
+"welcome.sign_in" = "로그인";
+"welcome.use_locally" = "계정 없이 사용";
+"welcome.local_note" = "나중에 로그인하여 기기 간 동기화할 수 있습니다";

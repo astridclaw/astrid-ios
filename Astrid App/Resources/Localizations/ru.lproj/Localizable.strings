@@ -1,0 +1,799 @@
+/* Navigation */
+"navigation.my_tasks" = "Мои задачи";
+"navigation.today" = "Сегодня";
+"navigation.lists" = "Списки";
+"navigation.add_list" = "Добавить список";
+"navigation.all_tasks" = "Все задачи";
+
+/* Settings */
+"settings" = "Настройки";
+"sync" = "Синхронизация";
+"last_sync" = "Последняя синхронизация";
+"never" = "Никогда";
+"sync_now" = "Синхронизировать";
+"features" = "Функции";
+"ai_assistant" = "AI-помощник";
+"alpha" = "ALPHA";
+"reminders" = "Напоминания";
+"preferences" = "Предпочтения";
+"appearance" = "Внешний вид";
+"contacts" = "Контакты";
+"account" = "Аккаунт";
+"account_access" = "Аккаунт и доступ";
+"about" = "О приложении";
+"version" = "Версия";
+"build" = "Сборка";
+"sign_out" = "Выйти";
+"are_you_sure_sign_out" = "Вы уверены, что хотите выйти?";
+
+/* Language */
+"language" = "Язык";
+"select_language" = "Выберите язык";
+"language_settings" = "Язык";
+"automatic" = "Автоматически";
+"device_language" = "Язык устройства";
+"english" = "English";
+"spanish" = "Español";
+"french" = "Français";
+"german" = "Deutsch";
+"italian" = "Italiano";
+"portuguese" = "Português";
+"dutch" = "Nederlands";
+"russian" = "Русский";
+"japanese" = "日本語";
+"korean" = "한국어";
+"chinese_simplified" = "简体中文";
+"chinese_traditional" = "繁體中文";
+"language_restart_note" = "Для полного вступления изменений языка в силу может потребоваться перезапуск приложения.";
+
+/* Actions */
+"actions.save" = "Сохранить";
+"actions.cancel" = "Отмена";
+"actions.delete" = "Удалить";
+"actions.edit" = "Изменить";
+"actions.add" = "Добавить";
+"actions.close" = "Закрыть";
+"actions.create" = "Создать";
+"actions.update" = "Обновить";
+"actions.confirm" = "Подтвердить";
+"actions.done" = "Готово";
+"actions.back" = "Назад";
+"actions.next" = "Далее";
+"actions.copy" = "Копировать";
+"actions.share" = "Поделиться";
+"actions.move" = "Переместить";
+"actions.archive" = "Архивировать";
+"actions.restore" = "Восстановить";
+"actions.retry" = "Повторить";
+"actions.submit" = "Отправить";
+"actions.search" = "Поиск";
+"actions.remove" = "Удалить";
+
+/* Tasks */
+"tasks.task" = "Задача";
+"tasks.tasks" = "Задачи";
+"tasks.new_task" = "Новая задача";
+"tasks.add_task" = "Добавить задачу";
+"tasks.task_details" = "Детали задачи";
+"tasks.edit_task" = "Изменить задачу";
+"tasks.delete_task" = "Удалить задачу";
+"tasks.complete_task" = "Завершить задачу";
+"tasks.task_name" = "Название задачи";
+"tasks.description" = "Описание";
+"tasks.no_description" = "Нет описания";
+"tasks.due_date" = "Срок выполнения";
+"tasks.created_by" = "Создано";
+"tasks.reminder" = "Напоминание";
+"tasks.reminders" = "Напоминания";
+"tasks.priority" = "Приоритет";
+"tasks.assignee" = "Исполнитель";
+"tasks.completed" = "Завершено";
+"tasks.incomplete" = "Не завершено";
+"tasks.overdue" = "Просрочено";
+"tasks.no_due_date" = "Без срока";
+"tasks.no_reminder" = "Без напоминания";
+"tasks.placeholder.task_name" = "Что нужно сделать?";
+"tasks.placeholder.description" = "Добавить описание...";
+"tasks.copy_task" = "Копировать задачу";
+"tasks.share_task" = "Поделиться задачей";
+"tasks.delete_confirm" = "Удалить эту задачу?";
+"tasks.loading" = "Загрузка задач...";
+"tasks.priority_only" = "Только %@";
+
+/* Lists */
+"lists.list" = "Список";
+"lists.new_list" = "Новый список";
+"lists.add_list" = "Добавить список";
+"lists.edit_list" = "Изменить список";
+"lists.delete_list" = "Удалить список";
+"lists.list_name" = "Название списка";
+"lists.list_description" = "Описание";
+"lists.list_settings" = "Настройки списка";
+"lists.enter_name" = "Введите название списка";
+"lists.description_placeholder" = "Добавить описание (необязательно)...";
+"lists.members" = "Участники";
+"lists.no_members" = "Участников пока нет";
+"lists.loading" = "Загрузка списков...";
+"lists.all_lists" = "Все списки";
+"lists.empty_state_message" = "Создайте список, чтобы организовать свои задачи!";
+"lists.copy_to_list" = "Копировать в список";
+"lists.target_list" = "Целевой список";
+"lists.my_tasks_only" = "Только мои задачи";
+"lists.include_comments" = "Включить комментарии";
+
+/* Priority */
+"priority.none" = "Нет";
+"priority.low" = "Низкий";
+"priority.medium" = "Средний";
+"priority.high" = "Высокий";
+"priority.urgent" = "Срочный";
+
+/* Time */
+"time.today" = "Сегодня";
+"time.tomorrow" = "Завтра";
+"time.yesterday" = "Вчера";
+"time.this_week" = "На этой неделе";
+"time.next_week" = "На следующей неделе";
+"time.this_month" = "В этом месяце";
+"time.next_month" = "В следующем месяце";
+"time.atDueTime" = "В срок";
+"time.minutesBefore" = "За %d мин.";
+"time.hourBefore" = "За 1 час";
+"time.hoursBefore" = "За %d ч.";
+"time.dayBefore" = "За 1 день";
+"time.weekBefore" = "За 1 неделю";
+
+/* Messages */
+"messages.success" = "Успешно!";
+"messages.error" = "Ошибка";
+"messages.loading" = "Загрузка...";
+"messages.saving" = "Сохранение...";
+"messages.saved" = "Сохранено";
+"messages.deleting" = "Удаление...";
+"messages.deleted" = "Удалено";
+"messages.updating" = "Обновление...";
+"messages.updated" = "Обновлено";
+"messages.copying" = "Копирование...";
+"messages.copied" = "Скопировано";
+"messages.no_results" = "Ничего не найдено";
+"messages.something_went_wrong" = "Что-то пошло не так";
+
+/* Empty States */
+"empty_state.my_tasks" = "Добро пожаловать в Astrid! Добавьте свою первую задачу, чтобы начать.";
+"empty_state.my_tasks_caught_up" = "Вы со всем справились! На данный момент у вас нет назначенных задач.";
+"empty_state.today" = "На сегодня ничего не запланировано! Наслаждайтесь свободным временем.";
+"empty_state.public_list" = "Делитесь своими идеями! Добавляйте задачи — этот список виден всем.";
+"empty_state.shared_list" = "Начните совместную работу! Добавьте задачу в этот общий список.";
+"empty_state.list_with_name" = "Давайте заполним \"%@\"! Добавьте свою первую задачу.";
+"empty_state.default" = "Готовы записать свои мысли? Создайте свою первую задачу!";
+"empty_state.no_lists" = "Списков пока нет. Создайте свой первый список!";
+
+/* Contacts */
+"contacts.synced_contacts" = "Синхронизированные контакты";
+"contacts.sync_contacts_now" = "Синхронизировать контакты";
+"contacts.grant_full_access" = "Предоставить полный доступ";
+"contacts.access_required" = "Требуется доступ к контактам";
+"contacts.open_settings_prompt" = "Нажмите, чтобы открыть Настройки и включить доступ";
+"contacts.add_collaborators" = "Добавить участников";
+"contacts.upload_for_collaboration" = "Загрузите свои контакты для лучшего взаимодействия";
+"contacts.footer_text" = "Контакты используются для предложения участников. Они зашифрованы и никогда не передаются третьим лицам.";
+
+/* Debug Settings */
+"debug.settings" = "Настройки отладки";
+"debug.server_config" = "Конфигурация сервера";
+"debug.current_server" = "Текущий: %@";
+"debug.toast_debug_mode" = "Режим отладки уведомлений";
+"debug.toast_debug_desc" = "Показывать подробные уведомления для отладки";
+"debug.reminder_debug_mode" = "Режим отладки напоминаний";
+"debug.reminder_debug_desc" = "Включить подробные логи отладки напоминаний";
+"debug.test_prompts" = "Тестовые подсказки";
+"debug.test_love_prompt" = "Тест подсказки 'Нравится Astrid?'";
+"debug.test_love_prompt_desc" = "Запускает окно обратной связи для активных пользователей";
+"debug.reset_prompt_tracking" = "Сбросить отслеживание подсказок";
+"debug.reset_prompt_tracking_desc" = "Очищает историю подсказок";
+
+/* Search */
+"search.placeholder" = "Поиск задач и пользователей";
+"search.query_prefix" = "Поиск: %@";
+
+/* Profile */
+"profile.account_access_desc" = "Профиль, подтверждение почты и настройки пароля";
+"profile.account_access_full_desc" = "Профиль, почта, ключи доступа, экспорт данных";
+"profile.title" = "Профиль";
+"profile.loading" = "Загрузка профиля...";
+"profile.go_back" = "Назад";
+"profile.ai_agent" = "AI-агент";
+"profile.joined" = "В команде с %@";
+"profile.no_email" = "Нет почты";
+"profile.your_tasks" = "Ваши задачи";
+"profile.shared_tasks_with" = "Общие задачи с %@";
+"profile.you" = "Вы";
+"profile.not_signed_in" = "Не выполнен вход";
+"profile.sign_in_to_sync" = "Войдите для синхронизации";
+"profile.error_not_found" = "Пользователь не найден";
+"profile.error_not_signed_in" = "Войдите, чтобы посмотреть свой профиль";
+"profile.error_load_failed" = "Не удалось загрузить профиль";
+
+/* Stats */
+"stats.completed" = "Завершено";
+"stats.inspired" = "Вдохновлено";
+"stats.supported" = "Поддержано";
+"stats.completed_tagline" = "Так держать!";
+"stats.inspired_tagline" = "Мотивируете других!";
+"stats.supported_tagline" = "Помогаете команде побеждать!";
+
+/* Sidebar */
+"navigation.public_shared_lists" = "Общие публичные списки";
+"navigation.public_lists" = "Публичные списки";
+"navigation.see_all_collaborative" = "Все общие списки →";
+"navigation.see_all_suggested" = "Все рекомендуемые списки →";
+"navigation.favorites" = "Избранное";
+
+/* Task Input */
+"tasks.add_task_placeholder" = "Добавить задачу";
+"tasks.search_tasks_placeholder" = "Поиск задач...";
+
+/* Assignee */
+"assignee.unassigned" = "Не назначено";
+"assignee.you" = "Вы";
+
+/* Reminders */
+"reminders.counting_on_you" = "Эти люди рассчитывают на вас!";
+"reminders.complete" = "Завершить";
+"reminders.snooze_15_minutes" = "Отложить на 15 минут";
+"reminders.snooze_1_day" = "На 1 день";
+"reminders.snooze_1_week" = "На 1 неделю";
+
+/* Notifications */
+"notifications.enable_push" = "Включить push-уведомления";
+"notifications.not_now" = "Не сейчас";
+"notifications.enable" = "Включить";
+"notifications.enable_message" = "Пожалуйста, включите уведомления, чтобы я мог напоминать вам о задачах!";
+"notifications.disabled" = "Уведомления отключены";
+"notifications.open_settings" = "Открыть настройки";
+"notifications.disabled_message" = "Push-уведомления отключены. Пожалуйста, включите их в Настройках.";
+
+/* Auth */
+"auth.tagline" = "Сделай это!";
+"auth.sign_in_header" = "Войдите, чтобы начать!";
+"auth.continue_with_google" = "Продолжить через Google";
+"auth.continue_with_passkey" = "Продолжить через Passkey";
+"auth.continue_with_apple" = "Продолжить через Apple";
+"auth.email" = "Электронная почта";
+
+/* Settings - Reminders */
+"settings.reminders.push_notifications" = "Push-уведомления";
+"settings.reminders.enable_push" = "Включить push-уведомления";
+"settings.reminders.open_settings" = "Открыть Настройки для включения уведомлений";
+"settings.reminders.email_notifications" = "Email-уведомления";
+"settings.reminders.send_email" = "Отправлять email-напоминания";
+"settings.reminders.default_time" = "Время напоминания по умолчанию";
+"settings.reminders.when_to_remind" = "Когда напоминать";
+"settings.reminders.daily_digest" = "Ежедневный обзор";
+"settings.reminders.send_daily_digest" = "Отправлять ежедневный обзор";
+"settings.reminders.digest_time" = "Время обзора";
+"settings.reminders.timezone" = "Часовой пояс";
+"settings.reminders.quiet_hours" = "Режим тишины (опционально)";
+"settings.reminders.enable_quiet_hours" = "Включить режим тишины";
+
+/* Settings - AI */
+"setting.ai.api_keys" = "API-ключи ИИ";
+"settings.ai.api_keys_description" = "Добавьте свои API-ключи для использования ИИ-ассистентов. Ключи шифруются и надежно хранятся на сервере.";
+"settings.ai.loading_keys" = "Загрузка API-ключей...";
+"settings.ai.about_keys" = "Об API-ключах";
+"settings.ai.about_description" = "Ваши API-ключи используются для работы функций ИИ-ассистента в Astrid. Каждый провайдер предлагает разные возможности и цены.";
+"settings.ai.encryption_info" = "Ключи шифруются с помощью AES-256 перед сохранением. Astrid никогда не передает ваши ключи третьим лицам.";
+"settings.ai.not_configured" = "Не настроено";
+"settings.ai.api_new.badge" = "НОВОЕ";
+"settings.ai.manage_keys" = "Управление API-ключами";
+"settings.ai.manage_keys_subtitle" = "Добавить ключи Claude, OpenAI или Gemini";
+"settings.ai.api_keys_footer" = "Добавьте свои API-ключи Claude, OpenAI или Gemini для работы ИИ-ассистента.";
+
+/* Exploratory Features */
+"exploratory_features" = "Экспериментальные функции";
+"ai_assistants" = "ИИ-ассистенты";
+"apple_reminders" = "Напоминания Apple";
+"settings.reminders.configure_sync" = "Настроить синхронизацию";
+"settings.reminders.sync_subtitle" = "Синхронизация с Siri и Apple Watch";
+"settings.exploratory.warning" = "Эти функции экспериментальные и находятся в активной разработке.";
+
+/* Smart Task Creation */
+"smart_task_creations" = "Умное создание задач";
+"smart_task_creation_description" = "Анализ дат, приоритетов и хэштегов из названий";
+
+/* Settings - Appearance */
+"settings.appearance.theme" = "Theme";
+"settings.appearance.email_to_task" = "Email-to-Task";
+"settings.appearance.email_to_task_footer" = "Create tasks by sending emails to remindme@astrid.cc";
+"settings.appearance.email_to_task_self" = "Self-task: Send TO remindme@astrid.cc";
+"settings.appearance.email_to_task_assigned" = "Assigned task: CC remindme@astrid.cc with one recipient";
+"settings.appearance.email_to_task_group" = "Group task: CC remindme@astrid.cc with multiple recipients";
+"settings.appearance.email_to_task_subject" = "Subject becomes task title";
+"settings.appearance.email_to_task_body" = "Body becomes task description";
+
+/* Theme Modes */
+"theme.ocean" = "Ocean";
+"theme.light" = "Light";
+"theme.dark" = "Dark";
+"theme.auto" = "Auto";
+
+/* Settings - Account */
+"settings.account.loading" = "Loading account...";
+"settings.account.display_name" = "Display Name";
+"settings.account.name_placeholder" = "Name";
+"settings.account.email_placeholder" = "Email";
+"settings.account.save_changes" = "Save Changes";
+"settings.account.oauth_footer" = "Signed in with Google. Some fields may be managed by your Google account.";
+"settings.account.pending_email" = "Pending Email Change";
+"settings.account.resend_verification" = "Resend Verification";
+"settings.account.cancel_change" = "Cancel Change";
+"settings.account.email_not_verified" = "Email Not Verified";
+"settings.account.send_verification" = "Send Verification Email";
+"settings.account.email_verification" = "Email Verification";
+"settings.account.pending_email_footer" = "Check your email inbox to verify the new address.";
+"settings.account.verify_email_footer" = "Verify your email to access all features and receive notifications.";
+"settings.account.info" = "Account Information";
+"settings.account.id" = "Account ID";
+"settings.account.created" = "Created";
+"settings.account.auth_method" = "Auth Method";
+"settings.account.google" = "Google";
+"settings.account.passkey" = "Passkey";
+"settings.account.adding_passkey" = "Adding passkey...";
+"settings.account.add_passkey_button" = "Add a Passkey";
+"settings.account.passkeys_footer" = "Passkeys use biometrics or device PIN for secure, passwordless authentication.";
+"settings.account.passkey_name_placeholder" = "Passkey name";
+"settings.account.synced" = "Synced";
+"settings.account.added_on" = "Added %@";
+"settings.account.added_recently" = "Added recently";
+"settings.account.rename_failed" = "Failed to rename passkey";
+"settings.account.delete_failed" = "Failed to delete passkey";
+"settings.account.export_json" = "Export Data (JSON)";
+"settings.account.export_csv" = "Export Data (CSV)";
+"settings.account.your_data" = "Your Data";
+"settings.account.your_data_footer" = "Download all your tasks, lists, and account data.";
+"settings.account.delete_account_footer" = "Permanently delete your account and all associated data.";
+"settings.account.no_passkeys_registered" = "No passkeys registered";
+"settings.account.add_passkey_description" = "Add a passkey for faster, passwordless sign-in";
+"settings.account.passkeys" = "Passkeys";
+"settings.account.loading_passkeys" = "Loading passkeys...";
+"settings.account.add_passkey" = "Add Passkey";
+"settings.account.no_passkeys" = "No passkeys added yet.";
+"settings.account.danger_zone" = "Danger Zone";
+"settings.account.delete_account" = "Delete Account";
+"settings.account.delete_warning" = "This action cannot be undone";
+"settings.account.delete_remove_list_header" = "Deleting your account will permanently remove:";
+"settings.account.delete_remove_tasks" = "All your tasks and their history";
+"settings.account.delete_remove_lists" = "All lists you own";
+"settings.account.delete_remove_comments" = "All your comments";
+"settings.account.delete_remove_profile" = "Your profile and settings";
+"settings.account.delete_remove_files" = "All uploaded files";
+"settings.account.delete_confirm_prompt" = "To confirm, type \"DELETE MY ACCOUNT\" below:";
+"settings.account.delete_confirm_placeholder" = "Type confirmation";
+"settings.account.delete_confirmation" = "Confirmation";
+"settings.account.delete_confirm_instruction" = "You must type \"DELETE MY ACCOUNT\" exactly to proceed.";
+"settings.account.delete_confirm_mismatch" = "Confirmation text does not match";
+"settings.account.delete_confirm_match" = "Confirmation text matches";
+"settings.account.delete_my_account_button" = "Delete My Account";
+"settings.account.delete_final_confirmation" = "Final Confirmation";
+"settings.account.delete_forever" = "Delete Forever";
+"settings.account.delete_final_warning" = "Are you absolutely sure? This will permanently delete your account and ALL your data.";
+"settings.account.delete_confirm_phrase" = "DELETE MY ACCOUNT";
+
+/* Additional translations */
+"userMenu.refreshData" = "Обновить данные";
+"actions.ok" = "ОК";
+"actions.filter" = "Фильтр";
+"actions.sort" = "Сортировка";
+"actions.clear" = "Очистить";
+"actions.apply" = "Применить";
+"actions.change" = "Изменить";
+"tasks.who" = "Кто";
+"tasks.due_time" = "Время выполнения";
+"tasks.timer" = "Таймер";
+"lists.sort_and_filters" = "Сортировка и фильтры";
+"lists.admin" = "Администратор";
+"lists.filters" = "Фильтры";
+"lists.clear_all_filters" = "Очистить все фильтры";
+"lists.sort_by" = "Сортировать по";
+"lists.sort_order" = "Порядок сортировки";
+"lists.auto" = "Автоматически";
+"lists.manual" = "Вручную";
+"lists.due_date" = "Срок выполнения";
+"lists.created_date" = "Дата создания";
+"lists.task_completion" = "Завершение задачи";
+"lists.incomplete_completed_recently" = "Незавершённые + Недавно завершённые";
+"lists.all" = "Все";
+"lists.me" = "Я";
+"lists.not_me" = "Не я (Другие)";
+"lists.overdue" = "Просроченные";
+"lists.this_week" = "На этой неделе";
+"lists.this_month" = "В этом месяце";
+"lists.no_date" = "Без даты";
+"lists.all_priorities" = "Все приоритеты";
+"lists.highest_priority" = "!!! Наивысший";
+"lists.high_priority" = "!! Высокий";
+"lists.medium_priority" = "! Средний";
+"lists.low_priority" = "○ Низкий";
+"lists.assigned_by" = "Назначено";
+"lists.repeating" = "Повторяющаяся";
+"lists.not_repeating" = "Не повторяющаяся";
+"lists.daily" = "Ежедневно";
+"lists.weekly" = "Еженедельно";
+"lists.monthly" = "Ежемесячно";
+"lists.yearly" = "Ежегодно";
+"lists.custom" = "Пользовательский";
+"lists.list_membership" = "Членство в списке";
+"lists.all_tasks" = "Все задачи";
+"lists.in_any_list" = "В любом списке";
+"lists.not_in_any_list" = "Не в списке";
+"lists.favorite" = "Избранное";
+"lists.favorite_description" = "Этот список будет отображаться вверху ваших списков";
+"lists.saved_filter" = "Сохранённый фильтр";
+"lists.saved_filter_description" = "Этот список показывает задачи на основе фильтров, а не членства";
+"lists.list_information" = "Информация о списке";
+"lists.list_appearance" = "Внешний вид списка";
+"lists.list_image" = "Изображение списка";
+"lists.list_image_description" = "Выберите пользовательское изображение или значок";
+"lists.default_task_settings" = "Настройки задачи по умолчанию";
+"lists.task_creator" = "Создатель задачи";
+"lists.all_day" = "Весь день (Без времени)";
+"lists.never" = "Никогда";
+"lists.github_integration" = "Интеграция с GitHub";
+"lists.link_repo_description" = "Привязать репозиторий для ИИ-агентов программирования";
+"lists.loading_repositories" = "Загрузка репозиториев...";
+"lists.github_repository" = "Репозиторий GitHub";
+"lists.no_repositories_found" = "Репозитории не найдены. Убедитесь, что ваш аккаунт GitHub подключён.";
+"lists.pending_invitations" = "Ожидающие приглашения";
+"lists.invited" = "Приглашён";
+"lists.cancel_invite" = "Отменить приглашение";
+"lists.ai_agents" = "ИИ-агенты";
+"lists.add_ai_agent" = "Добавить ИИ-агента";
+"lists.no_ai_providers" = "ИИ-провайдеры не настроены";
+"lists.make_member" = "Сделать участником";
+"lists.make_admin" = "Сделать администратором";
+"lists.remove" = "Удалить";
+"lists.share_list" = "Поделиться списком";
+"lists.share_list_description" = "Создать ссылку для совместного использования этого списка";
+"lists.available_agents" = "Доступные агенты";
+"lists.loading_ai_agents" = "Загрузка ИИ-агентов...";
+"lists.claude_coding_description" = "Claude AI для программирования и помощи с задачами";
+"lists.openai_coding_description" = "OpenAI GPT-4 для программирования и помощи с задачами";
+"lists.gemini_coding_description" = "Google Gemini для программирования и помощи с задачами";
+"lists.claude_task_description" = "Claude AI для помощи с задачами";
+"lists.openai_task_description" = "OpenAI GPT-4 для помощи с задачами";
+"lists.gemini_task_description" = "Google Gemini для помощи с задачами";
+"lists.default_agent_description" = "ИИ-агент для помощи с задачами";
+"lists.ai_coding_agents" = "ИИ-агенты программирования";
+"lists.connect_github_description" = "Подключите репозиторий GitHub для рабочих процессов программирования";
+"lists.list_privacy" = "Приватность списка";
+"lists.make_public" = "Сделать публичным";
+"lists.make_private" = "Сделать приватным";
+"lists.public_description" = "Любой с ссылкой может просматривать этот список";
+"lists.private_description" = "Только участники могут просматривать этот список";
+"lists.owner" = "Владелец";
+"lists.admin_role" = "Администратор";
+"lists.member_role" = "Участник";
+"lists.add_member" = "Добавить участника";
+"lists.tomorrow" = "Завтра";
+"lists.next_week" = "На следующей неделе";
+"lists.next_month" = "В следующем месяце";
+"lists.none" = "Нет";
+"lists.delete_confirm" = "Вы уверены, что хотите удалить этот список? Это действие нельзя отменить.";
+"messages.danger_zone" = "Опасная зона";
+"settings.account.no_name" = "Имя не задано";
+"settings.account.unknown" = "Неизвестно";
+"settings.account.failed_load" = "Не удалось загрузить аккаунт: %@";
+"settings.account.invalid_email" = "Пожалуйста, введите действительный адрес электронной почты";
+"settings.account.profile_updated_verify" = "Профиль обновлён. Пожалуйста, проверьте почту для подтверждения нового адреса.";
+"settings.account.profile_updated_success" = "Профиль успешно обновлён";
+"settings.account.failed_save" = "Не удалось сохранить: %@";
+"settings.account.failed_process_image" = "Не удалось обработать изображение";
+"settings.account.failed_upload_image" = "Не удалось загрузить изображение: %@";
+"settings.account.failed_send_verification" = "Не удалось отправить письмо с подтверждением: %@";
+"settings.account.email_change_cancelled" = "Изменение email отменено";
+"settings.account.failed_cancel_email_change" = "Не удалось отменить изменение email: %@";
+"settings.account.failed_export" = "Не удалось экспортировать данные: %@";
+"settings.account.failed_delete" = "Не удалось удалить аккаунт: %@";
+"settings.account.passkeys_description" = "Passkeys позволяют безопасно входить без пароля.";
+"settings.account.data" = "Данные";
+"settings.account.export_data" = "Экспортировать мои данные";
+"settings.account.export_description" = "Скачайте все ваши задачи, списки и данные профиля в формате JSON.";
+"settings.account.delete_description" = "Навсегда удалить аккаунт и все данные.";
+"settings.reminders.start" = "Начало";
+"settings.reminders.end" = "Конец";
+"settings.reminders.test" = "Тест";
+"settings.reminders.send_test" = "Отправить тестовое напоминание";
+"settings.reminders.test_reminder" = "Тестовое напоминание";
+"settings.reminders.test_message" = "Тестовое уведомление появится через 5 секунд";
+
+/* Apple Reminders Sync */
+"reminders.access_granted" = "Доступ предоставлен";
+"reminders.access_denied" = "Доступ запрещён";
+"reminders.tap_to_open_settings" = "Нажмите, чтобы открыть Настройки";
+"reminders.enable_sync" = "Включить синхронизацию Напоминаний";
+"reminders.sync_description" = "Синхронизируйте задачи с Напоминаниями Apple для Siri и Watch";
+"reminders.access_header" = "Доступ к Напоминаниям";
+"reminders.access_footer" = "Синхронизируйте задачи Astrid с Напоминаниями Apple. Используйте Siri для добавления задач и просматривайте их на Apple Watch.";
+"reminders.sync_status" = "Статус синхронизации";
+"reminders.last_sync" = "Последняя синхронизация";
+"reminders.linked_lists" = "Связанные списки";
+"reminders.syncing" = "Синхронизация...";
+"reminders.sync_all_lists" = "Синхронизировать все списки";
+"reminders.your_lists" = "Ваши списки";
+"reminders.your_lists_footer" = "Нажмите на список, чтобы связать его с Напоминаниями Apple. Выберите экспорт задач или импорт из существующего списка Напоминаний.";
+"reminders.import_from_reminders" = "Импорт из Напоминаний";
+"reminders.import_footer" = "Импортируйте существующие списки Напоминаний в Astrid.";
+"reminders.unlink" = "Отвязать";
+"reminders.astrid_list" = "Список Astrid";
+"reminders.sync_direction" = "Направление синхронизации";
+"reminders.create_new_list" = "Создать новый список";
+"reminders.link_to_reminders_list" = "Связать со списком Напоминаний";
+"reminders.link_footer" = "Выберите существующий список Напоминаний или создайте новый с именем '%@'";
+"reminders.include_completed" = "Включить завершённые задачи";
+"reminders.include_completed_desc" = "Синхронизировать уже завершённые задачи";
+"reminders.options" = "Параметры";
+"reminders.link_list" = "Связать список";
+"reminders.link" = "Связать";
+"reminders.reminders_list" = "Список Напоминаний";
+"reminders.create_new_astrid_list" = "Создать новый список Astrid";
+"reminders.import_into" = "Импортировать в";
+"reminders.import_into_footer" = "Создайте новый список Astrid с именем '%@' или импортируйте в существующий список.";
+"reminders.import_completed_desc" = "Импортировать уже завершённые напоминания";
+"reminders.import_reminders" = "Импортировать Напоминания";
+"reminders.import" = "Импортировать";
+
+/* Repeating Pattern Editor */
+"repeating.custom_pattern" = "Пользовательский шаблон повторения";
+"repeating.repeat_every" = "Повторять каждые";
+"repeating.repeat_on_days" = "Повторять в эти дни";
+"repeating.repeat_type" = "Тип повторения";
+"repeating.same_date_monthly" = "Та же дата каждый месяц";
+"repeating.same_weekday_monthly" = "Тот же день недели";
+"repeating.day_of_month" = "День месяца";
+"repeating.weekday" = "День недели";
+"repeating.week_of_month" = "Неделя месяца";
+"repeating.month" = "Месяц";
+"repeating.day" = "День";
+"repeating.repeat_mode" = "Режим повторения";
+"repeating.from_completion" = "Следующее — от даты завершения";
+"repeating.from_due_date" = "Следующее — от первоначального срока";
+"repeating.end_condition" = "Условие завершения";
+"repeating.never" = "Никогда";
+"repeating.after_occurrences" = "После X повторений";
+"repeating.until_date" = "До определённой даты";
+"repeating.num_occurrences" = "Количество повторений";
+"repeating.end_date" = "Дата окончания";
+"repeating.preview" = "Просмотр";
+"repeating.no_repeat" = "Без повторения";
+"repeating.days" = "Дней";
+"repeating.weeks" = "Недель";
+"repeating.months" = "Месяцев";
+"repeating.years" = "Лет";
+"repeating.1st" = "1-я";
+"repeating.2nd" = "2-я";
+"repeating.3rd" = "3-я";
+"repeating.4th" = "4-я";
+"repeating.5th" = "5-я";
+
+/* Filter Labels */
+"filters.sort_by" = "Сортировать по";
+"filters.sort" = "Сортировка";
+"filters.auto" = "Авто";
+"filters.manual" = "Вручную";
+"filters.completion_status" = "Статус выполнения";
+"filters.show" = "Показать";
+"filters.default" = "По умолчанию";
+"filters.all_tasks" = "Все задачи";
+"filters.all_priorities" = "Все приоритеты";
+"filters.highest_priority" = "!!! Срочный";
+"filters.high_priority" = "!! Высокий";
+"filters.medium_priority" = "! Средний";
+"filters.low_priority" = "○ Низкий";
+"filters.all_dates" = "Все даты";
+"filters.this_week" = "На этой неделе";
+"filters.this_month" = "В этом месяце";
+"filters.no_due_date" = "Без срока";
+"filters.who" = "Кто";
+"filters.all" = "Все";
+"filters.me" = "Я";
+"filters.not_me" = "Не я (Другие)";
+"filters.unassigned" = "Не назначено";
+"filters.not_repeating" = "Без повторения";
+"filters.save_as_smart_list" = "Сохранить как Умный список";
+"filters.save_footer" = "Сохраните эти настройки фильтра как Умный список в боковой панели";
+"filters.clear_all" = "Очистить все фильтры";
+"filters.saving" = "Сохранение...";
+"filters.sort_and_filters" = "Сортировка и фильтры";
+"filters.filter_by_list" = "Фильтр по списку";
+"filters.featured_lists" = "Рекомендуемые списки";
+"filters.view_add" = "Просмотр и добавление";
+"filters.tasks_count" = "%d задач";
+
+/* List Details */
+"list.type" = "Тип списка";
+"list.task_defaults" = "Значения по умолчанию";
+"list.favorite_description" = "Этот список отображается в разделе Избранное";
+"list.smart_list_description" = "Этот список показывает задачи по фильтрам, а не по членству";
+"list.defaults_description" = "Установите значения по умолчанию для новых задач в этом списке";
+"list.task_creator" = "Создатель задачи";
+"list.select_lists" = "Выбрать списки";
+"list.details" = "Детали списка";
+"list.oauth_hint" = "Используйте этот ID для интеграций OAuth API и агентов программирования";
+"list.delete_list" = "Удалить список";
+"list.danger_zone" = "Опасная зона";
+"list.list_settings" = "Настройки списка";
+
+/* Sharing */
+"share.share_list" = "Поделиться списком";
+"share.share_task" = "Поделиться задачей";
+"share.private_list_message" = "Это приватный список. Только участники с доступом могут его видеть.";
+"share.public_list_message" = "Это публичный список. Любой со ссылкой может его видеть.";
+"share.private_task_message" = "Это приватная задача. Только пользователи с доступом к этому списку могут её видеть.";
+"share.generating_link" = "Создание ссылки...";
+"share.share_link_hint" = "Поделитесь этой ссылкой с теми, у кого есть доступ к задаче";
+"share.copy_link" = "Копировать в буфер обмена";
+"share.link_copied" = "Ссылка скопирована!";
+"share.share_list_link_hint" = "Поделитесь этой ссылкой с теми, у кого есть доступ для просмотра этого списка";
+"share.link_redirect_list" = "Ссылка перенаправит на список в приложении";
+"share.link_redirect_task" = "Ссылка перенаправит на задачу в приложении";
+
+/* Save Filter Dialog */
+"save_filter.title" = "Сохранить как Умный список";
+"save_filter.description" = "Текущие настройки фильтра будут сохранены как Умный список";
+"save_filter.due_date" = "Срок выполнения";
+
+/* Authentication */
+"auth.continue_passkey" = "Продолжить с Passkey";
+"auth.new_user" = "Новый пользователь?";
+"auth.returning_user" = "Вернулись?";
+"auth.sign_in_short" = "Войти";
+"auth.create_account" = "Создать аккаунт";
+"auth.create_account_footer" = "Войдите, чтобы синхронизировать задачи на всех устройствах и сотрудничать с другими.";
+"auth.sign_in_prompt_title" = "Войти";
+"auth.sign_in_cta" = "Войдите, чтобы разблокировать больше функций";
+"auth.benefit_sync_title" = "Синхронизация между устройствами";
+"auth.benefit_sync_desc" = "Доступ к задачам с любого устройства, где бы вы ни были";
+"auth.benefit_collaborate_title" = "Сотрудничество с другими";
+"auth.benefit_collaborate_desc" = "Делитесь списками и работайте вместе над задачами";
+"auth.benefit_backup_title" = "Храните данные в безопасности";
+"auth.benefit_backup_desc" = "Ваши задачи надёжно сохранены в облаке";
+"auth.sign_in_data_note" = "Ваши существующие задачи будут синхронизированы с аккаунтом";
+
+/* Attachments */
+"attachments.saving" = "Сохранение...";
+"attachments.save_to_task" = "Сохранить в задачу";
+"attachments.quick_look" = "Быстрый просмотр";
+"attachments.quick_look_tip" = "Совет: Используйте Разметку в Быстром просмотре для редактирования и сохранения в Astrid";
+"attachments.choose_photo" = "Выбрать фото";
+"attachments.choose_video" = "Выбрать видео";
+"attachments.choose_document" = "Выбрать документ";
+"attachments.count" = "Вложения (%d)";
+
+/* Image Picker */
+"image_picker.upload_library" = "Загрузить из библиотеки";
+"image_picker.choose_description" = "Выберите изображение из библиотеки фото";
+"image_picker.pinch_zoom" = "Сведите для масштаба, перетащите для позиционирования";
+"image_picker.uploading" = "Загрузка...";
+"image_picker.cancel_upload" = "Отменить загрузку";
+"image_picker.use_this_image" = "Использовать это изображение";
+"image_picker.choose_different_photo" = "Выбрать другое фото";
+
+/* Inline Pickers */
+"picker.no_due_date" = "Без срока";
+"picker.custom_date" = "Своя дата";
+"picker.custom_time" = "Своё время";
+"picker.add_time" = "Добавить время";
+"picker.no_lists" = "Списки не найдены";
+"picker.add_to_lists" = "Добавить в списки";
+"picker.loading_agents" = "Загрузка ИИ-агентов...";
+"picker.ai_agent" = "ИИ-агент";
+
+/* Sync Status */
+"sync.status" = "Статус синхронизации";
+"sync.unstable_connection" = "Обнаружено нестабильное соединение";
+"sync.retry_failed" = "Повторить неудавшиеся операции";
+"sync.working_offline" = "Работа офлайн";
+
+/* Profile */
+"profile.updated_success" = "Ваш профиль успешно обновлён!";
+"profile.tap_change_photo" = "Нажмите для смены фото";
+"profile.uploading_photo" = "Загрузка фото...";
+"profile.display_name" = "Отображаемое имя";
+"profile.email_address" = "Электронная почта";
+"profile.edit_profile" = "Редактировать профиль";
+"profile.saving" = "Сохранение...";
+"profile.save_changes" = "Сохранить изменения";
+
+/* Members */
+"members.searching" = "Поиск контактов...";
+"members.astrid_users" = "Люди из ваших контактов, использующие Astrid";
+"members.loading_suggestions" = "Загрузка предложений...";
+"members.add_collaborators" = "Добавить участников";
+"members.upload_contacts" = "Загрузите контакты для лучшего сотрудничества";
+"members.invite_email" = "Пригласить по email";
+"members.add_member" = "Добавить участника";
+
+/* Membership (Local User) */
+"membership.requires_account" = "Для совместного доступа к спискам требуется аккаунт";
+"membership.requires_account_description" = "Войдите, чтобы приглашать участников и делиться списками.";
+"membership.sign_in_to_share" = "Войдите для совместного доступа к спискам";
+
+/* Comments */
+"comments.count" = "Комментарии (%d)";
+"comments.empty" = "Комментариев пока нет. Будьте первым!";
+"comments.add_placeholder" = "Добавить комментарий...";
+"comments.delete_comment" = "Удалить комментарий";
+"comments.upload_error" = "Ошибка загрузки";
+
+/* Task Edit */
+"task_edit.add_to_list" = "Добавить в список";
+"task_edit.add_another_list" = "Добавить ещё список";
+"task_edit.only_you" = "Только вы можете видеть эту задачу";
+"task_edit.add_description" = "Добавить описание...";
+"task_edit.last_timer" = "Последний: %@";
+"task_edit.copy_to_lists" = "Копировать в Мои списки";
+
+/* Timer */
+"timer.complete_task" = "ЗАВЕРШИТЬ ЗАДАЧУ";
+"timer.dismiss_alarm" = "Отклонить будильник";
+"timer.tap_to_change" = "Нажмите на время для изменения длительности";
+"timer.snooze_1hour" = "Отложить на 1 час";
+
+/* Notifications */
+"notification.complete_task" = "Завершить задачу";
+"notification.test_reminder" = "📱 Тестовое уведомление";
+
+/* Debug Settings */
+"debug.contacts_settings" = "Настройки контактов";
+"debug.debug_settings" = "Настройки отладки";
+"debug.app_version" = "Astrid v%@";
+"debug.current_server" = "Текущий сервер";
+"debug.active_config" = "Активная конфигурация";
+"debug.restart_required" = "Изменения требуют перезапуска приложения";
+"debug.available_servers" = "Доступные серверы";
+"debug.reset_default" = "Сбросить по умолчанию";
+"debug.server_changed" = "Сервер изменён";
+"debug.get_key" = "Получить ключ";
+"server.restart_required" = "Требуется перезапуск";
+"server.restart_message" = "Сервер изменён на:\n%@\n\nПерезапустите приложение, чтобы изменения вступили в силу.";
+
+/* Splash */
+"splash.loading" = "Загрузка ваших задач...";
+
+/* Misc */
+"misc.cancel" = "Отмена";
+"misc.save" = "Сохранить";
+"misc.close" = "Закрыть";
+
+/* Local Mode - Added for offline-first */
+"auth.or" = "или";
+"auth.use_without_account" = "Использовать без аккаунта";
+"auth.local_mode_description" = "Ваши задачи остаются на этом устройстве. Войдите позже для синхронизации между устройствами.";
+"local_user" = "Локальный пользователь";
+"offline.local_mode_active" = "Локальный режим активен";
+"offline.data_on_device" = "Ваши данные хранятся только на этом устройстве";
+"offline.sync_to_cloud" = "Синхронизировать с облаком";
+"offline.sign_in_to_sync" = "Войдите для синхронизации между устройствами";
+"offline.local_tasks" = "Локальные задачи";
+"offline.local_lists" = "Локальные списки";
+"offline.warning" = "Предупреждение: Если вы удалите приложение без входа, ваши данные будут потеряны.";
+"settings.local_only_mode" = "Только локальный режим";
+"settings.local_only_description" = "Войдите для синхронизации между устройствами";
+"status.local_only" = "Только локальный режим";
+"status.offline" = "Работа офлайн";
+"status.offline_with_pending" = "Офлайн • %d ожидает";
+"status.syncing" = "Синхронизация...";
+"status.syncing_count" = "Синхронизация %d элементов...";
+"status.sync_failed" = "%d ошибок синхронизации";
+"status.synced" = "Всё синхронизировано";
+"status.local_only_description" = "Ваши данные хранятся только на этом устройстве. Войдите для синхронизации.";
+"status.pending_sync_description" = "%d изменений будут синхронизированы при подключении";
+"status.failed_sync_description" = "%d элементов не синхронизированы";
+"status.retry_now" = "Повторить";
+"status.sync_in_progress" = "Изменения синхронизируются автоматически";
+"sync" = "Синхронизация";
+"welcome.title" = "Добро пожаловать в Astrid!";
+"welcome.subtitle" = "Ваш умный менеджер задач";
+"welcome.sign_in" = "Войти";
+"welcome.use_locally" = "Использовать без аккаунта";
+"welcome.local_note" = "Вы можете войти позже для синхронизации между устройствами";

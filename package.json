@@ -1,0 +1,26 @@
+{
+  "name": "astrid-ios",
+  "version": "1.0.0",
+  "description": "Astrid iOS App - Task management with AI assistance",
+  "private": true,
+  "scripts": {
+    "predeploy": "./scripts/predeploy.sh",
+    "predeploy:full": "./scripts/predeploy.sh --full",
+    "predeploy:quick": "./scripts/predeploy.sh --quick",
+    "test": "./scripts/run-tests.sh",
+    "test:unit": "./scripts/run-tests.sh",
+    "test:ui": "./scripts/run-tests.sh --ui --no-unit",
+    "test:all": "./scripts/run-tests.sh --ui",
+    "check:localizations": "./scripts/check-localizations.sh",
+    "build": "xcodebuild build -scheme 'Astrid App' -destination 'platform=iOS Simulator,name=iPhone 17' -quiet",
+    "build:verbose": "xcodebuild build -scheme 'Astrid App' -destination 'platform=iOS Simulator,name=iPhone 17'"
+  },
+  "keywords": [
+    "ios",
+    "swift",
+    "task-management",
+    "ai"
+  ],
+  "author": "Graceful Tools",
+  "license": "UNLICENSED"
+}

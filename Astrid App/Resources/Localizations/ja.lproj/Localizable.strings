@@ -1,0 +1,799 @@
+/* Navigation */
+"navigation.my_tasks" = "マイタスク";
+"navigation.today" = "今日";
+"navigation.lists" = "リスト";
+"navigation.add_list" = "リストを追加";
+"navigation.all_tasks" = "すべてのタスク";
+
+/* Settings */
+"settings" = "設定";
+"sync" = "同期";
+"last_sync" = "最終同期";
+"never" = "なし";
+"sync_now" = "今すぐ同期";
+"features" = "機能";
+"ai_assistant" = "AIアシスタント";
+"alpha" = "アルファ版";
+"reminders" = "リマインダー";
+"preferences" = "基本設定";
+"appearance" = "外観";
+"contacts" = "連絡先";
+"account" = "アカウント";
+"account_access" = "アカウントとアクセス";
+"about" = "アプリについて";
+"version" = "バージョン";
+"build" = "ビルド";
+"sign_out" = "サインアウト";
+"are_you_sure_sign_out" = "サインアウトしてもよろしいですか？";
+
+/* Language */
+"language" = "言語";
+"select_language" = "言語を選択";
+"language_settings" = "言語";
+"automatic" = "自動";
+"device_language" = "デバイスの言語";
+"english" = "English";
+"spanish" = "Español";
+"french" = "Français";
+"german" = "Deutsch";
+"italian" = "Italiano";
+"portuguese" = "Português";
+"dutch" = "Nederlands";
+"russian" = "Русский";
+"japanese" = "日本語";
+"korean" = "한국어";
+"chinese_simplified" = "简体中文";
+"chinese_traditional" = "繁體中文";
+"language_restart_note" = "言語の変更を完全に反映させるには、アプリの再起動が必要な場合があります。";
+
+/* Actions */
+"actions.save" = "保存";
+"actions.cancel" = "キャンセル";
+"actions.delete" = "削除";
+"actions.edit" = "編集";
+"actions.add" = "追加";
+"actions.close" = "閉じる";
+"actions.create" = "作成";
+"actions.update" = "更新";
+"actions.confirm" = "確認";
+"actions.done" = "完了";
+"actions.back" = "戻る";
+"actions.next" = "次へ";
+"actions.copy" = "コピー";
+"actions.share" = "共有";
+"actions.move" = "移動";
+"actions.archive" = "アーカイブ";
+"actions.restore" = "復元";
+"actions.retry" = "再試行";
+"actions.submit" = "送信";
+"actions.search" = "検索";
+"actions.remove" = "削除";
+
+/* Tasks */
+"tasks.task" = "タスク";
+"tasks.tasks" = "タスク";
+"tasks.new_task" = "新しいタスク";
+"tasks.add_task" = "タスクを追加";
+"tasks.task_details" = "タスクの詳細";
+"tasks.edit_task" = "タスクを編集";
+"tasks.delete_task" = "タスクを削除";
+"tasks.complete_task" = "タスクを完了";
+"tasks.task_name" = "タスク名";
+"tasks.description" = "説明";
+"tasks.no_description" = "説明なし";
+"tasks.due_date" = "期限";
+"tasks.created_by" = "作成者";
+"tasks.reminder" = "リマインダー";
+"tasks.reminders" = "リマインダー";
+"tasks.priority" = "優先度";
+"tasks.assignee" = "担当者";
+"tasks.completed" = "完了済み";
+"tasks.incomplete" = "未完了";
+"tasks.overdue" = "期限切れ";
+"tasks.no_due_date" = "期限なし";
+"tasks.no_reminder" = "リマインダーなし";
+"tasks.placeholder.task_name" = "何をしますか？";
+"tasks.placeholder.description" = "説明を追加...";
+"tasks.copy_task" = "タスクをコピー";
+"tasks.share_task" = "タスクを共有";
+"tasks.delete_confirm" = "このタスクを削除しますか？";
+"tasks.loading" = "タスクを読み込み中...";
+"tasks.priority_only" = "%@のみ";
+
+/* Lists */
+"lists.list" = "リスト";
+"lists.new_list" = "新しいリスト";
+"lists.add_list" = "リストを追加";
+"lists.edit_list" = "リストを編集";
+"lists.delete_list" = "リストを削除";
+"lists.list_name" = "リスト名";
+"lists.list_description" = "説明";
+"lists.list_settings" = "リストの設定";
+"lists.enter_name" = "リスト名を入力";
+"lists.description_placeholder" = "説明を追加（任意）...";
+"lists.members" = "メンバー";
+"lists.no_members" = "メンバーはまだいません";
+"lists.loading" = "リストを読み込み中...";
+"lists.all_lists" = "すべてのリスト";
+"lists.empty_state_message" = "リストを作成してタスクを整理しましょう！";
+"lists.copy_to_list" = "リストにコピー";
+"lists.target_list" = "コピー先リスト";
+"lists.my_tasks_only" = "マイタスクのみ";
+"lists.include_comments" = "コメントを含める";
+
+/* Priority */
+"priority.none" = "なし";
+"priority.low" = "低";
+"priority.medium" = "中";
+"priority.high" = "高";
+"priority.urgent" = "緊急";
+
+/* Time */
+"time.today" = "今日";
+"time.tomorrow" = "明日";
+"time.yesterday" = "昨日";
+"time.this_week" = "今週";
+"time.next_week" = "来週";
+"time.this_month" = "今月";
+"time.next_month" = "来月";
+"time.atDueTime" = "期限時";
+"time.minutesBefore" = "%d分前";
+"time.hourBefore" = "1時間前";
+"time.hoursBefore" = "%d時間前";
+"time.dayBefore" = "1日前";
+"time.weekBefore" = "1週間前";
+
+/* Messages */
+"messages.success" = "成功！";
+"messages.error" = "エラー";
+"messages.loading" = "読み込み中...";
+"messages.saving" = "保存中...";
+"messages.saved" = "保存しました";
+"messages.deleting" = "削除中...";
+"messages.deleted" = "削除しました";
+"messages.updating" = "更新中...";
+"messages.updated" = "更新しました";
+"messages.copying" = "コピー中...";
+"messages.copied" = "コピーしました";
+"messages.no_results" = "結果が見つかりません";
+"messages.something_went_wrong" = "問題が発生しました";
+
+/* Empty States */
+"empty_state.my_tasks" = "Astridへようこそ！最初のタスクを追加して始めましょう。";
+"empty_state.my_tasks_caught_up" = "すべて完了しました！現在割り当てられているタスクはありません。";
+"empty_state.today" = "今日の予定はありません！自由な時間を楽しむか、新しい予定を追加しましょう。";
+"empty_state.public_list" = "アイデアを世界と共有しましょう！タスクを追加してください。誰でもこのリストを見ることができます。";
+"empty_state.shared_list" = "コラボレーションを始めましょう！タスクを追加して共有リストを開始しましょう。";
+"empty_state.list_with_name" = "\"%@\"を埋めましょう！最初のタスクを追加して始めましょう。";
+"empty_state.default" = "考えを記録する準備はできましたか？最初のタスクを作成して始めましょう！";
+"empty_state.no_lists" = "リストがまだありません。最初のリストを作成して始めましょう！";
+
+/* Contacts */
+"contacts.synced_contacts" = "同期された連絡先";
+"contacts.sync_contacts_now" = "今すぐ連絡先を同期";
+"contacts.grant_full_access" = "フルアクセスを許可";
+"contacts.access_required" = "連絡先へのアクセスが必要です";
+"contacts.open_settings_prompt" = "タップして設定を開き、アクセスを有効にしてください";
+"contacts.add_collaborators" = "共同作業者を追加";
+"contacts.upload_for_collaboration" = "より良いコラボレーションのために連絡先をアップロードしてください";
+"contacts.footer_text" = "連絡先は共同作業者の提案に使用されます。暗号化され、第三者と共有されることはありません。";
+
+/* Debug Settings */
+"debug.settings" = "デバッグ設定";
+"debug.server_config" = "サーバー設定";
+"debug.current_server" = "現在: %@";
+"debug.toast_debug_mode" = "トーストデバッグモード";
+"debug.toast_debug_desc" = "デバッグ用の詳細なトースト通知を表示";
+"debug.reminder_debug_mode" = "リマインダーデバッグモード";
+"debug.reminder_debug_desc" = "詳細なリマインダーデバッグログを有効にする";
+"debug.test_prompts" = "テストプロンプト";
+"debug.test_love_prompt" = "「Astridを気に入っていますか？」プロンプトのテスト";
+"debug.test_love_prompt_desc" = "アクティブユーザーに表示されるフィードバックプロンプトを表示します";
+"debug.reset_prompt_tracking" = "プロンプト追跡をリセット";
+"debug.reset_prompt_tracking_desc" = "プロンプトの履歴を消去します";
+
+/* Search */
+"search.placeholder" = "タスクやユーザーを検索";
+"search.query_prefix" = "検索: %@";
+
+/* Profile */
+"profile.account_access_desc" = "プロフィール、メール確認、パスワード設定";
+"profile.account_access_full_desc" = "プロフィール、メール、パスキー、データエクスポート";
+"profile.title" = "プロフィール";
+"profile.loading" = "プロフィールを読み込み中...";
+"profile.go_back" = "戻る";
+"profile.ai_agent" = "AIエージェント";
+"profile.joined" = "%@に参加";
+"profile.no_email" = "メールアドレスなし";
+"profile.your_tasks" = "あなたのタスク";
+"profile.shared_tasks_with" = "%@との共有タスク";
+"profile.you" = "あなた";
+"profile.not_signed_in" = "サインインしていません";
+"profile.sign_in_to_sync" = "同期するにはサインインしてください";
+"profile.error_not_found" = "ユーザーが見つかりません";
+"profile.error_not_signed_in" = "プロフィールを見るにはサインインしてください";
+"profile.error_load_failed" = "プロフィールの読み込みに失敗しました";
+
+/* Stats */
+"stats.completed" = "完了";
+"stats.inspired" = "インスパイア";
+"stats.supported" = "サポート";
+"stats.completed_tagline" = "やり遂げました！";
+"stats.inspired_tagline" = "他者を動機づける！";
+"stats.supported_tagline" = "チームの勝利を助ける！";
+
+/* Sidebar */
+"navigation.public_shared_lists" = "公開共有リスト";
+"navigation.public_lists" = "公開リスト";
+"navigation.see_all_collaborative" = "すべての共同作業リストを見る →";
+"navigation.see_all_suggested" = "すべての推奨リストを見る →";
+"navigation.favorites" = "お気に入り";
+
+/* Task Input */
+"tasks.add_task_placeholder" = "タスクを追加";
+"tasks.search_tasks_placeholder" = "タスクを検索...";
+
+/* Assignee */
+"assignee.unassigned" = "未割り当て";
+"assignee.you" = "あなた";
+
+/* Reminders */
+"reminders.counting_on_you" = "みんながあなたを頼りにしています！";
+"reminders.complete" = "完了";
+"reminders.snooze_15_minutes" = "15分スヌーズ";
+"reminders.snooze_1_day" = "1日";
+"reminders.snooze_1_week" = "1週間";
+
+/* Notifications */
+"notifications.enable_push" = "プッシュ通知を有効にする";
+"notifications.not_now" = "今はしない";
+"notifications.enable" = "有効にする";
+"notifications.enable_message" = "タスクを忘れないようにプッシュ通知を有効にしてください！";
+"notifications.disabled" = "通知が無効です";
+"notifications.open_settings" = "設定を開く";
+"notifications.disabled_message" = "プッシュ通知が無効になっています。設定から有効にしてください。";
+
+/* Auth */
+"auth.tagline" = "やり遂げよう！";
+"auth.sign_in_header" = "サインインして始めましょう！";
+"auth.continue_with_google" = "Googleで続行";
+"auth.continue_with_passkey" = "パスキーで続行";
+"auth.continue_with_apple" = "Appleで続行";
+"auth.email" = "メールアドレス";
+
+/* Settings - Reminders */
+"settings.reminders.push_notifications" = "プッシュ通知";
+"settings.reminders.enable_push" = "プッシュ通知を有効にする";
+"settings.reminders.open_settings" = "設定を開いて通知を有効にする";
+"settings.reminders.email_notifications" = "メール通知";
+"settings.reminders.send_email" = "メールリマインダーを送信";
+"settings.reminders.default_time" = "デフォルトのリマインダー時間";
+"settings.reminders.when_to_remind" = "通知のタイミング";
+"settings.reminders.daily_digest" = "デイリーダイジェスト";
+"settings.reminders.send_daily_digest" = "デイリーダイジェストを送信";
+"settings.reminders.digest_time" = "ダイジェストの時間";
+"settings.reminders.timezone" = "タイムゾーン";
+"settings.reminders.quiet_hours" = "おやすみモード（任意）";
+"settings.reminders.enable_quiet_hours" = "おやすみモードを有効にする";
+
+/* Settings - AI */
+"setting.ai.api_keys" = "AI APIキー";
+"settings.ai.api_keys_description" = "AIアシスタントを使用するために独自のAPIキーを追加します。キーは暗号化され、サーバーに安全に保存されます。";
+"settings.ai.loading_keys" = "APIキーを読み込み中...";
+"settings.ai.about_keys" = "APIキーについて";
+"settings.ai.about_description" = "APIキーは、AstridのAIアシスタント機能に使用されます。プロバイダーごとに異なる機能と料金が提供されています。";
+"settings.ai.encryption_info" = "キーは保存前にAES-256で暗号化されます。Astridがキーを第三者と共有することはありません。";
+"settings.ai.not_configured" = "未設定";
+"settings.ai.api_new.badge" = "新規";
+"settings.ai.manage_keys" = "APIキーを管理";
+"settings.ai.manage_keys_subtitle" = "Claude、OpenAI、Geminiのキーを追加";
+"settings.ai.api_keys_footer" = "Claude、OpenAI、またはGeminiのAPIキーを追加して、AIアシスタントを強化しましょう。";
+
+/* Exploratory Features */
+"exploratory_features" = "実験的機能";
+"ai_assistants" = "AIアシスタント";
+"apple_reminders" = "Appleリマインダー";
+"settings.reminders.configure_sync" = "同期を設定";
+"settings.reminders.sync_subtitle" = "SiriとApple Watchと同期";
+"settings.exploratory.warning" = "これらの機能は実験的であり、開発中です。";
+
+/* Smart Task Creation */
+"smart_task_creations" = "スマートタスク作成";
+"smart_task_creation_description" = "タイトルから日付、優先度、ハッシュタグを解析します";
+
+/* Settings - Appearance */
+"settings.appearance.theme" = "テーマ";
+"settings.appearance.email_to_task" = "メールからタスク作成";
+"settings.appearance.email_to_task_footer" = "remindme@astrid.cc にメールを送信してタスクを作成します";
+"settings.appearance.email_to_task_self" = "自分へのタスク: remindme@astrid.cc 宛に送信";
+"settings.appearance.email_to_task_assigned" = "割り当てられたタスク: 1人の受信者と remindme@astrid.cc をCCに含める";
+"settings.appearance.email_to_task_group" = "グループタスク: 複数の受信者と remindme@astrid.cc をCCに含める";
+"settings.appearance.email_to_task_subject" = "件名がタスクのタイトルになります";
+"settings.appearance.email_to_task_body" = "本文がタスクの説明になります";
+
+/* Theme Modes */
+"theme.ocean" = "オーシャン";
+"theme.light" = "ライト";
+"theme.dark" = "ダーク";
+"theme.auto" = "自動";
+
+/* Settings - Account */
+"settings.account.loading" = "アカウントを読み込み中...";
+"settings.account.display_name" = "表示名";
+"settings.account.name_placeholder" = "名前";
+"settings.account.email_placeholder" = "メールアドレス";
+"settings.account.save_changes" = "変更を保存";
+"settings.account.oauth_footer" = "Googleでサインインしています。一部のフィールドはGoogleアカウントで管理されています。";
+"settings.account.pending_email" = "保留中のメールアドレス変更";
+"settings.account.resend_verification" = "確認メールを再送";
+"settings.account.cancel_change" = "変更をキャンセル";
+"settings.account.email_not_verified" = "メールアドレスが未確認です";
+"settings.account.send_verification" = "確認メールを送信";
+"settings.account.email_verification" = "メール確認";
+"settings.account.pending_email_footer" = "新しいアドレスを確認するために、受信トレイをチェックしてください。";
+"settings.account.verify_email_footer" = "すべての機能を利用し、通知を受け取るためにメールアドレスを確認してください。";
+"settings.account.info" = "アカウント情報";
+"settings.account.id" = "アカウントID";
+"settings.account.created" = "作成日";
+"settings.account.auth_method" = "認証方法";
+"settings.account.google" = "Google";
+"settings.account.passkey" = "パスキー";
+"settings.account.adding_passkey" = "パスキーを追加中...";
+"settings.account.add_passkey_button" = "パスキーを追加";
+"settings.account.passkeys_footer" = "パスキーを使用すると、パスワードなしで安全にサインインできます。デバイス間で自動的に同期されます。";
+"settings.account.passkey_name_placeholder" = "パスキー名";
+"settings.account.synced" = "同期済み";
+"settings.account.added_on" = "%@ に追加";
+"settings.account.added_recently" = "最近追加されました";
+"settings.account.rename_failed" = "パスキーの名前変更に失敗しました";
+"settings.account.delete_failed" = "パスキーの削除に失敗しました";
+"settings.account.export_json" = "データをエクスポート (JSON)";
+"settings.account.export_csv" = "データをエクスポート (CSV)";
+"settings.account.your_data" = "あなたのデータ";
+"settings.account.your_data_footer" = "すべてのタスク、リスト、アカウントデータをダウンロードします。";
+"settings.account.delete_account_footer" = "アカウントとすべての関連データを完全に削除します。この操作は取り消せません。";
+"settings.account.no_passkeys_registered" = "登録されたパスキーはありません";
+"settings.account.add_passkey_description" = "より速くパスワードレスでサインインするためにパスキーを追加";
+"settings.account.passkeys" = "パスキー";
+"settings.account.loading_passkeys" = "パスキーを読み込み中...";
+"settings.account.add_passkey" = "パスキーを追加";
+"settings.account.no_passkeys" = "パスキーはまだ追加されていません。";
+"settings.account.danger_zone" = "危険地帯";
+"settings.account.delete_account" = "アカウントを削除";
+"settings.account.delete_warning" = "この操作は取り消せません";
+"settings.account.delete_remove_list_header" = "アカウントを削除すると、以下が永久に削除されます：";
+"settings.account.delete_remove_tasks" = "すべてのタスクと履歴";
+"settings.account.delete_remove_lists" = "所有しているすべてのリスト";
+"settings.account.delete_remove_comments" = "すべてのコメント";
+"settings.account.delete_remove_profile" = "プロフィールと設定";
+"settings.account.delete_remove_files" = "アップロードされたすべてのファイル";
+"settings.account.delete_confirm_prompt" = "確認のため、以下に「アカウントを削除する」と入力してください：";
+"settings.account.delete_confirm_placeholder" = "確認内容を入力";
+"settings.account.delete_confirmation" = "確認";
+"settings.account.delete_confirm_instruction" = "続行するには「アカウントを削除する」と正確に入力する必要があります。";
+"settings.account.delete_confirm_mismatch" = "確認テキストが一致しません";
+"settings.account.delete_confirm_match" = "確認テキストが一致しました";
+"settings.account.delete_my_account_button" = "アカウントを削除する";
+"settings.account.delete_final_confirmation" = "最終確認";
+"settings.account.delete_forever" = "永久に削除";
+"settings.account.delete_final_warning" = "本当によろしいですか？アカウントとすべてのデータが永久に削除されます。この操作は取り消せません。";
+"settings.account.delete_confirm_phrase" = "アカウントを削除する";
+
+/* Additional translations */
+"userMenu.refreshData" = "データを更新";
+"actions.ok" = "OK";
+"actions.filter" = "フィルター";
+"actions.sort" = "並び替え";
+"actions.clear" = "クリア";
+"actions.apply" = "適用";
+"actions.change" = "変更";
+"tasks.who" = "担当者";
+"tasks.due_time" = "期限時刻";
+"tasks.timer" = "タイマー";
+"lists.sort_and_filters" = "並び替えとフィルター";
+"lists.admin" = "管理者";
+"lists.filters" = "フィルター";
+"lists.clear_all_filters" = "すべてのフィルターをクリア";
+"lists.sort_by" = "並び替え";
+"lists.sort_order" = "並び順";
+"lists.auto" = "自動";
+"lists.manual" = "手動";
+"lists.due_date" = "期限日";
+"lists.created_date" = "作成日";
+"lists.task_completion" = "タスク完了";
+"lists.incomplete_completed_recently" = "未完了 + 最近完了";
+"lists.all" = "すべて";
+"lists.me" = "自分";
+"lists.not_me" = "自分以外（他のユーザー）";
+"lists.overdue" = "期限切れ";
+"lists.this_week" = "今週";
+"lists.this_month" = "今月";
+"lists.no_date" = "日付なし";
+"lists.all_priorities" = "すべての優先度";
+"lists.highest_priority" = "!!! 最高";
+"lists.high_priority" = "!! 高";
+"lists.medium_priority" = "! 中";
+"lists.low_priority" = "○ 低";
+"lists.assigned_by" = "割り当て者";
+"lists.repeating" = "繰り返し";
+"lists.not_repeating" = "繰り返しなし";
+"lists.daily" = "毎日";
+"lists.weekly" = "毎週";
+"lists.monthly" = "毎月";
+"lists.yearly" = "毎年";
+"lists.custom" = "カスタム";
+"lists.list_membership" = "リストメンバーシップ";
+"lists.all_tasks" = "すべてのタスク";
+"lists.in_any_list" = "リストに含まれる";
+"lists.not_in_any_list" = "リストに含まれない";
+"lists.favorite" = "お気に入り";
+"lists.favorite_description" = "このリストはリストの一番上に表示されます";
+"lists.saved_filter" = "保存済みフィルター";
+"lists.saved_filter_description" = "このリストはフィルターに基づいてタスクを表示します";
+"lists.list_information" = "リスト情報";
+"lists.list_appearance" = "リストの外観";
+"lists.list_image" = "リスト画像";
+"lists.list_image_description" = "カスタム画像またはアイコンを選択";
+"lists.default_task_settings" = "デフォルトタスク設定";
+"lists.task_creator" = "タスク作成者";
+"lists.all_day" = "終日（時間なし）";
+"lists.never" = "なし";
+"lists.github_integration" = "GitHub連携";
+"lists.link_repo_description" = "AIコーディングエージェント用のリポジトリをリンク";
+"lists.loading_repositories" = "リポジトリを読み込み中...";
+"lists.github_repository" = "GitHubリポジトリ";
+"lists.no_repositories_found" = "リポジトリが見つかりません。GitHubアカウントが接続されていることを確認してください。";
+"lists.pending_invitations" = "保留中の招待";
+"lists.invited" = "招待済み";
+"lists.cancel_invite" = "招待をキャンセル";
+"lists.ai_agents" = "AIエージェント";
+"lists.add_ai_agent" = "AIエージェントを追加";
+"lists.no_ai_providers" = "AIプロバイダーが設定されていません";
+"lists.make_member" = "メンバーにする";
+"lists.make_admin" = "管理者にする";
+"lists.remove" = "削除";
+"lists.share_list" = "リストを共有";
+"lists.share_list_description" = "このリストの共有リンクを生成";
+"lists.available_agents" = "利用可能なエージェント";
+"lists.loading_ai_agents" = "AIエージェントを読み込み中...";
+"lists.claude_coding_description" = "コーディングとタスク支援のためのClaude AI";
+"lists.openai_coding_description" = "コーディングとタスク支援のためのOpenAI GPT-4";
+"lists.gemini_coding_description" = "コーディングとタスク支援のためのGoogle Gemini";
+"lists.claude_task_description" = "タスク支援のためのClaude AI";
+"lists.openai_task_description" = "タスク支援のためのOpenAI GPT-4";
+"lists.gemini_task_description" = "タスク支援のためのGoogle Gemini";
+"lists.default_agent_description" = "タスク支援のためのAIエージェント";
+"lists.ai_coding_agents" = "AIコーディングエージェント";
+"lists.connect_github_description" = "コーディングワークフローを有効にするためにGitHubリポジトリを接続";
+"lists.list_privacy" = "リストのプライバシー";
+"lists.make_public" = "公開にする";
+"lists.make_private" = "非公開にする";
+"lists.public_description" = "リンクを知っている人は誰でもこのリストを見ることができます";
+"lists.private_description" = "メンバーのみがこのリストを見ることができます";
+"lists.owner" = "オーナー";
+"lists.admin_role" = "管理者";
+"lists.member_role" = "メンバー";
+"lists.add_member" = "メンバーを追加";
+"lists.tomorrow" = "明日";
+"lists.next_week" = "来週";
+"lists.next_month" = "来月";
+"lists.none" = "なし";
+"lists.delete_confirm" = "このリストを削除してもよろしいですか？この操作は元に戻せません。";
+"messages.danger_zone" = "危険な操作";
+"settings.account.no_name" = "名前未設定";
+"settings.account.unknown" = "不明";
+"settings.account.failed_load" = "アカウントの読み込みに失敗: %@";
+"settings.account.invalid_email" = "有効なメールアドレスを入力してください";
+"settings.account.profile_updated_verify" = "プロフィールが更新されました。新しいアドレスを確認するためにメールを確認してください。";
+"settings.account.profile_updated_success" = "プロフィールが正常に更新されました";
+"settings.account.failed_save" = "保存に失敗: %@";
+"settings.account.failed_process_image" = "画像の処理に失敗";
+"settings.account.failed_upload_image" = "画像のアップロードに失敗: %@";
+"settings.account.failed_send_verification" = "確認メールの送信に失敗: %@";
+"settings.account.email_change_cancelled" = "メールアドレスの変更がキャンセルされました";
+"settings.account.failed_cancel_email_change" = "メール変更のキャンセルに失敗: %@";
+"settings.account.failed_export" = "データのエクスポートに失敗: %@";
+"settings.account.failed_delete" = "アカウントの削除に失敗: %@";
+"settings.account.passkeys_description" = "パスキーを使用すると、パスワードなしで安全にサインインできます。";
+"settings.account.data" = "データ";
+"settings.account.export_data" = "データをエクスポート";
+"settings.account.export_description" = "すべてのタスク、リスト、プロフィールデータをJSON形式でダウンロード。";
+"settings.account.delete_description" = "アカウントとすべてのデータを完全に削除。";
+"settings.reminders.start" = "開始";
+"settings.reminders.end" = "終了";
+"settings.reminders.test" = "テスト";
+"settings.reminders.send_test" = "テスト通知を送信";
+"settings.reminders.test_reminder" = "テストリマインダー";
+"settings.reminders.test_message" = "5秒後にテスト通知が表示されます";
+
+/* Apple Reminders Sync */
+"reminders.access_granted" = "アクセス許可済み";
+"reminders.access_denied" = "アクセス拒否";
+"reminders.tap_to_open_settings" = "タップして設定を開く";
+"reminders.enable_sync" = "リマインダー同期を有効にする";
+"reminders.sync_description" = "Siri と Watch のために Apple リマインダーとタスクを同期";
+"reminders.access_header" = "リマインダーへのアクセス";
+"reminders.access_footer" = "Astrid のタスクを Apple リマインダーと同期します。Siri でタスクを追加し、Apple Watch で確認できます。";
+"reminders.sync_status" = "同期ステータス";
+"reminders.last_sync" = "最後の同期";
+"reminders.linked_lists" = "リンクされたリスト";
+"reminders.syncing" = "同期中...";
+"reminders.sync_all_lists" = "すべてのリストを同期";
+"reminders.your_lists" = "あなたのリスト";
+"reminders.your_lists_footer" = "リストをタップして Apple リマインダーにリンクします。タスクをエクスポートするか、既存のリマインダーリストからインポートするかを選択できます。";
+"reminders.import_from_reminders" = "リマインダーからインポート";
+"reminders.import_footer" = "既存のリマインダーリストを Astrid にインポートします。";
+"reminders.unlink" = "リンク解除";
+"reminders.astrid_list" = "Astrid リスト";
+"reminders.sync_direction" = "同期方向";
+"reminders.create_new_list" = "新しいリストを作成";
+"reminders.link_to_reminders_list" = "リマインダーリストにリンク";
+"reminders.link_footer" = "既存のリマインダーリストを選択するか、'%@' という名前で新しいリストを作成します";
+"reminders.include_completed" = "完了済みタスクを含める";
+"reminders.include_completed_desc" = "既に完了したタスクを同期";
+"reminders.options" = "オプション";
+"reminders.link_list" = "リストをリンク";
+"reminders.link" = "リンク";
+"reminders.reminders_list" = "リマインダーリスト";
+"reminders.create_new_astrid_list" = "新しい Astrid リストを作成";
+"reminders.import_into" = "インポート先";
+"reminders.import_into_footer" = "'%@' という名前で新しい Astrid リストを作成するか、既存のリストにインポートします。";
+"reminders.import_completed_desc" = "既に完了したリマインダーをインポート";
+"reminders.import_reminders" = "リマインダーをインポート";
+"reminders.import" = "インポート";
+
+/* Repeating Pattern Editor */
+"repeating.custom_pattern" = "カスタム繰り返しパターン";
+"repeating.repeat_every" = "繰り返し間隔";
+"repeating.repeat_on_days" = "繰り返す曜日";
+"repeating.repeat_type" = "繰り返しタイプ";
+"repeating.same_date_monthly" = "毎月同じ日";
+"repeating.same_weekday_monthly" = "毎月同じ曜日と週";
+"repeating.day_of_month" = "日付";
+"repeating.weekday" = "曜日";
+"repeating.week_of_month" = "月の週";
+"repeating.month" = "月";
+"repeating.day" = "日";
+"repeating.repeat_mode" = "繰り返しモード";
+"repeating.from_completion" = "完了日から次の発生";
+"repeating.from_due_date" = "元の期限から次の発生";
+"repeating.end_condition" = "終了条件";
+"repeating.never" = "なし";
+"repeating.after_occurrences" = "指定回数後";
+"repeating.until_date" = "指定日まで";
+"repeating.num_occurrences" = "繰り返し回数";
+"repeating.end_date" = "終了日";
+"repeating.preview" = "プレビュー";
+"repeating.no_repeat" = "繰り返しなし";
+"repeating.days" = "日";
+"repeating.weeks" = "週";
+"repeating.months" = "月";
+"repeating.years" = "年";
+"repeating.1st" = "第1";
+"repeating.2nd" = "第2";
+"repeating.3rd" = "第3";
+"repeating.4th" = "第4";
+"repeating.5th" = "第5";
+
+/* Filter Labels */
+"filters.sort_by" = "並べ替え";
+"filters.sort" = "並べ替え";
+"filters.auto" = "自動";
+"filters.manual" = "手動";
+"filters.completion_status" = "完了状態";
+"filters.show" = "表示";
+"filters.default" = "デフォルト";
+"filters.all_tasks" = "すべてのタスク";
+"filters.all_priorities" = "すべての優先度";
+"filters.highest_priority" = "!!! 最高";
+"filters.high_priority" = "!! 高";
+"filters.medium_priority" = "! 中";
+"filters.low_priority" = "○ 低";
+"filters.all_dates" = "すべての日付";
+"filters.this_week" = "今週";
+"filters.this_month" = "今月";
+"filters.no_due_date" = "期限なし";
+"filters.who" = "担当者";
+"filters.all" = "すべて";
+"filters.me" = "自分";
+"filters.not_me" = "自分以外";
+"filters.unassigned" = "未割り当て";
+"filters.not_repeating" = "繰り返しなし";
+"filters.save_as_smart_list" = "スマートリストとして保存";
+"filters.save_footer" = "このフィルター設定をサイドバーのスマートリストとして保存";
+"filters.clear_all" = "すべてのフィルターをクリア";
+"filters.saving" = "保存中...";
+"filters.sort_and_filters" = "並べ替えとフィルター";
+"filters.filter_by_list" = "リストでフィルター";
+"filters.featured_lists" = "注目のリスト";
+"filters.view_add" = "表示して追加";
+"filters.tasks_count" = "%d件のタスク";
+
+/* List Details */
+"list.type" = "リストの種類";
+"list.task_defaults" = "デフォルト値";
+"list.favorite_description" = "このリストはお気に入りセクションに表示されます";
+"list.smart_list_description" = "このリストはメンバーシップではなくフィルターに基づいてタスクを表示";
+"list.defaults_description" = "このリストの新しいタスクのデフォルト値を設定";
+"list.task_creator" = "タスク作成者";
+"list.select_lists" = "リストを選択";
+"list.details" = "リストの詳細";
+"list.oauth_hint" = "このIDをOAuth API統合とコーディングエージェントに使用してください";
+"list.delete_list" = "リストを削除";
+"list.danger_zone" = "危険ゾーン";
+"list.list_settings" = "リスト設定";
+
+/* Sharing */
+"share.share_list" = "リストを共有";
+"share.share_task" = "タスクを共有";
+"share.private_list_message" = "これはプライベートリストです。アクセス権のあるメンバーのみ閲覧できます。";
+"share.public_list_message" = "これはパブリックリストです。リンクを知っている人は誰でも閲覧できます。";
+"share.private_task_message" = "これはプライベートタスクです。このリストへのアクセス権を持つユーザーのみ閲覧できます。";
+"share.generating_link" = "リンクを生成中...";
+"share.share_link_hint" = "このタスクの閲覧権限を持つ人とこのリンクを共有";
+"share.copy_link" = "クリップボードにコピー";
+"share.link_copied" = "リンクをコピーしました！";
+"share.share_list_link_hint" = "このリストへのアクセス権を持つ人とこのリンクを共有";
+"share.link_redirect_list" = "リンクはアプリ内のリストにリダイレクトされます";
+"share.link_redirect_task" = "リンクはアプリ内のタスクにリダイレクトされます";
+
+/* Save Filter Dialog */
+"save_filter.title" = "スマートリストとして保存";
+"save_filter.description" = "現在のフィルター設定をスマートリストとして保存します";
+"save_filter.due_date" = "期限";
+
+/* Authentication */
+"auth.continue_passkey" = "パスキーで続ける";
+"auth.new_user" = "新規ですか？";
+"auth.returning_user" = "戻ってきましたか？";
+"auth.sign_in_short" = "サインイン";
+"auth.create_account" = "アカウント作成";
+"auth.create_account_footer" = "サインインして、すべてのデバイスでタスクを同期し、他のユーザーと共同作業しましょう。";
+"auth.sign_in_prompt_title" = "サインイン";
+"auth.sign_in_cta" = "サインインしてさらに多くの機能を利用";
+"auth.benefit_sync_title" = "デバイス間で同期";
+"auth.benefit_sync_desc" = "どのデバイスからでもタスクにアクセス";
+"auth.benefit_collaborate_title" = "他のユーザーと共同作業";
+"auth.benefit_collaborate_desc" = "リストを共有してタスクを一緒に進める";
+"auth.benefit_backup_title" = "データを安全に保管";
+"auth.benefit_backup_desc" = "タスクはクラウドに安全に保存されます";
+"auth.sign_in_data_note" = "既存のタスクはアカウントに同期されます";
+
+/* Attachments */
+"attachments.saving" = "保存中...";
+"attachments.save_to_task" = "タスクに保存";
+"attachments.quick_look" = "クイックルック";
+"attachments.quick_look_tip" = "ヒント：クイックルックでマークアップを使用して編集し、Astridに保存";
+"attachments.choose_photo" = "写真を選択";
+"attachments.choose_video" = "ビデオを選択";
+"attachments.choose_document" = "書類を選択";
+"attachments.count" = "添付ファイル (%d)";
+
+/* Image Picker */
+"image_picker.upload_library" = "フォトライブラリからアップロード";
+"image_picker.choose_description" = "フォトライブラリから画像を選択";
+"image_picker.pinch_zoom" = "ピンチでズーム、ドラッグで位置調整";
+"image_picker.uploading" = "アップロード中...";
+"image_picker.cancel_upload" = "アップロードをキャンセル";
+"image_picker.use_this_image" = "この画像を使用";
+"image_picker.choose_different_photo" = "別の写真を選ぶ";
+
+/* Inline Pickers */
+"picker.no_due_date" = "期限なし";
+"picker.custom_date" = "カスタム日付";
+"picker.custom_time" = "カスタム時刻";
+"picker.add_time" = "時刻を追加";
+"picker.no_lists" = "リストが見つかりません";
+"picker.add_to_lists" = "リストに追加";
+"picker.loading_agents" = "AIエージェントを読み込み中...";
+"picker.ai_agent" = "AIエージェント";
+
+/* Sync Status */
+"sync.status" = "同期状態";
+"sync.unstable_connection" = "不安定な接続を検出";
+"sync.retry_failed" = "失敗した操作を再試行";
+"sync.working_offline" = "オフラインで作業中";
+
+/* Profile */
+"profile.updated_success" = "プロフィールが正常に更新されました！";
+"profile.tap_change_photo" = "タップして写真を変更";
+"profile.uploading_photo" = "写真をアップロード中...";
+"profile.display_name" = "表示名";
+"profile.email_address" = "メールアドレス";
+"profile.edit_profile" = "プロフィールを編集";
+"profile.saving" = "保存中...";
+"profile.save_changes" = "変更を保存";
+
+/* Members */
+"members.searching" = "連絡先を検索中...";
+"members.astrid_users" = "Astridを使用している連絡先の人々";
+"members.loading_suggestions" = "候補を読み込み中...";
+"members.add_collaborators" = "コラボレーターを追加";
+"members.upload_contacts" = "より良いコラボレーションのために連絡先をアップロード";
+"members.invite_email" = "メールで招待";
+"members.add_member" = "メンバーを追加";
+
+/* Membership (Local User) */
+"membership.requires_account" = "リストの共有にはアカウントが必要です";
+"membership.requires_account_description" = "コラボレーターを招待してリストを共有するにはサインインしてください。";
+"membership.sign_in_to_share" = "リストを共有するにはサインイン";
+
+/* Comments */
+"comments.count" = "コメント (%d)";
+"comments.empty" = "まだコメントがありません。最初のコメントを投稿しましょう！";
+"comments.add_placeholder" = "コメントを追加...";
+"comments.delete_comment" = "コメントを削除";
+"comments.upload_error" = "アップロードエラー";
+
+/* Task Edit */
+"task_edit.add_to_list" = "リストに追加";
+"task_edit.add_another_list" = "別のリストを追加";
+"task_edit.only_you" = "このタスクを見られるのはあなただけです";
+"task_edit.add_description" = "説明を追加...";
+"task_edit.last_timer" = "前回: %@";
+"task_edit.copy_to_lists" = "マイリストにコピー";
+
+/* Timer */
+"timer.complete_task" = "タスクを完了";
+"timer.dismiss_alarm" = "アラームを消す";
+"timer.tap_to_change" = "時間をタップして変更";
+"timer.snooze_1hour" = "1時間スヌーズ";
+
+/* Notifications */
+"notification.complete_task" = "タスクを完了";
+"notification.test_reminder" = "📱 テスト通知";
+
+/* Debug Settings */
+"debug.contacts_settings" = "連絡先設定";
+"debug.debug_settings" = "デバッグ設定";
+"debug.app_version" = "Astrid v%@";
+"debug.current_server" = "現在のサーバー";
+"debug.active_config" = "アクティブな設定";
+"debug.restart_required" = "変更を反映するにはアプリの再起動が必要です";
+"debug.available_servers" = "利用可能なサーバー";
+"debug.reset_default" = "デフォルトにリセット";
+"debug.server_changed" = "サーバーを変更しました";
+"debug.get_key" = "キーを取得";
+"server.restart_required" = "再起動が必要";
+"server.restart_message" = "サーバーが変更されました:\n%@\n\n変更を有効にするにはアプリを再起動してください。";
+
+/* Splash */
+"splash.loading" = "タスクを読み込み中...";
+
+/* Misc */
+"misc.cancel" = "キャンセル";
+"misc.save" = "保存";
+"misc.close" = "閉じる";
+
+/* Local Mode - Added for offline-first */
+"auth.or" = "または";
+"auth.use_without_account" = "アカウントなしで使用";
+"auth.local_mode_description" = "タスクはこのデバイスに保存されます。後でサインインしてデバイス間で同期できます。";
+"local_user" = "ローカルユーザー";
+"offline.local_mode_active" = "ローカルモードが有効";
+"offline.data_on_device" = "データはこのデバイスにのみ保存されています";
+"offline.sync_to_cloud" = "クラウドに同期";
+"offline.sign_in_to_sync" = "サインインしてデバイス間で同期";
+"offline.local_tasks" = "ローカルタスク";
+"offline.local_lists" = "ローカルリスト";
+"offline.warning" = "警告：サインインせずにアプリを削除すると、データが失われます。";
+"settings.local_only_mode" = "ローカルのみモード";
+"settings.local_only_description" = "サインインしてデバイス間で同期";
+"status.local_only" = "ローカルのみモード";
+"status.offline" = "オフラインで作業中";
+"status.offline_with_pending" = "オフライン • %d件保留中";
+"status.syncing" = "同期中...";
+"status.syncing_count" = "%d件を同期中...";
+"status.sync_failed" = "%d件の同期に失敗";
+"status.synced" = "すべて同期済み";
+"status.local_only_description" = "データはこのデバイスにのみ保存されています。サインインして同期してください。";
+"status.pending_sync_description" = "%d件の変更がオンライン時に同期されます";
+"status.failed_sync_description" = "%d件の同期に失敗しました";
+"status.retry_now" = "再試行";
+"status.sync_in_progress" = "変更は自動的に同期されます";
+"sync" = "同期";
+"welcome.title" = "Astridへようこそ！";
+"welcome.subtitle" = "あなたのスマートタスクマネージャー";
+"welcome.sign_in" = "サインイン";
+"welcome.use_locally" = "アカウントなしで使用";
+"welcome.local_note" = "後でサインインしてデバイス間で同期できます";

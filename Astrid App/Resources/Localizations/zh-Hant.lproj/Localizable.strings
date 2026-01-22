@@ -1,0 +1,832 @@
+/* Navigation */
+"navigation.my_tasks" = "我的任務";
+"navigation.today" = "今天";
+"navigation.lists" = "清單";
+"navigation.add_list" = "添加清單";
+"navigation.all_tasks" = "所有任務";
+
+/* Settings */
+"settings" = "設置";
+"sync" = "同步";
+"last_sync" = "上次同步";
+"never" = "從不";
+"sync_now" = "立即同步";
+"features" = "功能";
+"ai_assistant" = "AI 助手";
+"alpha" = "測試版";
+"reminders" = "提醒";
+"preferences" = "偏好設置";
+"appearance" = "外觀";
+"contacts" = "聯絡人";
+"account" = "帳號";
+"account_access" = "帳號與訪問";
+"about" = "關於";
+"version" = "版本";
+"build" = "構建版本";
+"sign_out" = "退出登錄";
+"are_you_sure_sign_out" = "確定要退出登錄嗎？";
+
+/* Language */
+"language" = "語言";
+"select_language" = "選擇語言";
+"language_settings" = "語言";
+"automatic" = "自動";
+"device_language" = "設備語言";
+"english" = "English";
+"spanish" = "Español";
+"french" = "Français";
+"german" = "Deutsch";
+"italian" = "Italiano";
+"portuguese" = "Português";
+"dutch" = "Nederlands";
+"russian" = "Русский";
+"japanese" = "日本語";
+"korean" = "한국어";
+"chinese_simplified" = "简体中文";
+"chinese_traditional" = "繁體中文";
+"language_restart_note" = "語言更改可能需要重啟應用才能完全生效。";
+
+/* Actions */
+"actions.save" = "保存";
+"actions.cancel" = "取消";
+"actions.delete" = "刪除";
+"actions.edit" = "編輯";
+"actions.add" = "添加";
+"actions.close" = "關閉";
+"actions.create" = "創建";
+"actions.update" = "更新";
+"actions.confirm" = "確認";
+"actions.done" = "完成";
+"actions.back" = "返回";
+"actions.next" = "下一步";
+"actions.copy" = "複製";
+"actions.share" = "分享";
+"actions.move" = "移動";
+"actions.archive" = "歸檔";
+"actions.restore" = "恢復";
+"actions.retry" = "重試";
+"actions.submit" = "提交";
+"actions.search" = "搜索";
+"actions.remove" = "移除";
+
+/* Tasks */
+"tasks.task" = "任務";
+"tasks.tasks" = "任務";
+"tasks.new_task" = "新任務";
+"tasks.add_task" = "添加任務";
+"tasks.task_details" = "任務詳情";
+"tasks.edit_task" = "編輯任務";
+"tasks.delete_task" = "刪除任務";
+"tasks.complete_task" = "完成任務";
+"tasks.task_name" = "任務名稱";
+"tasks.description" = "描述";
+"tasks.no_description" = "無描述";
+"tasks.due_date" = "截止日期";
+"tasks.created_by" = "創建者";
+"tasks.reminder" = "提醒";
+"tasks.reminders" = "提醒";
+"tasks.priority" = "優先級";
+"tasks.assignee" = "負責人";
+"tasks.completed" = "已完成";
+"tasks.incomplete" = "未完成";
+"tasks.overdue" = "已逾期";
+"tasks.no_due_date" = "無截止日期";
+"tasks.no_reminder" = "無提醒";
+"tasks.placeholder.task_name" = "需要做什麼？";
+"tasks.placeholder.description" = "添加描述...";
+"tasks.copy_task" = "複製任務";
+"tasks.share_task" = "分享任務";
+"tasks.delete_confirm" = "刪除此任務？";
+"tasks.loading" = "正在加載任務...";
+"tasks.priority_only" = "僅限 %@";
+
+/* Lists */
+"lists.list" = "清單";
+"lists.new_list" = "新清單";
+"lists.add_list" = "添加清單";
+"lists.edit_list" = "編輯清單";
+"lists.delete_list" = "刪除清單";
+"lists.list_name" = "清單名稱";
+"lists.list_description" = "描述";
+"lists.list_settings" = "清單設置";
+"lists.enter_name" = "輸入清單名稱";
+"lists.description_placeholder" = "添加描述（可選）...";
+"lists.members" = "成員";
+"lists.no_members" = "暫無成員";
+"lists.loading" = "正在加載清單...";
+"lists.all_lists" = "所有清單";
+"lists.empty_state_message" = "創建一個清單來整理您的任務！";
+"lists.copy_to_list" = "複製到清單";
+"lists.target_list" = "目標清單";
+"lists.my_tasks_only" = "僅我的任務";
+"lists.include_comments" = "包含評論";
+
+/* Priority */
+"priority.none" = "無";
+"priority.low" = "低";
+"priority.medium" = "中";
+"priority.high" = "高";
+"priority.urgent" = "緊急";
+
+/* Time */
+"time.today" = "今天";
+"time.tomorrow" = "明天";
+"time.yesterday" = "昨天";
+"time.this_week" = "本週";
+"time.next_week" = "下週";
+"time.this_month" = "本月";
+"time.next_month" = "下月";
+"time.atDueTime" = "截止時";
+"time.minutesBefore" = "%d 分鐘前";
+"time.hourBefore" = "1 小時前";
+"time.hoursBefore" = "%d 小時前";
+"time.dayBefore" = "1 天前";
+"time.weekBefore" = "1 週前";
+
+/* Messages */
+"messages.success" = "成功！";
+"messages.error" = "錯誤";
+"messages.loading" = "加載中...";
+"messages.saving" = "保存中...";
+"messages.saved" = "已保存";
+"messages.deleting" = "刪除中...";
+"messages.deleted" = "已刪除";
+"messages.updating" = "更新中...";
+"messages.updated" = "已更新";
+"messages.copying" = "複製中...";
+"messages.copied" = "已複製";
+"messages.no_results" = "未找到結果";
+"messages.something_went_wrong" = "出錯了";
+
+/* Empty States */
+"empty_state.my_tasks" = "歡迎使用 Astrid！添加您的第一個任務開始吧。";
+"empty_state.my_tasks_caught_up" = "您已完成所有任務！目前沒有分配給您的任務。";
+"empty_state.today" = "今天沒有安排！享受空閒時間，或添加新任務。";
+"empty_state.public_list" = "與世界分享您的想法！添加任務 - 任何人都可以看到此公開清單。";
+"empty_state.shared_list" = "開始協作！添加任務以啟動此共享清單。";
+"empty_state.list_with_name" = "讓我們填滿 \"%@\"！添加您的第一個任務開始吧。";
+"empty_state.default" = "準備好記錄您的想法了嗎？創建您的第一個任務開始吧！";
+"empty_state.no_lists" = "暫無清單。創建您的第一個清單開始吧！";
+
+/* Contacts */
+"contacts.synced_contacts" = "已同步聯絡人";
+"contacts.sync_contacts_now" = "立即同步聯絡人";
+"contacts.grant_full_access" = "授予完全訪問權限";
+"contacts.access_required" = "需要聯絡人訪問權限";
+"contacts.open_settings_prompt" = "點擊打開設置並啟用訪問權限";
+"contacts.add_collaborators" = "添加協作者";
+"contacts.upload_for_collaboration" = "上傳您的聯絡人以獲得更好的協作體驗";
+"contacts.footer_text" = "聯絡人用於推薦協作者。它們經過加密，絕不會與第三方共享。";
+
+/* Debug Settings */
+"debug.settings" = "調試設置";
+"debug.server_config" = "服務器配置";
+"debug.current_server" = "當前：%@";
+"debug.toast_debug_mode" = "Toast 調試模式";
+"debug.toast_debug_desc" = "顯示用於調試的詳細 Toast 通知";
+"debug.reminder_debug_mode" = "提醒調試模式";
+"debug.reminder_debug_desc" = "啟用詳細的提醒調試日誌";
+"debug.test_prompts" = "測試提示";
+"debug.test_love_prompt" = "測試“喜歡 Astrid 嗎？”提示";
+"debug.test_love_prompt_desc" = "觸發向活躍用戶顯示的反饋提示";
+"debug.reset_prompt_tracking" = "重置提示追蹤";
+"debug.reset_prompt_tracking_desc" = "清除提示歷史記錄";
+
+/* Search */
+"search.placeholder" = "搜索任務和用戶";
+"search.query_prefix" = "搜索：%@";
+
+/* Profile */
+"profile.account_access_desc" = "個人資料、郵箱驗證和密碼設置";
+"profile.account_access_full_desc" = "個人資料、郵箱、通行密鑰、數據導出";
+"profile.title" = "個人資料";
+"profile.loading" = "正在加載個人資料...";
+"profile.go_back" = "返回";
+"profile.ai_agent" = "AI 代理";
+"profile.joined" = "加入於 %@";
+"profile.no_email" = "無郵箱";
+"profile.your_tasks" = "您的任務";
+"profile.shared_tasks_with" = "與 %@ 共享的任務";
+"profile.you" = "你";
+"profile.not_signed_in" = "未登入";
+"profile.sign_in_to_sync" = "登入以同步";
+"profile.error_not_found" = "找不到使用者";
+"profile.error_not_signed_in" = "登入以查看您的個人資料";
+"profile.error_load_failed" = "載入個人資料失敗";
+
+/* Stats */
+"stats.completed" = "已完成";
+"stats.inspired" = "受啟發";
+"stats.supported" = "受支持";
+"stats.completed_tagline" = "搞定了！";
+"stats.inspired_tagline" = "激勵他人！";
+"stats.supported_tagline" = "幫助團隊獲勝！";
+
+/* Sidebar */
+"navigation.public_shared_lists" = "公開共享清單";
+"navigation.public_lists" = "公開清單";
+"navigation.see_all_collaborative" = "查看所有協作清單 →";
+"navigation.see_all_suggested" = "查看所有推薦清單 →";
+"navigation.favorites" = "收藏";
+
+/* Task Input */
+"tasks.add_task_placeholder" = "添加任務";
+"tasks.search_tasks_placeholder" = "搜索任務...";
+
+/* Assignee */
+"assignee.unassigned" = "未分配";
+"assignee.you" = "您";
+
+/* Reminders */
+"reminders.counting_on_you" = "這些人正指望著您！";
+"reminders.complete" = "完成";
+"reminders.snooze_15_minutes" = "稍後提醒（15 分鐘）";
+"reminders.snooze_1_day" = "1 天後";
+"reminders.snooze_1_week" = "1 週後";
+
+/* Notifications */
+"notifications.enable_push" = "啟用推送通知";
+"notifications.not_now" = "以後再說";
+"notifications.enable" = "啟用";
+"notifications.enable_message" = "請啟用推送通知，以便我提醒您完成任務！";
+"notifications.disabled" = "通知已禁用";
+"notifications.open_settings" = "打開設置";
+"notifications.disabled_message" = "推送通知已禁用。請在設置中啟用。";
+
+/* Auth */
+"auth.tagline" = "搞定它！";
+"auth.sign_in_header" = "登錄以開始！";
+"auth.continue_with_google" = "繼續使用 Google";
+"auth.continue_with_passkey" = "繼續使用通行密鑰";
+"auth.continue_with_apple" = "繼續使用 Apple";
+"auth.email" = "電子郵箱";
+
+/* Settings - Reminders */
+"settings.reminders.push_notifications" = "推送通知";
+"settings.reminders.enable_push" = "啟用推送通知";
+"settings.reminders.open_settings" = "打開設置以啟用通知";
+"settings.reminders.email_notifications" = "郵件通知";
+"settings.reminders.send_email" = "發送郵件提醒";
+"settings.reminders.default_time" = "默認提醒時間";
+"settings.reminders.when_to_remind" = "何時提醒";
+"settings.reminders.daily_digest" = "每日摘要";
+"settings.reminders.send_daily_digest" = "發送每日摘要";
+"settings.reminders.digest_time" = "摘要時間";
+"settings.reminders.timezone" = "時區";
+"settings.reminders.quiet_hours" = "靜音時段（可選）";
+"settings.reminders.enable_quiet_hours" = "啟用靜音時段";
+
+/* Settings - AI */
+"setting.ai.api_keys" = "AI API 金鑰";
+"settings.ai.api_keys_description" = "添加您自己的 API 金鑰以使用 AI 助手。金鑰經過加密並安全地存儲在伺服器上。";
+"settings.ai.loading_keys" = "正在載入 API 金鑰...";
+"settings.ai.about_keys" = "關於 API 金鑰";
+"settings.ai.about_description" = "您的 API 金鑰用於支持 Astrid 中的 AI 助手功能。每個提供商提供不同的功能和定價。";
+"settings.ai.encryption_info" = "金鑰在存儲前使用 AES-256 進行加密。Astrid 絕不會與第三方共享您的金鑰。";
+"settings.ai.not_configured" = "未配置";
+"settings.ai.api_new.badge" = "新";
+"settings.ai.manage_keys" = "管理 API 金鑰";
+"settings.ai.manage_keys_subtitle" = "添加 Claude、OpenAI 或 Gemini 金鑰";
+"settings.ai.api_keys_footer" = "添加您自己的 Claude、OpenAI 或 Gemini API 金鑰以支持 AI 助手。";
+
+/* Exploratory Features */
+"exploratory_features" = "實驗性功能";
+"ai_assistants" = "AI 助手";
+"apple_reminders" = "Apple 提醒事項";
+"settings.reminders.configure_sync" = "配置同步";
+"settings.reminders.sync_subtitle" = "與 Siri 和 Apple Watch 同步";
+"settings.exploratory.warning" = "這些功能是實驗性的，正在積極開發中。";
+
+/* Smart Task Creation */
+"smart_task_creations" = "智能任務創建";
+"smart_task_creation_description" = "從標題中解析日期、優先級和標籤";
+
+/* Settings - Appearance */
+"settings.appearance.theme" = "主題";
+"settings.appearance.email_to_task" = "郵件轉任務";
+"settings.appearance.email_to_task_footer" = "通過發送郵件到 remindme@astrid.cc 來創建任務";
+"settings.appearance.email_to_task_self" = "個人任務：發送到 remindme@astrid.cc";
+"settings.appearance.email_to_task_assigned" = "指派任務：抄送 remindme@astrid.cc 並包含一名收件人";
+"settings.appearance.email_to_task_group" = "團隊任務：抄送 remindme@astrid.cc 並包含多名收件人";
+"settings.appearance.email_to_task_subject" = "郵件主題將成為任務標題";
+"settings.appearance.email_to_task_body" = "郵件正文將成為任務描述";
+
+/* Theme Modes */
+"theme.ocean" = "海洋";
+"theme.light" = "淺色";
+"theme.dark" = "深色";
+"theme.auto" = "自動";
+
+/* Settings - Account */
+"settings.account.loading" = "正在加載帳號...";
+"settings.account.display_name" = "顯示名稱";
+"settings.account.name_placeholder" = "姓名";
+"settings.account.email_placeholder" = "電子郵箱";
+"settings.account.save_changes" = "保存更改";
+"settings.account.oauth_footer" = "已使用 Google 登錄。部分欄位可能由您的 Google 帳號管理。";
+"settings.account.pending_email" = "待處理的郵箱更改";
+"settings.account.resend_verification" = "重新發送驗證";
+"settings.account.cancel_change" = "取消更改";
+"settings.account.email_not_verified" = "郵箱未驗證";
+"settings.account.send_verification" = "發送驗證郵件";
+"settings.account.email_verification" = "郵箱驗證";
+"settings.account.pending_email_footer" = "請檢查您的收件箱以驗證新地址。驗證後更改才會生效。";
+"settings.account.verify_email_footer" = "驗證您的郵箱以訪問所有功能並接收通知。";
+"settings.account.info" = "帳號信息";
+"settings.account.id" = "帳號 ID";
+"settings.account.created" = "創建時間";
+"settings.account.auth_method" = "認證方式";
+"settings.account.google" = "Google";
+"settings.account.passkey" = "通行密鑰";
+"settings.account.adding_passkey" = "正在添加通行密鑰...";
+"settings.account.add_passkey_button" = "添加通行密鑰";
+"settings.account.passkeys_footer" = "通行密鑰使用生物識別或設備 PIN 進行安全、無密碼的認證。它們會自動在您的設備間同步。";
+"settings.account.passkey_name_placeholder" = "通行密鑰名稱";
+"settings.account.synced" = "已同步";
+"settings.account.added_on" = "添加於 %@";
+"settings.account.added_recently" = "最近添加";
+"settings.account.rename_failed" = "重命名通行密鑰失敗";
+"settings.account.delete_failed" = "刪除通行密鑰失敗";
+"settings.account.export_json" = "導出數據 (JSON)";
+"settings.account.export_csv" = "導出數據 (CSV)";
+"settings.account.your_data" = "您的數據";
+"settings.account.your_data_footer" = "下載您所有的任務、清單和帳號數據。";
+"settings.account.delete_account_footer" = "永久刪除您的帳號和所有相關數據。此操作無法撤銷。";
+"settings.account.no_passkeys_registered" = "未註冊通行密鑰";
+"settings.account.add_passkey_description" = "添加通行密鑰以實現更快的無密碼登錄";
+"settings.account.passkeys" = "通行密鑰";
+"settings.account.loading_passkeys" = "正在加載通行密鑰...";
+"settings.account.add_passkey" = "添加通行密鑰";
+"settings.account.no_passkeys" = "尚未添加通行密鑰。";
+"settings.account.danger_zone" = "危險區域";
+"settings.account.delete_account" = "刪除帳號";
+"settings.account.delete_warning" = "此操作無法撤銷";
+"settings.account.delete_remove_list_header" = "刪除帳號將永久移除：";
+"settings.account.delete_remove_tasks" = "您所有的任務及其歷史記錄";
+"settings.account.delete_remove_lists" = "您擁有的所有清單";
+"settings.account.delete_remove_comments" = "您所有的評論";
+"settings.account.delete_remove_profile" = "您的個人資料和設置";
+"settings.account.delete_remove_files" = "所有上傳的文件";
+"settings.account.delete_confirm_prompt" = "如需確認，請在下方輸入「刪除我的帳號」：";
+"settings.account.delete_confirm_placeholder" = "輸入確認內容";
+"settings.account.delete_confirmation" = "確認";
+"settings.account.delete_confirm_instruction" = "您必須準確輸入「刪除我的帳號」才能繼續。";
+"settings.account.delete_confirm_mismatch" = "確認文本不匹配";
+"settings.account.delete_confirm_match" = "確認文本匹配";
+"settings.account.delete_my_account_button" = "刪除我的帳號";
+"settings.account.delete_final_confirmation" = "最終確認";
+"settings.account.delete_forever" = "永久刪除";
+"settings.account.delete_final_warning" = "您確定嗎？這將永久刪除您的帳號和所有數據。此操作無法撤銷。";
+"settings.account.delete_confirm_phrase" = "刪除我的帳號";
+
+/* Additional translations */
+"userMenu.refreshData" = "重新整理資料";
+"actions.ok" = "確定";
+"actions.filter" = "篩選";
+"actions.sort" = "排序";
+"actions.clear" = "清除";
+"actions.apply" = "套用";
+"actions.change" = "變更";
+"tasks.who" = "誰";
+"tasks.due_time" = "截止時間";
+"tasks.timer" = "計時器";
+"lists.sort_and_filters" = "排序與篩選";
+"lists.admin" = "管理員";
+"lists.filters" = "篩選器";
+"lists.clear_all_filters" = "清除所有篩選器";
+"lists.sort_by" = "排序依據";
+"lists.sort_order" = "排序順序";
+"lists.auto" = "自動";
+"lists.manual" = "手動";
+"lists.due_date" = "截止日期";
+"lists.created_date" = "建立日期";
+"lists.task_completion" = "任務完成";
+"lists.incomplete_completed_recently" = "未完成 + 最近完成";
+"lists.all" = "全部";
+"lists.me" = "我";
+"lists.not_me" = "非我（其他人）";
+"lists.overdue" = "已逾期";
+"lists.this_week" = "本週";
+"lists.this_month" = "本月";
+"lists.no_date" = "無日期";
+"lists.all_priorities" = "所有優先順序";
+"lists.highest_priority" = "!!! 最高";
+"lists.high_priority" = "!! 高";
+"lists.medium_priority" = "! 中";
+"lists.low_priority" = "○ 低";
+"lists.assigned_by" = "指派者";
+"lists.repeating" = "重複";
+"lists.not_repeating" = "不重複";
+"lists.daily" = "每天";
+"lists.weekly" = "每週";
+"lists.monthly" = "每月";
+"lists.yearly" = "每年";
+"lists.custom" = "自訂";
+"lists.list_membership" = "列表成員資格";
+"lists.all_tasks" = "所有任務";
+"lists.in_any_list" = "在任何列表中";
+"lists.not_in_any_list" = "不在任何列表中";
+"lists.favorite" = "收藏";
+"lists.favorite_description" = "此列表將顯示在您的列表頂端";
+"lists.saved_filter" = "已儲存的篩選器";
+"lists.saved_filter_description" = "此列表根據篩選器顯示任務，而非成員資格";
+"lists.list_information" = "列表資訊";
+"lists.list_appearance" = "列表外觀";
+"lists.list_image" = "列表圖片";
+"lists.list_image_description" = "選擇自訂圖片或圖示";
+"lists.default_task_settings" = "預設任務設定";
+"lists.task_creator" = "任務建立者";
+"lists.all_day" = "整天（無時間）";
+"lists.never" = "從不";
+"lists.github_integration" = "GitHub 整合";
+"lists.link_repo_description" = "連結儲存庫用於 AI 程式設計代理";
+"lists.loading_repositories" = "正在載入儲存庫...";
+"lists.github_repository" = "GitHub 儲存庫";
+"lists.no_repositories_found" = "找不到儲存庫。請確保您的 GitHub 帳戶已連接。";
+"lists.pending_invitations" = "待處理邀請";
+"lists.invited" = "已邀請";
+"lists.cancel_invite" = "取消邀請";
+"lists.ai_agents" = "AI 代理";
+"lists.add_ai_agent" = "新增 AI 代理";
+"lists.no_ai_providers" = "未設定 AI 提供者";
+"lists.make_member" = "設為成員";
+"lists.make_admin" = "設為管理員";
+"lists.remove" = "移除";
+"lists.share_list" = "分享列表";
+"lists.share_list_description" = "產生此列表的可分享連結";
+"lists.available_agents" = "可用代理";
+"lists.loading_ai_agents" = "正在載入 AI 代理...";
+"lists.claude_coding_description" = "Claude AI 用於程式設計和任務協助";
+"lists.openai_coding_description" = "OpenAI GPT-4 用於程式設計和任務協助";
+"lists.gemini_coding_description" = "Google Gemini 用於程式設計和任務協助";
+"lists.claude_task_description" = "Claude AI 用於任務協助";
+"lists.openai_task_description" = "OpenAI GPT-4 用於任務協助";
+"lists.gemini_task_description" = "Google Gemini 用於任務協助";
+"lists.default_agent_description" = "AI 代理用於任務協助";
+"lists.ai_coding_agents" = "AI 程式設計代理";
+"lists.connect_github_description" = "連接 GitHub 儲存庫以啟用程式設計工作流程";
+"lists.list_privacy" = "列表隱私";
+"lists.make_public" = "設為公開";
+"lists.make_private" = "設為私密";
+"lists.public_description" = "任何擁有連結的人都可以檢視此列表";
+"lists.private_description" = "只有成員可以檢視此列表";
+"lists.owner" = "擁有者";
+"lists.admin_role" = "管理員";
+"lists.member_role" = "成員";
+"lists.add_member" = "新增成員";
+"lists.tomorrow" = "明天";
+"lists.next_week" = "下週";
+"lists.next_month" = "下個月";
+"lists.none" = "無";
+"lists.delete_confirm" = "您確定要刪除此列表嗎？此操作無法復原。";
+"messages.danger_zone" = "危險區域";
+"settings.account.no_name" = "未設定名稱";
+"settings.account.unknown" = "未知";
+"settings.account.failed_load" = "載入帳戶失敗：%@";
+"settings.account.invalid_email" = "請輸入有效的電子郵件地址";
+"settings.account.profile_updated_verify" = "個人檔案已更新。請檢查您的電子郵件以驗證新地址。";
+"settings.account.profile_updated_success" = "個人檔案更新成功";
+"settings.account.failed_save" = "儲存失敗：%@";
+"settings.account.failed_process_image" = "處理圖片失敗";
+"settings.account.failed_upload_image" = "上傳圖片失敗：%@";
+"settings.account.failed_send_verification" = "傳送驗證郵件失敗：%@";
+"settings.account.email_change_cancelled" = "電子郵件變更已取消";
+"settings.account.failed_cancel_email_change" = "取消電子郵件變更失敗：%@";
+"settings.account.failed_export" = "匯出資料失敗：%@";
+"settings.account.failed_delete" = "刪除帳戶失敗：%@";
+"settings.account.passkeys_description" = "通行密鑰讓您無需密碼即可安全登入。";
+"settings.account.data" = "資料";
+"settings.account.export_data" = "匯出我的資料";
+"settings.account.export_description" = "以 JSON 格式下載您的所有任務、列表和個人檔案資料。";
+"settings.account.delete_description" = "永久刪除帳戶和所有資料。";
+"settings.reminders.start" = "開始";
+"settings.reminders.end" = "結束";
+"settings.reminders.test" = "測試";
+"settings.reminders.send_test" = "傳送測試提醒";
+"settings.reminders.test_reminder" = "測試提醒";
+"settings.reminders.test_message" = "測試通知將在 5 秒後出現";
+
+/* Apple Reminders Sync */
+"reminders.access_granted" = "已授予存取權限";
+"reminders.access_denied" = "存取被拒絕";
+"reminders.tap_to_open_settings" = "點擊打開設定";
+"reminders.enable_sync" = "啟用提醒事項同步";
+"reminders.sync_description" = "與 Apple 提醒事項同步任務以便 Siri 和 Watch 使用";
+"reminders.access_header" = "提醒事項存取";
+"reminders.access_footer" = "將 Astrid 任務與 Apple 提醒事項同步。使用 Siri 新增任務，並在 Apple Watch 上檢視。";
+"reminders.sync_status" = "同步狀態";
+"reminders.last_sync" = "上次同步";
+"reminders.linked_lists" = "已連結列表";
+"reminders.syncing" = "同步中...";
+"reminders.sync_all_lists" = "同步所有列表";
+"reminders.your_lists" = "您的列表";
+"reminders.your_lists_footer" = "點擊列表以將其與 Apple 提醒事項連結。選擇匯出任務或從現有提醒事項列表匯入。";
+"reminders.import_from_reminders" = "從提醒事項匯入";
+"reminders.import_footer" = "將現有提醒事項列表匯入 Astrid。";
+"reminders.unlink" = "取消連結";
+"reminders.astrid_list" = "Astrid 列表";
+"reminders.sync_direction" = "同步方向";
+"reminders.create_new_list" = "建立新列表";
+"reminders.link_to_reminders_list" = "連結到提醒事項列表";
+"reminders.link_footer" = "選擇現有提醒事項列表或建立名為 '%@' 的新列表";
+"reminders.include_completed" = "包含已完成的任務";
+"reminders.include_completed_desc" = "同步已完成的任務";
+"reminders.options" = "選項";
+"reminders.link_list" = "連結列表";
+"reminders.link" = "連結";
+"reminders.reminders_list" = "提醒事項列表";
+"reminders.create_new_astrid_list" = "建立新的 Astrid 列表";
+"reminders.import_into" = "匯入到";
+"reminders.import_into_footer" = "建立名為 '%@' 的新 Astrid 列表或匯入到現有列表。";
+"reminders.import_completed_desc" = "匯入已完成的提醒事項";
+"reminders.import_reminders" = "匯入提醒事項";
+"reminders.import" = "匯入";
+
+/* Repeating Pattern Editor */
+"repeating.custom_pattern" = "自訂重複模式";
+"repeating.repeat_every" = "每隔";
+"repeating.repeat_on_days" = "在這些日子重複";
+"repeating.repeat_type" = "重複類型";
+"repeating.same_date_monthly" = "每月同一日期";
+"repeating.same_weekday_monthly" = "每月同一週的同一星期幾";
+"repeating.day_of_month" = "每月的第幾天";
+"repeating.weekday" = "星期幾";
+"repeating.week_of_month" = "每月的第幾週";
+"repeating.month" = "月";
+"repeating.day" = "天";
+"repeating.repeat_mode" = "重複模式";
+"repeating.from_completion" = "下次從完成日期起算";
+"repeating.from_due_date" = "下次從原定截止日期起算";
+"repeating.end_condition" = "結束條件";
+"repeating.never" = "永不";
+"repeating.after_occurrences" = "在指定次數後";
+"repeating.until_date" = "直到指定日期";
+"repeating.num_occurrences" = "重複次數";
+"repeating.end_date" = "結束日期";
+"repeating.preview" = "預覽";
+"repeating.no_repeat" = "不重複";
+"repeating.days" = "天";
+"repeating.weeks" = "週";
+"repeating.months" = "月";
+"repeating.years" = "年";
+"repeating.1st" = "第一";
+"repeating.2nd" = "第二";
+"repeating.3rd" = "第三";
+"repeating.4th" = "第四";
+"repeating.5th" = "第五";
+
+/* Repeating Pattern Editor */
+"repeating.custom_pattern" = "自訂重複模式";
+"repeating.repeat_every" = "每隔";
+"repeating.repeat_on_days" = "在這些日子重複";
+"repeating.repeat_type" = "重複類型";
+"repeating.same_date_monthly" = "每月同一日期";
+"repeating.same_weekday_monthly" = "每月同一星期和週";
+"repeating.day_of_month" = "月份中的日期";
+"repeating.weekday" = "星期幾";
+"repeating.week_of_month" = "月份中的週";
+"repeating.month" = "月";
+"repeating.day" = "日";
+"repeating.repeat_mode" = "重複模式";
+"repeating.from_completion" = "從完成日期計算下次";
+"repeating.from_due_date" = "從原截止日期計算下次";
+"repeating.end_condition" = "結束條件";
+"repeating.never" = "永不";
+"repeating.after_occurrences" = "X次後";
+"repeating.until_date" = "直到特定日期";
+"repeating.num_occurrences" = "重複次數";
+"repeating.end_date" = "結束日期";
+"repeating.preview" = "預覽";
+"repeating.no_repeat" = "不重複";
+"repeating.days" = "天";
+"repeating.weeks" = "週";
+"repeating.months" = "月";
+"repeating.years" = "年";
+"repeating.1st" = "第1";
+"repeating.2nd" = "第2";
+"repeating.3rd" = "第3";
+"repeating.4th" = "第4";
+"repeating.5th" = "第5";
+
+/* Filter Labels */
+"filters.sort_by" = "排序方式";
+"filters.sort" = "排序";
+"filters.auto" = "自動";
+"filters.manual" = "手動";
+"filters.completion_status" = "完成狀態";
+"filters.show" = "顯示";
+"filters.default" = "預設";
+"filters.all_tasks" = "所有任務";
+"filters.all_priorities" = "所有優先順序";
+"filters.highest_priority" = "!!! 最高";
+"filters.high_priority" = "!! 高";
+"filters.medium_priority" = "! 中";
+"filters.low_priority" = "○ 低";
+"filters.all_dates" = "所有日期";
+"filters.this_week" = "本週";
+"filters.this_month" = "本月";
+"filters.no_due_date" = "無截止日期";
+"filters.who" = "負責人";
+"filters.all" = "全部";
+"filters.me" = "我";
+"filters.not_me" = "非我（其他人）";
+"filters.unassigned" = "未指派";
+"filters.not_repeating" = "不重複";
+"filters.save_as_smart_list" = "儲存為智慧列表";
+"filters.save_footer" = "將這些篩選設定儲存為側邊欄的智慧列表";
+"filters.clear_all" = "清除所有篩選";
+"filters.saving" = "儲存中...";
+"filters.sort_and_filters" = "排序和篩選";
+"filters.filter_by_list" = "按列表篩選";
+"filters.featured_lists" = "精選列表";
+"filters.view_add" = "檢視並新增";
+"filters.tasks_count" = "%d個任務";
+
+/* List Details */
+"list.type" = "列表類型";
+"list.task_defaults" = "預設值";
+"list.favorite_description" = "此列表顯示在收藏夾部分";
+"list.smart_list_description" = "此列表基於篩選條件顯示任務，而非成員資格";
+"list.defaults_description" = "為此列表中的新任務設定預設值";
+"list.task_creator" = "任務建立者";
+"list.select_lists" = "選擇列表";
+"list.details" = "列表詳情";
+"list.oauth_hint" = "使用此ID進行OAuth API整合和程式代理";
+"list.delete_list" = "刪除列表";
+"list.danger_zone" = "危險區域";
+"list.list_settings" = "列表設定";
+
+/* Sharing */
+"share.share_list" = "分享列表";
+"share.share_task" = "分享任務";
+"share.private_list_message" = "這是私人列表。只有擁有存取權限的成員才能檢視。";
+"share.public_list_message" = "這是公開列表。任何擁有連結的人都可以檢視。";
+"share.private_task_message" = "這是私人任務。只有擁有此列表存取權限的使用者才能檢視。";
+"share.generating_link" = "正在產生連結...";
+"share.share_link_hint" = "與任何有權檢視此任務的人分享此連結";
+"share.copy_link" = "複製到剪貼簿";
+"share.link_copied" = "連結已複製！";
+"share.share_list_link_hint" = "與任何有權查看此列表的人分享此連結";
+"share.link_redirect_list" = "連結將重新導向至應用程式中的列表";
+"share.link_redirect_task" = "連結將重新導向至應用程式中的任務";
+
+/* Save Filter Dialog */
+"save_filter.title" = "儲存為智慧列表";
+"save_filter.description" = "這將把您目前的篩選設定儲存為智慧列表";
+"save_filter.due_date" = "截止日期";
+
+/* Authentication */
+"auth.continue_passkey" = "使用通行密鑰繼續";
+"auth.new_user" = "新使用者？";
+"auth.returning_user" = "回來了？";
+"auth.sign_in_short" = "登入";
+"auth.create_account" = "建立帳戶";
+"auth.create_account_footer" = "登入以在所有裝置上同步任務並與他人協作。";
+"auth.sign_in_prompt_title" = "登入";
+"auth.sign_in_cta" = "登入以解鎖更多功能";
+"auth.benefit_sync_title" = "跨裝置同步";
+"auth.benefit_sync_desc" = "隨時隨地從任何裝置存取您的任務";
+"auth.benefit_collaborate_title" = "與他人協作";
+"auth.benefit_collaborate_desc" = "共享清單並共同完成任務";
+"auth.benefit_backup_title" = "保護您的資料安全";
+"auth.benefit_backup_desc" = "您的任務安全地備份在雲端";
+"auth.sign_in_data_note" = "您現有的任務將同步到您的帳戶";
+
+/* Attachments */
+"attachments.saving" = "儲存中...";
+"attachments.save_to_task" = "儲存到任務";
+"attachments.quick_look" = "快速查看";
+"attachments.quick_look_tip" = "提示：在快速查看中使用標記來編輯並儲存到Astrid";
+"attachments.choose_photo" = "選擇照片";
+"attachments.choose_video" = "選擇影片";
+"attachments.choose_document" = "選擇文件";
+"attachments.count" = "附件（%d）";
+
+/* Image Picker */
+"image_picker.upload_library" = "從照片圖庫上傳";
+"image_picker.choose_description" = "從您的照片圖庫中選擇圖片";
+"image_picker.pinch_zoom" = "雙指縮放，拖動定位";
+"image_picker.uploading" = "上傳中...";
+"image_picker.cancel_upload" = "取消上傳";
+"image_picker.use_this_image" = "使用此圖片";
+"image_picker.choose_different_photo" = "選擇其他照片";
+
+/* Inline Pickers */
+"picker.no_due_date" = "無截止日期";
+"picker.custom_date" = "自訂日期";
+"picker.custom_time" = "自訂時間";
+"picker.add_time" = "新增時間";
+"picker.no_lists" = "找不到列表";
+"picker.add_to_lists" = "新增到列表";
+"picker.loading_agents" = "正在載入AI助理...";
+"picker.ai_agent" = "AI助理";
+
+/* Sync Status */
+"sync.status" = "同步狀態";
+"sync.unstable_connection" = "偵測到不穩定連線";
+"sync.retry_failed" = "重試失敗的操作";
+"sync.working_offline" = "離線工作中";
+
+/* Profile */
+"profile.updated_success" = "您的個人資料已成功更新！";
+"profile.tap_change_photo" = "點選更改照片";
+"profile.uploading_photo" = "正在上傳照片...";
+"profile.display_name" = "顯示名稱";
+"profile.email_address" = "電子郵件地址";
+"profile.edit_profile" = "編輯個人資料";
+"profile.saving" = "儲存中...";
+"profile.save_changes" = "儲存變更";
+
+/* Members */
+"members.searching" = "搜尋聯絡人...";
+"members.astrid_users" = "您的聯絡人中使用Astrid的人";
+"members.loading_suggestions" = "載入建議...";
+"members.add_collaborators" = "新增協作者";
+"members.upload_contacts" = "上傳您的聯絡人以獲得更好的協作";
+"members.invite_email" = "透過電子郵件邀請";
+"members.add_member" = "新增成員";
+
+/* Membership (Local User) */
+"membership.requires_account" = "共享清單需要一個帳戶";
+"membership.requires_account_description" = "登入以邀請協作者並與他人共享清單。";
+"membership.sign_in_to_share" = "登入以共享清單";
+
+/* Comments */
+"comments.count" = "評論（%d）";
+"comments.empty" = "暫無評論。成為第一個評論的人！";
+"comments.add_placeholder" = "新增評論...";
+"comments.delete_comment" = "刪除留言";
+"comments.upload_error" = "上傳錯誤";
+
+/* Task Edit */
+"task_edit.add_to_list" = "新增到列表";
+"task_edit.add_another_list" = "新增另一個列表";
+"task_edit.only_you" = "只有您可以看到此任務";
+"task_edit.add_description" = "新增描述...";
+"task_edit.last_timer" = "上次：%@";
+"task_edit.copy_to_lists" = "複製到我的列表";
+
+/* Timer */
+"timer.complete_task" = "完成任務";
+"timer.dismiss_alarm" = "關閉鬧鐘";
+"timer.tap_to_change" = "點選時間以更改時長";
+"timer.snooze_1hour" = "延後1小時";
+
+/* Notifications */
+"notification.complete_task" = "完成任務";
+"notification.test_reminder" = "📱 測試提醒";
+
+/* Debug Settings */
+"debug.contacts_settings" = "聯絡人設定";
+"debug.debug_settings" = "除錯設定";
+"debug.app_version" = "Astrid v%@";
+"debug.current_server" = "目前伺服器";
+"debug.active_config" = "使用中的設定";
+"debug.restart_required" = "更改需要重新啟動應用程式";
+"debug.available_servers" = "可用伺服器";
+"debug.reset_default" = "重設為預設";
+"debug.server_changed" = "伺服器已更改";
+"debug.get_key" = "取得金鑰";
+"server.restart_required" = "需要重新啟動";
+"server.restart_message" = "伺服器已變更為:\n%@\n\n請重新啟動應用程式以使變更生效。";
+
+/* Splash */
+"splash.loading" = "正在載入您的任務...";
+
+/* Misc */
+"misc.cancel" = "取消";
+"misc.save" = "儲存";
+"misc.close" = "關閉";
+
+/* Local Mode - Added for offline-first */
+"auth.or" = "或";
+"auth.use_without_account" = "無需帳戶使用";
+"auth.local_mode_description" = "您的任務保存在此裝置上。稍後登入即可在裝置間同步。";
+"local_user" = "本地用戶";
+"offline.local_mode_active" = "本地模式已啟用";
+"offline.data_on_device" = "您的資料僅儲存在此裝置上";
+"offline.sync_to_cloud" = "同步到雲端";
+"offline.sign_in_to_sync" = "登入以在裝置間同步";
+"offline.local_tasks" = "本地任務";
+"offline.local_lists" = "本地列表";
+"offline.warning" = "警告：如果在未登入的情況下解除安裝應用程式，您的資料將會遺失。";
+"settings.local_only_mode" = "僅本地模式";
+"settings.local_only_description" = "登入以在裝置間同步";
+"status.local_only" = "僅本地模式";
+"status.offline" = "離線工作中";
+"status.offline_with_pending" = "離線 • %d 待處理";
+"status.syncing" = "同步中...";
+"status.syncing_count" = "正在同步 %d 個項目...";
+"status.sync_failed" = "%d 個同步失敗";
+"status.synced" = "全部已同步";
+"status.local_only_description" = "您的資料僅儲存在此裝置上。登入以同步。";
+"status.pending_sync_description" = "%d 個變更將在連線時同步";
+"status.failed_sync_description" = "%d 個項目同步失敗";
+"status.retry_now" = "重試";
+"status.sync_in_progress" = "變更將自動同步";
+"sync" = "同步";
+"welcome.title" = "歡迎使用 Astrid！";
+"welcome.subtitle" = "您的智慧任務管理器";
+"welcome.sign_in" = "登入";
+"welcome.use_locally" = "無需帳戶使用";
+"welcome.local_note" = "您可以稍後登入以在裝置間同步";

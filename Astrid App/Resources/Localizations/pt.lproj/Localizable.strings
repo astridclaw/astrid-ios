@@ -1,0 +1,799 @@
+/* Navigation */
+"navigation.my_tasks" = "Minhas Tarefas";
+"navigation.today" = "Hoje";
+"navigation.lists" = "Listas";
+"navigation.add_list" = "Adicionar Lista";
+"navigation.all_tasks" = "Todas as Tarefas";
+
+/* Settings */
+"settings" = "Configurações";
+"sync" = "Sincronização";
+"last_sync" = "Última Sincronização";
+"never" = "Nunca";
+"sync_now" = "Sincronizar Agora";
+"features" = "Recursos";
+"ai_assistant" = "Assistente de IA";
+"alpha" = "ALPHA";
+"reminders" = "Lembretes";
+"preferences" = "Preferências";
+"appearance" = "Aparência";
+"contacts" = "Contatos";
+"account" = "Conta";
+"account_access" = "Conta e Acesso";
+"about" = "Sobre";
+"version" = "Versão";
+"build" = "Build";
+"sign_out" = "Sair";
+"are_you_sure_sign_out" = "Tem certeza que deseja sair?";
+
+/* Language */
+"language" = "Idioma";
+"select_language" = "Selecionar Idioma";
+"language_settings" = "Idioma";
+"automatic" = "Automático";
+"device_language" = "Idioma do Dispositivo";
+"english" = "English";
+"spanish" = "Español";
+"french" = "Français";
+"german" = "Deutsch";
+"italian" = "Italiano";
+"portuguese" = "Português";
+"dutch" = "Nederlands";
+"russian" = "Русский";
+"japanese" = "日本語";
+"korean" = "한국어";
+"chinese_simplified" = "简体中文";
+"chinese_traditional" = "繁體中文";
+"language_restart_note" = "As alterações de idioma podem exigir o reinício do aplicativo para entrarem em vigor.";
+
+/* Actions */
+"actions.save" = "Salvar";
+"actions.cancel" = "Cancelar";
+"actions.delete" = "Excluir";
+"actions.edit" = "Editar";
+"actions.add" = "Adicionar";
+"actions.close" = "Fechar";
+"actions.create" = "Criar";
+"actions.update" = "Atualizar";
+"actions.confirm" = "Confirmar";
+"actions.done" = "Concluído";
+"actions.back" = "Voltar";
+"actions.next" = "Próximo";
+"actions.copy" = "Copiar";
+"actions.share" = "Compartilhar";
+"actions.move" = "Mover";
+"actions.archive" = "Arquivar";
+"actions.restore" = "Restaurar";
+"actions.retry" = "Tentar Novamente";
+"actions.submit" = "Enviar";
+"actions.search" = "Buscar";
+"actions.remove" = "Remover";
+
+/* Tasks */
+"tasks.task" = "Tarefa";
+"tasks.tasks" = "Tarefas";
+"tasks.new_task" = "Nova Tarefa";
+"tasks.add_task" = "Adicionar Tarefa";
+"tasks.task_details" = "Detalhes da Tarefa";
+"tasks.edit_task" = "Editar Tarefa";
+"tasks.delete_task" = "Excluir Tarefa";
+"tasks.complete_task" = "Concluir Tarefa";
+"tasks.task_name" = "Nome da Tarefa";
+"tasks.description" = "Descrição";
+"tasks.no_description" = "Sem descrição";
+"tasks.due_date" = "Data de Vencimento";
+"tasks.created_by" = "Criado por";
+"tasks.reminder" = "Lembrete";
+"tasks.reminders" = "Lembretes";
+"tasks.priority" = "Prioridade";
+"tasks.assignee" = "Responsável";
+"tasks.completed" = "Concluída";
+"tasks.incomplete" = "Incompleta";
+"tasks.overdue" = "Atrasada";
+"tasks.no_due_date" = "Sem data de vencimento";
+"tasks.no_reminder" = "Sem lembrete";
+"tasks.placeholder.task_name" = "O que precisa ser feito?";
+"tasks.placeholder.description" = "Adicionar uma descrição...";
+"tasks.copy_task" = "Copiar Tarefa";
+"tasks.share_task" = "Compartilhar Tarefa";
+"tasks.delete_confirm" = "Excluir esta tarefa?";
+"tasks.loading" = "Carregando suas tarefas...";
+"tasks.priority_only" = "Apenas %@";
+
+/* Lists */
+"lists.list" = "Lista";
+"lists.new_list" = "Nova Lista";
+"lists.add_list" = "Adicionar Lista";
+"lists.edit_list" = "Editar Lista";
+"lists.delete_list" = "Excluir Lista";
+"lists.list_name" = "Nome da Lista";
+"lists.list_description" = "Descrição";
+"lists.list_settings" = "Configurações da Lista";
+"lists.enter_name" = "Digite o nome da lista";
+"lists.description_placeholder" = "Adicionar uma descrição (opcional)...";
+"lists.members" = "Membros";
+"lists.no_members" = "Nenhum membro adicionado ainda";
+"lists.loading" = "Carregando listas...";
+"lists.all_lists" = "Todas as Listas";
+"lists.empty_state_message" = "Crie uma lista para organizar suas tarefas!";
+"lists.copy_to_list" = "Copiar para Lista";
+"lists.target_list" = "Lista de Destino";
+"lists.my_tasks_only" = "Apenas Minhas Tarefas";
+"lists.include_comments" = "Incluir Comentários";
+
+/* Priority */
+"priority.none" = "Nenhuma";
+"priority.low" = "Baixa";
+"priority.medium" = "Média";
+"priority.high" = "Alta";
+"priority.urgent" = "Urgente";
+
+/* Time */
+"time.today" = "Hoje";
+"time.tomorrow" = "Amanhã";
+"time.yesterday" = "Ontem";
+"time.this_week" = "Esta semana";
+"time.next_week" = "Próxima semana";
+"time.this_month" = "Este mês";
+"time.next_month" = "Próximo mês";
+"time.atDueTime" = "Na hora do vencimento";
+"time.minutesBefore" = "%d minutos antes";
+"time.hourBefore" = "1 hora antes";
+"time.hoursBefore" = "%d horas antes";
+"time.dayBefore" = "1 dia antes";
+"time.weekBefore" = "1 semana antes";
+
+/* Messages */
+"messages.success" = "Sucesso!";
+"messages.error" = "Erro";
+"messages.loading" = "Carregando...";
+"messages.saving" = "Salvando...";
+"messages.saved" = "Salvo";
+"messages.deleting" = "Excluindo...";
+"messages.deleted" = "Excluído";
+"messages.updating" = "Atualizando...";
+"messages.updated" = "Atualizado";
+"messages.copying" = "Copiando...";
+"messages.copied" = "Copiado";
+"messages.no_results" = "Nenhum resultado encontrado";
+"messages.something_went_wrong" = "Algo deu errado";
+
+/* Empty States */
+"empty_state.my_tasks" = "Bem-vindo ao Astrid! Adicione sua primeira tarefa para começar.";
+"empty_state.my_tasks_caught_up" = "Você está em dia! Nenhuma tarefa atribuída a você no momento.";
+"empty_state.today" = "Nada agendado para hoje! Aproveite o tempo livre.";
+"empty_state.public_list" = "Compartilhe suas ideias! Adicione tarefas - qualquer pessoa pode ver esta lista pública.";
+"empty_state.shared_list" = "Comece a colaborar! Adicione uma tarefa para iniciar esta lista compartilhada.";
+"empty_state.list_with_name" = "Vamos preencher \"%@\"! Adicione sua primeira tarefa para começar.";
+"empty_state.default" = "Pronto para capturar seus pensamentos? Crie sua primeira tarefa!";
+"empty_state.no_lists" = "Nenhuma lista ainda. Crie sua primeira lista!";
+
+/* Contacts */
+"contacts.synced_contacts" = "Contatos Sincronizados";
+"contacts.sync_contacts_now" = "Sincronizar Contatos Agora";
+"contacts.grant_full_access" = "Conceder Acesso Total";
+"contacts.access_required" = "Acesso aos Contatos Necessário";
+"contacts.open_settings_prompt" = "Toque para abrir Ajustes e habilitar o acesso";
+"contacts.add_collaborators" = "Adicionar Colaboradores";
+"contacts.upload_for_collaboration" = "Envie seus contatos para uma melhor colaboração";
+"contacts.footer_text" = "Os contatos são usados para sugerir colaboradores. Eles são criptografados e nunca compartilhados.";
+
+/* Debug Settings */
+"debug.settings" = "Configurações de Depuração";
+"debug.server_config" = "Configuração do Servidor";
+"debug.current_server" = "Atual: %@";
+"debug.toast_debug_mode" = "Modo de Depuração Toast";
+"debug.toast_debug_desc" = "Mostrar notificações toast detalhadas para depuração";
+"debug.reminder_debug_mode" = "Modo de Depuração de Lembrete";
+"debug.reminder_debug_desc" = "Habilitar logs detalhados de depuração de lembrete";
+"debug.test_prompts" = "Testar Prompts";
+"debug.test_love_prompt" = "Testar Prompt 'Amando o Astrid?'";
+"debug.test_love_prompt_desc" = "Aciona o prompt de feedback mostrado a usuários engajados";
+"debug.reset_prompt_tracking" = "Redefinir Rastreamento de Prompt";
+"debug.reset_prompt_tracking_desc" = "Limpa o histórico de prompts";
+
+/* Search */
+"search.placeholder" = "Buscar tarefas e usuários";
+"search.query_prefix" = "Busca: %@";
+
+/* Profile */
+"profile.account_access_desc" = "Perfil, verificação de e-mail e configurações de senha";
+"profile.account_access_full_desc" = "Perfil, e-mail, passkeys, exportação de dados";
+"profile.title" = "Perfil";
+"profile.loading" = "Carregando perfil...";
+"profile.go_back" = "Voltar";
+"profile.ai_agent" = "Agente de IA";
+"profile.joined" = "Entrou em %@";
+"profile.no_email" = "Sem e-mail";
+"profile.your_tasks" = "Suas Tarefas";
+"profile.shared_tasks_with" = "Tarefas Compartilhadas com %@";
+"profile.you" = "Você";
+"profile.not_signed_in" = "Não conectado";
+"profile.sign_in_to_sync" = "Entre para sincronizar";
+"profile.error_not_found" = "Usuário não encontrado";
+"profile.error_not_signed_in" = "Entre para ver seu perfil";
+"profile.error_load_failed" = "Falha ao carregar o perfil";
+
+/* Stats */
+"stats.completed" = "Concluídas";
+"stats.inspired" = "Inspiradas";
+"stats.supported" = "Apoiadas";
+"stats.completed_tagline" = "Fazendo acontecer!";
+"stats.inspired_tagline" = "Motivando outros!";
+"stats.supported_tagline" = "Ajudando a equipe a vencer!";
+
+/* Sidebar */
+"navigation.public_shared_lists" = "Listas Públicas Compartilhadas";
+"navigation.public_lists" = "Listas Públicas";
+"navigation.see_all_collaborative" = "Ver todas as listas colaborativas →";
+"navigation.see_all_suggested" = "Ver todas as listas sugeridas →";
+"navigation.favorites" = "Favoritos";
+
+/* Task Input */
+"tasks.add_task_placeholder" = "Adicionar uma tarefa";
+"tasks.search_tasks_placeholder" = "Buscar tarefas...";
+
+/* Assignee */
+"assignee.unassigned" = "Não atribuído";
+"assignee.you" = "Você";
+
+/* Reminders */
+"reminders.counting_on_you" = "Estas pessoas estão contando com você!";
+"reminders.complete" = "Concluir";
+"reminders.snooze_15_minutes" = "Soneca 15 minutos";
+"reminders.snooze_1_day" = "1 dia";
+"reminders.snooze_1_week" = "1 semana";
+
+/* Notifications */
+"notifications.enable_push" = "Habilitar Notificações Push";
+"notifications.not_now" = "Agora Não";
+"notifications.enable" = "Habilitar";
+"notifications.enable_message" = "Habilite as notificações push para que eu possa te lembrar!";
+"notifications.disabled" = "Notificações Desabilitadas";
+"notifications.open_settings" = "Abrir Ajustes";
+"notifications.disabled_message" = "As notificações push estão desabilitadas. Habilite-as nos Ajustes.";
+
+/* Auth */
+"auth.tagline" = "Faça acontecer!";
+"auth.sign_in_header" = "Faça login para começar!";
+"auth.continue_with_google" = "Continuar com Google";
+"auth.continue_with_passkey" = "Continuar com Passkey";
+"auth.continue_with_apple" = "Continuar com Apple";
+"auth.email" = "E-mail";
+
+/* Settings - Reminders */
+"settings.reminders.push_notifications" = "Notificações Push";
+"settings.reminders.enable_push" = "Habilitar Notificaciones Push";
+"settings.reminders.open_settings" = "Abrir Ajustes para Habilitar Notificações";
+"settings.reminders.email_notifications" = "Notificações por E-mail";
+"settings.reminders.send_email" = "Enviar Lembretes por E-mail";
+"settings.reminders.default_time" = "Hora Padrão do Lembrete";
+"settings.reminders.when_to_remind" = "Quando lembrar";
+"settings.reminders.daily_digest" = "Resumo Diário";
+"settings.reminders.send_daily_digest" = "Enviar Resumo Diário";
+"settings.reminders.digest_time" = "Hora do Resumo";
+"settings.reminders.timezone" = "Fuso Horário";
+"settings.reminders.quiet_hours" = "Horário de Silêncio (Opcional)";
+"settings.reminders.enable_quiet_hours" = "Habilitar Horário de Silêncio";
+
+/* Settings - AI */
+"setting.ai.api_keys" = "Chaves API de IA";
+"settings.ai.api_keys_description" = "Adicione suas próprias chaves API para usar assistentes de IA. As chaves são criptografadas e armazenadas com segurança no servidor.";
+"settings.ai.loading_keys" = "Carregando chaves API...";
+"settings.ai.about_keys" = "Sobre as chaves API";
+"settings.ai.about_description" = "Suas chaves API são usadas para alimentar os recursos do assistente de IA no Astrid. Cada provedor oferece diferentes capacidades e preços.";
+"settings.ai.encryption_info" = "As chaves são criptografadas usando AES-256 antes de serem armazenadas. O Astrid nunca compartilha suas chaves com terceiros.";
+"settings.ai.not_configured" = "Não configurado";
+"settings.ai.api_new.badge" = "NOVO";
+"settings.ai.manage_keys" = "Gerenciar chaves API";
+"settings.ai.manage_keys_subtitle" = "Adicionar chaves Claude, OpenAI ou Gemini";
+"settings.ai.api_keys_footer" = "Adicione suas próprias chaves API do Claude, OpenAI ou Gemini para alimentar o assistente de IA.";
+
+/* Exploratory Features */
+"exploratory_features" = "Recursos Experimentais";
+"ai_assistants" = "Assistentes de IA";
+"apple_reminders" = "Lembretes da Apple";
+"settings.reminders.configure_sync" = "Configurar sincronização";
+"settings.reminders.sync_subtitle" = "Sincronizar com Siri e Apple Watch";
+"settings.exploratory.warning" = "Estes recursos são experimentais e estão em desenvolvimento ativo.";
+
+/* Smart Task Creation */
+"smart_task_creations" = "Criação inteligente de tarefas";
+"smart_task_creation_description" = "Analisar datas, prioridades e hashtags dos títulos";
+
+/* Settings - Appearance */
+"settings.appearance.theme" = "Theme";
+"settings.appearance.email_to_task" = "Email-to-Task";
+"settings.appearance.email_to_task_footer" = "Create tasks by sending emails to remindme@astrid.cc";
+"settings.appearance.email_to_task_self" = "Self-task: Send TO remindme@astrid.cc";
+"settings.appearance.email_to_task_assigned" = "Assigned task: CC remindme@astrid.cc with one recipient";
+"settings.appearance.email_to_task_group" = "Group task: CC remindme@astrid.cc with multiple recipients";
+"settings.appearance.email_to_task_subject" = "Subject becomes task title";
+"settings.appearance.email_to_task_body" = "Body becomes task description";
+
+/* Theme Modes */
+"theme.ocean" = "Ocean";
+"theme.light" = "Light";
+"theme.dark" = "Dark";
+"theme.auto" = "Auto";
+
+/* Settings - Account */
+"settings.account.loading" = "Loading account...";
+"settings.account.display_name" = "Display Name";
+"settings.account.name_placeholder" = "Name";
+"settings.account.email_placeholder" = "Email";
+"settings.account.save_changes" = "Save Changes";
+"settings.account.oauth_footer" = "Signed in with Google. Some fields may be managed by your Google account.";
+"settings.account.pending_email" = "Pending Email Change";
+"settings.account.resend_verification" = "Resend Verification";
+"settings.account.cancel_change" = "Cancel Change";
+"settings.account.email_not_verified" = "Email Not Verified";
+"settings.account.send_verification" = "Send Verification Email";
+"settings.account.email_verification" = "Email Verification";
+"settings.account.pending_email_footer" = "Check your email inbox to verify the new address.";
+"settings.account.verify_email_footer" = "Verify your email to access all features and receive notifications.";
+"settings.account.info" = "Account Information";
+"settings.account.id" = "Account ID";
+"settings.account.created" = "Created";
+"settings.account.auth_method" = "Auth Method";
+"settings.account.google" = "Google";
+"settings.account.passkey" = "Passkey";
+"settings.account.adding_passkey" = "Adding passkey...";
+"settings.account.add_passkey_button" = "Add a Passkey";
+"settings.account.passkeys_footer" = "Passkeys use biometrics or device PIN for secure, passwordless authentication.";
+"settings.account.passkey_name_placeholder" = "Passkey name";
+"settings.account.synced" = "Synced";
+"settings.account.added_on" = "Added %@";
+"settings.account.added_recently" = "Added recently";
+"settings.account.rename_failed" = "Failed to rename passkey";
+"settings.account.delete_failed" = "Failed to delete passkey";
+"settings.account.export_json" = "Export Data (JSON)";
+"settings.account.export_csv" = "Export Data (CSV)";
+"settings.account.your_data" = "Your Data";
+"settings.account.your_data_footer" = "Download all your tasks, lists, and account data.";
+"settings.account.delete_account_footer" = "Permanently delete your account and all associated data.";
+"settings.account.no_passkeys_registered" = "No passkeys registered";
+"settings.account.add_passkey_description" = "Add a passkey for faster, passwordless sign-in";
+"settings.account.passkeys" = "Passkeys";
+"settings.account.loading_passkeys" = "Loading passkeys...";
+"settings.account.add_passkey" = "Add Passkey";
+"settings.account.no_passkeys" = "No passkeys added yet.";
+"settings.account.danger_zone" = "Danger Zone";
+"settings.account.delete_account" = "Delete Account";
+"settings.account.delete_warning" = "This action cannot be undone";
+"settings.account.delete_remove_list_header" = "Deleting your account will permanently remove:";
+"settings.account.delete_remove_tasks" = "All your tasks and their history";
+"settings.account.delete_remove_lists" = "All lists you own";
+"settings.account.delete_remove_comments" = "All your comments";
+"settings.account.delete_remove_profile" = "Your profile and settings";
+"settings.account.delete_remove_files" = "All uploaded files";
+"settings.account.delete_confirm_prompt" = "To confirm, type \"DELETE MY ACCOUNT\" below:";
+"settings.account.delete_confirm_placeholder" = "Type confirmation";
+"settings.account.delete_confirmation" = "Confirmation";
+"settings.account.delete_confirm_instruction" = "You must type \"DELETE MY ACCOUNT\" exactly to proceed.";
+"settings.account.delete_confirm_mismatch" = "Confirmation text does not match";
+"settings.account.delete_confirm_match" = "Confirmation text matches";
+"settings.account.delete_my_account_button" = "Delete My Account";
+"settings.account.delete_final_confirmation" = "Final Confirmation";
+"settings.account.delete_forever" = "Delete Forever";
+"settings.account.delete_final_warning" = "Are you absolutely sure? This will permanently delete your account and ALL your data.";
+"settings.account.delete_confirm_phrase" = "DELETE MY ACCOUNT";
+
+/* Additional translations */
+"userMenu.refreshData" = "Atualizar dados";
+"actions.ok" = "OK";
+"actions.filter" = "Filtrar";
+"actions.sort" = "Ordenar";
+"actions.clear" = "Limpar";
+"actions.apply" = "Aplicar";
+"actions.change" = "Alterar";
+"tasks.who" = "Quem";
+"tasks.due_time" = "Hora de vencimento";
+"tasks.timer" = "Temporizador";
+"lists.sort_and_filters" = "Ordenar e filtrar";
+"lists.admin" = "Administrador";
+"lists.filters" = "Filtros";
+"lists.clear_all_filters" = "Limpar todos os filtros";
+"lists.sort_by" = "Ordenar por";
+"lists.sort_order" = "Ordem";
+"lists.auto" = "Automático";
+"lists.manual" = "Manual";
+"lists.due_date" = "Data de vencimento";
+"lists.created_date" = "Data de criação";
+"lists.task_completion" = "Conclusão de tarefa";
+"lists.incomplete_completed_recently" = "Incompletas + Concluídas recentemente";
+"lists.all" = "Todas";
+"lists.me" = "Eu";
+"lists.not_me" = "Não eu (Outros)";
+"lists.overdue" = "Atrasadas";
+"lists.this_week" = "Esta semana";
+"lists.this_month" = "Este mês";
+"lists.no_date" = "Sem data";
+"lists.all_priorities" = "Todas as prioridades";
+"lists.highest_priority" = "!!! Máxima";
+"lists.high_priority" = "!! Alta";
+"lists.medium_priority" = "! Média";
+"lists.low_priority" = "○ Baixa";
+"lists.assigned_by" = "Atribuído por";
+"lists.repeating" = "Repetitiva";
+"lists.not_repeating" = "Não repetitiva";
+"lists.daily" = "Diário";
+"lists.weekly" = "Semanal";
+"lists.monthly" = "Mensal";
+"lists.yearly" = "Anual";
+"lists.custom" = "Personalizado";
+"lists.list_membership" = "Associação à lista";
+"lists.all_tasks" = "Todas as tarefas";
+"lists.in_any_list" = "Em qualquer lista";
+"lists.not_in_any_list" = "Sem lista";
+"lists.favorite" = "Favorita";
+"lists.favorite_description" = "Esta lista aparecerá no topo das suas listas";
+"lists.saved_filter" = "Filtro salvo";
+"lists.saved_filter_description" = "Esta lista mostra tarefas com base em filtros, não associação";
+"lists.list_information" = "Informações da lista";
+"lists.list_appearance" = "Aparência da lista";
+"lists.list_image" = "Imagem da lista";
+"lists.list_image_description" = "Escolha uma imagem ou ícone personalizado";
+"lists.default_task_settings" = "Configurações padrão de tarefas";
+"lists.task_creator" = "Criador da tarefa";
+"lists.all_day" = "Dia todo (Sem hora)";
+"lists.never" = "Nunca";
+"lists.github_integration" = "Integração com GitHub";
+"lists.link_repo_description" = "Vincular repositório para agentes de IA de programação";
+"lists.loading_repositories" = "Carregando repositórios...";
+"lists.github_repository" = "Repositório GitHub";
+"lists.no_repositories_found" = "Nenhum repositório encontrado. Verifique se sua conta GitHub está conectada.";
+"lists.pending_invitations" = "Convites pendentes";
+"lists.invited" = "Convidado";
+"lists.cancel_invite" = "Cancelar convite";
+"lists.ai_agents" = "Agentes de IA";
+"lists.add_ai_agent" = "Adicionar agente de IA";
+"lists.no_ai_providers" = "Nenhum provedor de IA configurado";
+"lists.make_member" = "Tornar membro";
+"lists.make_admin" = "Tornar administrador";
+"lists.remove" = "Remover";
+"lists.share_list" = "Compartilhar lista";
+"lists.share_list_description" = "Gerar um link compartilhável para esta lista";
+"lists.available_agents" = "Agentes disponíveis";
+"lists.loading_ai_agents" = "Carregando agentes de IA...";
+"lists.claude_coding_description" = "Claude IA para programação e assistência de tarefas";
+"lists.openai_coding_description" = "OpenAI GPT-4 para programação e assistência de tarefas";
+"lists.gemini_coding_description" = "Google Gemini para programação e assistência de tarefas";
+"lists.claude_task_description" = "Claude IA para assistência de tarefas";
+"lists.openai_task_description" = "OpenAI GPT-4 para assistência de tarefas";
+"lists.gemini_task_description" = "Google Gemini para assistência de tarefas";
+"lists.default_agent_description" = "Agente de IA para assistência de tarefas";
+"lists.ai_coding_agents" = "Agentes de programação IA";
+"lists.connect_github_description" = "Conecte um repositório GitHub para fluxos de programação";
+"lists.list_privacy" = "Privacidade da lista";
+"lists.make_public" = "Tornar pública";
+"lists.make_private" = "Tornar privada";
+"lists.public_description" = "Qualquer pessoa com o link pode ver esta lista";
+"lists.private_description" = "Apenas membros podem ver esta lista";
+"lists.owner" = "Proprietário";
+"lists.admin_role" = "Administrador";
+"lists.member_role" = "Membro";
+"lists.add_member" = "Adicionar membro";
+"lists.tomorrow" = "Amanhã";
+"lists.next_week" = "Próxima semana";
+"lists.next_month" = "Próximo mês";
+"lists.none" = "Nenhum";
+"lists.delete_confirm" = "Tem certeza de que deseja excluir esta lista? Esta ação não pode ser desfeita.";
+"messages.danger_zone" = "Zona de perigo";
+"settings.account.no_name" = "Nenhum nome definido";
+"settings.account.unknown" = "Desconhecido";
+"settings.account.failed_load" = "Falha ao carregar conta: %@";
+"settings.account.invalid_email" = "Por favor, insira um endereço de e-mail válido";
+"settings.account.profile_updated_verify" = "Perfil atualizado. Por favor, verifique seu e-mail para confirmar o novo endereço.";
+"settings.account.profile_updated_success" = "Perfil atualizado com sucesso";
+"settings.account.failed_save" = "Falha ao salvar: %@";
+"settings.account.failed_process_image" = "Falha ao processar imagem";
+"settings.account.failed_upload_image" = "Falha ao enviar imagem: %@";
+"settings.account.failed_send_verification" = "Falha ao enviar e-mail de verificação: %@";
+"settings.account.email_change_cancelled" = "Alteração de e-mail cancelada";
+"settings.account.failed_cancel_email_change" = "Falha ao cancelar alteração de e-mail: %@";
+"settings.account.failed_export" = "Falha ao exportar dados: %@";
+"settings.account.failed_delete" = "Falha ao excluir conta: %@";
+"settings.account.passkeys_description" = "Passkeys permitem que você faça login com segurança sem senha.";
+"settings.account.data" = "Dados";
+"settings.account.export_data" = "Exportar meus dados";
+"settings.account.export_description" = "Baixe todas as suas tarefas, listas e dados de perfil em formato JSON.";
+"settings.account.delete_description" = "Excluir permanentemente conta e todos os dados.";
+"settings.reminders.start" = "Início";
+"settings.reminders.end" = "Fim";
+"settings.reminders.test" = "Teste";
+"settings.reminders.send_test" = "Enviar lembrete de teste";
+"settings.reminders.test_reminder" = "Lembrete de teste";
+"settings.reminders.test_message" = "Uma notificação de teste aparecerá em 5 segundos";
+
+/* Apple Reminders Sync */
+"reminders.access_granted" = "Acesso concedido";
+"reminders.access_denied" = "Acesso negado";
+"reminders.tap_to_open_settings" = "Toque para abrir Configurações";
+"reminders.enable_sync" = "Ativar sincronização de Lembretes";
+"reminders.sync_description" = "Sincronize tarefas com Lembretes da Apple para Siri e Watch";
+"reminders.access_header" = "Acesso aos Lembretes";
+"reminders.access_footer" = "Sincronize suas tarefas do Astrid com Lembretes da Apple. Use a Siri para adicionar tarefas e veja-as no Apple Watch.";
+"reminders.sync_status" = "Status de sincronização";
+"reminders.last_sync" = "Última sincronização";
+"reminders.linked_lists" = "Listas vinculadas";
+"reminders.syncing" = "Sincronizando...";
+"reminders.sync_all_lists" = "Sincronizar todas as listas";
+"reminders.your_lists" = "Suas listas";
+"reminders.your_lists_footer" = "Toque em uma lista para vinculá-la aos Lembretes da Apple. Escolha exportar tarefas ou importar de uma lista de Lembretes existente.";
+"reminders.import_from_reminders" = "Importar de Lembretes";
+"reminders.import_footer" = "Importe listas de Lembretes existentes para o Astrid.";
+"reminders.unlink" = "Desvincular";
+"reminders.astrid_list" = "Lista do Astrid";
+"reminders.sync_direction" = "Direção de sincronização";
+"reminders.create_new_list" = "Criar nova lista";
+"reminders.link_to_reminders_list" = "Vincular à lista de Lembretes";
+"reminders.link_footer" = "Selecione uma lista de Lembretes existente ou crie uma nova chamada '%@'";
+"reminders.include_completed" = "Incluir tarefas concluídas";
+"reminders.include_completed_desc" = "Sincronizar tarefas já concluídas";
+"reminders.options" = "Opções";
+"reminders.link_list" = "Vincular lista";
+"reminders.link" = "Vincular";
+"reminders.reminders_list" = "Lista de Lembretes";
+"reminders.create_new_astrid_list" = "Criar nova lista do Astrid";
+"reminders.import_into" = "Importar para";
+"reminders.import_into_footer" = "Crie uma nova lista do Astrid chamada '%@' ou importe para uma lista existente.";
+"reminders.import_completed_desc" = "Importar lembretes já concluídos";
+"reminders.import_reminders" = "Importar Lembretes";
+"reminders.import" = "Importar";
+
+/* Repeating Pattern Editor */
+"repeating.custom_pattern" = "Padrão de repetição personalizado";
+"repeating.repeat_every" = "Repetir a cada";
+"repeating.repeat_on_days" = "Repetir nestes dias";
+"repeating.repeat_type" = "Tipo de repetição";
+"repeating.same_date_monthly" = "Mesma data todo mês";
+"repeating.same_weekday_monthly" = "Mesmo dia da semana e semana do mês";
+"repeating.day_of_month" = "Dia do mês";
+"repeating.weekday" = "Dia da semana";
+"repeating.week_of_month" = "Semana do mês";
+"repeating.month" = "Mês";
+"repeating.day" = "Dia";
+"repeating.repeat_mode" = "Modo de repetição";
+"repeating.from_completion" = "Próxima ocorrência a partir da conclusão";
+"repeating.from_due_date" = "Próxima ocorrência a partir do prazo original";
+"repeating.end_condition" = "Condição de término";
+"repeating.never" = "Nunca";
+"repeating.after_occurrences" = "Após X ocorrências";
+"repeating.until_date" = "Até uma data específica";
+"repeating.num_occurrences" = "Número de ocorrências";
+"repeating.end_date" = "Data final";
+"repeating.preview" = "Visualização";
+"repeating.no_repeat" = "Sem repetição";
+"repeating.days" = "Dias";
+"repeating.weeks" = "Semanas";
+"repeating.months" = "Meses";
+"repeating.years" = "Anos";
+"repeating.1st" = "1º";
+"repeating.2nd" = "2º";
+"repeating.3rd" = "3º";
+"repeating.4th" = "4º";
+"repeating.5th" = "5º";
+
+/* Filter Labels */
+"filters.sort_by" = "Ordenar por";
+"filters.sort" = "Ordenar";
+"filters.auto" = "Auto";
+"filters.manual" = "Manual";
+"filters.completion_status" = "Status de conclusão";
+"filters.show" = "Mostrar";
+"filters.default" = "Padrão";
+"filters.all_tasks" = "Todas as tarefas";
+"filters.all_priorities" = "Todas as prioridades";
+"filters.highest_priority" = "!!! Urgente";
+"filters.high_priority" = "!! Alta";
+"filters.medium_priority" = "! Média";
+"filters.low_priority" = "○ Baixa";
+"filters.all_dates" = "Todas as datas";
+"filters.this_week" = "Esta semana";
+"filters.this_month" = "Este mês";
+"filters.no_due_date" = "Sem prazo";
+"filters.who" = "Quem";
+"filters.all" = "Todos";
+"filters.me" = "Eu";
+"filters.not_me" = "Não eu (Outros)";
+"filters.unassigned" = "Não atribuído";
+"filters.not_repeating" = "Não repetitivo";
+"filters.save_as_smart_list" = "Salvar como Lista inteligente";
+"filters.save_footer" = "Salve estas configurações de filtro como Lista inteligente na barra lateral";
+"filters.clear_all" = "Limpar todos os filtros";
+"filters.saving" = "Salvando...";
+"filters.sort_and_filters" = "Ordenação e filtros";
+"filters.filter_by_list" = "Filtrar por lista";
+"filters.featured_lists" = "Listas em destaque";
+"filters.view_add" = "Ver e adicionar";
+"filters.tasks_count" = "%d tarefas";
+
+/* List Details */
+"list.type" = "Tipo de lista";
+"list.task_defaults" = "Valores padrão";
+"list.favorite_description" = "Esta lista aparece na sua seção de Favoritos";
+"list.smart_list_description" = "Esta lista mostra tarefas com base em filtros, não em membros";
+"list.defaults_description" = "Defina valores padrão para novas tarefas nesta lista";
+"list.task_creator" = "Criador da tarefa";
+"list.select_lists" = "Selecionar listas";
+"list.details" = "Detalhes da lista";
+"list.oauth_hint" = "Use este ID para integrações de API OAuth e agentes de programação";
+"list.delete_list" = "Excluir lista";
+"list.danger_zone" = "Zona de perigo";
+"list.list_settings" = "Configurações da lista";
+
+/* Sharing */
+"share.share_list" = "Compartilhar lista";
+"share.share_task" = "Compartilhar tarefa";
+"share.private_list_message" = "Esta é uma lista privada. Apenas membros com acesso podem visualizá-la.";
+"share.public_list_message" = "Esta é uma lista pública. Qualquer pessoa com o link pode visualizá-la.";
+"share.private_task_message" = "Esta é uma tarefa privada. Apenas usuários com acesso a esta lista podem visualizá-la.";
+"share.generating_link" = "Gerando link...";
+"share.share_link_hint" = "Compartilhe este link com qualquer pessoa que tenha acesso para ver esta tarefa";
+"share.copy_link" = "Copiar para área de transferência";
+"share.link_copied" = "Link copiado!";
+"share.share_list_link_hint" = "Compartilhe este link com qualquer pessoa que tenha acesso para ver esta lista";
+"share.link_redirect_list" = "O link redirecionará para a lista no app";
+"share.link_redirect_task" = "O link redirecionará para a tarefa no app";
+
+/* Save Filter Dialog */
+"save_filter.title" = "Salvar como Lista inteligente";
+"save_filter.description" = "Isso salvará suas configurações de filtro atuais como Lista inteligente";
+"save_filter.due_date" = "Data de vencimento";
+
+/* Authentication */
+"auth.continue_passkey" = "Continuar com Chave de acesso";
+"auth.new_user" = "Novo?";
+"auth.returning_user" = "Voltando?";
+"auth.sign_in_short" = "Entrar";
+"auth.create_account" = "Criar conta";
+"auth.create_account_footer" = "Entre para sincronizar suas tarefas em todos os dispositivos e colaborar com outros.";
+"auth.sign_in_prompt_title" = "Entrar";
+"auth.sign_in_cta" = "Entre para desbloquear mais recursos";
+"auth.benefit_sync_title" = "Sincronizar entre dispositivos";
+"auth.benefit_sync_desc" = "Acesse suas tarefas de qualquer dispositivo, em qualquer lugar";
+"auth.benefit_collaborate_title" = "Colaborar com outros";
+"auth.benefit_collaborate_desc" = "Compartilhe listas e trabalhe em conjunto nas tarefas";
+"auth.benefit_backup_title" = "Mantenha seus dados seguros";
+"auth.benefit_backup_desc" = "Suas tarefas são armazenadas com segurança na nuvem";
+"auth.sign_in_data_note" = "Suas tarefas existentes serão sincronizadas com sua conta";
+
+/* Attachments */
+"attachments.saving" = "Salvando...";
+"attachments.save_to_task" = "Salvar na tarefa";
+"attachments.quick_look" = "Visualização rápida";
+"attachments.quick_look_tip" = "Dica: Use Marcação na Visualização rápida para editar e salvar no Astrid";
+"attachments.choose_photo" = "Escolher foto";
+"attachments.choose_video" = "Escolher vídeo";
+"attachments.choose_document" = "Escolher documento";
+"attachments.count" = "Anexos (%d)";
+
+/* Image Picker */
+"image_picker.upload_library" = "Enviar da biblioteca de fotos";
+"image_picker.choose_description" = "Escolha uma imagem da sua biblioteca de fotos";
+"image_picker.pinch_zoom" = "Aperte para zoom, arraste para posicionar";
+"image_picker.uploading" = "Enviando...";
+"image_picker.cancel_upload" = "Cancelar envio";
+"image_picker.use_this_image" = "Usar esta imagem";
+"image_picker.choose_different_photo" = "Escolher outra foto";
+
+/* Inline Pickers */
+"picker.no_due_date" = "Sem prazo";
+"picker.custom_date" = "Data personalizada";
+"picker.custom_time" = "Hora personalizada";
+"picker.add_time" = "Adicionar hora";
+"picker.no_lists" = "Nenhuma lista encontrada";
+"picker.add_to_lists" = "Adicionar às listas";
+"picker.loading_agents" = "Carregando agentes de IA...";
+"picker.ai_agent" = "Agente de IA";
+
+/* Sync Status */
+"sync.status" = "Status de sincronização";
+"sync.unstable_connection" = "Conexão instável detectada";
+"sync.retry_failed" = "Tentar novamente operações com falha";
+"sync.working_offline" = "Trabalhando offline";
+
+/* Profile */
+"profile.updated_success" = "Seu perfil foi atualizado com sucesso!";
+"profile.tap_change_photo" = "Toque para alterar a foto";
+"profile.uploading_photo" = "Enviando foto...";
+"profile.display_name" = "Nome de exibição";
+"profile.email_address" = "Endereço de e-mail";
+"profile.edit_profile" = "Editar perfil";
+"profile.saving" = "Salvando...";
+"profile.save_changes" = "Salvar alterações";
+
+/* Members */
+"members.searching" = "Pesquisando contatos...";
+"members.astrid_users" = "Pessoas dos seus contatos que usam o Astrid";
+"members.loading_suggestions" = "Carregando sugestões...";
+"members.add_collaborators" = "Adicionar colaboradores";
+"members.upload_contacts" = "Envie seus contatos para melhor colaboração";
+"members.invite_email" = "Convidar por e-mail";
+"members.add_member" = "Adicionar membro";
+
+/* Membership (Local User) */
+"membership.requires_account" = "Compartilhar listas requer uma conta";
+"membership.requires_account_description" = "Entre para convidar colaboradores e compartilhar listas com outros.";
+"membership.sign_in_to_share" = "Entre para compartilhar listas";
+
+/* Comments */
+"comments.count" = "Comentários (%d)";
+"comments.empty" = "Nenhum comentário ainda. Seja o primeiro a comentar!";
+"comments.add_placeholder" = "Adicionar um comentário...";
+"comments.delete_comment" = "Excluir comentário";
+"comments.upload_error" = "Erro de upload";
+
+/* Task Edit */
+"task_edit.add_to_list" = "Adicionar à lista";
+"task_edit.add_another_list" = "Adicionar outra lista";
+"task_edit.only_you" = "Somente você pode ver esta tarefa";
+"task_edit.add_description" = "Adicionar uma descrição...";
+"task_edit.last_timer" = "Último: %@";
+"task_edit.copy_to_lists" = "Copiar para Minhas listas";
+
+/* Timer */
+"timer.complete_task" = "CONCLUIR TAREFA";
+"timer.dismiss_alarm" = "Dispensar alarme";
+"timer.tap_to_change" = "Toque no tempo para alterar a duração";
+"timer.snooze_1hour" = "Adiar 1 hora";
+
+/* Notifications */
+"notification.complete_task" = "Concluir tarefa";
+"notification.test_reminder" = "📱 Notificação de teste";
+
+/* Debug Settings */
+"debug.contacts_settings" = "Configurações de contatos";
+"debug.debug_settings" = "Configurações de depuração";
+"debug.app_version" = "Astrid v%@";
+"debug.current_server" = "Servidor atual";
+"debug.active_config" = "Configuração ativa";
+"debug.restart_required" = "Alterações requerem reinício do app";
+"debug.available_servers" = "Servidores disponíveis";
+"debug.reset_default" = "Restaurar padrão";
+"debug.server_changed" = "Servidor alterado";
+"debug.get_key" = "Obter chave";
+"server.restart_required" = "Reinício necessário";
+"server.restart_message" = "Servidor alterado para:\n%@\n\nReinicie o app para que as alterações tenham efeito.";
+
+/* Splash */
+"splash.loading" = "Carregando suas tarefas...";
+
+/* Misc */
+"misc.cancel" = "Cancelar";
+"misc.save" = "Salvar";
+"misc.close" = "Fechar";
+
+/* Local Mode - Added for offline-first */
+"auth.or" = "ou";
+"auth.use_without_account" = "Usar sem conta";
+"auth.local_mode_description" = "Suas tarefas ficam neste dispositivo. Faça login depois para sincronizar entre dispositivos.";
+"local_user" = "Usuário local";
+"offline.local_mode_active" = "Modo local ativo";
+"offline.data_on_device" = "Seus dados são armazenados apenas neste dispositivo";
+"offline.sync_to_cloud" = "Sincronizar com a nuvem";
+"offline.sign_in_to_sync" = "Faça login para sincronizar entre dispositivos";
+"offline.local_tasks" = "Tarefas locais";
+"offline.local_lists" = "Listas locais";
+"offline.warning" = "Aviso: Se você desinstalar o app sem fazer login, seus dados serão perdidos.";
+"settings.local_only_mode" = "Modo somente local";
+"settings.local_only_description" = "Faça login para sincronizar entre dispositivos";
+"status.local_only" = "Modo somente local";
+"status.offline" = "Trabalhando offline";
+"status.offline_with_pending" = "Offline • %d pendentes";
+"status.syncing" = "Sincronizando...";
+"status.syncing_count" = "Sincronizando %d itens...";
+"status.sync_failed" = "%d sincronizações falharam";
+"status.synced" = "Tudo sincronizado";
+"status.local_only_description" = "Seus dados são armazenados apenas neste dispositivo. Faça login para sincronizar.";
+"status.pending_sync_description" = "%d alterações serão sincronizadas quando online";
+"status.failed_sync_description" = "%d itens não foram sincronizados";
+"status.retry_now" = "Tentar novamente";
+"status.sync_in_progress" = "As alterações serão sincronizadas automaticamente";
+"sync" = "Sincronizar";
+"welcome.title" = "Bem-vindo ao Astrid!";
+"welcome.subtitle" = "Seu gerenciador de tarefas inteligente";
+"welcome.sign_in" = "Entrar";
+"welcome.use_locally" = "Usar sem conta";
+"welcome.local_note" = "Você pode fazer login depois para sincronizar entre dispositivos";

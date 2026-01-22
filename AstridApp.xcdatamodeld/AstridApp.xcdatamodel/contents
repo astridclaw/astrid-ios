@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23231" systemVersion="24A348" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="CDTask" representedClassName="CDTask" syncable="YES">
+        <attribute name="assigneeId" optional="YES" attributeType="String"/>
+        <attribute name="completed" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="creatorId" attributeType="String"/>
+        <attribute name="dueDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="isAllDay" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isPrivate" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="lastSyncedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="listIds" optional="YES" attributeType="Transformable" valueTransformerName="StringArrayTransformer"/>
+        <attribute name="priority" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="reminderSent" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="reminderTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="reminderType" optional="YES" attributeType="String"/>
+        <attribute name="repeating" attributeType="String"/>
+        <attribute name="repeatingDataJSON" optional="YES" attributeType="String"/>
+        <attribute name="repeatFrom" optional="YES" attributeType="String"/>
+        <attribute name="occurrenceCount" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="syncStatus" attributeType="String"/>
+        <attribute name="taskDescription" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="syncAttempts" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastSyncAttemptAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="lastSyncError" optional="YES" attributeType="String"/>
+        <attribute name="searchableText" optional="YES" attributeType="String"/>
+        <attribute name="timerDuration" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastTimerValue" optional="YES" attributeType="String"/>
+        <attribute name="originalTaskId" optional="YES" attributeType="String"/>
+        <attribute name="sourceListId" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="CDTaskList" representedClassName="CDTaskList" syncable="YES">
+        <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="defaultAssigneeId" optional="YES" attributeType="String"/>
+        <attribute name="defaultDueDate" optional="YES" attributeType="String"/>
+        <attribute name="defaultDueTime" optional="YES" attributeType="String"/>
+        <attribute name="defaultIsPrivate" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="defaultPriority" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="defaultRepeating" optional="YES" attributeType="String"/>
+        <attribute name="favoriteOrder" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="filterAssignee" optional="YES" attributeType="String"/>
+        <attribute name="filterCompletion" optional="YES" attributeType="String"/>
+        <attribute name="filterDueDate" optional="YES" attributeType="String"/>
+        <attribute name="filterPriority" optional="YES" attributeType="String"/>
+        <attribute name="filterRepeating" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String"/>
+        <attribute name="isFavorite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="lastSyncedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="listDescription" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="ownerId" attributeType="String"/>
+        <attribute name="privacy" attributeType="String"/>
+        <attribute name="sortBy" optional="YES" attributeType="String"/>
+        <attribute name="syncStatus" attributeType="String"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="CDComment" representedClassName="CDComment" syncable="YES">
+        <attribute name="id" attributeType="String"/>
+        <attribute name="content" attributeType="String"/>
+        <attribute name="type" attributeType="String"/>
+        <attribute name="authorId" optional="YES" attributeType="String"/>
+        <attribute name="authorName" optional="YES" attributeType="String"/>
+        <attribute name="authorImage" optional="YES" attributeType="String"/>
+        <attribute name="taskId" attributeType="String"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="syncStatus" attributeType="String"/>
+        <attribute name="lastSyncedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="pendingOperation" optional="YES" attributeType="String"/>
+        <attribute name="pendingContent" optional="YES" attributeType="String"/>
+        <attribute name="syncAttempts" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="syncError" optional="YES" attributeType="String"/>
+        <attribute name="lastSyncAttemptAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="secureFilesData" optional="YES" attributeType="String"/>
+        <attribute name="pendingFileId" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="CDMember" representedClassName="CDMember" syncable="YES">
+        <attribute name="id" attributeType="String"/>
+        <attribute name="listId" attributeType="String"/>
+        <attribute name="userId" attributeType="String"/>
+        <attribute name="role" attributeType="String"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="syncStatus" attributeType="String"/>
+        <attribute name="lastSyncedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="pendingOperation" optional="YES" attributeType="String"/>
+        <attribute name="pendingRole" optional="YES" attributeType="String"/>
+        <attribute name="syncAttempts" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="syncError" optional="YES" attributeType="String"/>
+        <attribute name="lastSyncAttemptAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="CDReminderMapping" representedClassName="CDReminderMapping" syncable="YES">
+        <attribute name="astridTaskId" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="astridListId" optional="YES" attributeType="String"/>
+        <attribute name="reminderIdentifier" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="reminderCalendarIdentifier" optional="YES" attributeType="String"/>
+        <attribute name="lastSyncedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="astridUpdatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="reminderUpdatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+</model>

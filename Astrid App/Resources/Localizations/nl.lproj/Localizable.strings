@@ -1,0 +1,799 @@
+/* Navigation */
+"navigation.my_tasks" = "Mijn taken";
+"navigation.today" = "Vandaag";
+"navigation.lists" = "Lijsten";
+"navigation.add_list" = "Lijst toevoegen";
+"navigation.all_tasks" = "Alle taken";
+
+/* Settings */
+"settings" = "Instellingen";
+"sync" = "Synchronisatie";
+"last_sync" = "Laatste synchronisatie";
+"never" = "Nooit";
+"sync_now" = "Nu synchroniseren";
+"features" = "Functies";
+"ai_assistant" = "AI-assistent";
+"alpha" = "ALPHA";
+"reminders" = "Herinneringen";
+"preferences" = "Voorkeuren";
+"appearance" = "Uiterlijk";
+"contacts" = "Contacten";
+"account" = "Account";
+"account_access" = "Account & Toegang";
+"about" = "Over";
+"version" = "Versie";
+"build" = "Build";
+"sign_out" = "Afmelden";
+"are_you_sure_sign_out" = "Weet je zeker dat je wilt afmelden?";
+
+/* Language */
+"language" = "Taal";
+"select_language" = "Taal selecteren";
+"language_settings" = "Taal";
+"automatic" = "Automatisch";
+"device_language" = "Apparaattaal";
+"english" = "English";
+"spanish" = "Español";
+"french" = "Français";
+"german" = "Deutsch";
+"italian" = "Italiano";
+"portuguese" = "Português";
+"dutch" = "Nederlands";
+"russian" = "Русский";
+"japanese" = "日本語";
+"korean" = "한국어";
+"chinese_simplified" = "简体中文";
+"chinese_traditional" = "繁體中文";
+"language_restart_note" = "Taalwijzigingen vereisen mogelijk een herstart van de app om volledig effect te hebben.";
+
+/* Actions */
+"actions.save" = "Opslaan";
+"actions.cancel" = "Annuleren";
+"actions.delete" = "Verwijderen";
+"actions.edit" = "Bewerken";
+"actions.add" = "Toevoegen";
+"actions.close" = "Sluiten";
+"actions.create" = "Aanmaken";
+"actions.update" = "Bijwerken";
+"actions.confirm" = "Bevestigen";
+"actions.done" = "Klaar";
+"actions.back" = "Terug";
+"actions.next" = "Volgende";
+"actions.copy" = "Kopiëren";
+"actions.share" = "Delen";
+"actions.move" = "Verplaatsen";
+"actions.archive" = "Archiveren";
+"actions.restore" = "Herstellen";
+"actions.retry" = "Opnieuw proberen";
+"actions.submit" = "Verzenden";
+"actions.search" = "Zoeken";
+"actions.remove" = "Verwijderen";
+
+/* Tasks */
+"tasks.task" = "Taak";
+"tasks.tasks" = "Taken";
+"tasks.new_task" = "Nieuwe taak";
+"tasks.add_task" = "Taak toevoegen";
+"tasks.task_details" = "Taakdetails";
+"tasks.edit_task" = "Taak bewerken";
+"tasks.delete_task" = "Taak verwijderen";
+"tasks.complete_task" = "Taak voltooien";
+"tasks.task_name" = "Taaknaam";
+"tasks.description" = "Beschrijving";
+"tasks.no_description" = "Geen beschrijving";
+"tasks.due_date" = "Vervaldatum";
+"tasks.created_by" = "Gemaakt door";
+"tasks.reminder" = "Herinnering";
+"tasks.reminders" = "Herinneringen";
+"tasks.priority" = "Prioriteit";
+"tasks.assignee" = "Toegewezen aan";
+"tasks.completed" = "Voltooid";
+"tasks.incomplete" = "Onvoltooid";
+"tasks.overdue" = "Verlopen";
+"tasks.no_due_date" = "Geen vervaldatum";
+"tasks.no_reminder" = "Geen herinnering";
+"tasks.placeholder.task_name" = "Wat moet er gebeuren?";
+"tasks.placeholder.description" = "Voeg een beschrijving toe...";
+"tasks.copy_task" = "Taak kopiëren";
+"tasks.share_task" = "Taak delen";
+"tasks.delete_confirm" = "Deze taak verwijderen?";
+"tasks.loading" = "Taken laden...";
+"tasks.priority_only" = "Alleen %@";
+
+/* Lists */
+"lists.list" = "Lijst";
+"lists.new_list" = "Nieuwe lijst";
+"lists.add_list" = "Lijst toevoegen";
+"lists.edit_list" = "Lijst bewerken";
+"lists.delete_list" = "Lijst verwijderen";
+"lists.list_name" = "Lijstnaam";
+"lists.list_description" = "Beschrijving";
+"lists.list_settings" = "Lijstinstellingen";
+"lists.enter_name" = "Voer lijstnaam in";
+"lists.description_placeholder" = "Voeg een beschrijving toe (optioneel)...";
+"lists.members" = "Leden";
+"lists.no_members" = "Nog geen leden toegevoegd";
+"lists.loading" = "Lijsten laden...";
+"lists.all_lists" = "Alle lijsten";
+"lists.empty_state_message" = "Maak een lijst om je taken te organiseren!";
+"lists.copy_to_list" = "Kopiëren naar lijst";
+"lists.target_list" = "Doellijst";
+"lists.my_tasks_only" = "Alleen mijn taken";
+"lists.include_comments" = "Inclusief opmerkingen";
+
+/* Priority */
+"priority.none" = "Geen";
+"priority.low" = "Laag";
+"priority.medium" = "Gemiddeld";
+"priority.high" = "Hoog";
+"priority.urgent" = "Urgent";
+
+/* Time */
+"time.today" = "Vandaag";
+"time.tomorrow" = "Morgen";
+"time.yesterday" = "Gisteren";
+"time.this_week" = "Deze week";
+"time.next_week" = "Volgende week";
+"time.this_month" = "Deze maand";
+"time.next_month" = "Volgende maand";
+"time.atDueTime" = "Op vervaltijd";
+"time.minutesBefore" = "%d minuten van tevoren";
+"time.hourBefore" = "1 uur van tevoren";
+"time.hoursBefore" = "%d uur van tevoren";
+"time.dayBefore" = "1 dag van tevoren";
+"time.weekBefore" = "1 week van tevoren";
+
+/* Messages */
+"messages.success" = "Succes!";
+"messages.error" = "Fout";
+"messages.loading" = "Laden...";
+"messages.saving" = "Opslaan...";
+"messages.saved" = "Opgeslagen";
+"messages.deleting" = "Verwijderen...";
+"messages.deleted" = "Verwijderd";
+"messages.updating" = "Bijwerken...";
+"messages.updated" = "Bijgewerkt";
+"messages.copying" = "Kopiëren...";
+"messages.copied" = "Gekopieerd";
+"messages.no_results" = "Geen resultaten gevonden";
+"messages.something_went_wrong" = "Er is iets misgegaan";
+
+/* Empty States */
+"empty_state.my_tasks" = "Welkom bij Astrid! Voeg je eerste taak toe om te beginnen.";
+"empty_state.my_tasks_caught_up" = "Je bent helemaal bij! Geen taken aan jou toegewezen op dit moment.";
+"empty_state.today" = "Niets gepland voor vandaag! Geniet van je vrije tijd.";
+"empty_state.public_list" = "Deel je ideeën! Voeg taken toe - iedereen kan deze openbare lijst zien.";
+"empty_state.shared_list" = "Begin met samenwerken! Voeg een taak toe aan deze gedeelde lijst.";
+"empty_state.list_with_name" = "Laten we \"%@\" vullen! Voeg je eerste taak toe om te beginnen.";
+"empty_state.default" = "Klaar om je gedachten vast te leggen? Maak je eerste taak aan!";
+"empty_state.no_lists" = "Nog geen lijsten. Maak je eerste lijst aan!";
+
+/* Contacts */
+"contacts.synced_contacts" = "Gesynchroniseerde contacten";
+"contacts.sync_contacts_now" = "Contacten nu synchroniseren";
+"contacts.grant_full_access" = "Volledige toegang verlenen";
+"contacts.access_required" = "Toegang tot contacten vereist";
+"contacts.open_settings_prompt" = "Tik om Instellingen te openen en toegang in te schakelen";
+"contacts.add_collaborators" = "Medewerkers toevoegen";
+"contacts.upload_for_collaboration" = "Upload je contacten voor betere samenwerking";
+"contacts.footer_text" = "Contacten worden gebruikt om medewerkers voor te stellen. Ze zijn versleuteld en worden nooit gedeeld.";
+
+/* Debug Settings */
+"debug.settings" = "Debug-instellingen";
+"debug.server_config" = "Serverconfiguratie";
+"debug.current_server" = "Huidig: %@";
+"debug.toast_debug_mode" = "Toast Debug Modus";
+"debug.toast_debug_desc" = "Toon gedetailleerde toast-meldingen voor debugging";
+"debug.reminder_debug_mode" = "Herinnering Debug Modus";
+"debug.reminder_debug_desc" = "Schakel gedetailleerde herinnering-debuglogs in";
+"debug.test_prompts" = "Test Prompts";
+"debug.test_love_prompt" = "Test 'Houd je van Astrid?' Prompt";
+"debug.test_love_prompt_desc" = "Activeert de feedback-prompt voor actieve gebruikers";
+"debug.reset_prompt_tracking" = "Reset Prompt Tracking";
+"debug.reset_prompt_tracking_desc" = "Wist de prompt-geschiedenis";
+
+/* Search */
+"search.placeholder" = "Zoeken naar taken en gebruikers";
+"search.query_prefix" = "Zoeken: %@";
+
+/* Profile */
+"profile.account_access_desc" = "Profiel, e-mailverificatie en wachtwoordinstellingen";
+"profile.account_access_full_desc" = "Profiel, e-mail, passkeys, gegevensexport";
+"profile.title" = "Profiel";
+"profile.loading" = "Profiel laden...";
+"profile.go_back" = "Ga terug";
+"profile.ai_agent" = "AI-agent";
+"profile.joined" = "Lid sinds %@";
+"profile.no_email" = "Geen e-mail";
+"profile.your_tasks" = "Jouw taken";
+"profile.shared_tasks_with" = "Gedeelde taken met %@";
+"profile.you" = "Jij";
+"profile.not_signed_in" = "Niet ingelogd";
+"profile.sign_in_to_sync" = "Log in om te synchroniseren";
+"profile.error_not_found" = "Gebruiker niet gevonden";
+"profile.error_not_signed_in" = "Log in om je profiel te bekijken";
+"profile.error_load_failed" = "Kan profiel niet laden";
+
+/* Stats */
+"stats.completed" = "Voltooid";
+"stats.inspired" = "Geïnspireerd";
+"stats.supported" = "Ondersteund";
+"stats.completed_tagline" = "Lekker bezig!";
+"stats.inspired_tagline" = "Anderen motiveren!";
+"stats.supported_tagline" = "Het team helpen winnen!";
+
+/* Sidebar */
+"navigation.public_shared_lists" = "Openbare gedeelde lijsten";
+"navigation.public_lists" = "Openbare lijsten";
+"navigation.see_all_collaborative" = "Bekijk alle samenwerkingslijsten →";
+"navigation.see_all_suggested" = "Bekijk alle gesuggereerde lijsten →";
+"navigation.favorites" = "Favorieten";
+
+/* Task Input */
+"tasks.add_task_placeholder" = "Taak toevoegen";
+"tasks.search_tasks_placeholder" = "Taken zoeken...";
+
+/* Assignee */
+"assignee.unassigned" = "Niet toegewezen";
+"assignee.you" = "Jij";
+
+/* Reminders */
+"reminders.counting_on_you" = "Deze mensen rekenen op je!";
+"reminders.complete" = "Voltooien";
+"reminders.snooze_15_minutes" = "15 minuten sluimeren";
+"reminders.snooze_1_day" = "1 dag";
+"reminders.snooze_1_week" = "1 week";
+
+/* Notifications */
+"notifications.enable_push" = "Push-meldingen inschakelen";
+"notifications.not_now" = "Niet nu";
+"notifications.enable" = "Inschakelen";
+"notifications.enable_message" = "Schakel push-meldingen in zodat ik je kan helpen herinneren!";
+"notifications.disabled" = "Meldingen uitgeschakeld";
+"notifications.open_settings" = "Instellingen openen";
+"notifications.disabled_message" = "Push-meldingen zijn uitgeschakeld. Schakel ze in bij Instellingen.";
+
+/* Auth */
+"auth.tagline" = "Krijg het gedaan!";
+"auth.sign_in_header" = "Meld je aan om te beginnen!";
+"auth.continue_with_google" = "Doorgaan met Google";
+"auth.continue_with_passkey" = "Doorgaan met Passkey";
+"auth.continue_with_apple" = "Doorgaan met Apple";
+"auth.email" = "E-mail";
+
+/* Settings - Reminders */
+"settings.reminders.push_notifications" = "Push-meldingen";
+"settings.reminders.enable_push" = "Push-meldingen inschakelen";
+"settings.reminders.open_settings" = "Open Instellingen om meldingen in te schakelen";
+"settings.reminders.email_notifications" = "E-mailmeldingen";
+"settings.reminders.send_email" = "E-mailherinneringen verzenden";
+"settings.reminders.default_time" = "Standaard herinneringstijd";
+"settings.reminders.when_to_remind" = "Wanneer herinneren";
+"settings.reminders.daily_digest" = "Dagelijks overzicht";
+"settings.reminders.send_daily_digest" = "Dagelijks overzicht verzenden";
+"settings.reminders.digest_time" = "Overzichtstijd";
+"settings.reminders.timezone" = "Tijdzone";
+"settings.reminders.quiet_hours" = "Stille uren (optioneel)";
+"settings.reminders.enable_quiet_hours" = "Stille uren inschakelen";
+
+/* Settings - AI */
+"setting.ai.api_keys" = "AI API-sleutels";
+"settings.ai.api_keys_description" = "Voeg je eigen API-sleutels toe om AI-assistenten te gebruiken. Sleutels worden versleuteld en veilig op de server opgeslagen.";
+"settings.ai.loading_keys" = "API-sleutels laden...";
+"settings.ai.about_keys" = "Over API-sleutels";
+"settings.ai.about_description" = "Je API-sleutels worden gebruikt om de AI-assistentfuncties in Astrid aan te sturen. Elke provider biedt verschillende mogelijkheden en prijzen.";
+"settings.ai.encryption_info" = "Sleutels worden versleuteld met AES-256 voordat ze worden opgeslagen. Astrid deelt je sleutels nooit met derden.";
+"settings.ai.not_configured" = "Niet geconfigureerd";
+"settings.ai.api_new.badge" = "NIEUW";
+"settings.ai.manage_keys" = "API-sleutels beheren";
+"settings.ai.manage_keys_subtitle" = "Claude-, OpenAI- of Gemini-sleutels toevoegen";
+"settings.ai.api_keys_footer" = "Voeg je eigen Claude-, OpenAI- of Gemini-API-sleutels toe om de AI-assistent aan te sturen.";
+
+/* Exploratory Features */
+"exploratory_features" = "Experimentele Functies";
+"ai_assistants" = "AI-assistenten";
+"apple_reminders" = "Apple Herinneringen";
+"settings.reminders.configure_sync" = "Synchronisatie configureren";
+"settings.reminders.sync_subtitle" = "Synchroniseren met Siri en Apple Watch";
+"settings.exploratory.warning" = "Deze functies zijn experimenteel en worden actief ontwikkeld.";
+
+/* Smart Task Creation */
+"smart_task_creations" = "Slimme taakcreatie";
+"smart_task_creation_description" = "Datums, prioriteiten en hashtags uit titels analyseren";
+
+/* Settings - Appearance */
+"settings.appearance.theme" = "Theme";
+"settings.appearance.email_to_task" = "Email-to-Task";
+"settings.appearance.email_to_task_footer" = "Create tasks by sending emails to remindme@astrid.cc";
+"settings.appearance.email_to_task_self" = "Self-task: Send TO remindme@astrid.cc";
+"settings.appearance.email_to_task_assigned" = "Assigned task: CC remindme@astrid.cc with one recipient";
+"settings.appearance.email_to_task_group" = "Group task: CC remindme@astrid.cc with multiple recipients";
+"settings.appearance.email_to_task_subject" = "Subject becomes task title";
+"settings.appearance.email_to_task_body" = "Body becomes task description";
+
+/* Theme Modes */
+"theme.ocean" = "Ocean";
+"theme.light" = "Light";
+"theme.dark" = "Dark";
+"theme.auto" = "Auto";
+
+/* Settings - Account */
+"settings.account.loading" = "Loading account...";
+"settings.account.display_name" = "Display Name";
+"settings.account.name_placeholder" = "Name";
+"settings.account.email_placeholder" = "Email";
+"settings.account.save_changes" = "Save Changes";
+"settings.account.oauth_footer" = "Signed in with Google. Some fields may be managed by your Google account.";
+"settings.account.pending_email" = "Pending Email Change";
+"settings.account.resend_verification" = "Resend Verification";
+"settings.account.cancel_change" = "Cancel Change";
+"settings.account.email_not_verified" = "Email Not Verified";
+"settings.account.send_verification" = "Send Verification Email";
+"settings.account.email_verification" = "Email Verification";
+"settings.account.pending_email_footer" = "Check your email inbox to verify the new address.";
+"settings.account.verify_email_footer" = "Verify your email to access all features and receive notifications.";
+"settings.account.info" = "Account Information";
+"settings.account.id" = "Account ID";
+"settings.account.created" = "Created";
+"settings.account.auth_method" = "Auth Method";
+"settings.account.google" = "Google";
+"settings.account.passkey" = "Passkey";
+"settings.account.adding_passkey" = "Adding passkey...";
+"settings.account.add_passkey_button" = "Add a Passkey";
+"settings.account.passkeys_footer" = "Passkeys use biometrics or device PIN for secure, passwordless authentication.";
+"settings.account.passkey_name_placeholder" = "Passkey name";
+"settings.account.synced" = "Synced";
+"settings.account.added_on" = "Added %@";
+"settings.account.added_recently" = "Added recently";
+"settings.account.rename_failed" = "Failed to rename passkey";
+"settings.account.delete_failed" = "Failed to delete passkey";
+"settings.account.export_json" = "Export Data (JSON)";
+"settings.account.export_csv" = "Export Data (CSV)";
+"settings.account.your_data" = "Your Data";
+"settings.account.your_data_footer" = "Download all your tasks, lists, and account data.";
+"settings.account.delete_account_footer" = "Permanently delete your account and all associated data.";
+"settings.account.no_passkeys_registered" = "No passkeys registered";
+"settings.account.add_passkey_description" = "Add a passkey for faster, passwordless sign-in";
+"settings.account.passkeys" = "Passkeys";
+"settings.account.loading_passkeys" = "Loading passkeys...";
+"settings.account.add_passkey" = "Add Passkey";
+"settings.account.no_passkeys" = "No passkeys added yet.";
+"settings.account.danger_zone" = "Danger Zone";
+"settings.account.delete_account" = "Delete Account";
+"settings.account.delete_warning" = "This action cannot be undone";
+"settings.account.delete_remove_list_header" = "Deleting your account will permanently remove:";
+"settings.account.delete_remove_tasks" = "All your tasks and their history";
+"settings.account.delete_remove_lists" = "All lists you own";
+"settings.account.delete_remove_comments" = "All your comments";
+"settings.account.delete_remove_profile" = "Your profile and settings";
+"settings.account.delete_remove_files" = "All uploaded files";
+"settings.account.delete_confirm_prompt" = "To confirm, type \"DELETE MY ACCOUNT\" below:";
+"settings.account.delete_confirm_placeholder" = "Type confirmation";
+"settings.account.delete_confirmation" = "Confirmation";
+"settings.account.delete_confirm_instruction" = "You must type \"DELETE MY ACCOUNT\" exactly to proceed.";
+"settings.account.delete_confirm_mismatch" = "Confirmation text does not match";
+"settings.account.delete_confirm_match" = "Confirmation text matches";
+"settings.account.delete_my_account_button" = "Delete My Account";
+"settings.account.delete_final_confirmation" = "Final Confirmation";
+"settings.account.delete_forever" = "Delete Forever";
+"settings.account.delete_final_warning" = "Are you absolutely sure? This will permanently delete your account and ALL your data.";
+"settings.account.delete_confirm_phrase" = "DELETE MY ACCOUNT";
+
+/* Additional translations */
+"userMenu.refreshData" = "Gegevens vernieuwen";
+"actions.ok" = "OK";
+"actions.filter" = "Filteren";
+"actions.sort" = "Sorteren";
+"actions.clear" = "Wissen";
+"actions.apply" = "Toepassen";
+"actions.change" = "Wijzigen";
+"tasks.who" = "Wie";
+"tasks.due_time" = "Vervaltijd";
+"tasks.timer" = "Timer";
+"lists.sort_and_filters" = "Sorteren & filteren";
+"lists.admin" = "Beheerder";
+"lists.filters" = "Filters";
+"lists.clear_all_filters" = "Alle filters wissen";
+"lists.sort_by" = "Sorteren op";
+"lists.sort_order" = "Sorteervolgorde";
+"lists.auto" = "Automatisch";
+"lists.manual" = "Handmatig";
+"lists.due_date" = "Vervaldatum";
+"lists.created_date" = "Aanmaakdatum";
+"lists.task_completion" = "Taakvoltooiing";
+"lists.incomplete_completed_recently" = "Onvolledig + Recent voltooid";
+"lists.all" = "Alle";
+"lists.me" = "Ik";
+"lists.not_me" = "Niet ik (Anderen)";
+"lists.overdue" = "Verlopen";
+"lists.this_week" = "Deze week";
+"lists.this_month" = "Deze maand";
+"lists.no_date" = "Geen datum";
+"lists.all_priorities" = "Alle prioriteiten";
+"lists.highest_priority" = "!!! Hoogste";
+"lists.high_priority" = "!! Hoog";
+"lists.medium_priority" = "! Gemiddeld";
+"lists.low_priority" = "○ Laag";
+"lists.assigned_by" = "Toegewezen door";
+"lists.repeating" = "Herhalend";
+"lists.not_repeating" = "Niet herhalend";
+"lists.daily" = "Dagelijks";
+"lists.weekly" = "Wekelijks";
+"lists.monthly" = "Maandelijks";
+"lists.yearly" = "Jaarlijks";
+"lists.custom" = "Aangepast";
+"lists.list_membership" = "Lijstlidmaatschap";
+"lists.all_tasks" = "Alle taken";
+"lists.in_any_list" = "In een lijst";
+"lists.not_in_any_list" = "Niet in een lijst";
+"lists.favorite" = "Favoriet";
+"lists.favorite_description" = "Deze lijst verschijnt bovenaan je lijsten";
+"lists.saved_filter" = "Opgeslagen filter";
+"lists.saved_filter_description" = "Deze lijst toont taken op basis van filters, niet lidmaatschap";
+"lists.list_information" = "Lijstinformatie";
+"lists.list_appearance" = "Lijstweergave";
+"lists.list_image" = "Lijstafbeelding";
+"lists.list_image_description" = "Kies een aangepaste afbeelding of pictogram";
+"lists.default_task_settings" = "Standaard taakinstellingen";
+"lists.task_creator" = "Taakmaker";
+"lists.all_day" = "Hele dag (Geen tijd)";
+"lists.never" = "Nooit";
+"lists.github_integration" = "GitHub-integratie";
+"lists.link_repo_description" = "Koppel repository voor AI-programmeeragenten";
+"lists.loading_repositories" = "Repositories laden...";
+"lists.github_repository" = "GitHub-repository";
+"lists.no_repositories_found" = "Geen repositories gevonden. Zorg dat je GitHub-account is verbonden.";
+"lists.pending_invitations" = "Uitnodigingen in afwachting";
+"lists.invited" = "Uitgenodigd";
+"lists.cancel_invite" = "Uitnodiging annuleren";
+"lists.ai_agents" = "AI-agenten";
+"lists.add_ai_agent" = "AI-agent toevoegen";
+"lists.no_ai_providers" = "Geen AI-providers geconfigureerd";
+"lists.make_member" = "Lid maken";
+"lists.make_admin" = "Beheerder maken";
+"lists.remove" = "Verwijderen";
+"lists.share_list" = "Lijst delen";
+"lists.share_list_description" = "Genereer een deelbare link voor deze lijst";
+"lists.available_agents" = "Beschikbare agenten";
+"lists.loading_ai_agents" = "AI-agenten laden...";
+"lists.claude_coding_description" = "Claude AI voor programmeren en taakondersteuning";
+"lists.openai_coding_description" = "OpenAI GPT-4 voor programmeren en taakondersteuning";
+"lists.gemini_coding_description" = "Google Gemini voor programmeren en taakondersteuning";
+"lists.claude_task_description" = "Claude AI voor taakondersteuning";
+"lists.openai_task_description" = "OpenAI GPT-4 voor taakondersteuning";
+"lists.gemini_task_description" = "Google Gemini voor taakondersteuning";
+"lists.default_agent_description" = "AI-agent voor taakondersteuning";
+"lists.ai_coding_agents" = "AI-programmeeragenten";
+"lists.connect_github_description" = "Verbind een GitHub-repository om programmeerworkflows in te schakelen";
+"lists.list_privacy" = "Lijstprivacy";
+"lists.make_public" = "Openbaar maken";
+"lists.make_private" = "Privé maken";
+"lists.public_description" = "Iedereen met de link kan deze lijst bekijken";
+"lists.private_description" = "Alleen leden kunnen deze lijst bekijken";
+"lists.owner" = "Eigenaar";
+"lists.admin_role" = "Beheerder";
+"lists.member_role" = "Lid";
+"lists.add_member" = "Lid toevoegen";
+"lists.tomorrow" = "Morgen";
+"lists.next_week" = "Volgende week";
+"lists.next_month" = "Volgende maand";
+"lists.none" = "Geen";
+"lists.delete_confirm" = "Weet je zeker dat je deze lijst wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.";
+"messages.danger_zone" = "Gevarenzone";
+"settings.account.no_name" = "Geen naam ingesteld";
+"settings.account.unknown" = "Onbekend";
+"settings.account.failed_load" = "Account laden mislukt: %@";
+"settings.account.invalid_email" = "Voer een geldig e-mailadres in";
+"settings.account.profile_updated_verify" = "Profiel bijgewerkt. Controleer je e-mail om het nieuwe adres te verifiëren.";
+"settings.account.profile_updated_success" = "Profiel succesvol bijgewerkt";
+"settings.account.failed_save" = "Opslaan mislukt: %@";
+"settings.account.failed_process_image" = "Afbeelding verwerken mislukt";
+"settings.account.failed_upload_image" = "Afbeelding uploaden mislukt: %@";
+"settings.account.failed_send_verification" = "Verificatie-e-mail verzenden mislukt: %@";
+"settings.account.email_change_cancelled" = "E-mailwijziging geannuleerd";
+"settings.account.failed_cancel_email_change" = "E-mailwijziging annuleren mislukt: %@";
+"settings.account.failed_export" = "Gegevens exporteren mislukt: %@";
+"settings.account.failed_delete" = "Account verwijderen mislukt: %@";
+"settings.account.passkeys_description" = "Met passkeys kun je veilig inloggen zonder wachtwoord.";
+"settings.account.data" = "Gegevens";
+"settings.account.export_data" = "Mijn gegevens exporteren";
+"settings.account.export_description" = "Download al je taken, lijsten en profielgegevens in JSON-formaat.";
+"settings.account.delete_description" = "Account en alle gegevens permanent verwijderen.";
+"settings.reminders.start" = "Start";
+"settings.reminders.end" = "Einde";
+"settings.reminders.test" = "Test";
+"settings.reminders.send_test" = "Testherinnering verzenden";
+"settings.reminders.test_reminder" = "Testherinnering";
+"settings.reminders.test_message" = "Een testmelding verschijnt over 5 seconden";
+
+/* Apple Reminders Sync */
+"reminders.access_granted" = "Toegang verleend";
+"reminders.access_denied" = "Toegang geweigerd";
+"reminders.tap_to_open_settings" = "Tik om Instellingen te openen";
+"reminders.enable_sync" = "Herinneringen-synchronisatie inschakelen";
+"reminders.sync_description" = "Synchroniseer taken met Apple Herinneringen voor Siri en Watch";
+"reminders.access_header" = "Herinneringen-toegang";
+"reminders.access_footer" = "Synchroniseer je Astrid-taken met Apple Herinneringen. Gebruik Siri om taken toe te voegen en bekijk ze op Apple Watch.";
+"reminders.sync_status" = "Synchronisatiestatus";
+"reminders.last_sync" = "Laatste synchronisatie";
+"reminders.linked_lists" = "Gekoppelde lijsten";
+"reminders.syncing" = "Synchroniseren...";
+"reminders.sync_all_lists" = "Alle lijsten synchroniseren";
+"reminders.your_lists" = "Jouw lijsten";
+"reminders.your_lists_footer" = "Tik op een lijst om deze te koppelen met Apple Herinneringen. Kies of je taken wilt exporteren of importeren vanuit een bestaande Herinneringenlijst.";
+"reminders.import_from_reminders" = "Importeren uit Herinneringen";
+"reminders.import_footer" = "Importeer bestaande Herinneringenlijsten in Astrid.";
+"reminders.unlink" = "Ontkoppelen";
+"reminders.astrid_list" = "Astrid-lijst";
+"reminders.sync_direction" = "Synchronisatierichting";
+"reminders.create_new_list" = "Nieuwe lijst maken";
+"reminders.link_to_reminders_list" = "Koppelen aan Herinneringenlijst";
+"reminders.link_footer" = "Selecteer een bestaande Herinneringenlijst of maak een nieuwe aan met de naam '%@'";
+"reminders.include_completed" = "Voltooide taken opnemen";
+"reminders.include_completed_desc" = "Al voltooide taken synchroniseren";
+"reminders.options" = "Opties";
+"reminders.link_list" = "Lijst koppelen";
+"reminders.link" = "Koppelen";
+"reminders.reminders_list" = "Herinneringenlijst";
+"reminders.create_new_astrid_list" = "Nieuwe Astrid-lijst maken";
+"reminders.import_into" = "Importeren in";
+"reminders.import_into_footer" = "Maak een nieuwe Astrid-lijst met de naam '%@' of importeer in een bestaande lijst.";
+"reminders.import_completed_desc" = "Al voltooide herinneringen importeren";
+"reminders.import_reminders" = "Herinneringen importeren";
+"reminders.import" = "Importeren";
+
+/* Repeating Pattern Editor */
+"repeating.custom_pattern" = "Aangepast herhalingspatroon";
+"repeating.repeat_every" = "Herhaal elke";
+"repeating.repeat_on_days" = "Herhaal op deze dagen";
+"repeating.repeat_type" = "Herhalingstype";
+"repeating.same_date_monthly" = "Dezelfde datum elke maand";
+"repeating.same_weekday_monthly" = "Dezelfde weekdag en week van de maand";
+"repeating.day_of_month" = "Dag van de maand";
+"repeating.weekday" = "Weekdag";
+"repeating.week_of_month" = "Week van de maand";
+"repeating.month" = "Maand";
+"repeating.day" = "Dag";
+"repeating.repeat_mode" = "Herhalingsmodus";
+"repeating.from_completion" = "Volgende herhaling vanaf voltooiingsdatum";
+"repeating.from_due_date" = "Volgende herhaling vanaf oorspronkelijke vervaldatum";
+"repeating.end_condition" = "Eindconditie";
+"repeating.never" = "Nooit";
+"repeating.after_occurrences" = "Na X keer";
+"repeating.until_date" = "Tot specifieke datum";
+"repeating.num_occurrences" = "Aantal herhalingen";
+"repeating.end_date" = "Einddatum";
+"repeating.preview" = "Voorbeeld";
+"repeating.no_repeat" = "Geen herhaling";
+"repeating.days" = "Dagen";
+"repeating.weeks" = "Weken";
+"repeating.months" = "Maanden";
+"repeating.years" = "Jaren";
+"repeating.1st" = "1e";
+"repeating.2nd" = "2e";
+"repeating.3rd" = "3e";
+"repeating.4th" = "4e";
+"repeating.5th" = "5e";
+
+/* Filter Labels */
+"filters.sort_by" = "Sorteren op";
+"filters.sort" = "Sorteren";
+"filters.auto" = "Auto";
+"filters.manual" = "Handmatig";
+"filters.completion_status" = "Voltooiingsstatus";
+"filters.show" = "Tonen";
+"filters.default" = "Standaard";
+"filters.all_tasks" = "Alle taken";
+"filters.all_priorities" = "Alle prioriteiten";
+"filters.highest_priority" = "!!! Hoogste";
+"filters.high_priority" = "!! Hoog";
+"filters.medium_priority" = "! Gemiddeld";
+"filters.low_priority" = "○ Laag";
+"filters.all_dates" = "Alle datums";
+"filters.this_week" = "Deze week";
+"filters.this_month" = "Deze maand";
+"filters.no_due_date" = "Geen deadline";
+"filters.who" = "Wie";
+"filters.all" = "Alles";
+"filters.me" = "Ik";
+"filters.not_me" = "Niet ik (Anderen)";
+"filters.unassigned" = "Niet toegewezen";
+"filters.not_repeating" = "Niet herhalend";
+"filters.save_as_smart_list" = "Opslaan als Slimme lijst";
+"filters.save_footer" = "Sla deze filterinstellingen op als Slimme lijst in je zijbalk";
+"filters.clear_all" = "Alle filters wissen";
+"filters.saving" = "Opslaan...";
+"filters.sort_and_filters" = "Sorteren en filters";
+"filters.filter_by_list" = "Filteren op lijst";
+"filters.featured_lists" = "Uitgelichte lijsten";
+"filters.view_add" = "Bekijken en toevoegen";
+"filters.tasks_count" = "%d taken";
+
+/* List Details */
+"list.type" = "Lijsttype";
+"list.task_defaults" = "Standaardwaarden";
+"list.favorite_description" = "Deze lijst verschijnt in je Favorieten";
+"list.smart_list_description" = "Deze lijst toont taken op basis van filters, niet lidmaatschap";
+"list.defaults_description" = "Stel standaardwaarden in voor nieuwe taken in deze lijst";
+"list.task_creator" = "Taakmaker";
+"list.select_lists" = "Lijsten selecteren";
+"list.details" = "Lijstdetails";
+"list.oauth_hint" = "Gebruik deze ID voor OAuth API-integraties en programmeringsagenten";
+"list.delete_list" = "Lijst verwijderen";
+"list.danger_zone" = "Gevarenzone";
+"list.list_settings" = "Lijstinstellingen";
+
+/* Sharing */
+"share.share_list" = "Lijst delen";
+"share.share_task" = "Taak delen";
+"share.private_list_message" = "Dit is een privélijst. Alleen leden met toegang kunnen deze zien.";
+"share.public_list_message" = "Dit is een openbare lijst. Iedereen met de link kan deze zien.";
+"share.private_task_message" = "Dit is een privétaak. Alleen gebruikers met toegang tot deze lijst kunnen deze zien.";
+"share.generating_link" = "Link genereren...";
+"share.share_link_hint" = "Deel deze link met iedereen die toegang heeft om deze taak te bekijken";
+"share.copy_link" = "Kopiëren naar klembord";
+"share.link_copied" = "Link gekopieerd!";
+"share.share_list_link_hint" = "Deel deze link met iedereen die toegang heeft om deze lijst te bekijken";
+"share.link_redirect_list" = "De link leidt door naar de lijst in de app";
+"share.link_redirect_task" = "De link leidt door naar de taak in de app";
+
+/* Save Filter Dialog */
+"save_filter.title" = "Opslaan als Slimme lijst";
+"save_filter.description" = "Dit slaat je huidige filterinstellingen op als Slimme lijst";
+"save_filter.due_date" = "Deadline";
+
+/* Authentication */
+"auth.continue_passkey" = "Doorgaan met Passkey";
+"auth.new_user" = "Nieuw?";
+"auth.returning_user" = "Terug?";
+"auth.sign_in_short" = "Inloggen";
+"auth.create_account" = "Account aanmaken";
+"auth.create_account_footer" = "Log in om je taken te synchroniseren op al je apparaten en samen te werken met anderen.";
+"auth.sign_in_prompt_title" = "Inloggen";
+"auth.sign_in_cta" = "Log in om meer functies te ontgrendelen";
+"auth.benefit_sync_title" = "Synchroniseer tussen apparaten";
+"auth.benefit_sync_desc" = "Krijg overal toegang tot je taken vanaf elk apparaat";
+"auth.benefit_collaborate_title" = "Samenwerken met anderen";
+"auth.benefit_collaborate_desc" = "Deel lijsten en werk samen aan taken";
+"auth.benefit_backup_title" = "Houd je gegevens veilig";
+"auth.benefit_backup_desc" = "Je taken worden veilig in de cloud opgeslagen";
+"auth.sign_in_data_note" = "Je bestaande taken worden gesynchroniseerd met je account";
+
+/* Attachments */
+"attachments.saving" = "Opslaan...";
+"attachments.save_to_task" = "Opslaan bij taak";
+"attachments.quick_look" = "Snelle weergave";
+"attachments.quick_look_tip" = "Tip: Gebruik Markering in Snelle weergave om te bewerken en op te slaan in Astrid";
+"attachments.choose_photo" = "Kies foto";
+"attachments.choose_video" = "Kies video";
+"attachments.choose_document" = "Kies document";
+"attachments.count" = "Bijlagen (%d)";
+
+/* Image Picker */
+"image_picker.upload_library" = "Uploaden uit fotobibliotheek";
+"image_picker.choose_description" = "Kies een afbeelding uit je fotobibliotheek";
+"image_picker.pinch_zoom" = "Knijp om te zoomen, sleep om te positioneren";
+"image_picker.uploading" = "Uploaden...";
+"image_picker.cancel_upload" = "Upload annuleren";
+"image_picker.use_this_image" = "Deze afbeelding gebruiken";
+"image_picker.choose_different_photo" = "Andere foto kiezen";
+
+/* Inline Pickers */
+"picker.no_due_date" = "Geen deadline";
+"picker.custom_date" = "Aangepaste datum";
+"picker.custom_time" = "Aangepaste tijd";
+"picker.add_time" = "Tijd toevoegen";
+"picker.no_lists" = "Geen lijsten gevonden";
+"picker.add_to_lists" = "Toevoegen aan lijsten";
+"picker.loading_agents" = "AI-agents laden...";
+"picker.ai_agent" = "AI-agent";
+
+/* Sync Status */
+"sync.status" = "Synchronisatiestatus";
+"sync.unstable_connection" = "Instabiele verbinding gedetecteerd";
+"sync.retry_failed" = "Mislukte bewerkingen opnieuw proberen";
+"sync.working_offline" = "Offline werken";
+
+/* Profile */
+"profile.updated_success" = "Je profiel is succesvol bijgewerkt!";
+"profile.tap_change_photo" = "Tik om foto te wijzigen";
+"profile.uploading_photo" = "Foto uploaden...";
+"profile.display_name" = "Weergavenaam";
+"profile.email_address" = "E-mailadres";
+"profile.edit_profile" = "Profiel bewerken";
+"profile.saving" = "Opslaan...";
+"profile.save_changes" = "Wijzigingen opslaan";
+
+/* Members */
+"members.searching" = "Contacten zoeken...";
+"members.astrid_users" = "Mensen uit je contacten die Astrid gebruiken";
+"members.loading_suggestions" = "Suggesties laden...";
+"members.add_collaborators" = "Medewerkers toevoegen";
+"members.upload_contacts" = "Upload je contacten voor betere samenwerking";
+"members.invite_email" = "Uitnodigen per e-mail";
+"members.add_member" = "Lid toevoegen";
+
+/* Membership (Local User) */
+"membership.requires_account" = "Lijsten delen vereist een account";
+"membership.requires_account_description" = "Log in om medewerkers uit te nodigen en lijsten te delen met anderen.";
+"membership.sign_in_to_share" = "Log in om lijsten te delen";
+
+/* Comments */
+"comments.count" = "Opmerkingen (%d)";
+"comments.empty" = "Nog geen opmerkingen. Wees de eerste om te reageren!";
+"comments.add_placeholder" = "Opmerking toevoegen...";
+"comments.delete_comment" = "Reactie verwijderen";
+"comments.upload_error" = "Uploadfout";
+
+/* Task Edit */
+"task_edit.add_to_list" = "Toevoegen aan lijst";
+"task_edit.add_another_list" = "Nog een lijst toevoegen";
+"task_edit.only_you" = "Alleen jij kunt deze taak zien";
+"task_edit.add_description" = "Beschrijving toevoegen...";
+"task_edit.last_timer" = "Laatste: %@";
+"task_edit.copy_to_lists" = "Kopiëren naar Mijn lijsten";
+
+/* Timer */
+"timer.complete_task" = "TAAK VOLTOOIEN";
+"timer.dismiss_alarm" = "Alarm negeren";
+"timer.tap_to_change" = "Tik op de tijd om duur te wijzigen";
+"timer.snooze_1hour" = "1 uur snoozen";
+
+/* Notifications */
+"notification.complete_task" = "Taak voltooien";
+"notification.test_reminder" = "📱 Testmelding";
+
+/* Debug Settings */
+"debug.contacts_settings" = "Contactinstellingen";
+"debug.debug_settings" = "Debug-instellingen";
+"debug.app_version" = "Astrid v%@";
+"debug.current_server" = "Huidige server";
+"debug.active_config" = "Actieve configuratie";
+"debug.restart_required" = "Wijzigingen vereisen een herstart van de app";
+"debug.available_servers" = "Beschikbare servers";
+"debug.reset_default" = "Herstellen naar standaard";
+"debug.server_changed" = "Server gewijzigd";
+"debug.get_key" = "Sleutel ophalen";
+"server.restart_required" = "Herstart vereist";
+"server.restart_message" = "Server gewijzigd naar:\n%@\n\nHerstart de app om de wijzigingen toe te passen.";
+
+/* Splash */
+"splash.loading" = "Je taken laden...";
+
+/* Misc */
+"misc.cancel" = "Annuleren";
+"misc.save" = "Opslaan";
+"misc.close" = "Sluiten";
+
+/* Local Mode - Added for offline-first */
+"auth.or" = "of";
+"auth.use_without_account" = "Gebruik zonder account";
+"auth.local_mode_description" = "Je taken blijven op dit apparaat. Log later in om tussen apparaten te synchroniseren.";
+"local_user" = "Lokale gebruiker";
+"offline.local_mode_active" = "Lokale modus actief";
+"offline.data_on_device" = "Je gegevens worden alleen op dit apparaat opgeslagen";
+"offline.sync_to_cloud" = "Synchroniseren met cloud";
+"offline.sign_in_to_sync" = "Log in om tussen apparaten te synchroniseren";
+"offline.local_tasks" = "Lokale taken";
+"offline.local_lists" = "Lokale lijsten";
+"offline.warning" = "Waarschuwing: Als je de app verwijdert zonder in te loggen, gaan je gegevens verloren.";
+"settings.local_only_mode" = "Alleen lokale modus";
+"settings.local_only_description" = "Log in om tussen apparaten te synchroniseren";
+"status.local_only" = "Alleen lokale modus";
+"status.offline" = "Offline werken";
+"status.offline_with_pending" = "Offline • %d wachtend";
+"status.syncing" = "Synchroniseren...";
+"status.syncing_count" = "%d items synchroniseren...";
+"status.sync_failed" = "%d synchronisaties mislukt";
+"status.synced" = "Alles gesynchroniseerd";
+"status.local_only_description" = "Je gegevens worden alleen op dit apparaat opgeslagen. Log in om te synchroniseren.";
+"status.pending_sync_description" = "%d wijzigingen worden gesynchroniseerd wanneer online";
+"status.failed_sync_description" = "%d items niet gesynchroniseerd";
+"status.retry_now" = "Opnieuw proberen";
+"status.sync_in_progress" = "Wijzigingen worden automatisch gesynchroniseerd";
+"sync" = "Synchroniseren";
+"welcome.title" = "Welkom bij Astrid!";
+"welcome.subtitle" = "Je slimme taakmanager";
+"welcome.sign_in" = "Inloggen";
+"welcome.use_locally" = "Gebruik zonder account";
+"welcome.local_note" = "Je kunt later inloggen om tussen apparaten te synchroniseren";
