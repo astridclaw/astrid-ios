@@ -30,7 +30,7 @@ Reversed: com.googleusercontent.apps.123456789-abcdefg
 
 ## Step 3: Update GoogleSignInManager.swift
 
-Open `ios/AstridApp/Core/Authentication/GoogleSignInManager.swift` and update:
+Open `Astrid App/Core/Authentication/GoogleSignInManager.swift` and update:
 
 ```swift
 // Replace these placeholders:
@@ -114,9 +114,9 @@ Per App Store guidelines, if you offer third-party sign-in (Google), you must al
 
 ## Related Files
 
-- iOS Client: `ios/AstridApp/Core/Authentication/GoogleSignInManager.swift`
-- Backend Endpoint: `app/api/auth/google/route.ts`
-- Login UI: `ios/AstridApp/Views/Authentication/LoginView.swift`
+- iOS Client: `Astrid App/Core/Authentication/GoogleSignInManager.swift`
+- Backend Endpoint: `app/api/auth/google/route.ts` (in astrid-web)
+- Login UI: `Astrid App/Views/Authentication/LoginView.swift`
 
 ## Support
 

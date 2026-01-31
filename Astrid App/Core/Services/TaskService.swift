@@ -81,36 +81,6 @@ class TaskService: ObservableObject {
         }
     }
 
-    /// DISABLED: Setup app lifecycle observer to save to Core Data when app goes to background
-    /// 🚨 ISSUE: Saving all tasks to Core Data (even in background) freezes the app
-    /// Core Data NSManagedObject creation is too expensive for hundreds of tasks
-    /// Tasks now remain in memory only, with Core Data used ONLY for pending operations
-    private func setupAppLifecycleObserver() {
-        // DISABLED - This method is not called from init() to prevent app freezing
-        // Keeping method for reference but functionality is disabled
-
-        // OLD CODE (caused freezing):
-        // NotificationCenter.default.addObserver(
-        //     forName: UIApplication.didEnterBackgroundNotification,
-        //     object: nil,
-        //     queue: .main
-        // ) { [weak self] _ in
-        //     guard let self = self else { return }
-        //     print("💾 [TaskService] App entering background - saving to Core Data...")
-        //
-        //     _Concurrency.Task.detached { [weak self] in
-        //         guard let self = self else { return }
-        //         do {
-        //             let tasksToSave = await MainActor.run { Array(self.tasks) }
-        //             try await self.saveTasksToCoreData(tasksToSave)
-        //             print("✅ [TaskService] Saved \(tasksToSave.count) tasks to Core Data")
-        //         } catch {
-        //             print("⚠️ [TaskService] Failed to save tasks on background: \(error)")
-        //         }
-        //     }
-        // }
-    }
-
     /// Start background sync timer (every 60 seconds)
     private func startBackgroundSync() {
         syncTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in

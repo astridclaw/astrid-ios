@@ -8,7 +8,6 @@
     "predeploy:full": "./scripts/predeploy.sh --full",
     "predeploy:quick": "./scripts/predeploy.sh --quick",
     "test": "./scripts/run-tests.sh",
-    "test:unit": "./scripts/run-tests.sh",
     "test:ui": "./scripts/run-tests.sh --ui --no-unit",
     "test:all": "./scripts/run-tests.sh --ui",
     "check:localizations": "./scripts/check-localizations.sh",

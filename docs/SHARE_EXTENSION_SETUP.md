@@ -20,7 +20,7 @@ The Share Extension allows users to create Astrid tasks directly from the iOS sy
 
 1. **Open Xcode project:**
    ```bash
-   open ios-app/Astrid\ App.xcodeproj
+   open "Astrid App.xcodeproj"
    ```
 
 2. **Add new target:**
@@ -47,17 +47,17 @@ Xcode will generate default Share Extension files. Replace them with our custom 
 
 2. **Add our implementation files to the ShareExtension target:**
    - Select these files in Project Navigator:
-     - `ios-app/ShareExtension/ShareViewController.swift`
-     - `ios-app/ShareExtension/TaskQuickCreateView.swift`
-     - `ios-app/ShareExtension/Info.plist`
+     - `ShareExtension/ShareViewController.swift`
+     - `ShareExtension/TaskQuickCreateView.swift`
+     - `ShareExtension/Info.plist`
    - In File Inspector (right panel), check **ShareExtension** under "Target Membership"
 
 3. **Add shared files to ShareExtension target:**
    These files need to be accessible by both main app and extension:
-   - `ios-app/Astrid App/Core/Models/SharedTaskData.swift`
-   - `ios-app/Astrid App/Core/Services/ShareDataManager.swift`
-   - `ios-app/Astrid App/Utilities/Constants.swift`
-   - `ios-app/Astrid App/Utilities/Theme.swift`
+   - `Astrid App/Core/Models/SharedTaskData.swift`
+   - `Astrid App/Core/Services/ShareDataManager.swift`
+   - `Astrid App/Utilities/Constants.swift`
+   - `Astrid App/Utilities/Theme.swift`
 
    For each file: Select it → File Inspector → Check **ShareExtension** under "Target Membership"
 
@@ -102,8 +102,8 @@ App Groups allow the Share Extension and main app to share data.
 ### Step 5: Configure Entitlements
 
 Entitlements files have been created for you:
-- `ios-app/Astrid App/Astrid App.entitlements` (updated with App Group)
-- `ios-app/ShareExtension/ShareExtension.entitlements` (new)
+- `Astrid App/Astrid App.entitlements` (updated with App Group)
+- `ShareExtension/ShareExtension.entitlements` (new)
 
 **Verify in Xcode:**
 
@@ -221,7 +221,7 @@ Verify these build settings for **ShareExtension target**:
 ## File Structure
 
 ```
-ios-app/
+astrid-ios/
 ├── Astrid App/
 │   ├── Core/
 │   │   ├── Models/

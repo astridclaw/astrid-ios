@@ -36,7 +36,7 @@ Native iOS app for Astrid task management with AI assistance.
    ```
 
 2. **Configure Google OAuth** (Required)
-   - Follow instructions in [GOOGLE_OAUTH_SETUP.md](./GOOGLE_OAUTH_SETUP.md)
+   - Follow instructions in [docs/GOOGLE_OAUTH_SETUP.md](./docs/GOOGLE_OAUTH_SETUP.md)
    - Create iOS OAuth Client ID in Google Cloud Console
    - Update `GoogleSignInManager.swift` with your credentials
    - Add URL scheme to Xcode project
@@ -166,9 +166,9 @@ TestFlight builds are distributed via Xcode Cloud.
 ## Documentation
 
 ### Setup Guides
-- [README_XCODE_SETUP.md](./README_XCODE_SETUP.md) - Complete Xcode setup
-- [GOOGLE_OAUTH_SETUP.md](./GOOGLE_OAUTH_SETUP.md) - Google OAuth configuration
-- [SHARE_EXTENSION_SETUP.md](./SHARE_EXTENSION_SETUP.md) - Share extension setup
+- [docs/XCODE_SETUP.md](./docs/XCODE_SETUP.md) - Complete Xcode setup
+- [docs/GOOGLE_OAUTH_SETUP.md](./docs/GOOGLE_OAUTH_SETUP.md) - Google OAuth configuration
+- [docs/SHARE_EXTENSION_SETUP.md](./docs/SHARE_EXTENSION_SETUP.md) - Share extension setup
 
 ### Technical Docs
 - [docs/API_CONTRACT.md](./docs/API_CONTRACT.md) - Backend API specification
@@ -207,7 +207,7 @@ See [docs/LOCAL_FIRST_PATTERN.md](./docs/LOCAL_FIRST_PATTERN.md) for details.
 For issues or questions:
 - iOS app bugs: Open an issue in this repository
 - Backend/API issues: Check the [web app repository](https://github.com/Graceful-Tools/astrid-web)
-- OAuth setup help: See [GOOGLE_OAUTH_SETUP.md](./GOOGLE_OAUTH_SETUP.md)
+- OAuth setup help: See [docs/GOOGLE_OAUTH_SETUP.md](./docs/GOOGLE_OAUTH_SETUP.md)
 
 ## License
 

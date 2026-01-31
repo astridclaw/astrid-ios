@@ -5,8 +5,6 @@
 **Repository:** https://github.com/Graceful-Tools/astrid-ios
 **Web App:** https://github.com/Graceful-Tools/astrid-web (separate repo)
 
-**Note:** This file is for **Claude Code CLI only** (local development). For shared project context and workflows, see **[ASTRID.md](./ASTRID.md)**.
-
 ---
 
 ## Quick Start
@@ -34,7 +32,7 @@ npm run predeploy
 npm run predeploy:full
 
 # Run specific test suites
-npm run test:unit     # Unit tests only
+npm run test          # Unit tests only
 npm run test:ui       # UI tests only
 npm run test:all      # Both unit and UI tests
 
@@ -114,25 +112,6 @@ npm run predeploy
 cd ../astrid-web && npx tsx scripts/get-astrid-tasks.ts ios
 ```
 
-### Coding Workflow
-
-**See [ASTRID.md](./ASTRID.md) > "Coding Workflow"** for the full required workflow including:
-- Baseline testing
-- Strategy comment posting (Step 3)
-- Implementation
-- Verification
-- Fix summary comment posting (Step 8)
-
-### Task Scripts
-
-**See [ASTRID.md](./ASTRID.md) > "Let's Fix Stuff Workflow"** for task script documentation.
-
-**iOS-specific commands** (run from astrid-web directory):
-```bash
-# Pull iOS tasks
-cd ../astrid-web && npx tsx scripts/get-astrid-tasks.ts ios
-```
-
 ### Environment Setup
 
 Copy `.env.local` from astrid-web if not present:
@@ -147,75 +126,6 @@ Required variables:
 
 ---
 
-## Project Structure
-
-```
-astrid-ios/
-├── Astrid App/
-│   ├── Core/             # Core functionality
-│   │   ├── Authentication/  # Apple/Google OAuth
-│   │   ├── Networking/      # API client
-│   │   ├── Persistence/     # CoreData stack
-│   │   ├── Services/        # Business logic
-│   │   ├── Notifications/   # Push notifications
-│   │   └── Sync/            # Data synchronization
-│   ├── Models/           # Data models
-│   ├── Views/            # SwiftUI views
-│   ├── ViewModels/       # View models
-│   ├── Extensions/       # Swift extensions
-│   ├── Utilities/        # Helpers and constants
-│   └── Resources/
-│       └── Localizations/ # 12 language translations
-├── Astrid/               # Shared code
-├── Astrid AppTests/      # Unit tests
-│   └── Tests/
-│       ├── UnitTests/        # Fast unit tests
-│       ├── IntegrationTests/ # Integration tests
-│       └── Mocks/            # Test mocks
-├── Astrid AppUITests/    # UI tests
-├── ShareExtension/       # iOS share extension
-├── docs/                 # Project documentation
-├── scripts/              # Build and test scripts
-└── package.json          # npm scripts for convenience
-```
-
----
-
-## Localization
-
-The app supports 12 languages. **All strings must be localized.**
-
-| Language | Code |
-|----------|------|
-| English | en (Base) |
-| Spanish | es |
-| French | fr |
-| German | de |
-| Italian | it |
-| Japanese | ja |
-| Korean | ko |
-| Dutch | nl |
-| Portuguese | pt |
-| Russian | ru |
-| Simplified Chinese | zh-Hans |
-| Traditional Chinese | zh-Hant |
-
-### Adding New Strings
-
-1. Add to `en.lproj/Localizable.strings`
-2. Add translations to ALL other language files
-3. Run `npm run check:localizations` to verify
-
-### Localization Check
-
-```bash
-npm run check:localizations
-```
-
-This validates all languages have matching keys.
-
----
-
 ## Testing
 
 ### Test Commands
@@ -223,7 +133,6 @@ This validates all languages have matching keys.
 | Command | Description |
 |---------|-------------|
 | `npm run test` | Run unit tests |
-| `npm run test:unit` | Run unit tests |
 | `npm run test:ui` | Run UI tests only |
 | `npm run test:all` | Run both unit and UI tests |
 
@@ -248,56 +157,6 @@ xcodebuild test -scheme "Astrid App" -destination "platform=iOS Simulator,name=i
 # Run UI tests
 xcodebuild test -scheme "Astrid App" -destination "platform=iOS Simulator,name=iPhone 17" -only-testing:"Astrid AppUITests" -quiet
 ```
-
----
-
-## API Integration
-
-The app connects to the Astrid backend at `https://astrid.cc`.
-
-### Key Endpoints
-
-- **Authentication**: `/api/auth/apple`, `/api/auth/google`, `/api/auth/mobile-*`
-- **Tasks**: `/api/tasks` (CRUD)
-- **Lists**: `/api/lists` (CRUD)
-- **Comments**: `/api/tasks/{id}/comments`
-- **Real-time**: `/api/sse` (Server-Sent Events)
-
-### API Contract
-
-See `docs/API_CONTRACT.md` for the full API specification.
-
-### Changing Backend URL
-
-Edit `Astrid App/Utilities/Constants.swift`:
-
-```swift
-enum API {
-    static let baseURL = "https://astrid.cc"
-}
-```
-
----
-
-## Architecture Patterns
-
-### Local-First Pattern
-
-The app implements local-first architecture:
-
-1. **Write Local, Sync Background** - All mutations save to Core Data immediately
-2. **Read from Cache First** - UI reads Core Data, never waits for network
-3. **Optimistic Updates** - Show changes instantly
-4. **Background Sync** - 60-second sync timer + network restoration triggers
-
-See `docs/LOCAL_FIRST_PATTERN.md` for implementation details.
-
-### Code Style
-
-- **SwiftUI** for all views
-- **Async/await** for asynchronous operations
-- **MVVM-like** architecture (Views + Services)
-- **No external dependencies** (system frameworks only)
 
 ---
 
@@ -328,29 +187,24 @@ See `docs/LOCAL_FIRST_PATTERN.md` for implementation details.
 
 ### Root Files
 
-- `ASTRID.md` - Project context and workflows (symlink to astrid-web)
 - `CLAUDE.md` - Claude Code CLI context (this file)
 - `README.md` - Project overview
 - `CONTRIBUTING.md` - Contribution guidelines
 - `SECURITY.md` - Security policy
 - `CODE_OF_CONDUCT.md` - Community standards
 
-### Setup Guides
-
-- `GOOGLE_OAUTH_SETUP.md` - Google OAuth configuration
-- `SHARE_EXTENSION_SETUP.md` - Share extension setup
-- `README_XCODE_SETUP.md` - Complete Xcode setup
-
 ### Technical Docs (in `/docs/`)
 
 - `API_CONTRACT.md` - Backend API specification
 - `LOCAL_FIRST_PATTERN.md` - Offline-first architecture
+- `GOOGLE_OAUTH_SETUP.md` - Google OAuth configuration
+- `SHARE_EXTENSION_SETUP.md` - Share extension setup
+- `XCODE_SETUP.md` - Complete Xcode setup
 
 ---
 
 ## See Also
 
-- **[ASTRID.md](./ASTRID.md)** - Project context, coding workflow, task management
 - **[README.md](./README.md)** - Project overview and setup
 - **[docs/API_CONTRACT.md](./docs/API_CONTRACT.md)** - API specification
 - **[docs/LOCAL_FIRST_PATTERN.md](./docs/LOCAL_FIRST_PATTERN.md)** - Offline architecture
@@ -358,4 +212,4 @@ See `docs/LOCAL_FIRST_PATTERN.md` for implementation details.
 
 ---
 
-*This file is for Claude Code CLI. For project context and workflows, see ASTRID.md.*
+*This file is for Claude Code CLI.*
