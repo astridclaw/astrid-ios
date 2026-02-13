@@ -382,28 +382,52 @@ struct CommentSectionViewEnhanced: View {
                     .padding(.horizontal, Theme.spacing4)
                 }
 
-                HStack(spacing: Theme.spacing8) {
-                    TextField("Add a comment...", text: $newCommentText, axis: .vertical)
-                        .textFieldStyle(.plain)
-                        .padding(Theme.spacing12)
-                        .background(colorScheme == .dark ? Theme.Dark.bgPrimary : Theme.bgPrimary)
-                        .clipShape(RoundedRectangle(cornerRadius: Theme.radiusMedium))
-                        .lineLimit(1...5)
-                        .focused($isTextFieldFocused)
-                        .onChange(of: newCommentText) { _, newValue in
-                            // Detect @ mention
-                            if let lastAtRange = newValue.range(of: "@", options: .backwards) {
-                                let substring = newValue[lastAtRange.upperBound...]
-                                if !substring.contains(" ") {
-                                    let search = String(substring)
-                                    mentionSearch = search
-                                    filterMentionableUsers(search: search)
-                                    return
-                                }
-                            }
-                            mentionSearch = nil
-                            filteredMentionResults = []
+                HStack(alignment: .bottom, spacing: Theme.spacing8) {
+                    // Expandable comment input (like QuickAddTaskView)
+                    ZStack(alignment: .topLeading) {
+                        // Hidden sizing text - determines the height of the container
+                        Text(newCommentText.isEmpty ? " " : newCommentText)
+                            .font(Theme.Typography.body())
+                            .foregroundColor(.clear)
+                            .padding(Theme.spacing12)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+
+                        // Placeholder text
+                        if newCommentText.isEmpty {
+                            Text("Add a comment...")
+                                .font(Theme.Typography.body())
+                                .foregroundColor(colorScheme == .dark ? Theme.Dark.textMuted : Theme.textMuted)
+                                .padding(Theme.spacing12)
+                                .allowsHitTesting(false)
                         }
+
+                        // Actual TextEditor
+                        TextEditor(text: $newCommentText)
+                            .font(Theme.Typography.body())
+                            .foregroundColor(colorScheme == .dark ? Theme.Dark.textPrimary : Theme.textPrimary)
+                            .scrollContentBackground(.hidden)
+                            .padding(.horizontal, Theme.spacing8)
+                            .padding(.vertical, Theme.spacing4)
+                            .focused($isTextFieldFocused)
+                            .onChange(of: newCommentText) { _, newValue in
+                                // Detect @ mention
+                                if let lastAtRange = newValue.range(of: "@", options: .backwards) {
+                                    let substring = newValue[lastAtRange.upperBound...]
+                                    if !substring.contains(" ") {
+                                        let search = String(substring)
+                                        mentionSearch = search
+                                        filterMentionableUsers(search: search)
+                                        return
+                                    }
+                                }
+                                mentionSearch = nil
+                                filteredMentionResults = []
+                            }
+                    }
+                    .frame(minHeight: 44, maxHeight: 200)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .background(colorScheme == .dark ? Theme.Dark.bgPrimary : Theme.bgPrimary)
+                    .clipShape(RoundedRectangle(cornerRadius: Theme.radiusMedium))
 
                     // Attachment menu button with paperclip icon
                     Menu {
@@ -461,7 +485,6 @@ struct CommentSectionViewEnhanced: View {
                 }
             }
         }
-        .dismissKeyboardOnTap()
         .task {
             // Cache mentionable users on first load
             updateMentionableUsers()
