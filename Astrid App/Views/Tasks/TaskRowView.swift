@@ -29,6 +29,17 @@ struct TaskRowView: View {
         task.lists?.contains(where: { $0.privacy == .PUBLIC }) ?? false
     }
 
+    // Check if task belongs to any list (use listIds for immediate availability)
+    private var taskHasLists: Bool {
+        if let listIds = task.listIds, !listIds.isEmpty {
+            return true
+        }
+        if let lists = task.lists, !lists.isEmpty {
+            return true
+        }
+        return false
+    }
+
     // Get effective assignee - use task.assignee if available, or create minimal User from assigneeId
     // This handles the case where task is loaded from Core Data (which only stores assigneeId)
     private var effectiveAssignee: User? {
@@ -145,8 +156,9 @@ struct TaskRowView: View {
                     )
 
                 // Combined metadata row: date first (left), then lists - matching web
-                // Hide due date for public list tasks
-                if (task.lists != nil && !task.lists!.isEmpty) || (task.dueDateTime != nil && !isPublicListTask) {
+                // Show row if task has lists (via listIds) OR has due date
+                // Use taskHasLists to detect lists early (before full list objects load)
+                if taskHasLists || (task.dueDateTime != nil && !isPublicListTask) {
                     HStack(spacing: Theme.spacing8) {
                         // Date/Time (left side, plain text) - hide for public list tasks
                         // Use dueDateTime + isAllDay to determine display
@@ -166,7 +178,7 @@ struct TaskRowView: View {
                             }
                         }
 
-                        // Lists (after date)
+                        // Lists (after date) - only show when full list objects are available
                         if let lists = task.lists, !lists.isEmpty {
                             HStack(spacing: 4) {
                                 ForEach(lists.prefix(2)) { list in
@@ -210,6 +222,8 @@ struct TaskRowView: View {
 
                         Spacer()
                     }
+                    // Consistent height for metadata row - matches badge height (15pt font + 8pt padding)
+                    .frame(minHeight: 27)
                 }
             }
 
