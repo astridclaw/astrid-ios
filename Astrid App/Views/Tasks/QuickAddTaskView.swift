@@ -14,10 +14,6 @@ struct QuickAddTaskView: View {
 
     @State private var taskTitle = ""
     @FocusState private var isFocused: Bool
-    @State private var textEditorHeight: CGFloat = 36
-
-    // Debounce timer for height updates to prevent excessive layout passes
-    @State private var heightUpdateWorkItem: DispatchWorkItem?
 
     // Priority/Assignee picker state
     @State private var selectedPriority: Task.Priority = .none
@@ -26,7 +22,7 @@ struct QuickAddTaskView: View {
 
     // Height constraints for expandable input
     private let minHeight: CGFloat = 36
-    private let maxHeight: CGFloat = 120  // ~4-5 lines
+    private let maxHeight: CGFloat = 200  // Allow for longer task titles (~8-10 lines)
 
     // Effective theme - Auto resolves to Light or Dark based on time of day
     private var effectiveTheme: ThemeMode {
@@ -51,6 +47,14 @@ struct QuickAddTaskView: View {
 
             // Expandable text input with chrome/silver styling in ocean mode
             ZStack(alignment: .topLeading) {
+                // Hidden sizing text - determines the height of the container
+                Text(taskTitle.isEmpty ? " " : taskTitle)
+                    .font(Theme.Typography.body())
+                    .foregroundColor(.clear)
+                    .padding(.horizontal, 13)
+                    .padding(.vertical, 12)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
                 // Placeholder text
                 if taskTitle.isEmpty {
                     Text(NSLocalizedString("tasks.add_task_placeholder", comment: ""))
@@ -87,51 +91,14 @@ struct QuickAddTaskView: View {
                         }
                     }
             }
-            .frame(height: textEditorHeight)
+            .frame(minHeight: minHeight, maxHeight: maxHeight)
+            .fixedSize(horizontal: false, vertical: true)
             .background(inputBackgroundColor)
             .cornerRadius(Theme.radiusMedium)
             .overlay(
                 RoundedRectangle(cornerRadius: Theme.radiusMedium)
                     .stroke(inputBorderColor, lineWidth: 1)
             )
-            // Hidden text for height measurement - simplified single GeometryReader
-            .background(
-                Text(taskTitle.isEmpty ? " " : taskTitle)
-                    .font(Theme.Typography.body())
-                    .foregroundColor(.clear)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .padding(.horizontal, 13)
-                    .padding(.vertical, 12)
-                    .background(GeometryReader { textGeometry in
-                        Color.clear.preference(
-                            key: TextHeightPreferenceKey.self,
-                            value: textGeometry.size.height
-                        )
-                    })
-                    .frame(height: 0)
-                    .clipped()
-            )
-            .onPreferenceChange(TextHeightPreferenceKey.self) { height in
-                // Cancel pending height update
-                heightUpdateWorkItem?.cancel()
-
-                // Debounce height updates to prevent excessive layout passes during rapid typing
-                let workItem = DispatchWorkItem { [height] in
-                    let newHeight = min(max(height, minHeight), maxHeight)
-                    // Only animate if height actually changed
-                    if abs(textEditorHeight - newHeight) > 1 {
-                        withAnimation(.easeInOut(duration: 0.1)) {
-                            textEditorHeight = newHeight
-                        }
-                    } else {
-                        textEditorHeight = newHeight
-                    }
-                }
-                heightUpdateWorkItem = workItem
-
-                // 50ms debounce - fast enough to feel responsive, slow enough to batch rapid changes
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: workItem)
-            }
 
             // Add button
             Button(action: {
@@ -672,16 +639,6 @@ struct QuickAddTaskView: View {
 
         print("🗓️ [calculateDateTime] Result: \(dateToModify)")
         return dateToModify
-    }
-}
-
-// MARK: - Preference Key for Text Height
-
-private struct TextHeightPreferenceKey: PreferenceKey {
-    static var defaultValue: CGFloat = 36
-
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        value = nextValue()
     }
 }
 
