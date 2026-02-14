@@ -820,13 +820,15 @@ struct TaskDetailViewNew: View {
         // Determine comment type
         let commentType: Comment.CommentType = attachedFile != nil ? .ATTACHMENT : .MARKDOWN
 
-        // Get file ID (wait for upload if needed)
+        // Get file ID (wait for upload if needed, unless offline)
         var fileIdToSend = attachedFile?.fileId
         if let tempFileId = fileIdToSend, tempFileId.hasPrefix("temp_") {
             if let realFileId = AttachmentService.shared.getRealFileId(for: tempFileId) {
                 fileIdToSend = realFileId
+            } else if !NetworkMonitor.shared.isConnected {
+                // OFFLINE: Keep temp fileId - will be resolved when syncing
             } else if AttachmentService.shared.isPendingUpload(tempFileId) {
-                // Wait for upload to complete
+                // Wait for upload to complete (online only)
                 fileIdToSend = await waitForUploadCompletion(tempFileId: tempFileId)
             }
         }

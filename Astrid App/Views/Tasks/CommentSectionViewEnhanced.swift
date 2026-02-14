@@ -264,12 +264,6 @@ struct CommentSectionViewEnhanced: View {
                         onDelete: {
                             // Remove comment from UI immediately
                             comments.removeAll { $0.id == comment.id }
-                        },
-                        onRetry: {
-                            // Retry syncing all pending comments
-                            _Concurrency.Task {
-                                await retryPendingComments()
-                            }
                         }
                     )
                 }
@@ -728,13 +722,21 @@ struct CommentSectionViewEnhanced: View {
     }
 
     private func submitComment() async {
+        print("🚀 [CommentSection] submitComment() called, network: \(networkMonitor.isConnected)")
+
         let trimmedText = newCommentText.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmedText.isEmpty || attachedFile != nil else { return }
+        guard !trimmedText.isEmpty || attachedFile != nil else {
+            print("⚠️ [CommentSection] Empty comment and no attachment - skipping")
+            return
+        }
+
+        print("📋 [CommentSection] Content: '\(trimmedText.prefix(30))...', hasAttachment: \(attachedFile != nil)")
 
         // Determine comment type based on attachment or markdown
         let commentType: Comment.CommentType
         if attachedFile != nil {
             commentType = .ATTACHMENT
+            print("📎 [CommentSection] Comment type: ATTACHMENT, fileId: \(attachedFile?.fileId ?? "nil")")
         } else if useMarkdown {
             commentType = .MARKDOWN
         } else {
@@ -803,19 +805,31 @@ struct CommentSectionViewEnhanced: View {
 
         // Store fileId before clearing (we need it for the API call)
         var fileIdToSend = attachedFile?.fileId
+        print("🔍 [CommentSection] Initial fileIdToSend: \(fileIdToSend ?? "nil")")
 
-        // If fileId is a temp ID, get the real fileId (wait if upload not complete)
+        // If fileId is a temp ID, try to get the real fileId
         if let tempFileId = fileIdToSend, tempFileId.hasPrefix("temp_") {
+            let isOnline = networkMonitor.isConnected
+            let hasRealId = attachmentService.getRealFileId(for: tempFileId) != nil
+            let isPending = attachmentService.isPendingUpload(tempFileId)
+            print("🔍 [CommentSection] Temp fileId check: online=\(isOnline), hasRealId=\(hasRealId), isPending=\(isPending)")
+
             if let realFileId = attachmentService.getRealFileId(for: tempFileId) {
                 // Upload already complete, use real ID
                 fileIdToSend = realFileId
                 print("📎 [CommentSection] Using already-uploaded fileId: \(realFileId)")
-            } else if attachmentService.isPendingUpload(tempFileId) {
-                // Upload still in progress - wait for it
+            } else if !isOnline {
+                // OFFLINE: Keep temp fileId - will be resolved when syncing
+                print("📵 [CommentSection] Offline - using temp fileId: \(tempFileId)")
+                // fileIdToSend stays as tempFileId
+            } else if isPending {
+                // Online but upload still in progress - wait for it (max 60s)
                 print("⏳ [CommentSection] Waiting for attachment upload to complete...")
                 fileIdToSend = await waitForUploadCompletion(tempFileId: tempFileId)
+                print("⏳ [CommentSection] Wait complete, fileIdToSend: \(fileIdToSend ?? "nil")")
             }
         }
+        print("✅ [CommentSection] Final fileIdToSend: \(fileIdToSend ?? "nil")")
 
         // Clear input immediately (feels instant!)
         newCommentText = ""
@@ -890,7 +904,7 @@ struct CommentSectionViewEnhanced: View {
         defer { isUploadingFile = false }
 
         do {
-            print("📸 [CommentSection] Starting photo upload...")
+            print("📸 [CommentSection] Starting photo upload... (network: \(networkMonitor.isConnected))")
 
             // Load image data
             guard let imageData = try await photoItem.loadTransferable(type: Data.self) else {
@@ -941,7 +955,10 @@ struct CommentSectionViewEnhanced: View {
                 // Already on MainActor, so UIImage(data:) is safe here
                 if let uiImage = UIImage(data: imageData) {
                     ThumbnailCache.shared.set(uiImage, for: tempFileId)
+                    print("📸 [CommentSection] Thumbnail cached for: \(tempFileId)")
                 }
+
+                print("📸 [CommentSection] attachedFile set: fileId=\(tempFileId), size=\(imageData.count)")
             }
 
         } catch {
@@ -1177,15 +1194,8 @@ struct CommentRowViewEnhanced: View {
     let isOffline: Bool  // When offline, treat all cached comments as user comments
     let onReply: () -> Void
     let onDelete: () -> Void
-    var onRetry: (() -> Void)? = nil  // Retry syncing pending comments
 
     @State private var showingDeleteAlert = false
-    @State private var isRetrying = false
-
-    // Check if this is a pending comment (not yet synced to server)
-    private var isPending: Bool {
-        comment.id.hasPrefix("temp_")
-    }
 
     // Effective theme
     private var effectiveTheme: String {
@@ -1306,34 +1316,8 @@ struct CommentRowViewEnhanced: View {
                             }
                         }
 
-                        // Sync status for pending comments - show always if pending, tappable to retry
-                        if isPending {
-                            Button {
-                                guard !isRetrying else { return }
-                                isRetrying = true
-                                onRetry?()
-                                // Reset after short delay
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                    isRetrying = false
-                                }
-                            } label: {
-                                HStack(spacing: 4) {
-                                    if isRetrying {
-                                        ProgressView()
-                                            .scaleEffect(0.6)
-                                            .frame(width: 10, height: 10)
-                                    } else {
-                                        Image(systemName: isOffline ? "wifi.slash" : "arrow.clockwise")
-                                            .font(.system(size: 10))
-                                    }
-                                    Text(isOffline ? NSLocalizedString("comments.pending_offline", comment: "Pending - Offline") : NSLocalizedString("comments.tap_to_sync", comment: "Tap to sync"))
-                                        .font(Theme.Typography.caption2())
-                                }
-                                .foregroundColor(.orange)
-                            }
-                            .buttonStyle(.plain)
-                            .disabled(isOffline || isRetrying)
-                        }
+                        // Pending indicator removed - comments sync automatically in background
+                        // The temp ID prefix indicates pending status internally
                     }
                     // More padding for attachment-only comments to give tap area for context menu
                     .padding(hasTextContent ? Theme.spacing12 : Theme.spacing16)
@@ -1403,8 +1387,7 @@ struct CommentRowViewEnhanced: View {
                                 useMarkdown: useMarkdown,
                                 isOffline: isOffline,
                                 onReply: onReply,
-                                onDelete: onDelete,
-                                onRetry: onRetry
+                                onDelete: onDelete
                             )
                         }
                     }
