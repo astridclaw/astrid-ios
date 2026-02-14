@@ -804,6 +804,59 @@ class AstridAPIClient {
         )
     }
 
+    // MARK: - OpenClaw Workers
+
+    /// Get user's OpenClaw workers
+    func getOpenClawWorkers() async throws -> [OpenClawWorker] {
+        let response: OpenClawWorkersResponse = try await request(
+            method: "GET",
+            path: "/api/openclaw/workers"
+        )
+        return response.workers
+    }
+
+    /// Create a new OpenClaw worker
+    func createOpenClawWorker(name: String, gatewayUrl: String, authToken: String?, authMode: String) async throws -> OpenClawWorkerResponse {
+        struct CreateWorkerRequest: Codable {
+            let name: String
+            let gatewayUrl: String
+            let authToken: String?
+            let authMode: String
+        }
+
+        let body = CreateWorkerRequest(
+            name: name,
+            gatewayUrl: gatewayUrl,
+            authToken: authToken,
+            authMode: authMode
+        )
+
+        return try await request(
+            method: "POST",
+            path: "/api/openclaw/workers",
+            body: body
+        )
+    }
+
+    /// Delete an OpenClaw worker
+    func deleteOpenClawWorker(id: String) async throws {
+        struct DeleteWorkerResponse: Codable {
+            let success: Bool?
+        }
+        let _: DeleteWorkerResponse = try await request(
+            method: "DELETE",
+            path: "/api/openclaw/workers/\(id)"
+        )
+    }
+
+    /// Check health of an OpenClaw worker
+    func checkOpenClawWorkerHealth(id: String) async throws -> OpenClawHealthResponse {
+        return try await request(
+            method: "GET",
+            path: "/api/openclaw/workers/\(id)/health"
+        )
+    }
+
     // MARK: - Account Management
 
     /// Get current user's account data
@@ -1105,6 +1158,47 @@ struct TestAPIKeyResponse: Codable {
 
 struct DeleteAPIKeyResponse: Codable {
     let success: Bool
+}
+
+// MARK: - OpenClaw Types
+
+/// OpenClaw worker representing a self-hosted AI gateway
+struct OpenClawWorker: Codable, Identifiable {
+    let id: String
+    let name: String
+    let gatewayUrl: String
+    let authMode: String  // "token", "astrid-signed", "tailscale", "none"
+    let status: String    // "online", "offline", "error", "unknown"
+    let lastSeen: Date?
+    let lastError: String?
+    let isActive: Bool
+    let createdAt: Date
+    let updatedAt: Date
+}
+
+struct OpenClawWorkersResponse: Codable {
+    let workers: [OpenClawWorker]
+}
+
+struct OpenClawWorkerResponse: Codable {
+    let worker: OpenClawWorker
+    let connectionTest: OpenClawConnectionTestResult?
+}
+
+struct OpenClawConnectionTestResult: Codable {
+    let success: Bool
+    let latencyMs: Int?
+    let version: String?
+    let error: String?
+}
+
+struct OpenClawHealthResponse: Codable {
+    let id: String
+    let name: String
+    let gatewayUrl: String
+    let status: String
+    let lastSeen: String?
+    let health: OpenClawConnectionTestResult
 }
 
 // MARK: - Client Error Type

@@ -49,6 +49,25 @@ struct AIAssistantSettingsView: View {
                 }
             }
 
+            // OpenClaw Section (Self-Hosted AI)
+            Section(header: Text(NSLocalizedString("settings.openclaw.section", comment: ""))) {
+                NavigationLink(destination: OpenClawSettingsView()) {
+                    HStack {
+                        Text("🦞")
+                            .font(.title3)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(NSLocalizedString("settings.openclaw.title", comment: ""))
+                                .font(Theme.Typography.body())
+                                .foregroundColor(colorScheme == .dark ? Theme.Dark.textPrimary : Theme.textPrimary)
+                            Text(NSLocalizedString("settings.openclaw.subtitle", comment: ""))
+                                .font(Theme.Typography.caption2())
+                                .foregroundColor(colorScheme == .dark ? Theme.Dark.textSecondary : Theme.textSecondary)
+                        }
+                        Spacer()
+                    }
+                }
+            }
+
             // Apple Reminders Section
             Section(header: Text(NSLocalizedString("apple_reminders", comment: ""))) {
                 NavigationLink(destination: AppleRemindersSettingsView()) {

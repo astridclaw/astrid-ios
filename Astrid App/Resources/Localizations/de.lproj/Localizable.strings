@@ -760,6 +760,43 @@
 /* Splash */
 "splash.loading" = "Ihre Aufgaben werden geladen...";
 
+/* OpenClaw Settings */
+"settings.openclaw.section" = "OpenClaw Gateway";
+"settings.openclaw.title" = "OpenClaw Gateway";
+"settings.openclaw.subtitle" = "Verbinden Sie Ihren eigenen KI-Worker";
+"settings.openclaw.description" = "Verbinden Sie ein selbstgehostetes OpenClaw Gateway, um openclaw@astrid.cc für Aufgabenzuweisungen zu nutzen.";
+"settings.openclaw.loading" = "Worker werden geladen...";
+"settings.openclaw.no_workers" = "Keine Worker konfiguriert";
+"settings.openclaw.add_worker" = "Worker hinzufügen";
+"settings.openclaw.gateway_url" = "Gateway URL";
+"settings.openclaw.gateway_url_placeholder" = "wss://ihr-gateway.beispiel.de";
+"settings.openclaw.auth_mode" = "Authentifizierungsmodus";
+"settings.openclaw.auth_mode.token" = "Token";
+"settings.openclaw.auth_mode.astrid_signed" = "Astrid-signiert";
+"settings.openclaw.auth_mode.none" = "Keine";
+"settings.openclaw.auth_mode.token_desc" = "Eigenen Authentifizierungstoken verwenden";
+"settings.openclaw.auth_mode.astrid_signed_desc" = "Astrid-signierte Authentifizierung verwenden (empfohlen)";
+"settings.openclaw.auth_mode.none_desc" = "Keine Authentifizierung erforderlich";
+"settings.openclaw.auth_token" = "Auth-Token";
+"settings.openclaw.auth_token_placeholder" = "Authentifizierungstoken eingeben";
+"settings.openclaw.name" = "Worker-Name";
+"settings.openclaw.name_placeholder" = "Mein OpenClaw Worker";
+"settings.openclaw.status.online" = "Online";
+"settings.openclaw.status.offline" = "Offline";
+"settings.openclaw.status.error" = "Fehler";
+"settings.openclaw.status.unknown" = "Unbekannt";
+"settings.openclaw.check_health" = "Status prüfen";
+"settings.openclaw.checking_health" = "Wird geprüft...";
+"settings.openclaw.delete_worker" = "Worker löschen";
+"settings.openclaw.delete_confirm" = "Sind Sie sicher, dass Sie diesen Worker löschen möchten?";
+"settings.openclaw.last_seen" = "Zuletzt gesehen: %@";
+"settings.openclaw.never" = "Nie";
+"settings.openclaw.error_message" = "Fehler: %@";
+"settings.openclaw.connected" = "Verbunden";
+"settings.openclaw.test_connection" = "Verbindung testen";
+"settings.openclaw.info_title" = "Über OpenClaw";
+"settings.openclaw.info_description" = "Nach dem Hinzufügen eines Workers können Sie Aufgaben an openclaw@astrid.cc zuweisen, damit Ihre selbst gehostete KI sie bearbeitet.";
+
 /* Misc */
 "misc.cancel" = "Abbrechen";
 "misc.save" = "Speichern";
