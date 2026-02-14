@@ -35,6 +35,8 @@ class AttachmentService: ObservableObject {
     private let fileManager = FileManager.default
     private let cacheDirectory: URL  // For pending uploads
     private let downloadCacheDirectory: URL  // For downloaded/viewed attachments
+    private let networkMonitor = NetworkMonitor.shared
+    private var networkObserver: NSObjectProtocol?
 
     // Map temp fileIds to real fileIds after upload
     private var fileIdMapping: [String: String] = [:]
@@ -56,6 +58,29 @@ class AttachmentService: ObservableObject {
 
         // Load any pending uploads from previous session
         loadPendingUploads()
+
+        // Setup network observer to sync when connection is restored
+        setupNetworkObserver()
+    }
+
+    deinit {
+        if let observer = networkObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
+    }
+
+    /// Setup network observer to sync pending uploads when connection is restored
+    private func setupNetworkObserver() {
+        networkObserver = NotificationCenter.default.addObserver(
+            forName: .networkDidBecomeAvailable,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            _Concurrency.Task { @MainActor in
+                print("🔄 [AttachmentService] Network restored - syncing pending uploads")
+                await self?.syncPendingUploads()
+            }
+        }
     }
 
     // MARK: - Local File Cache
@@ -273,6 +298,18 @@ class AttachmentService: ObservableObject {
             return
         }
 
+        // Check if online before attempting upload
+        guard networkMonitor.isConnected else {
+            print("📵 [AttachmentService] Offline - keeping attachment as pending: \(tempFileId)")
+            // Keep as pending (don't mark as failed when offline)
+            if pending.uploadStatus == .uploading {
+                pending.uploadStatus = .pending
+                pendingUploads[tempFileId] = pending
+                savePendingUploads()
+            }
+            return
+        }
+
         // Update status
         pending.uploadStatus = .uploading
         pendingUploads[tempFileId] = pending
@@ -301,6 +338,9 @@ class AttachmentService: ObservableObject {
 
             print("✅ [AttachmentService] Upload completed: \(tempFileId) -> \(realFileId)")
 
+            // Alias thumbnail cache so image can be found by real ID
+            ThumbnailCache.shared.alias(from: tempFileId, to: realFileId)
+
             // Notify that upload completed
             NotificationCenter.default.post(
                 name: .attachmentUploadCompleted,
@@ -313,10 +353,38 @@ class AttachmentService: ObservableObject {
 
         } catch {
             print("❌ [AttachmentService] Upload failed: \(error)")
-            pending.uploadStatus = .failed
+            // Check if we're still online - if not, keep as pending
+            if networkMonitor.isConnected {
+                pending.uploadStatus = .failed
+            } else {
+                pending.uploadStatus = .pending
+                print("📵 [AttachmentService] Network lost during upload - keeping as pending")
+            }
             pendingUploads[tempFileId] = pending
             savePendingUploads()
         }
+    }
+
+    /// Sync all pending uploads (call when coming back online or on pull to refresh)
+    func syncPendingUploads() async {
+        guard networkMonitor.isConnected else {
+            print("📵 [AttachmentService] Cannot sync - no network connection")
+            return
+        }
+
+        let pendingCount = pendingUploads.values.filter { $0.uploadStatus == .pending || $0.uploadStatus == .failed }.count
+        guard pendingCount > 0 else {
+            print("✅ [AttachmentService] No pending uploads to sync")
+            return
+        }
+
+        print("🔄 [AttachmentService] Syncing \(pendingCount) pending uploads...")
+
+        for (tempFileId, pending) in pendingUploads where pending.uploadStatus == .pending || pending.uploadStatus == .failed {
+            await uploadPendingAttachment(tempFileId: tempFileId)
+        }
+
+        print("✅ [AttachmentService] Sync completed")
     }
 
     /// Retry all failed uploads

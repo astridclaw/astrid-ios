@@ -765,6 +765,8 @@
 "comments.add_placeholder" = "Add a comment...";
 "comments.delete_comment" = "Delete Comment";
 "comments.upload_error" = "Upload Error";
+"comments.pending_offline" = "Pending - Offline";
+"comments.tap_to_sync" = "Tap to sync";
 
 /* Task Edit */
 "task_edit.add_to_list" = "Add to list";

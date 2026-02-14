@@ -22,6 +22,7 @@ struct CommentSectionViewEnhanced: View {
     @Environment(\.colorScheme) var colorScheme
     @AppStorage("themeMode") private var themeMode: String = "ocean"
     let taskId: String
+    var hideInput: Bool = false  // When true, input is handled externally (fixed position)
     @StateObject private var commentService = CommentService.shared
     @StateObject private var attachmentService = AttachmentService.shared
     @StateObject private var networkMonitor = NetworkMonitor.shared
@@ -269,6 +270,8 @@ struct CommentSectionViewEnhanced: View {
             }
 
             // New comment input (offline sync supported via optimistic updates)
+            // When hideInput is true, input is handled externally (fixed position above keyboard)
+            if !hideInput {
             VStack(alignment: .leading, spacing: Theme.spacing8) {
                 if let replyingTo = replyingTo {
                     HStack {
@@ -484,6 +487,7 @@ struct CommentSectionViewEnhanced: View {
                     .disabled((newCommentText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && attachedFile == nil) || isSubmitting)
                 }
             }
+            } // end if !hideInput
         }
         .task {
             // Cache mentionable users on first load
@@ -493,9 +497,10 @@ struct CommentSectionViewEnhanced: View {
         }
         .onChange(of: networkMonitor.isConnected) { oldValue, newValue in
             if newValue && !oldValue {
-                // Connection restored - reload comments
+                // Connection restored - sync pending comments first, then reload
                 _Concurrency.Task {
-                    await loadComments()
+                    print("🔄 [CommentSection] Network restored - syncing pending comments...")
+                    await retryPendingComments()
                     await subscribeToSSE()
                 }
             }
@@ -602,13 +607,26 @@ struct CommentSectionViewEnhanced: View {
 
             // Add pending comments that haven't synced yet
             for pending in pendingComments {
-                // Check if it synced (same content, similar time)
-                let synced = fetchedComments.contains {
-                    $0.content == pending.content &&
-                    abs(($0.createdAt ?? Date()).timeIntervalSince(pending.createdAt ?? Date())) < 60
+                // Check if it synced - use multiple criteria for robust matching:
+                // 1. Same content AND similar time (within 5 minutes to handle clock skew)
+                // 2. OR same author AND similar time (for attachment-only comments with empty content)
+                let synced = fetchedComments.contains { fetched in
+                    let timeDiff = abs((fetched.createdAt ?? Date()).timeIntervalSince(pending.createdAt ?? Date()))
+                    let timeMatches = timeDiff < 300 // 5 minutes to handle clock skew
+
+                    // Content match (handles text comments)
+                    let contentMatches = fetched.content == pending.content && !fetched.content.isEmpty
+
+                    // Author + time match (handles attachment-only comments)
+                    let authorMatches = fetched.authorId == pending.authorId && pending.authorId != nil
+
+                    return (contentMatches && timeMatches) || (authorMatches && timeMatches && fetched.content == pending.content)
                 }
                 if !synced {
                     mergedComments.append(pending)
+                    print("📝 [CommentSection] Keeping pending comment: \(pending.id.prefix(20))")
+                } else {
+                    print("✅ [CommentSection] Pending comment synced: \(pending.id.prefix(20))")
                 }
             }
 
@@ -704,13 +722,21 @@ struct CommentSectionViewEnhanced: View {
     }
 
     private func submitComment() async {
+        print("🚀 [CommentSection] submitComment() called, network: \(networkMonitor.isConnected)")
+
         let trimmedText = newCommentText.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmedText.isEmpty || attachedFile != nil else { return }
+        guard !trimmedText.isEmpty || attachedFile != nil else {
+            print("⚠️ [CommentSection] Empty comment and no attachment - skipping")
+            return
+        }
+
+        print("📋 [CommentSection] Content: '\(trimmedText.prefix(30))...', hasAttachment: \(attachedFile != nil)")
 
         // Determine comment type based on attachment or markdown
         let commentType: Comment.CommentType
         if attachedFile != nil {
             commentType = .ATTACHMENT
+            print("📎 [CommentSection] Comment type: ATTACHMENT, fileId: \(attachedFile?.fileId ?? "nil")")
         } else if useMarkdown {
             commentType = .MARKDOWN
         } else {
@@ -779,19 +805,31 @@ struct CommentSectionViewEnhanced: View {
 
         // Store fileId before clearing (we need it for the API call)
         var fileIdToSend = attachedFile?.fileId
+        print("🔍 [CommentSection] Initial fileIdToSend: \(fileIdToSend ?? "nil")")
 
-        // If fileId is a temp ID, get the real fileId (wait if upload not complete)
+        // If fileId is a temp ID, try to get the real fileId
         if let tempFileId = fileIdToSend, tempFileId.hasPrefix("temp_") {
+            let isOnline = networkMonitor.isConnected
+            let hasRealId = attachmentService.getRealFileId(for: tempFileId) != nil
+            let isPending = attachmentService.isPendingUpload(tempFileId)
+            print("🔍 [CommentSection] Temp fileId check: online=\(isOnline), hasRealId=\(hasRealId), isPending=\(isPending)")
+
             if let realFileId = attachmentService.getRealFileId(for: tempFileId) {
                 // Upload already complete, use real ID
                 fileIdToSend = realFileId
                 print("📎 [CommentSection] Using already-uploaded fileId: \(realFileId)")
-            } else if attachmentService.isPendingUpload(tempFileId) {
-                // Upload still in progress - wait for it
+            } else if !isOnline {
+                // OFFLINE: Keep temp fileId - will be resolved when syncing
+                print("📵 [CommentSection] Offline - using temp fileId: \(tempFileId)")
+                // fileIdToSend stays as tempFileId
+            } else if isPending {
+                // Online but upload still in progress - wait for it (max 60s)
                 print("⏳ [CommentSection] Waiting for attachment upload to complete...")
                 fileIdToSend = await waitForUploadCompletion(tempFileId: tempFileId)
+                print("⏳ [CommentSection] Wait complete, fileIdToSend: \(fileIdToSend ?? "nil")")
             }
         }
+        print("✅ [CommentSection] Final fileIdToSend: \(fileIdToSend ?? "nil")")
 
         // Clear input immediately (feels instant!)
         newCommentText = ""
@@ -801,9 +839,11 @@ struct CommentSectionViewEnhanced: View {
 
         isSubmitting = true
 
-        // Make server call in background
+        // Create comment via service - this saves to CoreData and triggers background sync
+        // The service returns an optimistic comment immediately; sync happens in background
+        // When sync completes, .commentDidSync notification will trigger reload
         do {
-            let newComment = try await commentService.createComment(
+            _ = try await commentService.createComment(
                 taskId: taskId,
                 content: optimisticComment.content,
                 type: commentType,
@@ -812,59 +852,46 @@ struct CommentSectionViewEnhanced: View {
                 authorId: author.id
             )
 
-            // Just update the ID - keep everything else from optimistic comment
-            // This preserves author, secureFiles, etc. without complex merging
-            let oldTempFileId = optimisticComment.secureFiles?.first?.id
-
-            if let replyToId = replyToId {
-                // Update ID in replies
-                if let parentIndex = comments.firstIndex(where: { $0.id == replyToId }),
-                   let replyIndex = comments[parentIndex].replies?.firstIndex(where: { $0.id == tempId }) {
-                    comments[parentIndex].replies?[replyIndex].id = newComment.id
-                    // Update secureFiles ID if we have a real file ID
-                    if let realFileId = fileIdToSend, !realFileId.hasPrefix("temp_"),
-                       let oldId = oldTempFileId {
-                        ThumbnailCache.shared.alias(from: oldId, to: realFileId)
-                        if let files = comments[parentIndex].replies?[replyIndex].secureFiles {
-                            comments[parentIndex].replies?[replyIndex].secureFiles = files.map {
-                                SecureFile(id: realFileId, name: $0.name, size: $0.size, mimeType: $0.mimeType)
-                            }
-                        }
-                    }
-                }
-            } else {
-                // Update ID in top-level comments
-                if let index = comments.firstIndex(where: { $0.id == tempId }) {
-                    comments[index].id = newComment.id
-                    // Update secureFiles ID if we have a real file ID
-                    if let realFileId = fileIdToSend, !realFileId.hasPrefix("temp_"),
-                       let oldId = oldTempFileId {
-                        ThumbnailCache.shared.alias(from: oldId, to: realFileId)
-                        if let files = comments[index].secureFiles {
-                            comments[index].secureFiles = files.map {
-                                SecureFile(id: realFileId, name: $0.name, size: $0.size, mimeType: $0.mimeType)
-                            }
-                        }
-                    }
-                }
-            }
-
-            print("✅ [CommentSection] Server confirmed comment: \(newComment.id)")
+            // Comment created and sync started
+            // The .commentDidSync notification will update UI when sync completes
+            print("✅ [CommentSection] Comment created, sync in progress...")
 
         } catch {
             print("❌ [CommentSection] Failed to create comment: \(error)")
 
-            // ROLLBACK: Remove optimistic comment on error
-            if let replyToId = replyToId {
-                if let parentIndex = comments.firstIndex(where: { $0.id == replyToId }) {
-                    comments[parentIndex].replies?.removeAll { $0.id == tempId }
-                }
-            } else {
-                comments.removeAll { $0.id == tempId }
-            }
+            // DON'T remove the comment - keep it as pending
+            // The CommentService already saved it to CoreData with pending status
+            // It will sync when network is restored or user triggers retry
+            print("📵 [CommentSection] Comment kept as pending - will sync when online")
         }
 
         isSubmitting = false
+    }
+
+    /// Retry syncing all pending comments and attachments
+    private func retryPendingComments() async {
+        guard networkMonitor.isConnected else {
+            print("📵 [CommentSection] Cannot retry - no network connection")
+            return
+        }
+
+        print("🔄 [CommentSection] Retrying pending uploads and comments...")
+
+        do {
+            // First sync any pending attachments (comments may depend on them)
+            await attachmentService.syncPendingUploads()
+
+            // Retry any failed comment operations
+            await commentService.retryFailedOperations()
+
+            // Then sync all pending comments
+            try await commentService.syncPendingComments()
+
+            // Reload to get updated IDs
+            await loadComments()
+        } catch {
+            print("❌ [CommentSection] Retry failed: \(error)")
+        }
     }
 
     // MARK: - File Upload Helpers
@@ -877,7 +904,7 @@ struct CommentSectionViewEnhanced: View {
         defer { isUploadingFile = false }
 
         do {
-            print("📸 [CommentSection] Starting photo upload...")
+            print("📸 [CommentSection] Starting photo upload... (network: \(networkMonitor.isConnected))")
 
             // Load image data
             guard let imageData = try await photoItem.loadTransferable(type: Data.self) else {
@@ -928,7 +955,10 @@ struct CommentSectionViewEnhanced: View {
                 // Already on MainActor, so UIImage(data:) is safe here
                 if let uiImage = UIImage(data: imageData) {
                     ThumbnailCache.shared.set(uiImage, for: tempFileId)
+                    print("📸 [CommentSection] Thumbnail cached for: \(tempFileId)")
                 }
+
+                print("📸 [CommentSection] attachedFile set: fileId=\(tempFileId), size=\(imageData.count)")
             }
 
         } catch {
@@ -1156,6 +1186,7 @@ struct CommentSectionViewEnhanced: View {
 }
 
 struct CommentRowViewEnhanced: View {
+    @AppStorage("themeMode") private var themeMode: String = "ocean"
     let comment: Comment
     let allTaskFiles: [SecureFile]
     let colorScheme: ColorScheme
@@ -1165,169 +1196,278 @@ struct CommentRowViewEnhanced: View {
     let onDelete: () -> Void
 
     @State private var showingDeleteAlert = false
-    // Don't use @StateObject here - it causes re-renders when isLoading changes
-    // Just access the shared instance directly for delete operations
+
+    // Effective theme
+    private var effectiveTheme: String {
+        if themeMode == "auto" {
+            return colorScheme == .dark ? "dark" : "light"
+        }
+        return themeMode
+    }
+
+    // Check if this comment is from the current user
+    private var isCurrentUser: Bool {
+        comment.authorId == AuthManager.shared.userId
+    }
 
     // Check if this is a system comment (no authorId)
-    // When offline, don't treat nil authorId as system comment (cached data issue)
     private var isSystemComment: Bool {
         if isOffline {
-            return false  // Render all cached comments as user comments
+            return false
         }
         return comment.authorId == nil
     }
 
+    // Check if comment has text content (not just attachments)
+    private var hasTextContent: Bool {
+        !comment.content.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
+    // Background color for current user's comments
+    private var currentUserBubbleBackground: Color {
+        if effectiveTheme == "ocean" {
+            return Color.white
+        } else if effectiveTheme == "dark" {
+            return Theme.Dark.bgSecondary
+        } else {
+            return Theme.bgSecondary
+        }
+    }
+
+    // Background color for other users' comments
+    @ViewBuilder
+    private var otherUserBubbleBackground: some View {
+        if effectiveTheme == "ocean" {
+            Color.white.opacity(0.5)
+        } else if effectiveTheme == "light" {
+            Rectangle().fill(Theme.LiquidGlass.primaryGlassMaterial)
+        } else {
+            Theme.Dark.bgPrimary
+        }
+    }
+
+    // Context menu for comment actions (reusable)
+    private var commentContextMenu: some View {
+        Group {
+            Button {
+                UIPasteboard.general.string = comment.content
+            } label: {
+                Label(NSLocalizedString("actions.copy", comment: "Copy"), systemImage: "doc.on.doc")
+            }
+
+            Button {
+                onReply()
+            } label: {
+                Label("Reply", systemImage: "arrowshape.turn.up.left")
+            }
+
+            if isCurrentUser {
+                Divider()
+                Button(role: .destructive) {
+                    showingDeleteAlert = true
+                } label: {
+                    Label(NSLocalizedString("actions.delete", comment: "Delete"), systemImage: "trash")
+                }
+            }
+        }
+    }
+
     var body: some View {
-        // System comments use discreet formatting (like timestamp)
+        // System comments use discreet formatting
         if isSystemComment {
             Text(comment.createdAt != nil ? "On \(formatSystemCommentDate(comment.createdAt!)), \(comment.content)" : comment.content)
                 .font(Theme.Typography.caption2())
                 .foregroundColor(colorScheme == .dark ? Theme.Dark.textMuted : Theme.textMuted)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.vertical, 2)
         } else {
-            // Regular comment with full formatting
-            VStack(alignment: .leading, spacing: Theme.spacing8) {
-                // Header
-                HStack {
-                    // Author section (tappable to view profile)
-                    NavigationLink(destination: UserProfileView(userId: comment.authorId ?? "")) {
-                        HStack(spacing: Theme.spacing8) {
-                            // Author avatar (cached for offline)
-                            CachedAsyncImage(url: comment.author?.cachedImageURL.flatMap { URL(string: $0) }) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                            } placeholder: {
-                                ZStack {
-                                    Circle()
-                                        .fill(Theme.accent)
-                                    Text(comment.author?.initials ?? "?")
-                                        .font(Theme.Typography.caption1())
-                                        .foregroundColor(Theme.accentText)
-                                }
-                            }
-                            .frame(width: 32, height: 32)
-                            .clipShape(Circle())
+            // Chat-style comment layout
+            VStack(alignment: isCurrentUser ? .trailing : .leading, spacing: Theme.spacing4) {
+                HStack(alignment: .center, spacing: Theme.spacing8) {
+                    // Left avatar (other users only)
+                    if !isCurrentUser {
+                        avatarView
+                    } else {
+                        Spacer(minLength: 48)
+                    }
 
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text(comment.author?.displayName ?? "Unknown")
-                                    .font(Theme.Typography.caption1())
-                                    .fontWeight(.semibold)
+                    // Message bubble (long press for options)
+                    VStack(alignment: .leading, spacing: hasTextContent ? Theme.spacing8 : 0) {
+                        // Attachments - tap opens preview, long press shows context menu
+                        if let secureFiles = comment.secureFiles, !secureFiles.isEmpty {
+                            ChatAttachmentView(
+                                files: secureFiles,
+                                allTaskFiles: allTaskFiles,
+                                colorScheme: colorScheme,
+                                contextMenuContent: { commentContextMenu }
+                            )
+                        }
+
+                        // Content
+                        if hasTextContent {
+                            if useMarkdown && (comment.type == .MARKDOWN || comment.content.containsMarkdown) {
+                                Text(comment.content.attributedMarkdown())
+                                    .font(Theme.Typography.body())
                                     .foregroundColor(colorScheme == .dark ? Theme.Dark.textPrimary : Theme.textPrimary)
-
-                                if let createdAt = comment.createdAt {
-                                    Text(formatCommentDate(createdAt))
-                                        .font(Theme.Typography.caption2())
-                                        .foregroundColor(colorScheme == .dark ? Theme.Dark.textMuted : Theme.textMuted)
-                                }
+                            } else {
+                                Text(comment.content)
+                                    .font(Theme.Typography.body())
+                                    .foregroundColor(colorScheme == .dark ? Theme.Dark.textPrimary : Theme.textPrimary)
                             }
                         }
+
+                        // Pending indicator removed - comments sync automatically in background
+                        // The temp ID prefix indicates pending status internally
                     }
-                    .buttonStyle(.plain)
-
-                    Spacer()
-
-                    // Sync status indicator - only show when offline with temp ID
-                    // When online, sync happens fast enough that we don't need to show it
-                    if comment.id.hasPrefix("temp_") && isOffline {
-                        HStack(spacing: 4) {
-                            Image(systemName: "clock")
-                                .font(.system(size: 12))
-                            Text("Pending")
-                                .font(Theme.Typography.caption2())
-                        }
-                        .foregroundColor(.orange)
-                        .padding(.horizontal, 6)
-                        .padding(.vertical, 3)
-                        .background(Color.orange.opacity(0.1))
-                        .clipShape(RoundedRectangle(cornerRadius: 4))
-                    }
-
-                    Menu {
-                        Button {
-                            onReply()
-                        } label: {
-                            Label("Reply", systemImage: "arrowshape.turn.up.left")
-                        }
-
-                        if comment.authorId == AuthManager.shared.userId {
-                            Button(role: .destructive) {
-                                showingDeleteAlert = true
-                            } label: {
-                                Label("Delete", systemImage: "trash")
+                    // More padding for attachment-only comments to give tap area for context menu
+                    .padding(hasTextContent ? Theme.spacing12 : Theme.spacing16)
+                    .background(
+                        Group {
+                            if isCurrentUser {
+                                currentUserBubbleBackground
+                            } else {
+                                otherUserBubbleBackground
                             }
                         }
-                    } label: {
-                        Image(systemName: "ellipsis")
-                            .rotationEffect(.degrees(90))
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(colorScheme == .dark ? Theme.Dark.textSecondary : Theme.textSecondary)
+                    )
+                    .clipShape(RoundedRectangle(cornerRadius: Theme.radiusMedium))
+                    .contentShape(Rectangle()) // Ensure entire bubble responds to long press
+                    .contextMenu { commentContextMenu }
+
+                    // Right avatar (current user only)
+                    if isCurrentUser {
+                        avatarView
+                    } else {
+                        Spacer(minLength: 48)
                     }
                 }
 
-            // Attachments (show first, like web)
-            if let secureFiles = comment.secureFiles, !secureFiles.isEmpty {
-                AttachmentGridView(files: secureFiles, allTaskFiles: allTaskFiles, colorScheme: colorScheme)
-                    .padding(.bottom, Theme.spacing4)
-            }
+                // Name and timestamp below bubble (also tappable for context menu)
+                // For current user: right-aligned with bubble edge (not avatar)
+                // For other users: left-aligned with bubble edge (not avatar)
+                HStack(spacing: Theme.spacing4) {
+                    if isCurrentUser {
+                        Spacer()
+                    } else {
+                        // Spacer to align with bubble start (after avatar)
+                        Spacer().frame(width: 40)
+                    }
 
-            // Content (only show if not empty, like web)
-            if !comment.content.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                if useMarkdown && (comment.type == .MARKDOWN || comment.content.containsMarkdown) {
-                    Text(comment.content.attributedMarkdown())
-                        .font(Theme.Typography.body())
-                        .foregroundColor(colorScheme == .dark ? Theme.Dark.textPrimary : Theme.textPrimary)
-                } else {
-                    Text(comment.content)
-                        .font(Theme.Typography.body())
-                        .foregroundColor(colorScheme == .dark ? Theme.Dark.textPrimary : Theme.textPrimary)
-                }
-            }
+                    Text(isCurrentUser ? NSLocalizedString("assignee.you", comment: "You") : (comment.author?.displayName ?? "Unknown"))
+                        .font(Theme.Typography.caption2())
+                        .fontWeight(.medium)
+                        .foregroundColor(colorScheme == .dark ? Theme.Dark.textMuted : Theme.textMuted)
 
-            // Replies
-            if let replies = comment.replies, !replies.isEmpty {
-                VStack(alignment: .leading, spacing: Theme.spacing8) {
-                    ForEach(replies) { reply in
-                        CommentRowViewEnhanced(
-                            comment: reply,
-                            allTaskFiles: allTaskFiles,
-                            colorScheme: colorScheme,
-                            useMarkdown: useMarkdown,
-                            isOffline: isOffline,
-                            onReply: onReply,
-                            onDelete: onDelete
-                        )
-                        .padding(.leading, Theme.spacing16)
+                    if let createdAt = comment.createdAt {
+                        Text("·")
+                            .foregroundColor(colorScheme == .dark ? Theme.Dark.textMuted : Theme.textMuted)
+                        Text(formatCommentDate(createdAt))
+                            .font(Theme.Typography.caption2())
+                            .foregroundColor(colorScheme == .dark ? Theme.Dark.textMuted : Theme.textMuted)
+                    }
+
+                    if isCurrentUser {
+                        // Spacer to align with bubble end (before avatar)
+                        Spacer().frame(width: 40)
+                    } else {
+                        Spacer()
                     }
                 }
+                .contentShape(Rectangle()) // Make timestamp row tappable
+                .contextMenu { commentContextMenu }
+
+                // Replies
+                if let replies = comment.replies, !replies.isEmpty {
+                    VStack(alignment: .leading, spacing: Theme.spacing8) {
+                        ForEach(replies) { reply in
+                            CommentRowViewEnhanced(
+                                comment: reply,
+                                allTaskFiles: allTaskFiles,
+                                colorScheme: colorScheme,
+                                useMarkdown: useMarkdown,
+                                isOffline: isOffline,
+                                onReply: onReply,
+                                onDelete: onDelete
+                            )
+                        }
+                    }
+                    .padding(.top, Theme.spacing4)
+                }
             }
-        }
-        .padding(Theme.spacing12)
-            .background(colorScheme == .dark ? Theme.Dark.bgPrimary : Theme.bgPrimary)
-            .clipShape(RoundedRectangle(cornerRadius: Theme.radiusMedium))
             .alert(NSLocalizedString("comments.delete_comment", comment: "Delete Comment"), isPresented: $showingDeleteAlert) {
-            Button("Cancel", role: .cancel) { }
-            Button("Delete", role: .destructive) {
-                _Concurrency.Task {
-                    do {
-                        // Delete from UI immediately (optimistic update)
-                        onDelete()
-                        // Delete from server (use shared instance directly)
-                        try await CommentService.shared.deleteComment(id: comment.id)
-                        print("✅ Comment deleted successfully")
-                    } catch {
-                        print("❌ Delete comment failed: \(error)")
-                        // Note: In a production app, you might want to revert the UI change on error
+                Button("Cancel", role: .cancel) { }
+                Button("Delete", role: .destructive) {
+                    _Concurrency.Task {
+                        do {
+                            onDelete()
+                            try await CommentService.shared.deleteComment(id: comment.id)
+                        } catch {
+                            print("❌ Delete comment failed: \(error)")
+                        }
+                    }
+                }
+            } message: {
+                Text("Are you sure you want to delete this comment?")
+            }
+        }
+    }
+
+    // Avatar view (reusable for both sides)
+    // For current user: use locally cached image (no network fetch needed)
+    // For other users: use CachedAsyncImage with their profile URL
+    private var avatarView: some View {
+        NavigationLink(destination: UserProfileView(userId: comment.authorId ?? "")) {
+            Group {
+                if isCurrentUser {
+                    // Current user: use locally cached image from AuthManager/UserDefaults
+                    let imageURL = AuthManager.shared.currentUser?.image
+                        ?? UserDefaults.standard.string(forKey: Constants.UserDefaults.userImage)
+                    let initials = AuthManager.shared.currentUser?.initials
+                        ?? comment.author?.initials
+                        ?? "?"
+
+                    CachedAsyncImage(url: imageURL.flatMap { URL(string: $0) }) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    } placeholder: {
+                        ZStack {
+                            Circle()
+                                .fill(Theme.accent)
+                            Text(initials)
+                                .font(Theme.Typography.caption1())
+                                .foregroundColor(Theme.accentText)
+                        }
+                    }
+                } else {
+                    // Other users: use their cached image URL
+                    CachedAsyncImage(url: comment.author?.cachedImageURL.flatMap { URL(string: $0) }) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    } placeholder: {
+                        ZStack {
+                            Circle()
+                                .fill(Theme.accent)
+                            Text(comment.author?.initials ?? "?")
+                                .font(Theme.Typography.caption1())
+                                .foregroundColor(Theme.accentText)
+                        }
                     }
                 }
             }
-        } message: {
-            Text("Are you sure you want to delete this comment?")
+            .frame(width: 32, height: 32)
+            .clipShape(Circle())
         }
+        .buttonStyle(.plain)
     }
 }
 
+// MARK: - Helper Types
+
+/// File info response for secure file downloads
+private struct SecureFileInfo: Codable {
+    let url: String
 }
 
 // MARK: - Helper Functions
@@ -1361,6 +1501,225 @@ private func formatSystemCommentDate(_ date: Date) -> String {
     let formatter = DateFormatter()
     formatter.dateFormat = "MMM d 'at' h:mm a"
     return formatter.string(from: date)
+}
+
+/// Simplified attachment view for chat-style comments - images display naturally without grey box
+struct ChatAttachmentView<MenuContent: View>: View {
+    let files: [SecureFile]
+    let allTaskFiles: [SecureFile]
+    let colorScheme: ColorScheme
+    @ViewBuilder let contextMenuContent: () -> MenuContent
+
+    @State private var selectedIndex: Int = 0
+    @State private var isShowingQuickLook = false
+    @State private var previewItems: [(fileId: String, url: URL)] = []
+    @State private var isPreparingPreview = false
+
+    private let maxWidth: CGFloat = 220
+    private let maxHeight: CGFloat = 300
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            ForEach(files, id: \.id) { file in
+                ChatAttachmentItem(
+                    file: file,
+                    colorScheme: colorScheme,
+                    maxWidth: maxWidth,
+                    maxHeight: maxHeight,
+                    onTap: { prepareAndShowPreview(for: file) },
+                    contextMenuContent: contextMenuContent
+                )
+            }
+        }
+        .quickLookPresenter(items: previewItems, initialIndex: selectedIndex, isPresented: $isShowingQuickLook)
+        .overlay {
+            if isPreparingPreview {
+                ProgressView().tint(Theme.accent)
+            }
+        }
+    }
+
+    private func prepareAndShowPreview(for file: SecureFile) {
+        isPreparingPreview = true
+        _Concurrency.Task {
+            let results = await AttachmentService.shared.prepareFilesForPreview(files: allTaskFiles)
+            await MainActor.run {
+                self.previewItems = results
+                if let index = results.firstIndex(where: { $0.fileId == file.id }) {
+                    self.selectedIndex = index
+                } else {
+                    self.selectedIndex = 0
+                }
+                self.isPreparingPreview = false
+                if !previewItems.isEmpty {
+                    self.isShowingQuickLook = true
+                }
+            }
+        }
+    }
+}
+
+/// Single attachment item for chat - images render naturally, documents show icon
+/// Tap opens preview, long press shows context menu
+struct ChatAttachmentItem<MenuContent: View>: View {
+    let file: SecureFile
+    let colorScheme: ColorScheme
+    let maxWidth: CGFloat
+    let maxHeight: CGFloat
+    let onTap: () -> Void
+    @ViewBuilder let contextMenuContent: () -> MenuContent
+
+    @StateObject private var attachmentService = AttachmentService.shared
+    @State private var image: UIImage?
+    @State private var isLoading = false
+
+    private var isImage: Bool {
+        file.mimeType.lowercased().hasPrefix("image/")
+    }
+
+    private var isVideo: Bool {
+        file.mimeType.lowercased().hasPrefix("video/")
+    }
+
+    var body: some View {
+        Group {
+            if isImage || isVideo {
+                // Image/video: display naturally with rounded corners, no grey box
+                ZStack {
+                    if let image = image {
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: maxWidth, maxHeight: maxHeight)
+                            .clipShape(RoundedRectangle(cornerRadius: Theme.radiusMedium))
+
+                        // Video play icon
+                        if isVideo {
+                            Image(systemName: "play.circle.fill")
+                                .font(.system(size: 40))
+                                .foregroundColor(.white.opacity(0.9))
+                                .shadow(radius: 2)
+                        }
+                    } else if isLoading {
+                        RoundedRectangle(cornerRadius: Theme.radiusMedium)
+                            .fill(Color.clear)
+                            .frame(width: 100, height: 100)
+                            .overlay(ProgressView().tint(Theme.accent))
+                    } else {
+                        // Placeholder while loading
+                        RoundedRectangle(cornerRadius: Theme.radiusMedium)
+                            .fill(colorScheme == .dark ? Theme.Dark.bgTertiary : Theme.bgTertiary)
+                            .frame(width: 100, height: 100)
+                            .overlay(
+                                Image(systemName: isVideo ? "video" : "photo")
+                                    .foregroundColor(colorScheme == .dark ? Theme.Dark.textMuted : Theme.textMuted)
+                            )
+                    }
+                }
+            } else {
+                // Documents: show compact file info
+                HStack(spacing: Theme.spacing8) {
+                    Image(systemName: fileIcon)
+                        .font(.system(size: 24))
+                        .foregroundColor(Theme.accent)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(file.name)
+                            .font(Theme.Typography.caption1())
+                            .lineLimit(1)
+                            .foregroundColor(colorScheme == .dark ? Theme.Dark.textPrimary : Theme.textPrimary)
+                        Text(formatFileSize(file.size))
+                            .font(Theme.Typography.caption2())
+                            .foregroundColor(colorScheme == .dark ? Theme.Dark.textMuted : Theme.textMuted)
+                    }
+                }
+                .padding(Theme.spacing8)
+                .background(colorScheme == .dark ? Theme.Dark.bgTertiary : Theme.bgTertiary)
+                .clipShape(RoundedRectangle(cornerRadius: Theme.radiusMedium))
+            }
+        }
+        .contentShape(Rectangle())
+        .onTapGesture { onTap() }
+        .contextMenu { contextMenuContent() }
+        .task(id: file.id) {
+            if (isImage || isVideo) && image == nil {
+                await loadImage()
+            }
+        }
+    }
+
+    private func loadImage() async {
+        // Check cache first
+        if let cached = ThumbnailCache.shared.get(file.id) {
+            image = cached
+            return
+        }
+
+        isLoading = true
+        defer { isLoading = false }
+
+        // Check if local temp file
+        if file.id.hasPrefix("temp_") {
+            if let localData = attachmentService.getLocalFileData(for: file.id) {
+                let img = await MainActor.run { UIImage(data: localData) }
+                if let img {
+                    image = img
+                    ThumbnailCache.shared.set(img, for: file.id)
+                }
+            }
+            return
+        }
+
+        // Check disk cache
+        if let cachedData = attachmentService.getCachedDownload(for: file.id) {
+            let img = await MainActor.run { UIImage(data: cachedData) }
+            if let img {
+                image = img
+                ThumbnailCache.shared.set(img, for: file.id)
+                return
+            }
+        }
+
+        // Download from server
+        do {
+            let infoURL = "\(Constants.API.baseURL)/api/secure-files/\(file.id)?info=true"
+            guard let url = URL(string: infoURL) else { return }
+
+            var request = URLRequest(url: url)
+            if let sessionCookie = try? KeychainService.shared.getSessionCookie() {
+                request.setValue(sessionCookie, forHTTPHeaderField: "Cookie")
+            }
+
+            let (infoData, infoResponse) = try await URLSession.shared.data(for: request)
+            guard let httpResponse = infoResponse as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else { return }
+
+            let fileInfo = try JSONDecoder().decode(SecureFileInfo.self, from: infoData)
+            guard let downloadURL = URL(string: fileInfo.url) else { return }
+
+            let (fileData, _) = try await URLSession.shared.data(from: downloadURL)
+            let img = await MainActor.run { UIImage(data: fileData) }
+            if let img {
+                image = img
+                ThumbnailCache.shared.set(img, for: file.id)
+                attachmentService.cacheDownload(fileId: file.id, data: fileData)
+            }
+        } catch {
+            print("❌ [ChatAttachmentItem] Failed to load image: \(error)")
+        }
+    }
+
+    private var fileIcon: String {
+        let mimeType = file.mimeType.lowercased()
+        if mimeType.contains("pdf") { return "doc.text" }
+        else if mimeType.contains("zip") || mimeType.contains("archive") { return "archivebox" }
+        else if mimeType.hasPrefix("audio/") { return "waveform" }
+        else { return "doc" }
+    }
+
+    private func formatFileSize(_ bytes: Int) -> String {
+        let formatter = ByteCountFormatter()
+        formatter.countStyle = .file
+        return formatter.string(fromByteCount: Int64(bytes))
+    }
 }
 
 struct AttachmentGridView: View {

@@ -5,6 +5,11 @@ import os.log
 
 private let logger = Logger(subsystem: "com.graceful-tools.astrid", category: "CommentService")
 
+/// Errors that can occur during comment sync
+enum CommentSyncError: Error {
+    case attachmentPending  // Attachment upload not complete yet - will retry later
+}
+
 @MainActor
 class CommentService: ObservableObject {
     static let shared = CommentService()
@@ -46,7 +51,6 @@ class CommentService: ObservableObject {
             queue: .main
         ) { [weak self] _ in
             _Concurrency.Task { @MainActor in
-                print("🔄 [CommentService] Network restored - syncing pending comments")
                 try? await self?.syncPendingComments()
             }
         }
@@ -181,9 +185,8 @@ class CommentService: ObservableObject {
                 }
             }
             pendingOperationsCount = pending.count
-            print("📊 [CommentService] Pending operations: \(pendingOperationsCount)")
         } catch {
-            print("❌ [CommentService] Failed to count pending operations: \(error)")
+            logger.error("Failed to count pending operations: \(error.localizedDescription, privacy: .public)")
         }
     }
 
@@ -236,8 +239,15 @@ class CommentService: ObservableObject {
             try await saveCommentsToCoreData(response.comments, taskId: taskId)
             logger.notice("✓ SAVED to CoreData")
 
-            // Update memory cache
-            cachedComments[taskId] = response.comments
+            // Update memory cache, preserving pending comments (temp_ IDs not on server yet)
+            let pendingComments = cachedComments[taskId]?.filter { $0.id.hasPrefix("temp_") } ?? []
+            var mergedComments = response.comments
+            mergedComments.append(contentsOf: pendingComments)
+            mergedComments.sort { ($0.createdAt ?? Date.distantPast) < ($1.createdAt ?? Date.distantPast) }
+            cachedComments[taskId] = mergedComments
+            if !pendingComments.isEmpty {
+                logger.notice("📎 Preserved \(pendingComments.count, privacy: .public) pending comments in cache")
+            }
 
             // Notify views to reload comments (for pull-to-refresh updates)
             await MainActor.run {
@@ -298,9 +308,14 @@ class CommentService: ObservableObject {
                 try await self.saveCommentsToCoreData(response.comments, taskId: taskId)
                 let count = response.comments.count
                 await MainActor.run {
-                    self.cachedComments[taskId] = response.comments
+                    // Preserve pending comments (temp_ IDs not on server yet)
+                    let pendingComments = self.cachedComments[taskId]?.filter { $0.id.hasPrefix("temp_") } ?? []
+                    var mergedComments = response.comments
+                    mergedComments.append(contentsOf: pendingComments)
+                    mergedComments.sort { ($0.createdAt ?? Date.distantPast) < ($1.createdAt ?? Date.distantPast) }
+                    self.cachedComments[taskId] = mergedComments
                     // Log on MainActor to satisfy Swift 6 isolation requirements
-                    logger.notice("↻ BACKGROUND: Updated \(count, privacy: .public) comments")
+                    logger.notice("↻ BACKGROUND: Updated \(count, privacy: .public) comments, preserved \(pendingComments.count, privacy: .public) pending")
                     // Notify views to reload comments (for background refresh updates)
                     NotificationCenter.default.post(name: .commentDidSync, object: nil, userInfo: ["taskId": taskId])
                 }
@@ -312,13 +327,25 @@ class CommentService: ObservableObject {
 
     /// Create a new comment (local-first with optimistic update)
     func createComment(taskId: String, content: String, type: Comment.CommentType = .TEXT, fileId: String? = nil, parentCommentId: String? = nil, authorId: String? = nil) async throws -> Comment {
-        print("⚡️ [CommentService] Creating comment (optimistic) for task: \(taskId)")
-        print("📝 [CommentService] Content: \(content.prefix(50))...")
-
         // 1. Generate temp ID for optimistic update
         let tempId = "temp_\(UUID().uuidString)"
 
-        // 2. Create optimistic comment object
+        // 2. Look up attachment info for temp fileIds (for offline display)
+        var secureFiles: [SecureFile]? = nil
+        if let tempFileId = fileId, tempFileId.hasPrefix("temp_") {
+            if let pending = AttachmentService.shared.pendingUploads[tempFileId] {
+                // Create SecureFile from pending attachment info for immediate display
+                let secureFile = SecureFile(
+                    id: tempFileId,
+                    name: pending.fileName,
+                    size: pending.fileSize,
+                    mimeType: pending.mimeType
+                )
+                secureFiles = [secureFile]
+            }
+        }
+
+        // 3. Create optimistic comment object WITH attachment info
         let optimisticComment = Comment(
             id: tempId,
             content: content,
@@ -334,35 +361,47 @@ class CommentService: ObservableObject {
             attachmentSize: nil,
             parentCommentId: parentCommentId,
             replies: nil,
-            secureFiles: nil
+            secureFiles: secureFiles
         )
 
-        // 3. Save to Core Data with pending status (non-blocking)
+        // 4. Save to Core Data with pending status
+        // CRITICAL: Must await save completion before syncing to avoid race condition
         let savedFileId = fileId  // Capture for closure
-        _Concurrency.Task.detached { [weak self] in
-            guard let self = self else { return }
-            do {
-                try await self.coreDataManager.saveInBackground { context in
-                    let cdComment = CDComment(context: context)
-                    cdComment.id = tempId
-                    cdComment.content = content
-                    cdComment.type = type.rawValue
-                    cdComment.authorId = authorId
-                    cdComment.taskId = taskId
-                    cdComment.createdAt = Date()
-                    cdComment.updatedAt = Date()
-                    cdComment.syncStatus = "pending"
-                    cdComment.pendingOperation = "create"
-                    cdComment.syncAttempts = 0
-                    cdComment.pendingFileId = savedFileId  // Store fileId for sync
-                }
+        let savedContent = content
+        let savedType = type.rawValue
+        let savedAuthorId = authorId
+        let savedTaskId = taskId
 
-                // Update pending count
-                await self.updatePendingOperationsCount()
-                print("💾 [CommentService] Saved pending comment to Core Data: \(tempId)")
-            } catch {
-                print("⚠️ [CommentService] Failed to save pending comment: \(error)")
+        // Serialize secureFiles for CoreData storage
+        var secureFilesJson: String? = nil
+        if let files = secureFiles, !files.isEmpty {
+            if let jsonData = try? JSONEncoder().encode(files),
+               let jsonString = String(data: jsonData, encoding: .utf8) {
+                secureFilesJson = jsonString
             }
+        }
+
+        do {
+            try await coreDataManager.saveInBackground { context in
+                let cdComment = CDComment(context: context)
+                cdComment.id = tempId
+                cdComment.content = savedContent
+                cdComment.type = savedType
+                cdComment.authorId = savedAuthorId
+                cdComment.taskId = savedTaskId
+                cdComment.createdAt = Date()
+                cdComment.updatedAt = Date()
+                cdComment.syncStatus = "pending"
+                cdComment.pendingOperation = "create"
+                cdComment.syncAttempts = 0
+                cdComment.pendingFileId = savedFileId  // Store fileId for sync
+                cdComment.secureFilesData = secureFilesJson  // Store attachment info for display
+            }
+
+            // Update pending count
+            await updatePendingOperationsCount()
+        } catch {
+            logger.error("Failed to save pending comment: \(error.localizedDescription, privacy: .public)")
         }
 
         // 4. Update in-memory cache immediately
@@ -371,23 +410,19 @@ class CommentService: ObservableObject {
         }
         cachedComments[taskId]?.append(optimisticComment)
 
-        // 5. Trigger background sync (fire-and-forget)
+        // 5. Trigger background sync (fire-and-forget) - AFTER save completes
         if networkMonitor.isConnected {
             _Concurrency.Task.detached { [weak self] in
                 try? await self?.syncPendingComments()
             }
-        } else {
-            print("📵 [CommentService] Offline - comment will sync when connection restored")
         }
 
         // 6. Return optimistic comment immediately
-        print("✅ [CommentService] Returning optimistic comment (pending sync)")
         return optimisticComment
     }
 
     /// Update a comment (local-first with optimistic update)
     func updateComment(id: String, content: String) async throws -> Comment {
-        print("✏️ [CommentService] Updating comment (optimistic): \(id)")
 
         // 1. Create updated comment object
         let updatedComment = Comment(
@@ -424,23 +459,16 @@ class CommentService: ObservableObject {
             guard let self = self else { return }
             do {
                 try await self.coreDataManager.saveInBackground { context in
-                    guard let cdComment = try CDComment.fetchById(id, context: context) else {
-                        print("⚠️ [CommentService] Comment not found in Core Data: \(id)")
-                        return
-                    }
-
+                    guard let cdComment = try CDComment.fetchById(id, context: context) else { return }
                     cdComment.pendingContent = content
                     cdComment.syncStatus = "pending_update"
                     cdComment.pendingOperation = "update"
                     cdComment.updatedAt = Date()
                     cdComment.syncAttempts = 0
                 }
-
-                // Update pending count
                 await self.updatePendingOperationsCount()
-                print("💾 [CommentService] Saved pending update to Core Data: \(id)")
             } catch {
-                print("⚠️ [CommentService] Failed to save pending update: \(error)")
+                // Silent fail - will retry on next sync
             }
         }
 
@@ -449,24 +477,17 @@ class CommentService: ObservableObject {
             _Concurrency.Task.detached { [weak self] in
                 try? await self?.syncPendingComments()
             }
-        } else {
-            print("📵 [CommentService] Offline - update will sync when connection restored")
         }
 
-        // 5. Return updated comment immediately
-        print("✅ [CommentService] Returning updated comment (pending sync)")
         return updatedComment
     }
 
     /// Delete a comment (local-first with optimistic update)
     func deleteComment(id: String) async throws {
-        print("🗑️ [CommentService] Deleting comment (optimistic): \(id)")
-
         // 1. Remove from in-memory cache immediately (optimistic)
         for (taskId, comments) in cachedComments {
             if let index = comments.firstIndex(where: { $0.id == id }) {
                 cachedComments[taskId]?.remove(at: index)
-                print("✅ [CommentService] Removed from cache (optimistic)")
                 break
             }
         }
@@ -476,21 +497,14 @@ class CommentService: ObservableObject {
             guard let self = self else { return }
             do {
                 try await self.coreDataManager.saveInBackground { context in
-                    guard let cdComment = try CDComment.fetchById(id, context: context) else {
-                        print("⚠️ [CommentService] Comment not found in Core Data: \(id)")
-                        return
-                    }
-
+                    guard let cdComment = try CDComment.fetchById(id, context: context) else { return }
                     cdComment.syncStatus = "pending_delete"
                     cdComment.pendingOperation = "delete"
                     cdComment.syncAttempts = 0
                 }
-
-                // Update pending count
                 await self.updatePendingOperationsCount()
-                print("💾 [CommentService] Marked comment for deletion in Core Data: \(id)")
             } catch {
-                print("⚠️ [CommentService] Failed to mark for deletion: \(error)")
+                // Silent fail - will retry on next sync
             }
         }
 
@@ -499,11 +513,7 @@ class CommentService: ObservableObject {
             _Concurrency.Task.detached { [weak self] in
                 try? await self?.syncPendingComments()
             }
-        } else {
-            print("📵 [CommentService] Offline - deletion will sync when connection restored")
         }
-
-        print("✅ [CommentService] Comment deleted (pending sync)")
     }
 
     // MARK: - Background Sync
@@ -522,12 +532,7 @@ class CommentService: ObservableObject {
 
     /// Sync all pending comment operations (create, update, delete) with the server
     func syncPendingComments() async throws {
-        guard networkMonitor.isConnected else {
-            print("📵 [CommentService] Cannot sync - no network connection")
-            return
-        }
-
-        print("🔄 [CommentService] Starting pending comments sync...")
+        guard networkMonitor.isConnected else { return }
 
         // Fetch all pending comments from Core Data - extract data INSIDE context to avoid faulting
         let pendingData: [PendingCommentData] = try await withCheckedThrowingContinuation { continuation in
@@ -555,41 +560,30 @@ class CommentService: ObservableObject {
             }
         }
 
-        print("📊 [CommentService] Found \(pendingData.count) pending operations to sync")
-
-        if pendingData.isEmpty {
-            print("✅ [CommentService] No pending operations to sync")
-            return
-        }
+        guard !pendingData.isEmpty else { return }
 
         // Process each pending operation using extracted data
         for data in pendingData {
-            print("⚡️ [CommentService] Processing pending \(data.operation) for comment: \(data.id)")
-
             do {
                 switch data.operation {
                 case "create":
                     try await syncPendingCreate(data)
-
                 case "update":
                     try await syncPendingUpdate(data)
-
                 case "delete":
                     try await syncPendingDelete(data)
-
                 default:
-                    print("⚠️ [CommentService] Unknown operation: \(data.operation)")
                     try await markAsFailed(id: data.id, error: "Unknown operation type")
                 }
+            } catch CommentSyncError.attachmentPending {
+                // Attachment still uploading - will retry automatically
             } catch {
-                print("❌ [CommentService] Failed to sync \(data.operation): \(error.localizedDescription)")
+                logger.error("Failed to sync \(data.operation, privacy: .public): \(error.localizedDescription, privacy: .public)")
                 try await markAsFailed(id: data.id, error: error.localizedDescription)
             }
         }
 
-        // Update pending count after sync
         await updatePendingOperationsCount()
-        print("✅ [CommentService] Sync completed")
 
         // Notify views to reload comments (updates UI after sync replaces temp IDs)
         NotificationCenter.default.post(name: .commentDidSync, object: nil)
@@ -597,9 +591,17 @@ class CommentService: ObservableObject {
 
     /// Sync a pending create operation
     private func syncPendingCreate(_ data: PendingCommentData) async throws {
-        print("⚡️ [CommentService] Syncing pending create: \(data.id)")
-        if let fileId = data.pendingFileId {
-            print("📎 [CommentService] Attaching file: \(fileId)")
+        // Resolve temp fileId to real fileId if needed
+        var resolvedFileId = data.pendingFileId
+        if let tempFileId = data.pendingFileId, tempFileId.hasPrefix("temp_") {
+            if let realFileId = AttachmentService.shared.getRealFileId(for: tempFileId) {
+                resolvedFileId = realFileId
+            } else if AttachmentService.shared.isPendingUpload(tempFileId) {
+                throw CommentSyncError.attachmentPending
+            } else {
+                // Attachment not found - sync without it
+                resolvedFileId = nil
+            }
         }
 
         // Call API to create comment (pass client createdAt for correct ordering)
@@ -607,23 +609,16 @@ class CommentService: ObservableObject {
             taskId: data.taskId,
             content: data.content,
             type: Comment.CommentType(rawValue: data.type) ?? .TEXT,
-            fileId: data.pendingFileId,
+            fileId: resolvedFileId,
             parentCommentId: nil,
             createdAt: data.createdAt
         )
 
-        print("✅ [CommentService] Server created comment with ID: \(response.comment.id)")
-
         // Update Core Data with server ID and mark as synced
         let oldId = data.id
         try await coreDataManager.saveInBackground { context in
-            guard let comment = try CDComment.fetchById(oldId, context: context) else {
-                print("⚠️ [CommentService] Could not find comment in Core Data: \(oldId)")
-                return
-            }
-
-            // Update with server response
-            comment.id = response.comment.id // Replace temp ID with real ID
+            guard let comment = try CDComment.fetchById(oldId, context: context) else { return }
+            comment.id = response.comment.id
             comment.syncStatus = "synced"
             comment.lastSyncedAt = Date()
             comment.pendingOperation = nil
@@ -640,35 +635,20 @@ class CommentService: ObservableObject {
                 cachedComments[taskId] = taskComments
             }
         }
-
-        print("✅ [CommentService] Marked comment as synced: \(response.comment.id)")
     }
 
     /// Sync a pending update operation
     private func syncPendingUpdate(_ data: PendingCommentData) async throws {
-        print("⚡️ [CommentService] Syncing pending update: \(data.id)")
+        guard let updatedContent = data.pendingContent else { return }
 
-        guard let updatedContent = data.pendingContent else {
-            print("⚠️ [CommentService] No pending content for update")
-            return
-        }
-
-        // Call API to update comment
-        let response = try await apiClient.updateComment(
+        _ = try await apiClient.updateComment(
             commentId: data.id,
             content: updatedContent
         )
 
-        print("✅ [CommentService] Server confirmed update for comment: \(response.comment.id)")
-
-        // Mark as synced in Core Data
         let commentId = data.id
         try await coreDataManager.saveInBackground { context in
-            guard let comment = try CDComment.fetchById(commentId, context: context) else {
-                print("⚠️ [CommentService] Could not find comment in Core Data: \(commentId)")
-                return
-            }
-
+            guard let comment = try CDComment.fetchById(commentId, context: context) else { return }
             comment.content = updatedContent
             comment.syncStatus = "synced"
             comment.lastSyncedAt = Date()
@@ -677,51 +657,26 @@ class CommentService: ObservableObject {
             comment.syncAttempts = 0
             comment.syncError = nil
         }
-
-        print("✅ [CommentService] Marked comment as synced: \(response.comment.id)")
     }
 
     /// Sync a pending delete operation
     private func syncPendingDelete(_ data: PendingCommentData) async throws {
-        print("⚡️ [CommentService] Syncing pending delete: \(data.id)")
-
-        // Call API to delete comment
         let _ = try await apiClient.deleteComment(commentId: data.id)
 
-        print("✅ [CommentService] Server confirmed delete for comment: \(data.id)")
-
-        // Remove from Core Data
         let commentId = data.id
         try await coreDataManager.saveInBackground { context in
-            guard let comment = try CDComment.fetchById(commentId, context: context) else {
-                print("⚠️ [CommentService] Comment already deleted from Core Data: \(commentId)")
-                return
-            }
-
+            guard let comment = try CDComment.fetchById(commentId, context: context) else { return }
             context.delete(comment)
         }
-
-        print("✅ [CommentService] Removed comment from Core Data: \(data.id)")
     }
 
     /// Mark a comment as failed after sync error
     private func markAsFailed(id: String, error: String) async throws {
-        print("⚠️ [CommentService] Marking comment as failed: \(id)")
-
         try await coreDataManager.saveInBackground { context in
-            guard let comment = try CDComment.fetchById(id, context: context) else {
-                print("⚠️ [CommentService] Could not find comment in Core Data: \(id)")
-                return
-            }
-
+            guard let comment = try CDComment.fetchById(id, context: context) else { return }
             comment.syncStatus = "failed"
             comment.syncAttempts += 1
             comment.syncError = error
-
-            // Give up after 3 attempts
-            if comment.syncAttempts >= 3 {
-                print("🛑 [CommentService] Comment failed after 3 attempts, giving up: \(id)")
-            }
         }
     }
 }
@@ -824,8 +779,6 @@ extension CommentService {
 
     /// Retry all failed operations
     func retryFailedOperations() async {
-        print("🔄 [CommentService] Retrying failed operations...")
-
         do {
             try await coreDataManager.saveInBackground { context in
                 let request = CDComment.fetchRequest()
@@ -836,13 +789,10 @@ extension CommentService {
                     comment.syncStatus = "pending"
                     comment.syncError = nil
                 }
-                print("📊 [CommentService] Reset \(failedComments.count) failed comments to pending")
             }
-
-            // Trigger sync
             try await syncPendingComments()
         } catch {
-            print("❌ [CommentService] Failed to retry operations: \(error)")
+            logger.error("Failed to retry operations: \(error.localizedDescription, privacy: .public)")
         }
     }
 }

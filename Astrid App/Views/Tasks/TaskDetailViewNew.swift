@@ -1,4 +1,6 @@
 import SwiftUI
+import PhotosUI
+import UniformTypeIdentifiers
 
 /// New TaskDetailView with inline editing (matching mobile web app)
 struct TaskDetailViewNew: View {
@@ -36,6 +38,30 @@ struct TaskDetailViewNew: View {
     @State private var showTimer: Bool = false // New state for timer
     @FocusState private var isTitleFocused: Bool  // Focus state for title field
 
+    // Action menu state (moved from TaskActionsView)
+    @State private var showingCopySheet = false
+    @State private var showingShareSheet = false
+    @State private var showingDeleteConfirmation = false
+
+    // Comment input state (for fixed position input above keyboard)
+    @State private var newCommentText = ""
+    @State private var isSubmittingComment = false
+    @FocusState private var isCommentFocused: Bool
+
+    // Attachment state for comment input
+    @State private var attachedFile: AttachedFileInfo?
+    @State private var isUploadingFile = false
+    @State private var showingPhotoPicker = false
+    @State private var showingVideoPicker = false
+    @State private var showingDocumentPicker = false
+    @State private var selectedPhotoItem: PhotosPickerItem?
+    @State private var selectedVideoItem: PhotosPickerItem?
+    @State private var uploadError: String?
+
+    // Scroll actions (set by ScrollViewReader)
+    @State private var scrollToTopAction: (() -> Void)?
+    @State private var scrollToBottomAction: (() -> Void)?
+
     init(task: Task, isReadOnly: Bool = false) {
         self._task = State(initialValue: task)
         self.isReadOnly = isReadOnly
@@ -72,10 +98,74 @@ struct TaskDetailViewNew: View {
 
     var body: some View {
         mainContent
-            // Hide "Task Details" title on iPad (shown in side panel with arrow indicator)
-            .navigationTitle(UIDevice.current.userInterfaceIdiom == .pad ? "" : NSLocalizedString("tasks.task_details", comment: ""))
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(UIDevice.current.userInterfaceIdiom == .pad)
+            .toolbarBackground(toolbarBackgroundColor, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbar {
+                // Tappable title in center - tap to scroll to top (iPhone only)
+                if UIDevice.current.userInterfaceIdiom != .pad {
+                    ToolbarItem(placement: .principal) {
+                        Button {
+                            scrollToTopAction?()
+                        } label: {
+                            Text(NSLocalizedString("tasks.task_details", comment: ""))
+                                .font(.headline)
+                                .foregroundColor(colorScheme == .dark ? Theme.Dark.textPrimary : Theme.textPrimary)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+
+                // More menu with Copy, Share, Delete actions (hide for read-only)
+                if !isReadOnly {
+                    ToolbarItem(placement: .primaryAction) {
+                        Menu {
+                            Button {
+                                showingCopySheet = true
+                            } label: {
+                                Label(NSLocalizedString("tasks.copy_task", comment: ""), systemImage: "doc.on.doc")
+                            }
+
+                            Button {
+                                showingShareSheet = true
+                            } label: {
+                                Label(NSLocalizedString("tasks.share_task", comment: ""), systemImage: "square.and.arrow.up")
+                            }
+
+                            Divider()
+
+                            Button(role: .destructive) {
+                                showingDeleteConfirmation = true
+                            } label: {
+                                Label(NSLocalizedString("tasks.delete_task", comment: ""), systemImage: "trash")
+                            }
+                        } label: {
+                            Image(systemName: "ellipsis.circle")
+                                .font(.system(size: 20))
+                        }
+                    }
+                }
+            }
+            .sheet(isPresented: $showingCopySheet) {
+                CopyTaskView(task: task, currentListId: task.listIds?.first ?? task.lists?.first?.id)
+            }
+            .sheet(isPresented: $showingShareSheet) {
+                ShareTaskView(task: task)
+            }
+            .confirmationDialog(
+                NSLocalizedString("tasks.delete_confirm", comment: ""),
+                isPresented: $showingDeleteConfirmation,
+                titleVisibility: .visible
+            ) {
+                Button(NSLocalizedString("actions.delete", comment: ""), role: .destructive) {
+                    _Concurrency.Task {
+                        try? await TaskService.shared.deleteTask(id: task.id, task: task)
+                        dismiss()
+                    }
+                }
+                Button(NSLocalizedString("actions.cancel", comment: ""), role: .cancel) { }
+            }
             .task {
                 await refreshTaskDetails()
             }
@@ -115,7 +205,7 @@ struct TaskDetailViewNew: View {
     private var mainContent: some View {
         ScrollViewReader { proxy in
             ScrollView {
-                VStack(spacing: Theme.spacing24) {
+                VStack(spacing: Theme.spacing12) {
                     // Anchor for scroll-to-top
                     Color.clear
                         .frame(height: 0)
@@ -145,7 +235,7 @@ struct TaskDetailViewNew: View {
                     }
                 }
                 .padding(.horizontal, Theme.spacing16)
-                .padding(.top, Theme.spacing16)
+                .padding(.top, Theme.spacing8)
                 .onChange(of: editedTitle) {
                     if !isReadOnly {
                         saveTitle()
@@ -353,11 +443,7 @@ struct TaskDetailViewNew: View {
 
                 TaskAttachmentSectionView(task: task)
 
-                // 9. Comments Section
-                CommentSectionViewEnhanced(taskId: task.id)
-                    .padding(.horizontal, Theme.spacing16)
-
-                // 10. Timer Button
+                // 9. Timer Button (moved above comments)
                 VStack(spacing: Theme.spacing8) {
                     Button(action: { showTimer = true }) {
                         HStack {
@@ -384,27 +470,56 @@ struct TaskDetailViewNew: View {
                     }
                 }
                 .padding(.horizontal, Theme.spacing16)
-                .padding(.top, Theme.spacing8)
+                .padding(.top, Theme.spacing4)
 
-                // 10. Actions (hide for read-only)
-                if !isReadOnly {
-                    Divider()
-                        .background(colorScheme == .dark ? Theme.Dark.border : Theme.border)
-
-                    TaskActionsView(
-                        task: task,
-                        currentListId: task.listIds?.first ?? task.lists?.first?.id
-                    )
+                // 10. Comments Section (input is handled separately in fixed position)
+                CommentSectionViewEnhanced(taskId: task.id, hideInput: true)
                     .padding(.horizontal, Theme.spacing16)
-                }
 
-                    Spacer().frame(height: Theme.spacing24)
+                // Bottom anchor for scrolling after adding comments
+                Color.clear
+                    .frame(height: 1)
+                    .id("bottom")
+
+                // Extra space at bottom for comment input bar (safeAreaInset handles positioning)
+                Spacer().frame(height: Theme.spacing12)
                 }
-                .scrollToTopButton(proxy: proxy, topId: "top")
+            }
+            .onChange(of: isCommentFocused) { _, focused in
+                // Scroll to bottom when comment input is focused (like messaging apps)
+                if focused {
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        proxy.scrollTo("bottom", anchor: .bottom)
+                    }
+                }
+            }
+            .onAppear {
+                // Set scroll actions for use elsewhere
+                scrollToTopAction = {
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        proxy.scrollTo("top", anchor: .top)
+                    }
+                }
+                scrollToBottomAction = {
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        proxy.scrollTo("bottom", anchor: .bottom)
+                    }
+                }
             }
             .coordinateSpace(name: "scroll")
             .refreshable {
                 await refreshTaskDetails()
+            }
+            .safeAreaInset(edge: .bottom) {
+                // Fixed comment input above keyboard (like messaging apps)
+                if !isReadOnly {
+                    commentInputBar
+                        .background(
+                            // Extend background to cover home indicator area
+                            taskDetailsBackground
+                                .ignoresSafeArea(edges: .bottom)
+                        )
+                }
             }
             .background(
                 ZStack {
@@ -431,7 +546,488 @@ struct TaskDetailViewNew: View {
         }
     }
 
+    /// Toolbar background color (matches content background)
+    private var toolbarBackgroundColor: Color {
+        switch effectiveTheme {
+        case .ocean:
+            // Ocean theme: cyan base with white overlay (same as content)
+            return Color(red: 0.95, green: 0.98, blue: 0.99)  // Approximate ocean + white overlay
+        case .dark:
+            return Theme.Dark.bgPrimary
+        case .light, .auto:
+            return Theme.bgPrimary
+        }
+    }
+
+    /// Task details background (matches main content background)
+    @ViewBuilder
+    private var taskDetailsBackground: some View {
+        ZStack {
+            getBackgroundColor()
+            if effectiveTheme == .ocean {
+                Color.white.opacity(0.8)
+            }
+        }
+    }
+
     // MARK: - View Components (cont.)
+
+    /// Fixed comment input bar that stays above the keyboard (styled like QuickAddTaskView)
+    private var commentInputBar: some View {
+        VStack(spacing: Theme.spacing8) {
+            // File attachment preview
+            if let file = attachedFile {
+                HStack(alignment: .bottom, spacing: Theme.spacing8) {
+                    ZStack(alignment: .topTrailing) {
+                        if file.isImage, let imageData = file.imageData, let uiImage = UIImage(data: imageData) {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 64, height: 64)
+                                .clipShape(RoundedRectangle(cornerRadius: Theme.radiusMedium))
+                        } else {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: Theme.radiusMedium)
+                                    .fill(colorScheme == .dark ? Theme.Dark.bgTertiary : Theme.bgTertiary)
+                                    .frame(width: 64, height: 64)
+                                VStack(spacing: 4) {
+                                    Image(systemName: fileIcon(for: file.mimeType))
+                                        .font(.system(size: 24))
+                                        .foregroundColor(colorScheme == .dark ? Theme.Dark.textMuted : Theme.textMuted)
+                                    Text(file.fileName.components(separatedBy: ".").last?.uppercased() ?? "FILE")
+                                        .font(.system(size: 9, weight: .medium))
+                                        .foregroundColor(colorScheme == .dark ? Theme.Dark.textMuted : Theme.textMuted)
+                                }
+                            }
+                        }
+
+                        Button {
+                            if file.fileId.hasPrefix("temp_") {
+                                AttachmentService.shared.cancelUpload(tempFileId: file.fileId)
+                            }
+                            attachedFile = nil
+                        } label: {
+                            Image(systemName: "xmark.circle.fill")
+                                .font(.system(size: 20))
+                                .foregroundStyle(.white, Color.black.opacity(0.6))
+                                .background(Circle().fill(Color.black.opacity(0.3)))
+                        }
+                        .offset(x: 6, y: -6)
+                    }
+                    Spacer()
+                }
+            }
+
+            HStack(alignment: .center, spacing: Theme.spacing12) {
+                // Attachment menu button
+                Menu {
+                    Button {
+                        showingPhotoPicker = true
+                    } label: {
+                        Label(NSLocalizedString("attachments.choose_photo", comment: ""), systemImage: "photo")
+                    }
+                    Button {
+                        showingVideoPicker = true
+                    } label: {
+                        Label(NSLocalizedString("attachments.choose_video", comment: ""), systemImage: "video")
+                    }
+                    Button {
+                        showingDocumentPicker = true
+                    } label: {
+                        Label(NSLocalizedString("attachments.choose_document", comment: ""), systemImage: "doc")
+                    }
+                } label: {
+                    Image(systemName: isUploadingFile ? "arrow.up.circle" : "paperclip")
+                        .font(.system(size: 20))
+                        .foregroundColor(isUploadingFile ? .gray : commentInputMutedColor)
+                        .frame(width: 34, height: 34)
+                }
+                .buttonStyle(.plain)
+                .disabled(isUploadingFile || isSubmittingComment)
+
+                // Expandable text input with chrome/silver styling
+                ZStack(alignment: .topLeading) {
+                    // Hidden sizing text
+                    Text(newCommentText.isEmpty ? " " : newCommentText)
+                        .font(Theme.Typography.body())
+                        .foregroundColor(.clear)
+                        .padding(.horizontal, 13)
+                        .padding(.vertical, 12)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                    // Placeholder text
+                    if newCommentText.isEmpty {
+                        Text("Add a comment...")
+                            .font(Theme.Typography.body())
+                            .foregroundColor(commentInputPlaceholderColor)
+                            .padding(.horizontal, 13)
+                            .padding(.vertical, 12)
+                            .allowsHitTesting(false)
+                    }
+
+                    // Actual TextEditor
+                    TextEditor(text: $newCommentText)
+                        .font(Theme.Typography.body())
+                        .foregroundColor(commentInputTextColor)
+                        .focused($isCommentFocused)
+                        .scrollContentBackground(.hidden)
+                        .padding(.horizontal, Theme.spacing8)
+                        .padding(.vertical, Theme.spacing4)
+                }
+                .frame(minHeight: 36, maxHeight: 200)
+                .fixedSize(horizontal: false, vertical: true)
+                .background(commentInputBackgroundColor)
+                .cornerRadius(Theme.radiusMedium)
+                .overlay(
+                    RoundedRectangle(cornerRadius: Theme.radiusMedium)
+                        .stroke(commentInputBorderColor, lineWidth: 1)
+                )
+
+                // Send button
+                Button {
+                    _Concurrency.Task { await submitComment() }
+                } label: {
+                    if isSubmittingComment {
+                        ProgressView()
+                            .tint(Theme.accent)
+                    } else {
+                        Image(systemName: "paperplane.fill")
+                            .font(.system(size: 20))
+                            .foregroundColor(canSubmitComment ? Theme.accent : commentInputMutedColor)
+                    }
+                }
+                .frame(width: 34, height: 34)
+                .buttonStyle(.plain)
+                .disabled(!canSubmitComment || isSubmittingComment)
+            }
+        }
+        .padding(.horizontal, Theme.spacing16)
+        .padding(.vertical, Theme.spacing12)
+        .background(commentInputContainerBackground)
+        .cornerRadius(Theme.radiusLarge)
+        .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: -2)
+        .padding(.horizontal, 8)
+        .padding(.bottom, 0)
+        .photosPicker(isPresented: $showingPhotoPicker, selection: $selectedPhotoItem, matching: .images, photoLibrary: .shared())
+        .photosPicker(isPresented: $showingVideoPicker, selection: $selectedVideoItem, matching: .videos, photoLibrary: .shared())
+        .fileImporter(
+            isPresented: $showingDocumentPicker,
+            allowedContentTypes: [.pdf, .plainText, .zip, .image, .movie, .video, .mpeg4Movie, .quickTimeMovie, .avi, UTType(filenameExtension: "doc")!, UTType(filenameExtension: "docx")!, UTType(filenameExtension: "mkv")!],
+            allowsMultipleSelection: false
+        ) { result in
+            switch result {
+            case .success(let urls):
+                guard let url = urls.first else { return }
+                _Concurrency.Task { await uploadDocument(url) }
+            case .failure(let error):
+                print("❌ Document picker error: \(error)")
+                uploadError = "Failed to select document: \(error.localizedDescription)"
+            }
+        }
+        .onChange(of: selectedPhotoItem) { _, newValue in
+            guard let photoItem = newValue else { return }
+            _Concurrency.Task { await uploadPhotoItem(photoItem) }
+        }
+        .onChange(of: selectedVideoItem) { _, newValue in
+            guard let videoItem = newValue else { return }
+            _Concurrency.Task { await uploadVideoItem(videoItem) }
+        }
+        .alert("Upload Error", isPresented: .init(
+            get: { uploadError != nil },
+            set: { if !$0 { uploadError = nil } }
+        )) {
+            Button("OK", role: .cancel) { uploadError = nil }
+        } message: {
+            if let error = uploadError { Text(error) }
+        }
+    }
+
+    // MARK: - Comment Input Theme Helpers
+
+    private var canSubmitComment: Bool {
+        !newCommentText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || attachedFile != nil
+    }
+
+    private var commentInputTextColor: Color {
+        if effectiveTheme == .ocean {
+            return Theme.Ocean.textPrimary
+        }
+        return effectiveTheme == .dark ? Theme.Dark.textPrimary : Theme.textPrimary
+    }
+
+    private var commentInputMutedColor: Color {
+        if effectiveTheme == .ocean {
+            return Theme.Ocean.textMuted
+        }
+        return effectiveTheme == .dark ? Theme.Dark.textMuted : Theme.textMuted
+    }
+
+    private var commentInputPlaceholderColor: Color {
+        if effectiveTheme == .ocean {
+            return Color(UIColor.darkGray)
+        }
+        return effectiveTheme == .dark ? Theme.Dark.textMuted : Theme.textMuted
+    }
+
+    private var commentInputBackgroundColor: Color {
+        if effectiveTheme == .dark {
+            return Theme.Dark.inputBg
+        }
+        return Color.white
+    }
+
+    private var commentInputBorderColor: Color {
+        if effectiveTheme == .dark {
+            return Theme.Dark.inputBorder
+        }
+        return Theme.Ocean.inputBorder
+    }
+
+    @ViewBuilder
+    private var commentInputContainerBackground: some View {
+        if effectiveTheme == .light {
+            Rectangle()
+                .fill(Theme.LiquidGlass.secondaryGlassMaterial)
+        } else {
+            commentInputContainerColor
+        }
+    }
+
+    private var commentInputContainerColor: Color {
+        if effectiveTheme == .dark {
+            return Theme.Dark.bgPrimary
+        }
+        return Color.white.opacity(0.8)
+    }
+
+    private func fileIcon(for mimeType: String) -> String {
+        let lowercased = mimeType.lowercased()
+        if lowercased.hasPrefix("image/") { return "photo" }
+        else if lowercased.hasPrefix("video/") { return "video" }
+        else if lowercased.hasPrefix("audio/") { return "waveform" }
+        else if lowercased.contains("pdf") { return "doc.text" }
+        else if lowercased.contains("zip") || lowercased.contains("archive") { return "archivebox" }
+        else { return "doc" }
+    }
+
+    /// Submit a new comment
+    private func submitComment() async {
+        let trimmedText = newCommentText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedText.isEmpty || attachedFile != nil else { return }
+
+        isSubmittingComment = true
+
+        // Determine comment type
+        let commentType: Comment.CommentType = attachedFile != nil ? .ATTACHMENT : .MARKDOWN
+
+        // Get file ID (wait for upload if needed, unless offline)
+        var fileIdToSend = attachedFile?.fileId
+        if let tempFileId = fileIdToSend, tempFileId.hasPrefix("temp_") {
+            if let realFileId = AttachmentService.shared.getRealFileId(for: tempFileId) {
+                fileIdToSend = realFileId
+            } else if !NetworkMonitor.shared.isConnected {
+                // OFFLINE: Keep temp fileId - will be resolved when syncing
+            } else if AttachmentService.shared.isPendingUpload(tempFileId) {
+                // Wait for upload to complete (online only)
+                fileIdToSend = await waitForUploadCompletion(tempFileId: tempFileId)
+            }
+        }
+
+        do {
+            _ = try await CommentService.shared.createComment(
+                taskId: task.id,
+                content: trimmedText,
+                type: commentType,
+                fileId: fileIdToSend,
+                parentCommentId: nil,
+                authorId: AuthManager.shared.userId
+            )
+
+            // Clear input on success
+            await MainActor.run {
+                newCommentText = ""
+                attachedFile = nil
+                // Keep focus on input for quick follow-up comments (like texting apps)
+            }
+
+            // Notify CommentSectionViewEnhanced to refresh
+            NotificationCenter.default.post(name: .commentDidSync, object: nil, userInfo: ["taskId": task.id])
+
+            // Scroll to bottom to show the new comment (after a brief delay for UI to update)
+            try? await _Concurrency.Task.sleep(nanoseconds: 200_000_000)  // 200ms
+            await MainActor.run {
+                scrollToBottomAction?()
+            }
+
+        } catch {
+            print("❌ [TaskDetailViewNew] Failed to submit comment: \(error)")
+        }
+
+        isSubmittingComment = false
+    }
+
+    // MARK: - File Upload Helpers
+
+    private let maxFileSize = 100 * 1024 * 1024  // 100 MB
+
+    private func uploadPhotoItem(_ photoItem: PhotosPickerItem) async {
+        isUploadingFile = true
+        defer { isUploadingFile = false }
+
+        do {
+            guard let imageData = try await photoItem.loadTransferable(type: Data.self) else {
+                await MainActor.run { uploadError = "Failed to load photo. Please try again." }
+                return
+            }
+
+            if imageData.count > maxFileSize {
+                await MainActor.run { uploadError = "Photo is too large. Maximum size is 100 MB." }
+                return
+            }
+
+            let fileName = "photo_\(UUID().uuidString).jpg"
+            let mimeType = "image/jpeg"
+
+            let tempFileId = AttachmentService.shared.saveLocallyAndUploadAsync(
+                fileData: imageData,
+                fileName: fileName,
+                mimeType: mimeType,
+                taskId: task.id
+            )
+
+            await MainActor.run {
+                attachedFile = AttachedFileInfo(
+                    fileId: tempFileId,
+                    fileName: fileName,
+                    fileSize: imageData.count,
+                    mimeType: mimeType,
+                    imageData: imageData
+                )
+                if let uiImage = UIImage(data: imageData) {
+                    ThumbnailCache.shared.set(uiImage, for: tempFileId)
+                }
+                selectedPhotoItem = nil
+            }
+        } catch {
+            await MainActor.run { uploadError = "Failed to load photo: \(error.localizedDescription)" }
+        }
+    }
+
+    private func uploadVideoItem(_ videoItem: PhotosPickerItem) async {
+        isUploadingFile = true
+        defer { isUploadingFile = false }
+
+        do {
+            guard let videoData = try await videoItem.loadTransferable(type: Data.self) else {
+                await MainActor.run { uploadError = "Failed to load video. Please try again." }
+                return
+            }
+
+            if videoData.count > maxFileSize {
+                await MainActor.run { uploadError = "Video is too large. Maximum size is 100 MB." }
+                return
+            }
+
+            let fileName = "video_\(UUID().uuidString).mp4"
+            let mimeType = "video/mp4"
+
+            let tempFileId = AttachmentService.shared.saveLocallyAndUploadAsync(
+                fileData: videoData,
+                fileName: fileName,
+                mimeType: mimeType,
+                taskId: task.id
+            )
+
+            await MainActor.run {
+                attachedFile = AttachedFileInfo(
+                    fileId: tempFileId,
+                    fileName: fileName,
+                    fileSize: videoData.count,
+                    mimeType: mimeType,
+                    imageData: nil
+                )
+                selectedVideoItem = nil
+            }
+        } catch {
+            await MainActor.run { uploadError = "Failed to load video: \(error.localizedDescription)" }
+        }
+    }
+
+    private func uploadDocument(_ url: URL) async {
+        isUploadingFile = true
+        defer { isUploadingFile = false }
+
+        do {
+            guard url.startAccessingSecurityScopedResource() else {
+                await MainActor.run { uploadError = "Failed to access document. Please try again." }
+                return
+            }
+            defer { url.stopAccessingSecurityScopedResource() }
+
+            let fileData = try Data(contentsOf: url)
+            let fileName = url.lastPathComponent
+            let mimeType = AttachmentService.shared.getMimeType(for: url.pathExtension)
+
+            if fileData.count > maxFileSize {
+                await MainActor.run { uploadError = "Document is too large. Maximum size is 100 MB." }
+                return
+            }
+
+            let tempFileId = AttachmentService.shared.saveLocallyAndUploadAsync(
+                fileData: fileData,
+                fileName: fileName,
+                mimeType: mimeType,
+                taskId: task.id
+            )
+
+            await MainActor.run {
+                attachedFile = AttachedFileInfo(
+                    fileId: tempFileId,
+                    fileName: fileName,
+                    fileSize: fileData.count,
+                    mimeType: mimeType,
+                    imageData: nil
+                )
+            }
+        } catch {
+            await MainActor.run { uploadError = "Failed to load document: \(error.localizedDescription)" }
+        }
+    }
+
+    private func waitForUploadCompletion(tempFileId: String) async -> String? {
+        final class State: @unchecked Sendable {
+            var observer: NSObjectProtocol?
+            var hasResumed = false
+        }
+        let state = State()
+
+        return await withCheckedContinuation { continuation in
+            let timeoutTask = _Concurrency.Task {
+                try? await _Concurrency.Task.sleep(nanoseconds: 60_000_000_000)
+                guard !_Concurrency.Task.isCancelled && !state.hasResumed else { return }
+                state.hasResumed = true
+                if let obs = state.observer { NotificationCenter.default.removeObserver(obs) }
+                continuation.resume(returning: nil)
+            }
+
+            state.observer = NotificationCenter.default.addObserver(
+                forName: .attachmentUploadCompleted,
+                object: nil,
+                queue: .main
+            ) { notification in
+                guard let userInfo = notification.userInfo,
+                      let notificationTempId = userInfo["tempFileId"] as? String,
+                      notificationTempId == tempFileId,
+                      let realFileId = userInfo["realFileId"] as? String,
+                      !state.hasResumed else { return }
+
+                state.hasResumed = true
+                timeoutTask.cancel()
+                if let obs = state.observer { NotificationCenter.default.removeObserver(obs) }
+                continuation.resume(returning: realFileId)
+            }
+        }
+    }
 
     private var titleTextField: some View {
         TextField("Task title", text: $editedTitle, axis: .vertical)
@@ -455,6 +1051,21 @@ struct TaskDetailViewNew: View {
     // MARK: - Helper Methods
 
     private func refreshTaskDetails() async {
+        // First, sync any pending attachments and comments (if online)
+        if NetworkMonitor.shared.isConnected {
+            print("🔄 [TaskDetailViewNew] Pull to refresh - syncing pending items first...")
+
+            // Sync pending attachments first (comments may depend on them)
+            await AttachmentService.shared.syncPendingUploads()
+
+            // Sync pending comments
+            do {
+                try await CommentService.shared.syncPendingComments()
+            } catch {
+                print("⚠️ [TaskDetailViewNew] Failed to sync pending comments: \(error)")
+            }
+        }
+
         do {
             // Fetch fresh task data from the API with force refresh
             let freshTask = try await taskService.fetchTask(id: task.id, forceRefresh: true)
