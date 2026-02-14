@@ -760,6 +760,43 @@
 /* Splash */
 "splash.loading" = "Загрузка ваших задач...";
 
+/* OpenClaw Settings */
+"settings.openclaw.section" = "Шлюз OpenClaw";
+"settings.openclaw.title" = "Шлюз OpenClaw";
+"settings.openclaw.subtitle" = "Подключите свой AI-воркер";
+"settings.openclaw.description" = "Подключите самостоятельно размещённый шлюз OpenClaw для использования openclaw@astrid.cc для назначения задач.";
+"settings.openclaw.loading" = "Загрузка воркеров...";
+"settings.openclaw.no_workers" = "Воркеры не настроены";
+"settings.openclaw.add_worker" = "Добавить воркер";
+"settings.openclaw.gateway_url" = "URL шлюза";
+"settings.openclaw.gateway_url_placeholder" = "wss://ваш-шлюз.пример.ru";
+"settings.openclaw.auth_mode" = "Режим аутентификации";
+"settings.openclaw.auth_mode.token" = "Токен";
+"settings.openclaw.auth_mode.astrid_signed" = "Подпись Astrid";
+"settings.openclaw.auth_mode.none" = "Без аутентификации";
+"settings.openclaw.auth_mode.token_desc" = "Использовать пользовательский токен аутентификации";
+"settings.openclaw.auth_mode.astrid_signed_desc" = "Использовать аутентификацию с подписью Astrid (рекомендуется)";
+"settings.openclaw.auth_mode.none_desc" = "Аутентификация не требуется";
+"settings.openclaw.auth_token" = "Токен аутентификации";
+"settings.openclaw.auth_token_placeholder" = "Введите токен аутентификации";
+"settings.openclaw.name" = "Имя воркера";
+"settings.openclaw.name_placeholder" = "Мой воркер OpenClaw";
+"settings.openclaw.status.online" = "Онлайн";
+"settings.openclaw.status.offline" = "Офлайн";
+"settings.openclaw.status.error" = "Ошибка";
+"settings.openclaw.status.unknown" = "Неизвестно";
+"settings.openclaw.check_health" = "Проверить статус";
+"settings.openclaw.checking_health" = "Проверка...";
+"settings.openclaw.delete_worker" = "Удалить воркер";
+"settings.openclaw.delete_confirm" = "Вы уверены, что хотите удалить этот воркер?";
+"settings.openclaw.last_seen" = "Последняя активность: %@";
+"settings.openclaw.never" = "Никогда";
+"settings.openclaw.error_message" = "Ошибка: %@";
+"settings.openclaw.connected" = "Подключён";
+"settings.openclaw.test_connection" = "Проверить соединение";
+"settings.openclaw.info_title" = "Об OpenClaw";
+"settings.openclaw.info_description" = "После добавления воркера вы можете назначать задачи на openclaw@astrid.cc для обработки вашим AI.";
+
 /* Misc */
 "misc.cancel" = "Отмена";
 "misc.save" = "Сохранить";

@@ -89,6 +89,14 @@ struct SettingsView: View {
                         }
                     }
 
+                    NavigationLink(destination: OpenClawSettingsView()) {
+                        HStack {
+                            Text("🦞")
+                                .font(.body)
+                            Text(NSLocalizedString("settings.openclaw.title", comment: ""))
+                        }
+                    }
+
                     NavigationLink(destination: AppleRemindersSettingsView()) {
                         HStack {
                             Image(systemName: "checklist")

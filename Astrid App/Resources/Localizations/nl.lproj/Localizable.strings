@@ -760,6 +760,43 @@
 /* Splash */
 "splash.loading" = "Je taken laden...";
 
+/* OpenClaw Settings */
+"settings.openclaw.section" = "OpenClaw Gateway";
+"settings.openclaw.title" = "OpenClaw Gateway";
+"settings.openclaw.subtitle" = "Verbind je eigen AI-worker";
+"settings.openclaw.description" = "Verbind een zelf-gehoste OpenClaw gateway om openclaw@astrid.cc te gebruiken voor taaktoewijzing.";
+"settings.openclaw.loading" = "Workers laden...";
+"settings.openclaw.no_workers" = "Geen workers geconfigureerd";
+"settings.openclaw.add_worker" = "Worker Toevoegen";
+"settings.openclaw.gateway_url" = "Gateway URL";
+"settings.openclaw.gateway_url_placeholder" = "wss://jouw-gateway.voorbeeld.nl";
+"settings.openclaw.auth_mode" = "Authenticatiemodus";
+"settings.openclaw.auth_mode.token" = "Token";
+"settings.openclaw.auth_mode.astrid_signed" = "Astrid-ondertekend";
+"settings.openclaw.auth_mode.none" = "Geen";
+"settings.openclaw.auth_mode.token_desc" = "Gebruik een aangepast authenticatietoken";
+"settings.openclaw.auth_mode.astrid_signed_desc" = "Gebruik Astrid-ondertekende authenticatie (aanbevolen)";
+"settings.openclaw.auth_mode.none_desc" = "Geen authenticatie vereist";
+"settings.openclaw.auth_token" = "Auth Token";
+"settings.openclaw.auth_token_placeholder" = "Voer authenticatietoken in";
+"settings.openclaw.name" = "Worker Naam";
+"settings.openclaw.name_placeholder" = "Mijn OpenClaw Worker";
+"settings.openclaw.status.online" = "Online";
+"settings.openclaw.status.offline" = "Offline";
+"settings.openclaw.status.error" = "Fout";
+"settings.openclaw.status.unknown" = "Onbekend";
+"settings.openclaw.check_health" = "Status Controleren";
+"settings.openclaw.checking_health" = "Controleren...";
+"settings.openclaw.delete_worker" = "Worker Verwijderen";
+"settings.openclaw.delete_confirm" = "Weet je zeker dat je deze worker wilt verwijderen?";
+"settings.openclaw.last_seen" = "Laatst gezien: %@";
+"settings.openclaw.never" = "Nooit";
+"settings.openclaw.error_message" = "Fout: %@";
+"settings.openclaw.connected" = "Verbonden";
+"settings.openclaw.test_connection" = "Verbinding Testen";
+"settings.openclaw.info_title" = "Over OpenClaw";
+"settings.openclaw.info_description" = "Na het toevoegen van een worker kun je taken toewijzen aan openclaw@astrid.cc om ze door je zelf-gehoste AI te laten verwerken.";
+
 /* Misc */
 "misc.cancel" = "Annuleren";
 "misc.save" = "Opslaan";

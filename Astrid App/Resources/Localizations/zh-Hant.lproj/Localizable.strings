@@ -793,6 +793,43 @@
 /* Splash */
 "splash.loading" = "正在載入您的任務...";
 
+/* OpenClaw Settings */
+"settings.openclaw.section" = "OpenClaw 閘道";
+"settings.openclaw.title" = "OpenClaw 閘道";
+"settings.openclaw.subtitle" = "連接您自己的 AI 工作器";
+"settings.openclaw.description" = "連接自託管的 OpenClaw 閘道，使用 openclaw@astrid.cc 進行任務分配。";
+"settings.openclaw.loading" = "正在載入工作器...";
+"settings.openclaw.no_workers" = "未配置工作器";
+"settings.openclaw.add_worker" = "新增工作器";
+"settings.openclaw.gateway_url" = "閘道 URL";
+"settings.openclaw.gateway_url_placeholder" = "wss://your-gateway.example.com";
+"settings.openclaw.auth_mode" = "驗證模式";
+"settings.openclaw.auth_mode.token" = "權杖";
+"settings.openclaw.auth_mode.astrid_signed" = "Astrid 簽署";
+"settings.openclaw.auth_mode.none" = "無";
+"settings.openclaw.auth_mode.token_desc" = "使用自訂驗證權杖";
+"settings.openclaw.auth_mode.astrid_signed_desc" = "使用 Astrid 簽署驗證（建議）";
+"settings.openclaw.auth_mode.none_desc" = "無需驗證";
+"settings.openclaw.auth_token" = "驗證權杖";
+"settings.openclaw.auth_token_placeholder" = "輸入驗證權杖";
+"settings.openclaw.name" = "工作器名稱";
+"settings.openclaw.name_placeholder" = "我的 OpenClaw 工作器";
+"settings.openclaw.status.online" = "線上";
+"settings.openclaw.status.offline" = "離線";
+"settings.openclaw.status.error" = "錯誤";
+"settings.openclaw.status.unknown" = "未知";
+"settings.openclaw.check_health" = "檢查狀態";
+"settings.openclaw.checking_health" = "檢查中...";
+"settings.openclaw.delete_worker" = "刪除工作器";
+"settings.openclaw.delete_confirm" = "確定要刪除此工作器嗎？";
+"settings.openclaw.last_seen" = "最後上線: %@";
+"settings.openclaw.never" = "從未";
+"settings.openclaw.error_message" = "錯誤: %@";
+"settings.openclaw.connected" = "已連接";
+"settings.openclaw.test_connection" = "測試連接";
+"settings.openclaw.info_title" = "關於 OpenClaw";
+"settings.openclaw.info_description" = "新增工作器後，您可以將任務分配給 openclaw@astrid.cc，讓您的自託管 AI 處理它們。";
+
 /* Misc */
 "misc.cancel" = "取消";
 "misc.save" = "儲存";

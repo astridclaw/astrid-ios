@@ -760,6 +760,43 @@
 /* Splash */
 "splash.loading" = "Carregando suas tarefas...";
 
+/* OpenClaw Settings */
+"settings.openclaw.section" = "Gateway OpenClaw";
+"settings.openclaw.title" = "Gateway OpenClaw";
+"settings.openclaw.subtitle" = "Conecte seu próprio worker de IA";
+"settings.openclaw.description" = "Conecte um gateway OpenClaw auto-hospedado para usar openclaw@astrid.cc para atribuição de tarefas.";
+"settings.openclaw.loading" = "Carregando workers...";
+"settings.openclaw.no_workers" = "Nenhum worker configurado";
+"settings.openclaw.add_worker" = "Adicionar Worker";
+"settings.openclaw.gateway_url" = "URL do Gateway";
+"settings.openclaw.gateway_url_placeholder" = "wss://seu-gateway.exemplo.com.br";
+"settings.openclaw.auth_mode" = "Modo de Autenticação";
+"settings.openclaw.auth_mode.token" = "Token";
+"settings.openclaw.auth_mode.astrid_signed" = "Assinado pela Astrid";
+"settings.openclaw.auth_mode.none" = "Nenhum";
+"settings.openclaw.auth_mode.token_desc" = "Usar token de autenticação personalizado";
+"settings.openclaw.auth_mode.astrid_signed_desc" = "Usar autenticação assinada pela Astrid (recomendado)";
+"settings.openclaw.auth_mode.none_desc" = "Nenhuma autenticação necessária";
+"settings.openclaw.auth_token" = "Token de Auth";
+"settings.openclaw.auth_token_placeholder" = "Digite o token de autenticação";
+"settings.openclaw.name" = "Nome do Worker";
+"settings.openclaw.name_placeholder" = "Meu Worker OpenClaw";
+"settings.openclaw.status.online" = "Online";
+"settings.openclaw.status.offline" = "Offline";
+"settings.openclaw.status.error" = "Erro";
+"settings.openclaw.status.unknown" = "Desconhecido";
+"settings.openclaw.check_health" = "Verificar Status";
+"settings.openclaw.checking_health" = "Verificando...";
+"settings.openclaw.delete_worker" = "Excluir Worker";
+"settings.openclaw.delete_confirm" = "Tem certeza de que deseja excluir este worker?";
+"settings.openclaw.last_seen" = "Última vez visto: %@";
+"settings.openclaw.never" = "Nunca";
+"settings.openclaw.error_message" = "Erro: %@";
+"settings.openclaw.connected" = "Conectado";
+"settings.openclaw.test_connection" = "Testar Conexão";
+"settings.openclaw.info_title" = "Sobre o OpenClaw";
+"settings.openclaw.info_description" = "Após adicionar um worker, você pode atribuir tarefas a openclaw@astrid.cc para que sua IA auto-hospedada as processe.";
+
 /* Misc */
 "misc.cancel" = "Cancelar";
 "misc.save" = "Salvar";

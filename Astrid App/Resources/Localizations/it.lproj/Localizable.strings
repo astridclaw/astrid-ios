@@ -760,6 +760,43 @@
 /* Splash */
 "splash.loading" = "Caricamento attività...";
 
+/* OpenClaw Settings */
+"settings.openclaw.section" = "Gateway OpenClaw";
+"settings.openclaw.title" = "Gateway OpenClaw";
+"settings.openclaw.subtitle" = "Connetti il tuo worker IA";
+"settings.openclaw.description" = "Connetti un gateway OpenClaw self-hosted per usare openclaw@astrid.cc per l'assegnazione dei compiti.";
+"settings.openclaw.loading" = "Caricamento worker...";
+"settings.openclaw.no_workers" = "Nessun worker configurato";
+"settings.openclaw.add_worker" = "Aggiungi Worker";
+"settings.openclaw.gateway_url" = "URL Gateway";
+"settings.openclaw.gateway_url_placeholder" = "wss://tuo-gateway.esempio.it";
+"settings.openclaw.auth_mode" = "Modalità di Autenticazione";
+"settings.openclaw.auth_mode.token" = "Token";
+"settings.openclaw.auth_mode.astrid_signed" = "Firmato Astrid";
+"settings.openclaw.auth_mode.none" = "Nessuno";
+"settings.openclaw.auth_mode.token_desc" = "Usa un token di autenticazione personalizzato";
+"settings.openclaw.auth_mode.astrid_signed_desc" = "Usa autenticazione firmata Astrid (consigliato)";
+"settings.openclaw.auth_mode.none_desc" = "Nessuna autenticazione richiesta";
+"settings.openclaw.auth_token" = "Token Auth";
+"settings.openclaw.auth_token_placeholder" = "Inserisci token di autenticazione";
+"settings.openclaw.name" = "Nome Worker";
+"settings.openclaw.name_placeholder" = "Il mio Worker OpenClaw";
+"settings.openclaw.status.online" = "Online";
+"settings.openclaw.status.offline" = "Offline";
+"settings.openclaw.status.error" = "Errore";
+"settings.openclaw.status.unknown" = "Sconosciuto";
+"settings.openclaw.check_health" = "Verifica Stato";
+"settings.openclaw.checking_health" = "Verifica in corso...";
+"settings.openclaw.delete_worker" = "Elimina Worker";
+"settings.openclaw.delete_confirm" = "Sei sicuro di voler eliminare questo worker?";
+"settings.openclaw.last_seen" = "Ultima connessione: %@";
+"settings.openclaw.never" = "Mai";
+"settings.openclaw.error_message" = "Errore: %@";
+"settings.openclaw.connected" = "Connesso";
+"settings.openclaw.test_connection" = "Testa Connessione";
+"settings.openclaw.info_title" = "Informazioni su OpenClaw";
+"settings.openclaw.info_description" = "Dopo aver aggiunto un worker, puoi assegnare compiti a openclaw@astrid.cc per farli elaborare dalla tua IA self-hosted.";
+
 /* Misc */
 "misc.cancel" = "Annulla";
 "misc.save" = "Salva";
