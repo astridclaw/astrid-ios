@@ -43,7 +43,7 @@ for lang in "${LANGUAGES[@]}"; do
     dir="$LOCALIZATIONS_DIR/${lang}.lproj"
     if [[ ! -d "$dir" ]]; then
         echo -e "${RED}  ERROR: Missing directory for language: $lang${NC}"
-        ((ERRORS++))
+        ERRORS=$((ERRORS + 1))
     else
         echo -e "${GREEN}  ✓ $lang.lproj exists${NC}"
     fi
@@ -56,10 +56,10 @@ for lang in "${LANGUAGES[@]}"; do
     file="$LOCALIZATIONS_DIR/${lang}.lproj/Localizable.strings"
     if [[ ! -f "$file" ]]; then
         echo -e "${RED}  ERROR: Missing Localizable.strings for: $lang${NC}"
-        ((ERRORS++))
+        ERRORS=$((ERRORS + 1))
     elif [[ ! -s "$file" ]]; then
         echo -e "${RED}  ERROR: Empty Localizable.strings for: $lang${NC}"
-        ((ERRORS++))
+        ERRORS=$((ERRORS + 1))
     else
         count=$(count_keys "$file")
         echo -e "${GREEN}  ✓ $lang: $count strings${NC}"
@@ -114,12 +114,12 @@ for lang in "${LANGUAGES[@]}"; do
                 echo -e "    - $key"
             done
         fi
-        ((WARNINGS++))
+        WARNINGS=$((WARNINGS + 1))
     fi
 
     if [[ $EXTRA_COUNT -gt 0 ]]; then
         echo -e "${YELLOW}  WARNING: $lang has $EXTRA_COUNT extra keys not in English${NC}"
-        ((WARNINGS++))
+        WARNINGS=$((WARNINGS + 1))
     fi
 
     if [[ $MISSING_COUNT -eq 0 && $EXTRA_COUNT -eq 0 ]]; then
@@ -142,7 +142,7 @@ for lang in "${LANGUAGES[@]}"; do
     if [[ -n "$BAD_LINES" ]]; then
         echo -e "${RED}  ERROR: $lang has malformed lines:${NC}"
         echo "$BAD_LINES" | head -5
-        ((ERRORS++))
+        ERRORS=$((ERRORS + 1))
     fi
 
     # 2. Lines with unescaped quotes inside strings (basic check)
@@ -169,11 +169,11 @@ if [[ -f "$CONSTANTS_FILE" ]]; then
         echo -e "${RED}  ERROR: Constants.swift supportedLanguages mismatch${NC}"
         echo "    Expected: $(echo "$EXPECTED_LANGS" | tr '\n' ' ')"
         echo "    Found: $(echo "$CONSTANTS_LANGS" | tr '\n' ' ')"
-        ((ERRORS++))
+        ERRORS=$((ERRORS + 1))
     fi
 else
     echo -e "${YELLOW}  WARNING: Could not find Constants.swift${NC}"
-    ((WARNINGS++))
+    WARNINGS=$((WARNINGS + 1))
 fi
 echo ""
 

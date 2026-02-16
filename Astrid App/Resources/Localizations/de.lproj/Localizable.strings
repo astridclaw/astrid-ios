@@ -90,12 +90,12 @@
 "tasks.task_name" = "Aufgabenname";
 "tasks.description" = "Beschreibung";
 "tasks.no_description" = "Keine Beschreibung";
-"tasks.due_date" = "Fälligkeitsdatum";
+"tasks.due_date" = "Datum";
 "tasks.created_by" = "Erstellt von";
 "tasks.reminder" = "Erinnerung";
 "tasks.reminders" = "Erinnerungen";
 "tasks.priority" = "Priorität";
-"tasks.assignee" = "Zugewiesen an";
+"tasks.assignee" = "Wer";
 "tasks.completed" = "Abgeschlossen";
 "tasks.incomplete" = "Unvollständig";
 "tasks.overdue" = "Überfällig";
@@ -724,6 +724,8 @@
 "comments.add_placeholder" = "Kommentar hinzufügen...";
 "comments.delete_comment" = "Kommentar löschen";
 "comments.upload_error" = "Upload-Fehler";
+"comments.pending_offline" = "Ausstehend - Offline";
+"comments.tap_to_sync" = "Zum Synchronisieren tippen";
 
 /* Task Edit */
 "task_edit.add_to_list" = "Zur Liste hinzufügen";

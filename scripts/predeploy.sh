@@ -78,7 +78,7 @@ if [[ "$QUICK_MODE" == "true" ]]; then
 fi
 
 # Step 1: Localization checks
-((STEP++))
+STEP=$((STEP + 1))
 echo -e "${BLUE}[$STEP/$TOTAL_STEPS] Checking localizations...${NC}"
 echo ""
 if "$SCRIPT_DIR/check-localizations.sh"; then
@@ -91,7 +91,7 @@ echo ""
 
 # Step 2: Build verification (unless skipped or quick mode)
 if [[ "$SKIP_BUILD" != "true" && "$QUICK_MODE" != "true" ]]; then
-    ((STEP++))
+    STEP=$((STEP + 1))
     echo -e "${BLUE}[$STEP/$TOTAL_STEPS] Verifying build compiles...${NC}"
     echo ""
 
@@ -115,7 +115,7 @@ fi
 
 # Step 3: Unit tests (unless quick mode)
 if [[ "$QUICK_MODE" != "true" ]]; then
-    ((STEP++))
+    STEP=$((STEP + 1))
     echo -e "${BLUE}[$STEP/$TOTAL_STEPS] Running unit tests...${NC}"
     echo ""
     if "$SCRIPT_DIR/run-tests.sh"; then
@@ -129,7 +129,7 @@ fi
 
 # Step 4: UI tests (only with --full)
 if [[ "$RUN_UI_TESTS" == "true" ]]; then
-    ((STEP++))
+    STEP=$((STEP + 1))
     echo -e "${BLUE}[$STEP/$TOTAL_STEPS] Running UI tests...${NC}"
     echo ""
     if "$SCRIPT_DIR/run-tests.sh" --ui --no-unit; then
@@ -143,7 +143,7 @@ fi
 
 # Quick mode check
 if [[ "$QUICK_MODE" == "true" ]]; then
-    ((STEP++))
+    STEP=$((STEP + 1))
     echo -e "${BLUE}[$STEP/$TOTAL_STEPS] Quick build check...${NC}"
     echo ""
 

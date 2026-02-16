@@ -81,12 +81,12 @@
 "tasks.task_name" = "Название задачи";
 "tasks.description" = "Описание";
 "tasks.no_description" = "Нет описания";
-"tasks.due_date" = "Срок выполнения";
+"tasks.due_date" = "Дата";
 "tasks.created_by" = "Создано";
 "tasks.reminder" = "Напоминание";
 "tasks.reminders" = "Напоминания";
 "tasks.priority" = "Приоритет";
-"tasks.assignee" = "Исполнитель";
+"tasks.assignee" = "Кто";
 "tasks.completed" = "Завершено";
 "tasks.incomplete" = "Не завершено";
 "tasks.overdue" = "Просрочено";
@@ -724,6 +724,8 @@
 "comments.add_placeholder" = "Добавить комментарий...";
 "comments.delete_comment" = "Удалить комментарий";
 "comments.upload_error" = "Ошибка загрузки";
+"comments.pending_offline" = "Ожидание - Офлайн";
+"comments.tap_to_sync" = "Нажмите для синхронизации";
 
 /* Task Edit */
 "task_edit.add_to_list" = "Добавить в список";

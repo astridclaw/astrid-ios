@@ -81,12 +81,12 @@
 "tasks.task_name" = "任务名称";
 "tasks.description" = "描述";
 "tasks.no_description" = "无描述";
-"tasks.due_date" = "截止日期";
+"tasks.due_date" = "日期";
 "tasks.created_by" = "创建者";
 "tasks.reminder" = "提醒";
 "tasks.reminders" = "提醒";
 "tasks.priority" = "优先级";
-"tasks.assignee" = "负责人";
+"tasks.assignee" = "谁";
 "tasks.completed" = "已完成";
 "tasks.incomplete" = "未完成";
 "tasks.overdue" = "已逾期";
@@ -724,6 +724,8 @@
 "comments.add_placeholder" = "添加评论...";
 "comments.delete_comment" = "删除评论";
 "comments.upload_error" = "上传错误";
+"comments.pending_offline" = "待处理 - 离线";
+"comments.tap_to_sync" = "点击同步";
 
 /* Task Edit */
 "task_edit.add_to_list" = "添加到列表";

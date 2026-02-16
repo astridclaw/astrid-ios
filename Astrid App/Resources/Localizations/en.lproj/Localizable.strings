@@ -104,13 +104,13 @@
 "tasks.task_name" = "Task name";
 "tasks.description" = "Description";
 "tasks.no_description" = "No description";
-"tasks.due_date" = "Due date";
+"tasks.due_date" = "Date";
 "tasks.due_time" = "Due time";
 "tasks.created_by" = "Created By";
 "tasks.reminder" = "Reminder";
 "tasks.reminders" = "Reminders";
 "tasks.priority" = "Priority";
-"tasks.assignee" = "Assignee";
+"tasks.assignee" = "Who";
 "tasks.completed" = "Completed";
 "tasks.incomplete" = "Incomplete";
 "tasks.overdue" = "Overdue";

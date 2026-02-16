@@ -81,12 +81,12 @@
 "tasks.task_name" = "タスク名";
 "tasks.description" = "説明";
 "tasks.no_description" = "説明なし";
-"tasks.due_date" = "期限";
+"tasks.due_date" = "日付";
 "tasks.created_by" = "作成者";
 "tasks.reminder" = "リマインダー";
 "tasks.reminders" = "リマインダー";
 "tasks.priority" = "優先度";
-"tasks.assignee" = "担当者";
+"tasks.assignee" = "誰";
 "tasks.completed" = "完了済み";
 "tasks.incomplete" = "未完了";
 "tasks.overdue" = "期限切れ";
@@ -724,6 +724,8 @@
 "comments.add_placeholder" = "コメントを追加...";
 "comments.delete_comment" = "コメントを削除";
 "comments.upload_error" = "アップロードエラー";
+"comments.pending_offline" = "保留中 - オフライン";
+"comments.tap_to_sync" = "タップして同期";
 
 /* Task Edit */
 "task_edit.add_to_list" = "リストに追加";

@@ -81,12 +81,12 @@
 "tasks.task_name" = "任務名稱";
 "tasks.description" = "描述";
 "tasks.no_description" = "無描述";
-"tasks.due_date" = "截止日期";
+"tasks.due_date" = "日期";
 "tasks.created_by" = "創建者";
 "tasks.reminder" = "提醒";
 "tasks.reminders" = "提醒";
 "tasks.priority" = "優先級";
-"tasks.assignee" = "負責人";
+"tasks.assignee" = "誰";
 "tasks.completed" = "已完成";
 "tasks.incomplete" = "未完成";
 "tasks.overdue" = "已逾期";
@@ -757,6 +757,8 @@
 "comments.add_placeholder" = "新增評論...";
 "comments.delete_comment" = "刪除留言";
 "comments.upload_error" = "上傳錯誤";
+"comments.pending_offline" = "待處理 - 離線";
+"comments.tap_to_sync" = "點擊同步";
 
 /* Task Edit */
 "task_edit.add_to_list" = "新增到列表";

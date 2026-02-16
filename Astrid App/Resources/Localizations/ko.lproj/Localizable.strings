@@ -81,12 +81,12 @@
 "tasks.task_name" = "작업 이름";
 "tasks.description" = "설명";
 "tasks.no_description" = "설명 없음";
-"tasks.due_date" = "마감일";
+"tasks.due_date" = "날짜";
 "tasks.created_by" = "생성자";
 "tasks.reminder" = "알림";
 "tasks.reminders" = "알림";
 "tasks.priority" = "우선순위";
-"tasks.assignee" = "담당자";
+"tasks.assignee" = "누구";
 "tasks.completed" = "완료됨";
 "tasks.incomplete" = "미완료";
 "tasks.overdue" = "기한 지남";
@@ -757,6 +757,8 @@
 "comments.add_placeholder" = "댓글 추가...";
 "comments.delete_comment" = "댓글 삭제";
 "comments.upload_error" = "업로드 오류";
+"comments.pending_offline" = "대기 중 - 오프라인";
+"comments.tap_to_sync" = "탭하여 동기화";
 
 /* Task Edit */
 "task_edit.add_to_list" = "목록에 추가";

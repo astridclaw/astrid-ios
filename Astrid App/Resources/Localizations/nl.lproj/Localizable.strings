@@ -81,12 +81,12 @@
 "tasks.task_name" = "Taaknaam";
 "tasks.description" = "Beschrijving";
 "tasks.no_description" = "Geen beschrijving";
-"tasks.due_date" = "Vervaldatum";
+"tasks.due_date" = "Datum";
 "tasks.created_by" = "Gemaakt door";
 "tasks.reminder" = "Herinnering";
 "tasks.reminders" = "Herinneringen";
 "tasks.priority" = "Prioriteit";
-"tasks.assignee" = "Toegewezen aan";
+"tasks.assignee" = "Wie";
 "tasks.completed" = "Voltooid";
 "tasks.incomplete" = "Onvoltooid";
 "tasks.overdue" = "Verlopen";
@@ -724,6 +724,8 @@
 "comments.add_placeholder" = "Opmerking toevoegen...";
 "comments.delete_comment" = "Reactie verwijderen";
 "comments.upload_error" = "Uploadfout";
+"comments.pending_offline" = "In afwachting - Offline";
+"comments.tap_to_sync" = "Tik om te synchroniseren";
 
 /* Task Edit */
 "task_edit.add_to_list" = "Toevoegen aan lijst";
